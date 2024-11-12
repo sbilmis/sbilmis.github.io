@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-11-12 Tue 17:03 -->
+<!-- 2024-11-12 Tue 17:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SSH Tutorial</title>
@@ -193,12 +193,6 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
@@ -223,46 +217,42 @@
 </script>
 </head>
 <body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href=""> UP </a>
- |
- <a accesskey="H" href="file:///Users/sbilmis/my_projects/sb_org_html/apps.html"> HOME </a>
-</div><div id="content">
+<div id="content">
 <h1 class="title">SSH Tutorial</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org760251e">How to Log in to a Server via SSH Without Needing to Enter a Password</a>
+<li><a href="#org816375f">1. How to Log in to a Server via SSH Without Needing to Enter a Password</a>
 <ul>
-<li><a href="#orge6d0b3b">Step 1: Generate an SSH Key Pair on Your Local Machine</a></li>
-<li><a href="#org5229c02">Step 2: Copy the Public Key to Your Server</a></li>
-<li><a href="#org1fe1efe">Step 3: Log In Without a Password</a></li>
-<li><a href="#org62e8fa7">Step 4: Troubleshooting</a></li>
-<li><a href="#orgfd556d4">Step 5: Using an SSH Agent for Managing Passphrases</a></li>
-<li><a href="#orgc7045ad">Common SSH Commands</a></li>
+<li><a href="#org30f6505">1.1. Step 1: Generate an SSH Key Pair on Your Local Machine</a></li>
+<li><a href="#orgfc69680">1.2. Step 2: Copy the Public Key to Your Server</a></li>
+<li><a href="#org41454c9">1.3. Step 3: Log In Without a Password</a></li>
+<li><a href="#org584194f">1.4. Step 4: Troubleshooting</a></li>
+<li><a href="#org06ec2e1">1.5. Step 5: Using an SSH Agent for Managing Passphrases</a></li>
+<li><a href="#org1f00cbf">1.6. Common SSH Commands</a></li>
 </ul>
 </li>
-<li><a href="#orgb69447e">Changing the SSH Key Password</a></li>
-<li><a href="#orgcb69a5e">Using SSH Agent to Manage Passphrase</a></li>
-<li><a href="#org254ce93">Automating SSH Key Setup for Multiple Servers Using sshpass</a></li>
-<li><a href="#org0128188">Keeping SSH Sessions Alive</a></li>
+<li><a href="#orgf696ebe">2. Changing the SSH Key Password</a></li>
+<li><a href="#org8d0ab62">3. Using SSH Agent to Manage Passphrase</a></li>
+<li><a href="#org009847e">4. Automating SSH Key Setup for Multiple Servers Using sshpass</a></li>
+<li><a href="#org4e9e0ec">5. Keeping SSH Sessions Alive</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-org760251e" class="outline-2">
-<h2 id="org760251e">How to Log in to a Server via SSH Without Needing to Enter a Password</h2>
-<div class="outline-text-2" id="text-org760251e">
+<div id="outline-container-org816375f" class="outline-2">
+<h2 id="org816375f"><span class="section-number-2">1.</span> How to Log in to a Server via SSH Without Needing to Enter a Password</h2>
+<div class="outline-text-2" id="text-1">
 <p>
 To set up passwordless SSH login, follow these steps to generate an SSH key pair and configure your server to recognize it. This allows you to connect to your server without entering a password every time.
 </p>
 </div>
 
-<div id="outline-container-orge6d0b3b" class="outline-3">
-<h3 id="orge6d0b3b">Step 1: Generate an SSH Key Pair on Your Local Machine</h3>
-<div class="outline-text-3" id="text-orge6d0b3b">
+<div id="outline-container-org30f6505" class="outline-3">
+<h3 id="org30f6505"><span class="section-number-3">1.1.</span> Step 1: Generate an SSH Key Pair on Your Local Machine</h3>
+<div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>Use the command <code>ssh-keygen -t rsa -b 4096</code> to generate a new SSH key pair.</li>
 <li>When prompted, choose the location to save the key. The default path is <code>~/.ssh/id_rsa</code>.</li>
@@ -271,9 +261,9 @@ To set up passwordless SSH login, follow these steps to generate an SSH key pair
 </div>
 </div>
 
-<div id="outline-container-org5229c02" class="outline-3">
-<h3 id="org5229c02">Step 2: Copy the Public Key to Your Server</h3>
-<div class="outline-text-3" id="text-org5229c02">
+<div id="outline-container-orgfc69680" class="outline-3">
+<h3 id="orgfc69680"><span class="section-number-3">1.2.</span> Step 2: Copy the Public Key to Your Server</h3>
+<div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>To enable passwordless login, copy your public key to the server using:
 <code>ssh-copy-id your_username@server_address</code></li>
@@ -282,9 +272,9 @@ To set up passwordless SSH login, follow these steps to generate an SSH key pair
 </div>
 </div>
 
-<div id="outline-container-org1fe1efe" class="outline-3">
-<h3 id="org1fe1efe">Step 3: Log In Without a Password</h3>
-<div class="outline-text-3" id="text-org1fe1efe">
+<div id="outline-container-org41454c9" class="outline-3">
+<h3 id="org41454c9"><span class="section-number-3">1.3.</span> Step 3: Log In Without a Password</h3>
+<div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
 <li>After setting up, log in to the server without a password using:
 <code>ssh your_username@server_address</code></li>
@@ -292,9 +282,9 @@ To set up passwordless SSH login, follow these steps to generate an SSH key pair
 </div>
 </div>
 
-<div id="outline-container-org62e8fa7" class="outline-3">
-<h3 id="org62e8fa7">Step 4: Troubleshooting</h3>
-<div class="outline-text-3" id="text-org62e8fa7">
+<div id="outline-container-org584194f" class="outline-3">
+<h3 id="org584194f"><span class="section-number-3">1.4.</span> Step 4: Troubleshooting</h3>
+<div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li><b><b>Permissions</b></b>: Ensure that the <code>~/.ssh</code> directory has <code>700</code> permissions and <code>~/.ssh/authorized_keys</code> has <code>600</code> permissions on the server.</li>
 <li><b><b>Server Configuration</b></b>: Verify that <code>PubkeyAuthentication</code> is set to <code>yes</code> in the SSH configuration file on the server (<code>/etc/ssh/sshd_config</code>).</li>
@@ -302,9 +292,9 @@ To set up passwordless SSH login, follow these steps to generate an SSH key pair
 </div>
 </div>
 
-<div id="outline-container-orgfd556d4" class="outline-3">
-<h3 id="orgfd556d4">Step 5: Using an SSH Agent for Managing Passphrases</h3>
-<div class="outline-text-3" id="text-orgfd556d4">
+<div id="outline-container-org06ec2e1" class="outline-3">
+<h3 id="org06ec2e1"><span class="section-number-3">1.5.</span> Step 5: Using an SSH Agent for Managing Passphrases</h3>
+<div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
 <li>If your SSH key has a passphrase, you can use an SSH agent to avoid repeated passphrase entry.</li>
 <li><p>
@@ -319,9 +309,9 @@ Start the SSH agent:
 </div>
 </div>
 
-<div id="outline-container-orgc7045ad" class="outline-3">
-<h3 id="orgc7045ad">Common SSH Commands</h3>
-<div class="outline-text-3" id="text-orgc7045ad">
+<div id="outline-container-org1f00cbf" class="outline-3">
+<h3 id="org1f00cbf"><span class="section-number-3">1.6.</span> Common SSH Commands</h3>
+<div class="outline-text-3" id="text-1-6">
 <ul class="org-ul">
 <li><p>
 Here is a list of useful commands for managing SSH keys and connections:
@@ -347,9 +337,9 @@ Here is a list of useful commands for managing SSH keys and connections:
 </div>
 
 
-<div id="outline-container-orgb69447e" class="outline-2">
-<h2 id="orgb69447e">Changing the SSH Key Password</h2>
-<div class="outline-text-2" id="text-orgb69447e">
+<div id="outline-container-orgf696ebe" class="outline-2">
+<h2 id="orgf696ebe"><span class="section-number-2">2.</span> Changing the SSH Key Password</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 If you need to change the passphrase of your SSH key for added security or convenience, follow these steps to update it.
 </p>
@@ -375,9 +365,9 @@ Alternatively, run interactively:
 </div>
 
 
-<div id="outline-container-orgcb69a5e" class="outline-2">
-<h2 id="orgcb69a5e">Using SSH Agent to Manage Passphrase</h2>
-<div class="outline-text-2" id="text-orgcb69a5e">
+<div id="outline-container-org8d0ab62" class="outline-2">
+<h2 id="org8d0ab62"><span class="section-number-2">3.</span> Using SSH Agent to Manage Passphrase</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 If you used a passphrase when creating your SSH key and want to avoid entering it every time, you can use an SSH agent to manage your keys.
 </p>
@@ -397,9 +387,9 @@ Start the SSH agent and add your key:
 </div>
 
 
-<div id="outline-container-org254ce93" class="outline-2">
-<h2 id="org254ce93">Automating SSH Key Setup for Multiple Servers Using sshpass</h2>
-<div class="outline-text-2" id="text-org254ce93">
+<div id="outline-container-org009847e" class="outline-2">
+<h2 id="org009847e"><span class="section-number-2">4.</span> Automating SSH Key Setup for Multiple Servers Using sshpass</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 When deploying to multiple servers, `sshpass` can automate SSH key setup by bypassing the password entry process for each server.
 </p>
@@ -435,9 +425,9 @@ For more automation, use `expect` to script interactions:
 </div>
 
 
-<div id="outline-container-org0128188" class="outline-2">
-<h2 id="org0128188">Keeping SSH Sessions Alive</h2>
-<div class="outline-text-2" id="text-org0128188">
+<div id="outline-container-org4e9e0ec" class="outline-2">
+<h2 id="org4e9e0ec"><span class="section-number-2">5.</span> Keeping SSH Sessions Alive</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 If your SSH session disconnects after inactivity, you can configure keep-alive settings to maintain the connection.
 </p>
@@ -467,7 +457,7 @@ To apply keep-alive settings globally for all hosts:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2024-11-12 Tue 17:03</p>
+<p class="date">Created: 2024-11-12 Tue 17:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
