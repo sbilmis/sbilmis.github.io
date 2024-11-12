@@ -3,14 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-03-28 Thu 14:54 -->
+<!-- 2024-11-12 Tue 17:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Applications</title>
+<title>SSH Tutorial</title>
+<meta name="generator" content="Org mode" />
 <meta name="author" content="sbilmis" />
-<meta name="generator" content="Org Mode" />
-<style>
-  #content { max-width: 60em; margin: auto; }
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -31,9 +31,8 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #e6e6e6;
-    border-radius: 3px;
-    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -42,21 +41,21 @@
   pre.src {
     position: relative;
     overflow: auto;
+    padding-top: 1.2em;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    top: -8px;
-    right: 12px;
+    background-color: white;
+    top: -10px;
+    right: 10px;
     padding: 3px;
-    color: #555;
-    background-color: #f2f2f299;
+    border: 1px solid black;
   }
   pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
-  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,7 +190,8 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
@@ -199,215 +199,275 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
 <script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
 </head>
 <body>
 <div id="org-div-home-and-up">
  <a accesskey="h" href=""> UP </a>
  |
  <a accesskey="H" href="file:///Users/sbilmis/my_projects/sb_org_html/apps.html"> HOME </a>
-</div><div id="content" class="content">
-<h1 class="title">Applications</h1>
-<div id="table-of-contents" role="doc-toc">
+</div><div id="content">
+<h1 class="title">SSH Tutorial</h1>
+<div id="table-of-contents">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
+<div id="text-table-of-contents">
 <ul>
-<li><a href="#org31df29b">SSH</a>
+<li><a href="#org760251e">How to Log in to a Server via SSH Without Needing to Enter a Password</a>
 <ul>
-<li><a href="#orgccab1d8">How to Log in to a Server via SSH Without Needing to Enter a Password</a></li>
-<li><a href="#orgb31e692">How to change the password of ssh key</a></li>
-<li><a href="#org407e1fc">How to use ssh Agent to manage passphrase</a></li>
-<li><a href="#org78ee80e">How to use sshpass for initial setup</a></li>
-<li><a href="#org10f5099">How to keep ssh session alive</a></li>
+<li><a href="#orge6d0b3b">Step 1: Generate an SSH Key Pair on Your Local Machine</a></li>
+<li><a href="#org5229c02">Step 2: Copy the Public Key to Your Server</a></li>
+<li><a href="#org1fe1efe">Step 3: Log In Without a Password</a></li>
+<li><a href="#org62e8fa7">Step 4: Troubleshooting</a></li>
+<li><a href="#orgfd556d4">Step 5: Using an SSH Agent for Managing Passphrases</a></li>
+<li><a href="#orgc7045ad">Common SSH Commands</a></li>
 </ul>
 </li>
+<li><a href="#orgb69447e">Changing the SSH Key Password</a></li>
+<li><a href="#orgcb69a5e">Using SSH Agent to Manage Passphrase</a></li>
+<li><a href="#org254ce93">Automating SSH Key Setup for Multiple Servers Using sshpass</a></li>
+<li><a href="#org0128188">Keeping SSH Sessions Alive</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org31df29b" class="outline-2">
-<h2 id="org31df29b">SSH</h2>
-<div class="outline-text-2" id="text-org31df29b">
+
+
+<div id="outline-container-org760251e" class="outline-2">
+<h2 id="org760251e">How to Log in to a Server via SSH Without Needing to Enter a Password</h2>
+<div class="outline-text-2" id="text-org760251e">
+<p>
+To set up passwordless SSH login, follow these steps to generate an SSH key pair and configure your server to recognize it. This allows you to connect to your server without entering a password every time.
+</p>
 </div>
-<div id="outline-container-orgccab1d8" class="outline-3">
-<h3 id="orgccab1d8">How to Log in to a Server via SSH Without Needing to Enter a Password</h3>
-<div class="outline-text-3" id="text-orgccab1d8">
-</div>
-<div id="outline-container-orgd00c9ec" class="outline-4">
-<h4 id="orgd00c9ec">Step 1: Generate an SSH Key Pair on Your Local Machine</h4>
-<div class="outline-text-4" id="text-orgd00c9ec">
+
+<div id="outline-container-orge6d0b3b" class="outline-3">
+<h3 id="orge6d0b3b">Step 1: Generate an SSH Key Pair on Your Local Machine</h3>
+<div class="outline-text-3" id="text-orge6d0b3b">
 <ul class="org-ul">
 <li>Use the command <code>ssh-keygen -t rsa -b 4096</code> to generate a new SSH key pair.</li>
-<li>Follow the prompts to choose where to save the key and whether to use a passphrase.</li>
+<li>When prompted, choose the location to save the key. The default path is <code>~/.ssh/id_rsa</code>.</li>
+<li>You may opt to enter a passphrase to secure the key or leave it empty for simpler access.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org44c4e9e" class="outline-4">
-<h4 id="org44c4e9e">Step 2: Copy the Public Key to Your Server</h4>
-<div class="outline-text-4" id="text-org44c4e9e">
+<div id="outline-container-org5229c02" class="outline-3">
+<h3 id="org5229c02">Step 2: Copy the Public Key to Your Server</h3>
+<div class="outline-text-3" id="text-org5229c02">
 <ul class="org-ul">
-<li>Use <code>ssh-copy-id your_username@server_address</code> to copy your public SSH key to the server.</li>
-<li>Replace <code>your_username</code> with your actual username on the server and <code>server_address</code> with the server's IP address or domain name.</li>
+<li>To enable passwordless login, copy your public key to the server using:
+<code>ssh-copy-id your_username@server_address</code></li>
+<li>Replace <code>your_username</code> with your server’s username and <code>server_address</code> with the server's IP or domain.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgad36675" class="outline-4">
-<h4 id="orgad36675">Step 3: Log In Without a Password</h4>
-<div class="outline-text-4" id="text-orgad36675">
+<div id="outline-container-org1fe1efe" class="outline-3">
+<h3 id="org1fe1efe">Step 3: Log In Without a Password</h3>
+<div class="outline-text-3" id="text-org1fe1efe">
 <ul class="org-ul">
-<li>Now you can log in to the server without a password by using <code>ssh your_username@server_address</code>.</li>
+<li>After setting up, log in to the server without a password using:
+<code>ssh your_username@server_address</code></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgce1973d" class="outline-4">
-<h4 id="orgce1973d">Step 4: Troubleshooting</h4>
-<div class="outline-text-4" id="text-orgce1973d">
+<div id="outline-container-org62e8fa7" class="outline-3">
+<h3 id="org62e8fa7">Step 4: Troubleshooting</h3>
+<div class="outline-text-3" id="text-org62e8fa7">
 <ul class="org-ul">
-<li>Ensure the permissions of the <code>~/.ssh</code> directory are set to <code>700</code> and the <code>~/.ssh/authorized_keys</code> file is set to <code>600</code>.</li>
-<li>Check that the SSH daemon configuration on the server allows for public key authentication (<code>PubkeyAuthentication yes</code>).</li>
+<li><b><b>Permissions</b></b>: Ensure that the <code>~/.ssh</code> directory has <code>700</code> permissions and <code>~/.ssh/authorized_keys</code> has <code>600</code> permissions on the server.</li>
+<li><b><b>Server Configuration</b></b>: Verify that <code>PubkeyAuthentication</code> is set to <code>yes</code> in the SSH configuration file on the server (<code>/etc/ssh/sshd_config</code>).</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga5f424a" class="outline-4">
-<h4 id="orga5f424a">Step 5: Using an SSH Agent for Managing Passphrases</h4>
-<div class="outline-text-4" id="text-orga5f424a">
+<div id="outline-container-orgfd556d4" class="outline-3">
+<h3 id="orgfd556d4">Step 5: Using an SSH Agent for Managing Passphrases</h3>
+<div class="outline-text-3" id="text-orgfd556d4">
 <ul class="org-ul">
-<li>If your SSH key is passphrase-protected, use <code>ssh-agent</code> and <code>ssh-add</code> to avoid entering it every time.</li>
-<li>Start the agent with <code>eval $(ssh-agent -s)</code> and add your key with <code>ssh-add ~/.ssh/id_rsa</code>.</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org658e58a" class="outline-4">
-<h4 id="org658e58a">Command list</h4>
-<div class="outline-text-4" id="text-org658e58a">
-<pre class="example">
-## create ssh key if it does not exist
-cd ~/.ssh
-
-ssh-keygen -t rsa -b 4096 -C
-## you may skip the password creation
-
-## copy the public key to the server
-ssh-copy-id remote_username@server_ip_address
-
-## Once the user is authenticated, the public key will be appended to the remote user authorized_keys file and connection will be closed.
-
-## If by some reason the ssh-copy-id utility is not available on your local computer you can use the following command to copy the public key:
-cat ~/.ssh/id_rsa.pub | ssh remote_username@server_ip_address "mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys &amp;&amp; chmod 600 ~/.ssh/authorized_keys"
-
+<li>If your SSH key has a passphrase, you can use an SSH agent to avoid repeated passphrase entry.</li>
+<li><p>
+Start the SSH agent:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">     <span style="color: #006FE0;">eval</span> $(<span style="color: #FF1493;">ssh-agent -s</span>)
+     ssh-add ~/.ssh/id_rsa
 </pre>
-
-
-<ul class="org-ul">
-<li>See also  <a href="https://linuxize.com/post/how-to-setup-passwordless-ssh-login/">https://linuxize.com/post/how-to-setup-passwordless-ssh-login/</a></li>
-</ul>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-orgb31e692" class="outline-3">
-<h3 id="orgb31e692">How to change the password of ssh key</h3>
-<div class="outline-text-3" id="text-orgb31e692">
-<pre class="example">
-ssh-keygen -p -P oldpasswd -N newpassword -f ~/.ssh/id_rsa-yeni
-
-## if you want to do it interactively
-ssh-keygen -p -f /root/.ssh/id_rsa
-
-# When prompted for a new password, select a password of more than four characters. It can include a series of words, punctuation, numbers, whitespace, or a string of characters.
-</pre>
-</div>
-</div>
-
-
-<div id="outline-container-org407e1fc" class="outline-3">
-<h3 id="org407e1fc">How to use ssh Agent to manage passphrase</h3>
-<div class="outline-text-3" id="text-org407e1fc">
-<ul class="org-ul">
-<li>If you used a passphrase when creating your SSH key and don't want to enter it every time, you can use an SSH agent to manage your keys. On your local machine, you can start the agent and add your key by running:</li>
-</ul>
-<pre class="example">
-eval $(ssh-agent -s)
-ssh-add ~/.ssh/id_rsa
-</pre>
-
-<ul class="org-ul">
-<li>This setup provides a secure and convenient way to log in to your server without needing to enter a password every time.</li>
+</div></li>
 </ul>
 </div>
 </div>
 
-
-<div id="outline-container-org78ee80e" class="outline-3">
-<h3 id="org78ee80e">How to use sshpass for initial setup</h3>
-<div class="outline-text-3" id="text-org78ee80e">
+<div id="outline-container-orgc7045ad" class="outline-3">
+<h3 id="orgc7045ad">Common SSH Commands</h3>
+<div class="outline-text-3" id="text-orgc7045ad">
 <ul class="org-ul">
 <li><p>
-Assume that you are installing 100 servers and you do not want to enter the password to copy your ssh key to the servers then you can
+Here is a list of useful commands for managing SSH keys and connections:
 </p>
-<pre class="example">
+<div class="org-src-container">
+<pre class="src src-shell">     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Generate a new SSH key if it does not exist</span>
+     <span style="color: #006FE0;">cd</span> ~/.ssh
+     ssh-keygen -t rsa -b 4096 -C <span style="color: #008000;">"your_email@example.com"</span>
 
-sshpass -p 'your_password_here' ssh-copy-id user@server
+     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Copy the public key to the server</span>
+     ssh-copy-id remote_username@server_ip_address
+     <span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">Once the user is authenticated, the public key will be appended to the remote user authorized_keys file and connection will be closed.</span>
 
-</pre></li>
+     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">If ssh-copy-id is unavailable, use this alternative method:</span>
+     cat ~/.ssh/id_rsa.pub | ssh remote_username@server_ip_address <span style="color: #008000;">"mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys &amp;&amp; chmod 600 ~/.ssh/authorized_keys"</span>
+</pre>
+</div></li>
 
-<li>Delete the password from the history via  =history -d "line of the history"</li>
-
-<li><p>
-Alternatively one can use "expect" which is a program to automate interactions with programs that expose a text reminal interface.
-</p>
-<pre class="example">
-#!/usr/bin/expect
-
-set timeout 20
-set password "your_password_here"
-set server "server_address"
-set user "your_username"
-
-spawn ssh-copy-id $user@$server
-expect "password:"
-send "$password\r";
-expect eof
-
-</pre></li>
+<li>Additional resources: <a href="https://linuxize.com/post/how-to-setup-passwordless-ssh-login">Passwordless SSH Login Guide</a></li>
 </ul>
 </div>
 </div>
+</div>
 
 
-<div id="outline-container-org10f5099" class="outline-3">
-<h3 id="org10f5099">How to keep ssh session alive</h3>
-<div class="outline-text-3" id="text-org10f5099">
+<div id="outline-container-orgb69447e" class="outline-2">
+<h2 id="orgb69447e">Changing the SSH Key Password</h2>
+<div class="outline-text-2" id="text-orgb69447e">
+<p>
+If you need to change the passphrase of your SSH key for added security or convenience, follow these steps to update it.
+</p>
+
 <ul class="org-ul">
-<li>After logging to remote server via ssh your terminal freezes in 10-15 minutes time. If this is the issue you are facing, you need to check the ssh config?</li>
 <li><p>
-You can use screen or tmux to get rid of the issue. Alterbnatively,
+To change the passphrase of your SSH key, use:
 </p>
-<pre class="example">
-## modify ssh config i.e, $HOME/.ssh/config
-chmod 600 ~/.ssh/config
-
-Host remotehost
-    HostName remotehost.com
-    ServerAliveInterval 240
-
-## To enable sending a keep-alive signal for all hosts, place the following contents in the configuration file:
-Host *
-    ServerAliveInterval 240
-</pre></li>
-<li><a href="https://stackoverflow.com/questions/25084288/keep-ssh-session-alive">See this link for more info</a></li>
+<div class="org-src-container">
+<pre class="src src-shell">     ssh-keygen -p -P oldpasswd -N newpassword -f ~/.ssh/id_rsa
+</pre>
+</div></li>
+<li><p>
+Alternatively, run interactively:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">     ssh-keygen -p -f ~/.ssh/id_rsa
+</pre>
+</div></li>
+<li>When prompted, choose a passphrase with at least four characters, which can include words, numbers, and punctuation for stronger security.</li>
 </ul>
 </div>
+</div>
+
+
+<div id="outline-container-orgcb69a5e" class="outline-2">
+<h2 id="orgcb69a5e">Using SSH Agent to Manage Passphrase</h2>
+<div class="outline-text-2" id="text-orgcb69a5e">
+<p>
+If you used a passphrase when creating your SSH key and want to avoid entering it every time, you can use an SSH agent to manage your keys.
+</p>
+
+<ul class="org-ul">
+<li><p>
+Start the SSH agent and add your key:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">     <span style="color: #006FE0;">eval</span> $(<span style="color: #FF1493;">ssh-agent -s</span>)
+     ssh-add ~/.ssh/id_rsa
+</pre>
+</div></li>
+<li>This enables secure, convenient server access without needing to enter the passphrase every time.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org254ce93" class="outline-2">
+<h2 id="org254ce93">Automating SSH Key Setup for Multiple Servers Using sshpass</h2>
+<div class="outline-text-2" id="text-org254ce93">
+<p>
+When deploying to multiple servers, `sshpass` can automate SSH key setup by bypassing the password entry process for each server.
+</p>
+
+<ul class="org-ul">
+<li><p>
+Use the following command:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">     sshpass -p <span style="color: #008000;">'your_password_here'</span> ssh-copy-id user@server
+</pre>
+</div></li>
+<li>Clear sensitive commands from history with <code>history -d "line_number"</code>.</li>
+<li><p>
+For more automation, use `expect` to script interactions:
+</p>
+<div class="org-src-container">
+<pre class="src src-expect">     #!/usr/bin/expect
+
+     set timeout 20
+     set password "your_password_here"
+     set server "server_address"
+     set user "your_username"
+
+     spawn ssh-copy-id $user@$server
+     expect "password:"
+     send "$password\r"
+     expect eof
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org0128188" class="outline-2">
+<h2 id="org0128188">Keeping SSH Sessions Alive</h2>
+<div class="outline-text-2" id="text-org0128188">
+<p>
+If your SSH session disconnects after inactivity, you can configure keep-alive settings to maintain the connection.
+</p>
+
+<ul class="org-ul">
+<li><p>
+To apply keep-alive settings globally for all hosts:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Edit SSH config file (~/.ssh/config)</span>
+     chmod 600 ~/.ssh/config
+
+     Host remotehost
+         HostName remotehost.com
+         ServerAliveInterval 240
+
+     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">To apply keep-alive settings globally for all hosts, use:</span>
+     Host *
+         ServerAliveInterval 240
+</pre>
+</div></li>
+
+<li><a href="https://stackoverflow.com/questions/25084288/keep-ssh-session-alive">Further info on keeping SSH sessions alive</a></li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2024-03-28 Thu 14:54</p>
+<p class="date">Created: 2024-11-12 Tue 17:03</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
