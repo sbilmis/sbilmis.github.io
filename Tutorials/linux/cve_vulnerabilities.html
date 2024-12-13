@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-13 Fri 17:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CVE Vulnerabilities                                                :centos:</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sbilmis" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">CVE Vulnerabilities                                                :centos:</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgfb1a71e">1. CVE Vulnerabilities&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span></span></a>
+<ul>
+<li><a href="#org1428efc">1.1. What is CVE?</a></li>
+<li><a href="#orgdf5330f">1.2. How to Check if a CVE is Fixed</a>
+<ul>
+<li><a href="#orgeace5ff">1.2.1. Using `rpm` to Check CVE Fixes</a></li>
+<li><a href="#org049298e">1.2.2. Using `yum-plugin-security`</a></li>
+</ul>
+</li>
+<li><a href="#orgeee8c23">1.3. References</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfb1a71e" class="outline-2">
+<h2 id="orgfb1a71e"><span class="section-number-2">1.</span> CVE Vulnerabilities&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span></span></h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Ensure your system's kernel version aligns with lxplus (CentOS 7.9) if applicable.</li>
+</ul>
+</div>
+
+<div id="outline-container-org1428efc" class="outline-3">
+<h3 id="org1428efc"><span class="section-number-3">1.1.</span> What is CVE?</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>CVE (Common Vulnerability &amp; Exposure) is a publicly available catalog of security vulnerabilities.</li>
+<li>Each CVE entry includes:
+<ul class="org-ul">
+<li>A unique ID for the vulnerability.</li>
+<li>Detailed information about the vulnerability.</li>
+<li>References to publicly available reports and patches.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdf5330f" class="outline-3">
+<h3 id="orgdf5330f"><span class="section-number-3">1.2.</span> How to Check if a CVE is Fixed</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>If you know the CVE number, you can verify whether the vulnerability has been addressed on your system.</li>
+</ul>
+</div>
+
+<div id="outline-container-orgeace5ff" class="outline-4">
+<h4 id="orgeace5ff"><span class="section-number-4">1.2.1.</span> Using `rpm` to Check CVE Fixes</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ul class="org-ul">
+<li><p>
+Command to check if a package has addressed a specific CVE:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">rpm -q --changelog [package-name] | grep [CVE-NUMBER]
+</pre>
+</div></li>
+
+<li><p>
+Example for `openssl`:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">rpm -q --changelog openssl | grep CVE-2021-3450
+</pre>
+</div></li>
+
+<li><b><b>Result:</b></b>
+<ul class="org-ul">
+<li>If the CVE number is not listed in the output, the vulnerability is not fixed on your system.</li>
+<li><p>
+To fix, update the relevant package:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum update openssl
+</pre>
+</div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org049298e" class="outline-4">
+<h4 id="org049298e"><span class="section-number-4">1.2.2.</span> Using `yum-plugin-security`</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<ul class="org-ul">
+<li><p>
+Install the `yum-plugin-security` package to enhance CVE management:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum install yum-plugin-security
+</pre>
+</div></li>
+
+<li><p>
+Check if a CVE has been addressed:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum updateinfo info --cve CVE-2021-3445
+</pre>
+</div></li>
+
+<li><b><b>Result:</b></b>
+<ul class="org-ul">
+<li>No output: The CVE patch is already applied.</li>
+<li>Output displayed: The system is still vulnerable.</li>
+</ul></li>
+
+<li><p>
+Check for critical security updates:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum --security --sec-severity=Critical check-update
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeee8c23" class="outline-3">
+<h3 id="orgeee8c23"><span class="section-number-3">1.3.</span> References</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>[Fedingo: How to Check CVE Vulnerability in Linux](<a href="https://fedingo.com/how-to-check-cve-vulnerability-in-linux/">https://fedingo.com/how-to-check-cve-vulnerability-in-linux/</a>)</li>
+<li>[RedHat CVE Database](<a href="https://access.redhat.com/security/security-updates/#/cve">https://access.redhat.com/security/security-updates/#/cve</a>)</li>
+<li>[CentOS 7 Vulnerability Check Guide](<a href="https://www.prado.lt/centos-7-check-if-a-system-is-vulnerable-to-a-cve">https://www.prado.lt/centos-7-check-if-a-system-is-vulnerable-to-a-cve</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sbilmis</p>
+<p class="date">Created: 2024-12-13 Fri 17:06</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-13 Fri 17:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Docker Guide</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sbilmis" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Docker Guide</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf4b4ddd">1. Docker Basics</a></li>
+<li><a href="#orga4bc377">2. References</a></li>
+<li><a href="#orgdb3d2f1">3. Running a Basic OS Container</a></li>
+<li><a href="#org5f1cc81">4. Installing (Pulling) Docker Images</a></li>
+<li><a href="#org112e134">5. Listing Images</a></li>
+<li><a href="#orgf60f105">6. Running a Container with NGINX (as an example)</a></li>
+<li><a href="#org637b289">7. Listing Containers</a></li>
+<li><a href="#org597c291">8. Running Commands Interactively in a Running Container</a></li>
+<li><a href="#org18a6839">9. Stopping and Restarting Containers</a></li>
+<li><a href="#orgd0748da">10. Removing Containers</a></li>
+<li><a href="#orge3923a6">11. Mapping a Local Directory into a Container</a></li>
+<li><a href="#orgfa6f935">12. Removing Images</a></li>
+<li><a href="#orgda29436">13. To Be Added</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf4b4ddd" class="outline-2">
+<h2 id="orgf4b4ddd"><span class="section-number-2">1.</span> Docker Basics</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><p>
+Attach to a running container:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">    docker attach CONTAINER_ID
+</pre>
+</div>
+<ul class="org-ul">
+<li>To detach from the container: `Ctrl-p Ctrl-q`</li>
+</ul></li>
+
+<li><b><b>Alternatives</b></b>:
+<ul class="org-ul">
+<li>`podman` and `buildah` are alternative tools to Docker.</li>
+<li><a href="https://apptainer.org/">Apptainer</a>: Apptainer (formerly Singularity) is an HPC-focused alternative to Docker, designed for non-root execution, making it ideal for HPC environments.</li>
+</ul></li>
+
+<li><b><b>Note</b></b>: Image IDs and Container IDs are different entities in Docker.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga4bc377" class="outline-2">
+<h2 id="orga4bc377"><span class="section-number-2">2.</span> References</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><a href="https://dockerlabs.collabnix.com/docker/cheatsheet/">Docker Cheatsheet - Collabnix</a></li>
+<li><a href="https://docs.docker.com/get-started/docker_cheatsheet.pdf">Official Docker Cheatsheet (PDF)</a></li>
+<li><a href="https://docs.docker.com/">Docker Documentation</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdb3d2f1" class="outline-2">
+<h2 id="orgdb3d2f1"><span class="section-number-2">3.</span> Running a Basic OS Container</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><p>
+Containers based on OS images exit immediately if they aren’t running any active processes.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">    docker run -it centos
+</pre>
+</div></li>
+
+<li><p>
+Install a package and save changes:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">    yum install man
+    docker commit CONTAINER_ID mycentos
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5f1cc81" class="outline-2">
+<h2 id="org5f1cc81"><span class="section-number-2">4.</span> Installing (Pulling) Docker Images</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Use <a href="https://hub.docker.com/">Docker Hub</a> to browse available images.</li>
+<li><p>
+Example:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">    docker pull nginx
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org112e134" class="outline-2">
+<h2 id="org112e134"><span class="section-number-2">5.</span> Listing Images</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-shell">  docker image ls
+  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">or</span>
+  docker images
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf60f105" class="outline-2">
+<h2 id="orgf60f105"><span class="section-number-2">6.</span> Running a Container with NGINX (as an example)</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+<pre class="src src-shell">  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Basic syntax</span>
+  docker run IMAGE
+
+  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Run NGINX in detached mode</span>
+  docker run -d nginx
+
+  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Name the container</span>
+  docker run --name mynginx -d nginx
+
+  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Map port 80 in the container to localhost:8080</span>
+  docker run -d -p 8080:80 nginx
+
+  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Open a browser and go to localhost:8080 to see the "Welcome to nginx" page.</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org637b289" class="outline-2">
+<h2 id="org637b289"><span class="section-number-2">7.</span> Listing Containers</h2>
+<div class="outline-text-2" id="text-7">
+<div class="org-src-container">
+<pre class="src src-shell">  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">List running containers</span>
+  docker ps
+
+  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">List all containers (including stopped)</span>
+  docker ps --all
+
+  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">List only container IDs</span>
+  docker ps -aq
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org597c291" class="outline-2">
+<h2 id="org597c291"><span class="section-number-2">8.</span> Running Commands Interactively in a Running Container</h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+<pre class="src src-shell">  docker exec -it CONTAINER_ID bash
+  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Use -it for interactive mode. This will open a bash session in the container.</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org18a6839" class="outline-2">
+<h2 id="org18a6839"><span class="section-number-2">9.</span> Stopping and Restarting Containers</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+<pre class="src src-shell">  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Stop a running container</span>
+  docker stop CONTAINER_ID
+
+  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Start a stopped container by its ID</span>
+  docker start CONTAINER_ID
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd0748da" class="outline-2">
+<h2 id="orgd0748da"><span class="section-number-2">10.</span> Removing Containers</h2>
+<div class="outline-text-2" id="text-10">
+<div class="org-src-container">
+<pre class="src src-shell">  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Remove a container</span>
+  docker rm CONTAINER_ID
+
+  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Force remove a running container</span>
+  docker rm -f CONTAINER_ID
+
+  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Remove all containers</span>
+  docker rm -f $(<span style="color: #FF1493;">docker ps -aq</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge3923a6" class="outline-2">
+<h2 id="orge3923a6"><span class="section-number-2">11.</span> Mapping a Local Directory into a Container</h2>
+<div class="outline-text-2" id="text-11">
+<div class="org-src-container">
+<pre class="src src-shell">  docker run -v HOST_DIR:CONTAINER_DIR IMAGE
+
+  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Example: Map the current directory to /website in the container</span>
+  docker run -d -p 8080:80 --name website2 -v $(<span style="color: #FF1493;">pwd</span>):/website nginx
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfa6f935" class="outline-2">
+<h2 id="orgfa6f935"><span class="section-number-2">12.</span> Removing Images</h2>
+<div class="outline-text-2" id="text-12">
+<div class="org-src-container">
+<pre class="src src-shell">  docker image rm IMAGE_ID
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgda29436" class="outline-2">
+<h2 id="orgda29436"><span class="section-number-2">13.</span> To Be Added</h2>
+<div class="outline-text-2" id="text-13">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> How to create a Docker image</li>
+<li class="off"><code>[&#xa0;]</code> Running GUI applications in Docker</li>
+<li class="off"><code>[&#xa0;]</code> Checking IP address in Docker container</li>
+<li class="off"><code>[&#xa0;]</code> Configuring IP and hostname in containers</li>
+<li class="off"><code>[&#xa0;]</code> Communication between Docker containers (<a href="https://www.tutorialworks.com/container-networking/">Tutorial on container networking</a>)</li>
+<li class="off"><code>[&#xa0;]</code> Resuming a stopped container with a shared volume: How to add volumes post-creation</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sbilmis</p>
+<p class="date">Created: 2024-12-13 Fri 17:06</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

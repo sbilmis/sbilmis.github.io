@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-13 Fri 17:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>tmux Guide</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sbilmis" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">tmux Guide</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org26bb5ad">1. Tmux Addons</a></li>
+<li><a href="#org658968d">2. Installing Tmux and Addons</a>
+<ul>
+<li><a href="#org70cb1ac">2.1. Installing Addons</a></li>
+<li><a href="#org908380c">2.2. Additional Notes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org26bb5ad" class="outline-2">
+<h2 id="org26bb5ad"><span class="section-number-2">1.</span> Tmux Addons</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><b><b>Popular Addons</b></b> for enhancing tmux functionality:
+<ul class="org-ul">
+<li>`tmuxinator`: Manage complex tmux session configurations.</li>
+<li>`tmux-continuum`: Automatically save tmux sessions at regular intervals.</li>
+<li>`tmux-resurrect`: Restore tmux sessions exactly as they were after closing.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org658968d" class="outline-2">
+<h2 id="org658968d"><span class="section-number-2">2.</span> Installing Tmux and Addons</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><b><b>Installing tmux</b></b>:
+<ul class="org-ul">
+<li><p>
+On macOS:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">      brew install tmux
+</pre>
+</div></li>
+<li><p>
+On Ubuntu:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">      sudo apt update
+      sudo apt install tmux
+</pre>
+</div></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org70cb1ac" class="outline-3">
+<h3 id="org70cb1ac"><span class="section-number-3">2.1.</span> Installing Addons</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li><b><b>Tmuxinator</b></b>:
+<ul class="org-ul">
+<li>`tmuxinator` simplifies managing tmux sessions and layouts.</li>
+<li><p>
+Installation via `gem`:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">      <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">First, install Ruby if not installed</span>
+      sudo apt install ruby  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Ubuntu</span>
+      <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Install tmuxinator</span>
+      gem install tmuxinator
+      <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">After installation, run tmuxinator to confirm it's installed</span>
+      tmuxinator
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Tmux Continuum</b></b>:
+<ul class="org-ul">
+<li>`tmux-continuum` automatically saves tmux sessions at regular intervals.</li>
+<li>Requires `tmux-resurrect` to function.</li>
+<li>Installation:
+<ol class="org-ol">
+<li><p>
+Clone the repository:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">         git clone https://github.com/tmux-plugins/tmux-continuum ~/.tmux/plugins/tmux-continuum
+</pre>
+</div></li>
+<li><p>
+Add the following lines to your `.tmux.conf` to enable automatic session saving:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">         <span style="color: #006FE0;">set</span> -g @continuum-restore <span style="color: #008000;">'on'</span>
+         <span style="color: #006FE0;">set</span> -g @continuum-save-interval <span style="color: #008000;">'15'</span>  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Saves every 15 minutes</span>
+</pre>
+</div></li>
+<li><p>
+Reload your tmux configuration:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">         tmux source-file ~/.tmux.conf
+</pre>
+</div></li>
+</ol></li>
+</ul></li>
+
+<li><b><b>Tmux Resurrect</b></b>:
+<ul class="org-ul">
+<li>`tmux-resurrect` restores tmux sessions exactly as they were, preserving window layouts and processes.</li>
+<li>Installation:
+<ol class="org-ol">
+<li><p>
+Clone the repository:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">         git clone https://github.com/tmux-plugins/tmux-resurrect ~/.tmux/plugins/tmux-resurrect
+</pre>
+</div></li>
+<li><p>
+Add the following to your `.tmux.conf` to configure resurrect:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">         <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">To save sessions</span>
+         <span style="color: #006FE0;">bind</span> r source-file ~/.tmux/plugins/tmux-resurrect/resurrect.tmux
+         <span style="color: #006FE0;">set</span> -g @resurrect-capture-pane-contents <span style="color: #008000;">'on'</span>
+</pre>
+</div></li>
+<li><p>
+Reload your tmux configuration to activate:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">         tmux source-file ~/.tmux.conf
+</pre>
+</div></li>
+<li>To save and restore sessions:
+<ul class="org-ul">
+<li>Press `Prefix + Ctrl-s` to save the current tmux session.</li>
+<li>Press `Prefix + Ctrl-r` to restore the last saved tmux session.</li>
+</ul></li>
+</ol></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org908380c" class="outline-3">
+<h3 id="org908380c"><span class="section-number-3">2.2.</span> Additional Notes</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li><b><b>Configuration Reload</b></b>:
+<ul class="org-ul">
+<li><p>
+After making changes to `.tmux.conf`, reload tmux settings with:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">      tmux source-file ~/.tmux.conf
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Help and Documentation</b></b>:
+<ul class="org-ul">
+<li>Use `man tmux` to access tmux manual pages for detailed command information.</li>
+<li>Addon documentation:
+<ul class="org-ul">
+<li><a href="https://github.com/tmuxinator/tmuxinator">tmuxinator</a></li>
+<li><a href="https://github.com/tmux-plugins/tmux-continuum">tmux-continuum</a></li>
+<li><a href="https://github.com/tmux-plugins/tmux-resurrect">tmux-resurrect</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sbilmis</p>
+<p class="date">Created: 2024-12-13 Fri 17:06</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-13 Fri 17:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Starter Pack for Particle Physicists</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sbilmis" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="/Users/sbilmis/my_config/emacs_depo/.emacs.d/org-templates/org.css">
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="file:///Users/sbilmis/my_projects/sb_org_html/apps.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">Starter Pack for Particle Physicists</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc018549">Starter Pack For Particle Physicists</a>
+<ul>
+<li><a href="#org923843a">Search Engines</a></li>
+<li><a href="#orgfc56c79">Search Engines for Theses</a></li>
+<li><a href="#org104b470">How to Find Review Articles</a></li>
+<li><a href="#org3a02467">How to Read a Scientific Paper</a></li>
+<li><a href="#org96e8391">Web Pages to Follow</a></li>
+<li><a href="#orga8263c3">Popular Science Journals</a></li>
+<li><a href="#org35ccf25">Summer Schools &amp; Lecture Notes</a></li>
+<li><a href="#org57769c9">Neutrino-Related Useful Links</a></li>
+<li><a href="#org314bfcc">Feynman Diagrams</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgc018549" class="outline-2">
+<h2 id="orgc018549">Starter Pack For Particle Physicists</h2>
+<div class="outline-text-2" id="text-orgc018549">
+
+<div id="org14edc4a" class="figure">
+<p><img src="./images/img1.jpg" alt="img1.jpg" />
+</p>
+</div>
+
+<p>
+If you're starting research in particle physics, this guide provides essential reference points and tools to streamline your search. Whether you're an undergraduate or a seasoned researcher, these resources are invaluable. Check each link, as even familiar ones might offer insights you haven't explored yet.
+</p>
+</div>
+
+<div id="outline-container-org923843a" class="outline-3">
+<h3 id="org923843a">Search Engines</h3>
+<div class="outline-text-3" id="text-org923843a">
+</div>
+<div id="outline-container-org2b41685" class="outline-4">
+<h4 id="org2b41685">arXiv</h4>
+<div class="outline-text-4" id="text-org2b41685">
+<p>
+<a href="https://arxiv.org/">arXiv</a> is a free and open-access archive for scholarly articles in fields like physics, mathematics, computer science, quantitative biology, and more. It currently hosts over 1.9 million papers. While the materials are not peer-reviewed, they are widely used by researchers for preliminary findings and ideas.
+</p>
+
+<ul class="org-ul">
+<li>Key Sections for Particle Physics: High Energy Physics - Phenomenology and Experiment.</li>
+<li>Why Use arXiv? It's the go-to resource for staying updated on recent papers and finding early-stage research in particle physics.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd6662a8" class="outline-4">
+<h4 id="orgd6662a8">InspireHEP</h4>
+<div class="outline-text-4" id="text-orgd6662a8">
+<p>
+<a href="https://inspirehep.net/">InspireHEP</a> is a specialized platform designed for high energy physics. It acts as a comprehensive hub for scholarly information, including papers, seminars, and conference proceedings.
+</p>
+
+<ul class="org-ul">
+<li>Why Use InspireHEP? It provides curated resources specifically for high energy physics, helping you find cutting-edge research and events.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc1a869d" class="outline-4">
+<h4 id="orgc1a869d">Zenodo</h4>
+<div class="outline-text-4" id="text-orgc1a869d">
+<p>
+<a href="https://zenodo.org/">Zenodo</a> is a versatile open-access repository developed under CERN's European OpenAIRE program. It allows researchers to upload and share papers, datasets, software, reports, and more. Each submission receives a DOI, making it easy to cite.
+</p>
+
+<ul class="org-ul">
+<li>What Can You Find? Videos, posters, presentations, and digital research artifacts—all available for free.</li>
+<li>Why Use Zenodo? It's a one-stop shop for diverse research materials, including non-traditional formats like presentations and posters.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8332503" class="outline-4">
+<h4 id="org8332503">Google Scholar</h4>
+<div class="outline-text-4" id="text-org8332503">
+<p>
+<a href="https://scholar.google.com">Google Scholar</a> is a powerful, freely accessible web search engine for scholarly literature across all disciplines. It indexes full texts and metadata, making it easier to locate papers, theses, and books.
+</p>
+
+<ul class="org-ul">
+<li>Why Use Google Scholar? Its broad coverage makes it a versatile tool for finding articles in both general and niche areas.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3015724" class="outline-4">
+<h4 id="org3015724">Microsoft Academic</h4>
+<div class="outline-text-4" id="text-org3015724">
+<p>
+<a href="https://academic.microsoft.com">Microsoft Academic</a> is an alternative to Google Scholar. It offers robust search capabilities and detailed metadata for academic papers.
+</p>
+
+<ul class="org-ul">
+<li>Why Use Microsoft Academic? Its clean interface and advanced filtering options make it ideal for systematic searches.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org73c0fa0" class="outline-4">
+<h4 id="org73c0fa0">Particle Data Group (PDG)</h4>
+<div class="outline-text-4" id="text-org73c0fa0">
+<p>
+<a href="https://pdg.lbl.gov/">The Review of Particle Physics</a> is a comprehensive reference guide published by the Particle Data Group. It summarizes key areas in particle physics and related cosmology topics.
+</p>
+
+<ul class="org-ul">
+<li>Why Use PDG? It’s an authoritative source for fundamental constants, properties of particles, and reviews of experimental techniques.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3c23caa" class="outline-4">
+<h4 id="org3c23caa">Indico (CERN)</h4>
+<div class="outline-text-4" id="text-org3c23caa">
+<p>
+<a href="https://indico.cern.ch/">CERN Indico</a> is a platform that organizes and archives event notes from CERN. It includes lectures, workshops, and conferences, making it a goldmine for learning and networking.
+</p>
+
+<ul class="org-ul">
+<li>Why Use Indico? Stay informed about past and upcoming events related to particle physics.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<div id="outline-container-orgfc56c79" class="outline-3">
+<h3 id="orgfc56c79">Search Engines for Theses</h3>
+<div class="outline-text-3" id="text-orgfc56c79">
+<p>
+Theses are an excellent starting point for research, as they are typically detailed and explanatory. Unlike published papers, theses often provide extensive background information, literature reviews, and thorough discussions of methodologies. As a beginner, you'll likely gain more insights from theses than from brief journal articles.
+</p>
+
+<p>
+Here are some recommended databases for finding high-quality theses:
+</p>
+</div>
+
+<div id="outline-container-org72c65c2" class="outline-4">
+<h4 id="org72c65c2">OCLC WorldCat</h4>
+<div class="outline-text-4" id="text-org72c65c2">
+<ul class="org-ul">
+<li><a href="http://www.worldcat.org/">OCLC WorldCat</a> is a global catalog that lists dissertations and theses from most colleges and universities in the United States, Canada, and many other countries.</li>
+<li><b><b>Why Use WorldCat?</b></b> It provides access to an extensive range of dissertations, making it a valuable resource for finding research from diverse institutions worldwide.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org08d5194" class="outline-4">
+<h4 id="org08d5194">Open Access Theses and Dissertations (OATD)</h4>
+<div class="outline-text-4" id="text-org08d5194">
+<ul class="org-ul">
+<li><a href="http://oatd.org/">OATD</a> aims to be the best resource for finding open-access graduate theses and dissertations worldwide.</li>
+<li><b><b>Features</b></b>:
+<ul class="org-ul">
+<li>Indexes metadata from over 1,100 colleges, universities, and research institutions.</li>
+<li>Currently includes more than 3.4 million theses and dissertations.</li>
+</ul></li>
+<li><b><b>Why Use OATD?</b></b> It focuses on open-access content, ensuring you can access the full text of most entries.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org23948bd" class="outline-4">
+<h4 id="org23948bd">ProQuest Dissertations and Theses Global Database</h4>
+<div class="outline-text-4" id="text-org23948bd">
+<ul class="org-ul">
+<li><a href="https://searchworks.stanford.edu/view/10764096">ProQuest</a> offers a searchable and browsable database of dissertations and theses spanning from 1743 to the present day.</li>
+<li><b><b>Why Use ProQuest?</b></b> It is one of the most comprehensive repositories for historical and contemporary academic work.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org31d0c58" class="outline-4">
+<h4 id="org31d0c58">DART-Europe</h4>
+<div class="outline-text-4" id="text-org31d0c58">
+<ul class="org-ul">
+<li><a href="http://www.dart-europe.eu/basic-search.php">DART-Europe</a> provides a single European portal for discovering electronic theses and dissertations.</li>
+<li><b><b>Features</b></b>:
+<ul class="org-ul">
+<li>Access to over 490,000 open-access theses from 557 universities in 28 European countries.</li>
+</ul></li>
+<li><b><b>Why Use DART-Europe?</b></b> It's an excellent resource for accessing European research in multiple languages and fields.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org745b732" class="outline-4">
+<h4 id="org745b732">UCL Discovery</h4>
+<div class="outline-text-4" id="text-org745b732">
+<ul class="org-ul">
+<li><a href="http://discovery.ucl.ac.uk/">UCL Discovery</a> is University College London's open-access repository.</li>
+<li><b><b>Features</b></b>:
+<ul class="org-ul">
+<li>Showcases full texts of UCL research publications, including theses.</li>
+</ul></li>
+<li><b><b>Why Use UCL Discovery?</b></b> It provides direct access to theses from a leading research institution.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org47ba178" class="outline-4">
+<h4 id="org47ba178">Why Theses?</h4>
+<div class="outline-text-4" id="text-org47ba178">
+<p>
+Starting your research by reading theses helps you:
+</p>
+<ul class="org-ul">
+<li>Gain a deeper understanding of a topic through comprehensive explanations.</li>
+<li>Learn the foundational knowledge and context that shorter published papers might omit.</li>
+<li>Explore the methodologies and data analysis techniques in detail.</li>
+</ul>
+
+<p>
+Let these resources guide your first steps into the world of academic research. Happy exploring!
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div id="outline-container-org104b470" class="outline-3">
+<h3 id="org104b470">How to Find Review Articles</h3>
+<div class="outline-text-3" id="text-org104b470">
+<p>
+Review articles are an excellent starting point for any research project. They provide a broad overview of a topic, summarize key developments, and often include extensive bibliographies for further reading. Here’s how you can effectively find and use review articles in your research:
+</p>
+</div>
+
+<div id="outline-container-orgf25e5cc" class="outline-4">
+<h4 id="orgf25e5cc">General Tips for Finding Review Articles</h4>
+<div class="outline-text-4" id="text-orgf25e5cc">
+<ul class="org-ul">
+<li>Use platforms like Web of Science or Google Scholar to search across multiple journals simultaneously.</li>
+<li>For better results, apply the following strategies:
+<ul class="org-ul">
+<li><b><b>Use Advanced Search</b></b>: Instead of "simple search," filter results to include only review articles.</li>
+<li><b><b>Sort by Citations</b></b>: Highly cited papers are often more impactful and widely accepted in the field.</li>
+<li><b><b>Sort by Publication Date</b></b>: Newer reviews provide up-to-date insights into ongoing developments.</li>
+<li><b><b>Focus on Lengthy Papers</b></b>: Longer articles are more likely to be comprehensive and detailed.</li>
+</ul></li>
+</ul>
+
+<p>
+For more detailed guidance, refer to the <a href="https://uclalibrary.github.io/research-tips/review-articles/">UCLA Libraries Notes</a> on searching for review articles.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2cfe59b" class="outline-4">
+<h4 id="org2cfe59b">Journals Specializing in Review Articles</h4>
+<div class="outline-text-4" id="text-org2cfe59b">
+<p>
+Some journals exclusively or primarily publish review articles. Searching directly within these journals can be a great way to find high-quality reviews tailored to your field of study. Below are some of the most respected journals for review articles in physics and related disciplines:
+</p>
+
+<ul class="org-ul">
+<li><a href="http://www.annualreviews.org">Annual Reviews</a>: A leading source for authoritative, comprehensive reviews across various disciplines.</li>
+<li><a href="https://www.sciencedirect.com/journal/progress-in-particle-and-nuclear-physics">Progress in Particle and Nuclear Physics</a>: Focuses on reviews in particle and nuclear physics.</li>
+<li><a href="https://journals.aps.org/rmp/">Reviews of Modern Physics</a>: Publishes in-depth reviews of significant advances in physics.</li>
+<li><a href="https://www.journals.elsevier.com/reviews-in-physics">Reviews in Physics</a>: Covers key developments in physics, with a focus on interdisciplinary research.</li>
+<li><a href="https://iopscience.iop.org/journal/0034-4885">Reports on Progress in Physics</a>: Offers comprehensive review articles across all areas of physics.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org083ed3b" class="outline-4">
+<h4 id="org083ed3b">Why Start with Review Articles?</h4>
+<div class="outline-text-4" id="text-org083ed3b">
+<ul class="org-ul">
+<li><b><b>Broad Perspective</b></b>: Review articles provide a big-picture view of the topic, helping you understand foundational concepts and key issues.</li>
+<li><b><b>Time Efficiency</b></b>: They save time by summarizing years of research in a single paper.</li>
+<li><b><b>Resourceful Bibliographies</b></b>: Most reviews include extensive reference lists, guiding you to additional primary research articles.</li>
+</ul>
+
+<p>
+By following these strategies and utilizing the listed resources, you can efficiently gather the foundational knowledge necessary for your research. Review articles not only illuminate the current state of a field but also highlight areas where further exploration is needed.
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org3a02467" class="outline-3">
+<h3 id="org3a02467">How to Read a Scientific Paper</h3>
+<div class="outline-text-3" id="text-org3a02467">
+<p>
+Reading scientific papers can be challenging, especially for beginners. Academic papers are dense, filled with technical details, and often assume a significant level of prior knowledge. However, developing the skill to read and understand them is essential for research. Here are some tips and resources to guide you through the process.
+</p>
+</div>
+
+<div id="outline-container-orgbe8cf83" class="outline-4">
+<h4 id="orgbe8cf83">Challenges in Reading Scientific Papers</h4>
+<div class="outline-text-4" id="text-orgbe8cf83">
+<ul class="org-ul">
+<li><b><b>Complex Ideas</b></b>: Papers often present new concepts, methodologies, and calculations that may take time to understand.</li>
+<li><b><b>Dense Writing</b></b>: Academic language can be difficult to parse, requiring careful, repeated reading.</li>
+<li><b><b>Background Knowledge</b></b>: Papers usually assume familiarity with the topic, which can be a hurdle for newcomers.</li>
+</ul>
+
+<p>
+To tackle these challenges, it’s helpful to learn from experts who have shared their strategies for reading papers effectively.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7d9e12d" class="outline-4">
+<h4 id="org7d9e12d">Recommended Resources</h4>
+<div class="outline-text-4" id="text-org7d9e12d">
+<ul class="org-ul">
+<li><a href="./nu_studies/docs/HowtoReadPaper.pdf">How to Read a Paper by S. Keshav</a>:
+<ul class="org-ul">
+<li>This classic guide introduces a systematic approach to reading academic papers, dividing the process into three passes: a quick overview, a more detailed read, and an in-depth analysis.</li>
+</ul></li>
+<li><a href="https://www.sciencemag.org/careers/2016/03/how-seriously-read-scientific-paper">“How to (Seriously) Read a Scientific Paper,” Science | AAAS</a>:
+<ul class="org-ul">
+<li>This article offers practical tips on breaking down a paper into manageable parts, focusing on the abstract, introduction, figures, and conclusion to grasp the core message.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org90fe8c0" class="outline-4">
+<h4 id="org90fe8c0">Tips for Effective Reading</h4>
+<div class="outline-text-4" id="text-org90fe8c0">
+<ol class="org-ol">
+<li><b><b>Start with the Abstract and Figures</b></b>: Get a quick sense of the paper’s purpose, key findings, and methodology.</li>
+<li><b><b>Read the Introduction and Conclusion</b></b>: These sections provide context, objectives, and the main takeaways.</li>
+<li><b><b>Focus on Figures and Tables</b></b>: Visual representations often summarize the most critical data.</li>
+<li><b><b>Take Notes</b></b>: Highlight key points, jot down questions, and summarize sections in your own words.</li>
+<li><b><b>Use References</b></b>: Follow up on cited works to fill gaps in your understanding.</li>
+<li><b><b>Don’t Worry About Understanding Everything</b></b>: Focus on the parts relevant to your research and revisit challenging sections later.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org616f97c" class="outline-4">
+<h4 id="org616f97c">Why Read Scientific Papers?</h4>
+<div class="outline-text-4" id="text-org616f97c">
+<ul class="org-ul">
+<li><b><b>Expand Knowledge</b></b>: Stay updated on the latest developments in your field.</li>
+<li><b><b>Develop Critical Thinking</b></b>: Learn to evaluate methodologies, data, and conclusions critically.</li>
+<li><b><b>Inspire New Ideas</b></b>: Reading widely can spark innovative research questions and approaches.</li>
+</ul>
+
+<p>
+By adopting these strategies and exploring the recommended resources, you can gradually improve your ability to read and understand scientific papers, making this essential skill an integral part of your research journey.
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org96e8391" class="outline-3">
+<h3 id="org96e8391">Web Pages to Follow</h3>
+<div class="outline-text-3" id="text-org96e8391">
+<p>
+Staying updated with high-quality resources is essential for anyone in particle physics. Below are some must-follow websites that combine engaging content with in-depth scientific insights. Make these a part of your routine—check them as often as you check your social media!
+</p>
+</div>
+
+<div id="outline-container-orgb868014" class="outline-4">
+<h4 id="orgb868014">Symmetry Magazine</h4>
+<div class="outline-text-4" id="text-orgb868014">
+<ul class="org-ul">
+<li><a href="https://www.symmetrymagazine.org/">Symmetry Magazine</a> is a joint publication by Fermilab and SLAC that offers a window into the world of particle physics.</li>
+<li><b><b>Why Follow?</b></b>
+<ul class="org-ul">
+<li>It provides clear and accessible explanations of complex topics.</li>
+<li>Stunning visuals accompany every article, making the content engaging and easier to understand.</li>
+<li>Articles cover cutting-edge research, historical perspectives, and the human stories behind the science.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7ae0830" class="outline-4">
+<h4 id="org7ae0830">Quanta Magazine</h4>
+<div class="outline-text-4" id="text-org7ae0830">
+<ul class="org-ul">
+<li><a href="https://www.quantamagazine.org/">Quanta Magazine | Science and Math News</a> is an editorially independent publication by the Simons Foundation.</li>
+<li><b><b>What They Say</b></b>: "Quanta Magazine is dedicated to enhancing public understanding of science. Why Quanta? Albert Einstein called photons 'quanta of light.' Our goal is to 'illuminate science.'"</li>
+<li><b><b>Why Follow?</b></b>
+<ul class="org-ul">
+<li>Articles span physics, mathematics, biology, and computer science.</li>
+<li>It blends rigorous science with storytelling, appealing to both scientists and the general public.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org644efe2" class="outline-4">
+<h4 id="org644efe2">Starts With a Bang by Ethan Siegel</h4>
+<div class="outline-text-4" id="text-org644efe2">
+<ul class="org-ul">
+<li><a href="https://medium.com/starts-with-a-bang">Starts With a Bang</a> is a blog by Ethan Siegel, a theoretical astrophysicist and science communicator.</li>
+<li><b><b>Why Follow?</b></b>
+<ul class="org-ul">
+<li>Features fascinating takes on cosmology, particle physics, and the universe’s mysteries.</li>
+<li>Written in an accessible style that inspires curiosity and deeper exploration.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0913e30" class="outline-4">
+<h4 id="org0913e30">BackReaction by Sabine Hossenfelder</h4>
+<div class="outline-text-4" id="text-org0913e30">
+<ul class="org-ul">
+<li><a href="http://backreaction.blogspot.com/">BackReaction</a> is a blog by Sabine Hossenfelder, a theoretical physicist known for her critical perspectives on physics and academia.</li>
+<li><b><b>Why Follow?</b></b>
+<ul class="org-ul">
+<li>Covers physics topics with a no-nonsense approach, tackling controversies and challenges in the field.</li>
+<li>Offers valuable insights into the scientific process and philosophical questions in physics.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orga8263c3" class="outline-3">
+<h3 id="orga8263c3">Popular Science Journals</h3>
+<div class="outline-text-3" id="text-orga8263c3">
+<p>
+Reading popular science journals is a great way to stay informed about the latest developments in physics and related fields. These journals are often more accessible than technical papers, making them perfect for broadening your knowledge and sparking new ideas. Aim to read at least one paper monthly to keep yourself updated and inspired.
+</p>
+</div>
+
+<div id="outline-container-orgecebe0a" class="outline-4">
+<h4 id="orgecebe0a">PhysicsWorld by IOP</h4>
+<div class="outline-text-4" id="text-orgecebe0a">
+<ul class="org-ul">
+<li><a href="https://physicsworld.com/p/our-portfolio/">PhysicsWorld</a> is published by the Institute of Physics (IOP).</li>
+<li><b><b>Why Read?</b></b>
+<ul class="org-ul">
+<li>Covers global developments in physics, including cutting-edge research, industrial applications, and career guidance.</li>
+<li>Offers engaging features and interviews with leading physicists.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc84741c" class="outline-4">
+<h4 id="orgc84741c">PhysicsToday by APS</h4>
+<div class="outline-text-4" id="text-orgc84741c">
+<ul class="org-ul">
+<li><a href="https://physicstoday.scitation.org/">PhysicsToday</a> is the flagship publication of the American Physical Society (APS).</li>
+<li><b><b>Why Read?</b></b>
+<ul class="org-ul">
+<li>Features authoritative reviews, news, and opinion pieces on the latest trends in physics.</li>
+<li>A must-read for staying informed about breakthroughs and societal impacts of physics.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org09ac1e1" class="outline-4">
+<h4 id="org09ac1e1">Scientific American</h4>
+<div class="outline-text-4" id="text-org09ac1e1">
+<ul class="org-ul">
+<li><a href="https://www.scientificamerican.com/">Scientific American</a> is one of the oldest and most renowned science magazines.</li>
+<li><b><b>Why Read?</b></b>
+<ul class="org-ul">
+<li>Explores physics alongside other disciplines like biology, astronomy, and technology.</li>
+<li>Known for its high-quality graphics and well-researched articles that appeal to both scientists and the general public.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9bd6e53" class="outline-4">
+<h4 id="org9bd6e53">NewScientist</h4>
+<div class="outline-text-4" id="text-org9bd6e53">
+<ul class="org-ul">
+<li><a href="https://www.newscientist.com/">NewScientist</a> covers science and technology news from around the world.</li>
+<li><b><b>Why Read?</b></b>
+<ul class="org-ul">
+<li>Offers brief, digestible updates on recent discoveries and trends.</li>
+<li>Ideal for keeping up with developments in physics and beyond.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7b6ccf9" class="outline-4">
+<h4 id="org7b6ccf9">American Journal of Physics (AJP)</h4>
+<div class="outline-text-4" id="text-org7b6ccf9">
+<ul class="org-ul">
+<li><a href="https://aapt.scitation.org/journal/ajp">American Journal of Physics</a> is an excellent resource for undergraduate and graduate-level physics education.</li>
+<li><b><b>Why Read?</b></b>
+<ul class="org-ul">
+<li>Focuses on teaching and understanding physics concepts in depth.</li>
+<li>If you’re an undergraduate working on a project, consider submitting a paper to AJP—it’s a great opportunity to contribute to the field.</li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+
+<p>
+### How to Access
+Most of these journals can be accessed through university libraries. Check with your institution for subscriptions or interlibrary loan services. Reading these journals regularly can provide both inspiration and a deeper understanding of physics beyond your specialization.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org35ccf25" class="outline-3">
+<h3 id="org35ccf25">Summer Schools &amp; Lecture Notes</h3>
+<div class="outline-text-3" id="text-org35ccf25">
+<p>
+Attending summer schools and exploring lecture notes is an excellent way to deepen your understanding of particle physics. These programs are particularly valuable for graduate students, offering opportunities to learn from leading experts, interact with peers, and gain insights into cutting-edge research. Lecture notes from these schools are often made publicly available, especially on platforms like arXiv.
+</p>
+</div>
+
+<div id="outline-container-org27bac79" class="outline-4">
+<h4 id="org27bac79">Summer Schools</h4>
+<div class="outline-text-4" id="text-org27bac79">
+<ul class="org-ul">
+<li><b><b>TASI Lectures</b></b>: <a href="https://www.colorado.edu/physics/events/summer-intensive-programs/theoretical-advanced-study-institute-elementary-particle-physics">Theoretical Advanced Study Institute (TASI)</a> at the University of Colorado Boulder (2005–present).
+<ul class="org-ul">
+<li>Focus: Covers a wide range of topics in particle physics and related fields.</li>
+<li>Why Attend? A prestigious program with detailed lecture notes available for those unable to attend.</li>
+</ul></li>
+
+<li><b><b>SLAC Summer Institute Conferences</b></b>: <a href="https://conf.slac.stanford.edu/ssi-events">SLAC National Accelerator Laboratory</a> (2012–present).
+<ul class="org-ul">
+<li>Organized annually in July/August.</li>
+<li>Focus: A mix of theoretical and experimental particle physics topics.</li>
+<li>Why Attend? Provides a unique blend of lectures, hands-on activities, and networking opportunities.</li>
+</ul></li>
+
+<li><b><b>Invisibles School</b></b>: <a href="https://indico.cern.ch/event/1019282/page/22084-previous-invisibles-schools">Invisibles School</a> (2015–present).
+<ul class="org-ul">
+<li>Organized under the European project framework, focusing on neutrino physics, dark matter, and other "invisible" particles.</li>
+<li>Why Attend? An excellent opportunity for graduate students interested in the frontiers of particle physics. The school often includes lectures, problem-solving sessions, and career advice.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org39b9431" class="outline-4">
+<h4 id="org39b9431">Lecture Notes</h4>
+<div class="outline-text-4" id="text-org39b9431">
+<ul class="org-ul">
+<li>Most of the summer school lecture notes are available on arXiv or the respective program websites.</li>
+<li>Why Use Lecture Notes?
+<ul class="org-ul">
+<li>They provide detailed explanations and cover the latest advancements in the field.</li>
+<li>Authored by leading experts, these notes often bridge the gap between textbooks and research papers.</li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+
+<p>
+### Tips for Students
+</p>
+<ol class="org-ol">
+<li><b><b>Plan Early</b></b>: Applications for summer schools often have strict deadlines. Keep an eye on announcements and apply early.</li>
+<li><b><b>Engage Actively</b></b>: If you attend, actively participate in discussions and ask questions.</li>
+<li><b><b>Leverage Resources</b></b>: Even if you can’t attend, lecture notes from these programs are invaluable for self-study.</li>
+</ol>
+
+<p>
+Summer schools and lecture notes are a gateway to gaining deeper insights into particle physics and building a network of peers and mentors. Make the most of these opportunities during your graduate studies.
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org57769c9" class="outline-3">
+<h3 id="org57769c9">Neutrino-Related Useful Links</h3>
+<div class="outline-text-3" id="text-org57769c9">
+<p>
+Neutrinos are among the most fascinating particles in particle physics, playing a crucial role in understanding the universe's fundamental workings. Below are some invaluable resources for exploring neutrino physics, from cutting-edge research projects to comprehensive tutorials and classifications.
+</p>
+</div>
+
+<div id="outline-container-org899649c" class="outline-4">
+<h4 id="org899649c">HIDDeN Project</h4>
+<div class="outline-text-4" id="text-org899649c">
+<ul class="org-ul">
+<li><a href="https://hiddeneu.eu/">HIDDeN</a> is a European ITN project (H2020-MSCA-ITN-2019//860881-HIDDeN) dedicated to uncovering hidden (a)symmetries and particles in the invisible sector, including neutrinos, dark matter, and other elusive particles.</li>
+<li><b><b>Highlights</b></b>:
+<ul class="org-ul">
+<li>Builds upon the expertise of previous projects like <a href="http://www.elusives.eu">Elusives</a> and <a href="http://www.invisibles.eu">FP7 ITN Invisibles</a>.</li>
+<li>Explores new scientific realms, particularly the interactions between neutrinos and the invisible sector.</li>
+<li><b><b>Why Follow?</b></b> HIDDeN organizes summer schools and offers graduate positions, making it an excellent resource for early-career researchers.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7b77b22" class="outline-4">
+<h4 id="org7b77b22">The Net Advance of Physics (Neutrinos)</h4>
+<div class="outline-text-4" id="text-org7b77b22">
+<ul class="org-ul">
+<li><a href="http://web.mit.edu/redingtn/www/netadv/Xneutrino.html">The Net Advance of Physics</a> is a curated collection of review articles and tutorials on neutrinos, presented in an encyclopedic format.</li>
+<li><b><b>Why Use?</b></b> This is a go-to resource for structured and in-depth learning about neutrinos, ideal for self-study or reference.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org470e246" class="outline-4">
+<h4 id="org470e246">Neutrino Unbound</h4>
+<div class="outline-text-4" id="text-org470e246">
+<ul class="org-ul">
+<li><a href="http://www.nu.to.infn.it/">Neutrino Unbound</a> offers an extensive classification of resources related to neutrino physics.</li>
+<li><b><b>Why Use?</b></b> It provides a centralized repository of information on all aspects of neutrinos, from theoretical insights to experimental data.</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-org439d02f" class="outline-4">
+<h4 id="org439d02f">How to Use These Resources</h4>
+<div class="outline-text-4" id="text-org439d02f">
+<ol class="org-ol">
+<li><b><b>HIDDeN Project</b></b>:
+<ul class="org-ul">
+<li>Follow their website for updates on research progress, schools, and job opportunities.</li>
+<li>Engage with their published materials to stay informed about the invisible sector.</li>
+</ul></li>
+
+<li><b><b>The Net Advance of Physics</b></b>:
+<ul class="org-ul">
+<li>Use this as a starting point for learning about specific topics within neutrino physics.</li>
+<li>Leverage the tutorials and reviews for a deeper understanding.</li>
+</ul></li>
+
+<li><b><b>Neutrino Unbound</b></b>:
+<ul class="org-ul">
+<li>Explore its classifications to quickly find resources aligned with your research interests.</li>
+</ul></li>
+</ol>
+
+
+<p>
+Feel free to explore these links and share any additional resources you find. 
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org314bfcc" class="outline-3">
+<h3 id="org314bfcc">Feynman Diagrams</h3>
+<div class="outline-text-3" id="text-org314bfcc">
+<p>
+Feynman diagrams are indispensable tools in particle physics for visualizing and calculating interactions between particles. Whether you're working on theoretical problems or presenting your research, you'll often need to create these diagrams. Below are some excellent tools for plotting Feynman diagrams, tailored for different levels of complexity and preferences.
+</p>
+</div>
+
+<div id="outline-container-org87b8e0f" class="outline-4">
+<h4 id="org87b8e0f">Tools for Plotting Feynman Diagrams</h4>
+<div class="outline-text-4" id="text-org87b8e0f">
+<ul class="org-ul">
+<li><b><b>Draw Feynman Diagrams Online</b></b>: <a href="http://feynman.aivazis.com/">Draw Feynman Diagrams Online</a>
+<ul class="org-ul">
+<li><b><b>What It Is</b></b>: A browser-based tool for quickly sketching Feynman diagrams.</li>
+<li><b><b>Why Use It?</b></b> Ideal for quick and straightforward visualizations without the need for additional software.</li>
+</ul></li>
+
+<li><b><b>JaxoDraw</b></b>: <a href="http://jaxodraw.sourceforge.net/">JaxoDraw</a>
+<ul class="org-ul">
+<li><b><b>What It Is</b></b>: A Java-based program designed for creating Feynman diagrams.</li>
+<li><b><b>Key Features</b></b>:
+<ul class="org-ul">
+<li>Intuitive graphical interface.</li>
+<li>Outputs diagrams in various formats, including LaTeX code.</li>
+</ul></li>
+<li><b><b>Why Use It?</b></b> A versatile choice for users who want a standalone application with export options.</li>
+</ul></li>
+
+<li><b><b>TikZ-Feynman</b></b>: <a href="https://jpellis.me/projects/tikz-feynman/">TikZ-Feynman</a>
+<ul class="org-ul">
+<li><b><b>What It Is</b></b>: A LaTeX package that uses the TikZ library for plotting Feynman diagrams.</li>
+<li><b><b>Key Features</b></b>:
+<ul class="org-ul">
+<li>High-quality, publication-ready diagrams.</li>
+<li>Fully customizable with LaTeX.</li>
+</ul></li>
+<li><b><b>Why Use It?</b></b> Perfect for researchers familiar with LaTeX who need precise and professional-quality diagrams.</li>
+</ul></li>
+
+<li><b><b>feynMF/feynMP</b></b>: <a href="http://osksn2.hep.sci.osaka-u.ac.jp/~taku/osx/feynmp.html">feynMF/feynMP</a>
+<ul class="org-ul">
+<li><b><b>What It Is</b></b>: A LaTeX package for drawing Feynman diagrams.</li>
+<li><b><b>Key Features</b></b>:
+<ul class="org-ul">
+<li>Integrated directly into LaTeX workflows.</li>
+<li>Allows for complex and detailed diagrams.</li>
+</ul></li>
+<li><b><b>Why Use It?</b></b> A reliable option for LaTeX users seeking a tried-and-true method for creating diagrams.</li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+
+<p>
+### Choosing the Right Tool
+</p>
+<ul class="org-ul">
+<li><b><b>For Quick Sketches</b></b>: Use "Draw Feynman Diagrams Online."</li>
+<li><b><b>For User-Friendly Software</b></b>: Try JaxoDraw.</li>
+<li><b><b>For LaTeX Integration</b></b>: Opt for TikZ-Feynman or feynMF/feynMP.</li>
+</ul>
+
+<p>
+Experiment with these tools to find the one that best suits your needs. Mastering Feynman diagram plotting not only enhances your presentations but also helps clarify complex interactions in your research.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sbilmis</p>
+<p class="date">Created: 2024-12-13 Fri 17:25</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

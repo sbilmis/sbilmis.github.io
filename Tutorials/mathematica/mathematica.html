@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-13 Fri 17:03 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mathematica Guide</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sbilmis" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Mathematica Guide</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org85d2b39">1. To clear all old definitions:</a></li>
+<li><a href="#orga1cc8dc">2. Patterns (TBO)</a></li>
+<li><a href="#orga867423">3. Input Expressions</a></li>
+<li><a href="#orgfdc732a">4. Accessing Parts of an Expression</a></li>
+<li><a href="#orga0e064b">5. Keyboard Shortcuts</a></li>
+<li><a href="#org50075e9">6. String Operations</a></li>
+<li><a href="#orgfd167ca">7. Removing Template Notebook Header</a></li>
+<li><a href="#org070fbba">8. Working with Lists</a></li>
+<li><a href="#org9d032fd">9. Determining Variable Types</a></li>
+<li><a href="#orgaeb6e4d">10. Exporting Data to a File</a></li>
+<li><a href="#orgfdcade7">11. Importing Data and Plotting</a></li>
+<li><a href="#org2a90810">12. Custom Plotting Options</a></li>
+<li><a href="#org9184e17">13. Fitting, Plotting Residuals, and Calculating Chi-Square</a></li>
+<li><a href="#orgd771917">14. Solving Equations</a></li>
+<li><a href="#org5e74367">15. Data Concatenation</a></li>
+<li><a href="#org62c4804">16. Setting Default External Evaluator for Python</a></li>
+<li><a href="#org450bd81">17. References</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org85d2b39" class="outline-2">
+<h2 id="org85d2b39"><span class="section-number-2">1.</span> To clear all old definitions:</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-wolfram">  Clear["Global`*"]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga1cc8dc" class="outline-2">
+<h2 id="orga1cc8dc"><span class="section-number-2">2.</span> Patterns (TBO)</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>`Blank[]` - Single unspecified object `x_`</li>
+<li>`BlankSequence[]` - Sequence of objects `x__`</li>
+<li>`BlankNullSequence[]` - Null sequence of objects `x___`</li>
+<li>`Pattern[sym, obj]` or `sym:obj` - Creates a pattern where `sym` must match `obj`</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orga867423" class="outline-2">
+<h2 id="orga867423"><span class="section-number-2">3.</span> Input Expressions</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><p>
+These expressions are equivalent in Mathematica:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    Mean[{1, 2, 3}]
+    Mean@{1, 2, 3}
+    {1, 2, 3} // Mean
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgfdc732a" class="outline-2">
+<h2 id="orgfdc732a"><span class="section-number-2">4.</span> Accessing Parts of an Expression</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><p>
+The following expressions are equivalent:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    Part[{x, y, z}, 2]
+    {x, y, z}[[2]]
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orga0e064b" class="outline-2">
+<h2 id="orga0e064b"><span class="section-number-2">5.</span> Keyboard Shortcuts</h2>
+<div class="outline-text-2" id="text-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keyboard</th>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Cmd L</td>
+<td class="org-left">Copy input from above</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Cmd Shift L</td>
+<td class="org-left">Copy output from above</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Cmd Shift K</td>
+<td class="org-left">Bring up a list of function templates</td>
+<td class="org-left">Press after typing the function name</td>
+</tr>
+
+<tr>
+<td class="org-left">Cmd /</td>
+<td class="org-left">Comment/Uncomment</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Cmd Shift {</td>
+<td class="org-left">Open all subgroups</td>
+<td class="org-left">Select all cells first</td>
+</tr>
+
+<tr>
+<td class="org-left">Cmd Shift }</td>
+<td class="org-left">Close all subgroups</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Cmd '</td>
+<td class="org-left">Open/close groups</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Alt -&gt;</td>
+<td class="org-left">Navigate forward</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Cmd .</td>
+<td class="org-left">Abort evaluation</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Cmd Shift .</td>
+<td class="org-left">Remove from evaluation queue</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Esc el Esc</td>
+<td class="org-left">Element symbol</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Cmd Shift G</td>
+<td class="org-left">Group cells</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Cmd Shift U</td>
+<td class="org-left">Ungroup cells</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org50075e9" class="outline-2">
+<h2 id="org50075e9"><span class="section-number-2">6.</span> String Operations</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li><p>
+Concatenate strings:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    StringJoin["Hello", "World"]
+    (* Output: HelloWorld *)
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgfd167ca" class="outline-2">
+<h2 id="orgfd167ca"><span class="section-number-2">7.</span> Removing Template Notebook Header</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li><p>
+To remove the docked header in the notebook:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    SetOptions[EvaluationNotebook[], DockedCells -&gt; {}]
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org070fbba" class="outline-2">
+<h2 id="org070fbba"><span class="section-number-2">8.</span> Working with Lists</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li><p>
+Remove duplicates from a list:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    DeleteDuplicates[{1, 7, 8, 4, 3, 1, 9, 9, 8, 2}]
+</pre>
+</div></li>
+
+<li><p>
+Count distinct elements in a list:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    CountDistinct[{1, 7, 8, 4, 3, 1, 9, 9, 8, 2}]
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org9d032fd" class="outline-2">
+<h2 id="org9d032fd"><span class="section-number-2">9.</span> Determining Variable Types</h2>
+<div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li><p>
+Use `Head` to check the type of a variable:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    list = {1, 2, 3};
+    integer = 1;
+    real = 0.1;
+
+    Head[list]
+    Head@integer
+    Head@real
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgaeb6e4d" class="outline-2">
+<h2 id="orgaeb6e4d"><span class="section-number-2">10.</span> Exporting Data to a File</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li><p>
+Example to export data to a file:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    s01 = 10;
+    myDataS01 = Table[{i, i^2}, {i, 1, 10}];
+    Export["./results/ground_mass_etac_s0_" &lt;&gt; ToString[s01] &lt;&gt; "fit_ground.dat", myDataS01]
+</pre>
+</div></li>
+
+<li><p>
+Create a directory and export data if it doesn’t exist:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    SetDirectory[NotebookDirectory[]]
+    path = "./test/";
+    myDataS01 = Table[{i, i^2}, {i, 1, 10}];
+    Export[path &lt;&gt; "test.dat", myDataS01]
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgfdcade7" class="outline-2">
+<h2 id="orgfdcade7"><span class="section-number-2">11.</span> Importing Data and Plotting</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li><p>
+Install <a href="https://github.com/szhorvat/MaTeX">MaTeX</a> for LaTeX typesetting in Mathematica plots.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-wolfram">    &lt;&lt; MaTeX`
+    ConfigureMaTeX[
+      "pdfLaTeX" -&gt; "/Library/TeX/texbin/pdflatex",
+      "Ghostscript" -&gt; "/usr/local/bin/gs"
+    ]
+</pre>
+</div></li>
+
+<li><p>
+Import data:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    SetDirectory[NotebookDirectory[]]
+    data1 = Import["./results/ground_mass_etac_s0_9fit_ground.dat"];
+    data2 = Import["./results/ground_mass_etac_s0_10fit_ground.dat"];
+    data3 = Import["./results/ground_mass_etac_s0_11fit_ground.dat"];
+</pre>
+</div></li>
+
+<li><p>
+Apply a cut to the data:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    pdata1 = Select[data1, 7.0 &lt;= #[[1]] &lt;= 14.0 &amp;];
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org2a90810" class="outline-2">
+<h2 id="org2a90810"><span class="section-number-2">12.</span> Custom Plotting Options</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li><p>
+Set plot options and LaTeX labels:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    texStyle = {FontFamily -&gt; "Latin Modern Roman", FontSize -&gt; 12};
+
+    myPlotOptions1 = {
+      PlotTheme -&gt; {"Scientific"},
+      PlotLegends -&gt; {
+        MaTeX["s_0 = 9~\\rm{GeV}^2", Magnification -&gt; 1.2],
+        MaTeX["s_0 = 10~\\rm{GeV}^2", Magnification -&gt; 1.2],
+        MaTeX["s_0 = 11~\\rm{GeV}^2", Magnification -&gt; 1.2]
+      },
+      FrameLabel -&gt; MaTeX[{"M^2~\\rm{GeV^2}", "m_{\\eta_c}"}, Magnification -&gt; 1.2],
+      PlotRange -&gt; {{7, 14}, {1.0, 3.0}}
+    }
+
+    ListLinePlot[{pdata1, pdata2, pdata3}, Evaluate[myPlotOptions1], BaseStyle -&gt; texStyle]
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org9184e17" class="outline-2">
+<h2 id="org9184e17"><span class="section-number-2">13.</span> Fitting, Plotting Residuals, and Calculating Chi-Square</h2>
+<div class="outline-text-2" id="text-13">
+<ul class="org-ul">
+<li><p>
+Fit a model to data, plot residuals, and calculate \(\chi^2\):
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    data = {{0, 2.52}, {1., 2.83}, {2., 3}, {3., 3.2}, {4.1, 3.35}, {5., 3.47}, {6, 3.57}, {7, 3.66}};
+    model = k x + b Tanh[c (x - x0)] + d;
+    fit = NonlinearModelFit[data, model, {{k, .1}, b, c, d, {x0, 20}}, x];
+
+    Plot[fit[x], {x, 0, 25}, Epilog -&gt; {{Red, PointSize[.01], Point[data]}, Inset[fit["ParameterTable"], {9, 9}]}, Frame -&gt; True, PlotLabel -&gt; fit[x]]
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgd771917" class="outline-2">
+<h2 id="orgd771917"><span class="section-number-2">14.</span> Solving Equations</h2>
+<div class="outline-text-2" id="text-14">
+<ul class="org-ul">
+<li><p>
+Use `Solve` and `Reduce` for equation solving, with assumptions and domains:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    Solve[x^2 + y^2 == 4 &amp;&amp; 2 x - 2 == 0, {x, y}, Assumptions -&gt; y &gt; 0 &amp;&amp; x &lt; 0]
+    Solve[x^2 == -1, x, Complexes]
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org5e74367" class="outline-2">
+<h2 id="org5e74367"><span class="section-number-2">15.</span> Data Concatenation</h2>
+<div class="outline-text-2" id="text-15">
+<ul class="org-ul">
+<li><p>
+Concatenate two lists `{x1, x2, x3}` and `{y1, y2, y3}` as `{{x1, y1}, {x2, y2}}`:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    Thread[{a, b, c}, {x, y, z}]
+    (* Output: {f[a, x], f[b, y], f[c, z]} *)
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org62c4804" class="outline-2">
+<h2 id="org62c4804"><span class="section-number-2">16.</span> Setting Default External Evaluator for Python</h2>
+<div class="outline-text-2" id="text-16">
+<ul class="org-ul">
+<li><p>
+Find available Python versions:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    FindExternalEvaluators["Python"]
+</pre>
+</div></li>
+
+<li><p>
+Set a specific Python version:
+</p>
+<div class="org-src-container">
+<pre class="src src-wolfram">    RegisterExternalEvaluator["Python", "/usr/local/bin/python3.9"]
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org450bd81" class="outline-2">
+<h2 id="org450bd81"><span class="section-number-2">17.</span> References</h2>
+<div class="outline-text-2" id="text-17">
+<ul class="org-ul">
+<li><a href="https://reference.wolfram.com/language/workflow/ConfigurePythonForExternalEvaluate.html">https://reference.wolfram.com/language/workflow/ConfigurePythonForExternalEvaluate.html</a></li>
+<li><a href="https://mathematica.stackexchange.com/questions/219032/how-to-set-default-version-for-an-external-language-code-cell">https://mathematica.stackexchange.com/questions/219032/how-to-set-default-version-for-an-external-language-code-cell</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sbilmis</p>
+<p class="date">Created: 2024-12-13 Fri 17:03</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

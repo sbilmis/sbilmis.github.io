@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-13 Fri 17:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emacs Guide</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sbilmis" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs Guide</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf6390e6">1. Emacs Overview</a></li>
+<li><a href="#orgc2cae8e">2. Performing Replace Operations Across Multiple Files</a></li>
+<li><a href="#org502575e">3. Emacs TODOs</a></li>
+<li><a href="#orgca53a77">4. Emacs Keyboard Shortcuts</a></li>
+<li><a href="#org6ac9c56">5. Modes and Extensions</a>
+<ul>
+<li><a href="#orgb6c7714">5.1. Helm Mode</a></li>
+<li><a href="#org4f155c6">5.2. Org Mode</a></li>
+<li><a href="#org67a944b">5.3. AUCTeX</a></li>
+<li><a href="#org5be95f7">5.4. Magit Mode</a></li>
+</ul>
+</li>
+<li><a href="#org33f56e3">6. Emacs Jupyter Mode</a></li>
+<li><a href="#org7a4a0d5">7. Additional Tips and Commands</a>
+<ul>
+<li><a href="#orgbd708de">7.1. Disabling Subscript in Org Mode HTML Export</a></li>
+<li><a href="#org7941765">7.2. Installing and Deleting Packages</a></li>
+<li><a href="#org567c5d7">7.3. Code Blocks in Org Mode</a></li>
+</ul>
+</li>
+<li><a href="#orgfbbfe09">8. Useful Links</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf6390e6" class="outline-2">
+<h2 id="orgf6390e6"><span class="section-number-2">1.</span> Emacs Overview</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Emacs is a powerful, extensible, and customizable text editor known for its versatility and extensive package support. Emacs can be configured to support a wide range of programming and text-editing needs, from code editing to project management, publishing, and more.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgc2cae8e" class="outline-2">
+<h2 id="orgc2cae8e"><span class="section-number-2">2.</span> Performing Replace Operations Across Multiple Files</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Emacs offers ways to perform search and replace operations across multiple files.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-text-across-multiple-files.html">GNU Emacs Manual: Replacing Text Across Multiple Files</a></li>
+<li><a href="https://stackoverflow.com/questions/270930/using-emacs-to-recursively-find-and-replace-in-text-files-not-already-open">Stack Overflow: Find and Replace in Multiple Files</a></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">Using Dired mode (directory mode):</span>
+  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">1. Open Dired mode with `M-x dired` or `C-x d`.</span>
+  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">2. Mark files to operate on with `t`.</span>
+  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">3. Press `Q` to start a `query-replace-regexp` on the marked files.</span>
+  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">4. Press `!` to accept all replacements.</span>
+
+  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">Alternatively, use `tags-query-replace` with a TAGS file.</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org502575e" class="outline-2">
+<h2 id="org502575e"><span class="section-number-2">3.</span> Emacs TODOs</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Learn how to bookmark a line and return to it later.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgca53a77" class="outline-2">
+<h2 id="orgca53a77"><span class="section-number-2">4.</span> Emacs Keyboard Shortcuts</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><a href="https://www.reddit.com/r/emacs/comments/x43eie/heres_a_list_of_emacs_keyboard_shortcuts_that_i/?utm_source=share&amp;utm_medium=ios_app&amp;utm_name=iossmf">Reddit List of Emacs Shortcuts</a></li>
+<li><a href="https://github.com/VernonGrant/emacs-keyboard-shortcuts">GitHub Repository of Emacs Shortcuts</a></li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Keyboard Shortcut</b></th>
+<th scope="col" class="org-left"><b>Function</b></th>
+<th scope="col" class="org-left"><b>Description</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-h i</td>
+<td class="org-left">Info mode</td>
+<td class="org-left">Access manuals and info about modes</td>
+</tr>
+
+<tr>
+<td class="org-left">C-h k</td>
+<td class="org-left">Describe key</td>
+<td class="org-left">Get information about a specific key</td>
+</tr>
+
+<tr>
+<td class="org-left">C-h m</td>
+<td class="org-left">Describe mode</td>
+<td class="org-left">Displays documentation for the current mode</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-q</td>
+<td class="org-left">Toggle read-only mode</td>
+<td class="org-left">Enable or disable read-only mode</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x n s</td>
+<td class="org-left">Narrow to subtree</td>
+<td class="org-left">Narrow the buffer to the current subtree</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c ""</td>
+<td class="org-left">Insert Zotero item</td>
+<td class="org-left">Insert a reference link from Zotero</td>
+</tr>
+
+<tr>
+<td class="org-left">F10</td>
+<td class="org-left">Open menu</td>
+<td class="org-left">Access menu items via keyboard</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org6ac9c56" class="outline-2">
+<h2 id="org6ac9c56"><span class="section-number-2">5.</span> Modes and Extensions</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgb6c7714" class="outline-3">
+<h3 id="orgb6c7714"><span class="section-number-3">5.1.</span> Helm Mode</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>Helm provides a powerful completion and narrowing framework for Emacs.</li>
+<li><a href="https://wikemacs.org/wiki/Helm">Quick Helm Guide</a></li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-t</td>
+<td class="org-left">Toggle horizontal/vertical view</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c ?</td>
+<td class="org-left">Show Helm help</td>
+</tr>
+
+<tr>
+<td class="org-left">TAB</td>
+<td class="org-left">Access actions menu</td>
+</tr>
+
+<tr>
+<td class="org-left">C-SPC</td>
+<td class="org-left">Mark multiple candidates for actions</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org4f155c6" class="outline-3">
+<h3 id="org4f155c6"><span class="section-number-3">5.2.</span> Org Mode</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Org mode enables text organization, task management, and code execution within Emacs.</li>
+</ul>
+
+<p>
+<b>*</b> Previewing LaTeX in Org Mode
+</p>
+<ul class="org-ul">
+<li>Add `#+STARTUP: latexpreview` to enable LaTeX previewing.</li>
+<li>Use `C-c C-x C-l` to preview LaTeX at point.</li>
+<li><a href="https://orgmode.org/manual/Previewing-LaTeX-fragments.html">LaTeX Fragment Preview Documentation</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org67a944b" class="outline-3">
+<h3 id="org67a944b"><span class="section-number-3">5.3.</span> AUCTeX</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>AUCTeX enhances Emacs for LaTeX editing, with commands for compiling, inserting citations, and navigating structured documents.</li>
+<li><a href="https://weikaichen.gitee.io/en/post/emacs-academic-tools/">Useful AUCTeX Tricks</a></li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Shortcut</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c =</td>
+<td class="org-left">Show table of contents</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c [</td>
+<td class="org-left">Insert citation</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c )</td>
+<td class="org-left">Insert cross-reference</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c ~</td>
+<td class="org-left">Enable LaTeX math mode</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org5be95f7" class="outline-3">
+<h3 id="org5be95f7"><span class="section-number-3">5.4.</span> Magit Mode</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>Magit provides a Git interface within Emacs for version control.</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Shortcut</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-x g</td>
+<td class="org-left">Open Magit status</td>
+</tr>
+
+<tr>
+<td class="org-left">s</td>
+<td class="org-left">Stage changes</td>
+</tr>
+
+<tr>
+<td class="org-left">c c</td>
+<td class="org-left">Commit</td>
+</tr>
+
+<tr>
+<td class="org-left">P u</td>
+<td class="org-left">Push to upstream</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org33f56e3" class="outline-2">
+<h2 id="org33f56e3"><span class="section-number-2">6.</span> Emacs Jupyter Mode</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>`emacs-jupyter` enables Jupyter notebook support within Emacs, providing interactive data analysis and exploration.</li>
+<li><a href="https://github.com/emacs-jupyter/jupyter">Emacs Jupyter GitHub Page</a></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-jupyter">  import pandas as pd
+  data = [[1, 2], [3, 4]]
+  pd.DataFrame(data, columns=["Foo", "Bar"])
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org7a4a0d5" class="outline-2">
+<h2 id="org7a4a0d5"><span class="section-number-2">7.</span> Additional Tips and Commands</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgbd708de" class="outline-3">
+<h3 id="orgbd708de"><span class="section-number-3">7.1.</span> Disabling Subscript in Org Mode HTML Export</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li><p>
+To prevent underscores from creating subscripts, add the following option:
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7941765" class="outline-3">
+<h3 id="org7941765"><span class="section-number-3">7.2.</span> Installing and Deleting Packages</h3>
+<div class="outline-text-3" id="text-7-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">To install a package</span>
+  M-x package-install
+  
+  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">To delete a package</span>
+  M-x package-delete
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org567c5d7" class="outline-3">
+<h3 id="org567c5d7"><span class="section-number-3">7.3.</span> Code Blocks in Org Mode</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>Use `C-c C-c` to execute code blocks in Org mode.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-python">  <span style="color: #BA36A5;">friends</span> = [<span style="color: #008000;">'pisu'</span>, <span style="color: #008000;">'ada'</span>, <span style="color: #008000;">'makmus'</span>]
+  <span style="color: #0000FF; font-weight: bold;">for</span> i <span style="color: #0000FF; font-weight: bold;">in</span> friends:
+      <span style="color: #006FE0;">print</span>(<span style="color: #008000;">"Hello "</span> + i)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgfbbfe09" class="outline-2">
+<h2 id="orgfbbfe09"><span class="section-number-2">8.</span> Useful Links</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li><a href="https://systemcrafters.net/publishing-websites-with-org-mode/automated-site-publishing/">Automated Org Mode Website Publishing</a></li>
+<li><a href="https://plantuml.com/emacs">Using PlantUML in Emacs</a></li>
+<li><a href="https://orgmode.org/guide/Capture.html">Org Mode Capture Templates</a></li>
+<li><a href="https://emacsdocs.org/docs/org/Capture-templates">Org Capture Documentation</a></li>
+<li><a href="https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-en.org">Mastering Emacs in One Year Guide</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sbilmis</p>
+<p class="date">Created: 2024-12-13 Fri 17:06</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

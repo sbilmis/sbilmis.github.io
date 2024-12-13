@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-13 Fri 17:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Zotero Notes</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sbilmis" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Zotero Notes</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc890466">1. What is Zotero?</a></li>
+<li><a href="#org78f6f10">2. WebDAV Sync</a></li>
+<li><a href="#orgeb20fa2">3. Using Multiple Profiles</a></li>
+<li><a href="#org99470fe">4. Addons for Zotero</a></li>
+<li><a href="#org13bafc2">5. Additional Notes</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc890466" class="outline-2">
+<h2 id="orgc890466"><span class="section-number-2">1.</span> What is Zotero?</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Zotero is a free, open-source tool for managing references, citations, and research materials. It allows users to collect, organize, cite, and share research using its desktop application, browser connector, and cloud sync.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org78f6f10" class="outline-2">
+<h2 id="org78f6f10"><span class="section-number-2">2.</span> WebDAV Sync</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Zotero supports syncing libraries via WebDAV, which allows users to store their attachments on a remote server instead of Zotero’s cloud storage.</li>
+<li>pcloud and koofr have webdav service.</li>
+<li>Be cautious when using WebDAV with multiple profiles, as it may cause sync issues if different folders are used.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgeb20fa2" class="outline-2">
+<h2 id="orgeb20fa2"><span class="section-number-2">3.</span> Using Multiple Profiles</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><p>
+Zotero allows the creation of multiple profiles for managing different libraries or accounts. Use the `-P` option when launching Zotero to choose a profile:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">    zotero -P
+</pre>
+</div></li>
+<li>Example: The `sbilmis<sub>mybooks</sub>` profile was created using the account `sbilmis@outlook.com`.</li>
+<li><b><b>Caution</b></b>: Using multiple profiles with WebDAV sync may lead to issues if WebDAV storage does not support separate folders for different profiles.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org99470fe" class="outline-2">
+<h2 id="org99470fe"><span class="section-number-2">4.</span> Addons for Zotero</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><a href="https://github.com/syt2/zotero-addons">Zotero Addons Manager</a>:
+<ul class="org-ul">
+<li>Install and manage Zotero addons easily, including version-specific addons for different Zotero versions.</li>
+</ul></li>
+
+<li><a href="https://github.com/windingwind/zotero-better-notes">Zotero Better Notes</a>:
+<ul class="org-ul">
+<li>Organize and annotate notes directly within Zotero to improve research note management.</li>
+</ul></li>
+
+<li><a href="https://github.com/jlegewie/zotfile">ZotFile</a>:
+<ul class="org-ul">
+<li>Enhance file management by renaming, moving, and syncing PDFs with tablets.</li>
+</ul></li>
+
+<li><a href="https://github.com/windingwind/zotero-folder-import">Zotero Folder Import</a>:
+<ul class="org-ul">
+<li>Import a whole folder of files into Zotero.</li>
+</ul></li>
+
+<li><a href="https://github.com/wshanks/ZoteroStorageScanner">Zotero Storage Scanner</a>:
+<ul class="org-ul">
+<li>Scan Zotero storage for missing or unlinked files.</li>
+</ul></li>
+
+<li><a href="https://github.com/michal-h21/zotxt">Zotxt</a>:
+<ul class="org-ul">
+<li>Integrate Zotero with Emacs for inserting citations into documents.</li>
+</ul></li>
+
+<li><a href="https://github.com/retorquere/zutilo">Zutilo</a>:
+<ul class="org-ul">
+<li>Add functionalities like copying file paths, batch editing, and shortcut enhancements.</li>
+</ul></li>
+
+<li><a href="https://github.com/ubitec/zotero-inspire">Zotero Inspire</a>:
+<ul class="org-ul">
+<li>Integrate Zotero with INSPIRE-HEP for physics-related literature.</li>
+</ul></li>
+
+<li><a href="https://github.com/retorquere/zotero-preview">Zotero Preview</a>:
+<ul class="org-ul">
+<li>Add a preview pane to view bibliography entries directly within Zotero.</li>
+</ul></li>
+
+<li><a href="https://github.com/windingwind/zotero-ocr">Zotero OCR</a>:
+<ul class="org-ul">
+<li>Add OCR capabilities to Zotero for extracting text from scanned PDFs.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org13bafc2" class="outline-2">
+<h2 id="org13bafc2"><span class="section-number-2">5.</span> Additional Notes</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>Use addons wisely to enhance productivity and tailor Zotero to specific needs.</li>
+<li><a href="https://www.zotero.org/support/plugins">Official Zotero Plugin Directory</a> provides a comprehensive list of supported and tested plugins.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sbilmis</p>
+<p class="date">Created: 2024-12-13 Fri 17:06</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

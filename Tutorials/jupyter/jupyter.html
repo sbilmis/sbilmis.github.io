@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-13 Fri 17:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jupyter Guide</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sbilmis" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Jupyter Guide</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7c5c3d2">1. Listing Installed Jupyter Kernels</a></li>
+<li><a href="#orgbe9fbdd">2. Listing Running Jupyter Notebooks and Kernels</a></li>
+<li><a href="#org6b46d38">3. Giving Presentations with Jupyter Notebooks</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7c5c3d2" class="outline-2">
+<h2 id="org7c5c3d2"><span class="section-number-2">1.</span> Listing Installed Jupyter Kernels</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><p>
+To list all installed Jupyter kernels:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">    jupyter kernelspec list
+</pre>
+</div></li>
+
+<li>When using Org-Babel for IPython (Emacs-Jupyter), specify the kernel in the `:kernel` option. For example, use `:kernel python3` if your kernel name includes "ipython".</li>
+
+<li><b><b>Example Output</b></b>:
+```
+Available kernels:
+  python3              /opt/homebrew/lib/python3.11/site-packages/ipykernel/resources
+  matlab38             /Users/sbilmis/Library/Jupyter/kernels/matlab38
+  test2                /Users/sbilmis/Library/Jupyter/kernels/test2
+  wolframlanguage13    /Users/sbilmis/Library/Jupyter/kernels/wolframlanguage13
+  sagemath-10.0        /usr/local/share/jupyter/kernels/SageMath-10.0
+```</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgbe9fbdd" class="outline-2">
+<h2 id="orgbe9fbdd"><span class="section-number-2">2.</span> Listing Running Jupyter Notebooks and Kernels</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><p>
+To list running Jupyter notebooks and kernels:
+</p>
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/46551551/list-running-jupyter-notebooks-and-tokens">See StackOverflow discussion for more details</a></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell">    jupyter notebook list
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org6b46d38" class="outline-2">
+<h2 id="org6b46d38"><span class="section-number-2">3.</span> Giving Presentations with Jupyter Notebooks</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>Use the RISE extension to turn a Jupyter notebook into a live, `reveal.js`-based presentation:
+<ul class="org-ul">
+<li><a href="https://rise.readthedocs.io/en/latest/">RISE Documentation</a></li>
+</ul></li>
+
+<li>RISE allows for interactive presentations directly from the notebook, enabling smooth transitions, full-screen viewing, and slide navigation within the notebook environment.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sbilmis</p>
+<p class="date">Created: 2024-12-13 Fri 17:06</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

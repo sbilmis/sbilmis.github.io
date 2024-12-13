@@ -1,0 +1,1962 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-13 Fri 17:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Linux</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sbilmis" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Linux</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9908e26">1. Difference Between `source script.sh` and `sh script.sh`</a></li>
+<li><a href="#orge4c12ac">2. How to Create a Multiboot USB</a></li>
+<li><a href="#orgec41355">3. How to Learn the Disk Usage in Terms of Gigabyte</a></li>
+<li><a href="#orgf81d5b8">4. How to Use Cron Jobs</a></li>
+<li><a href="#org85c5516">5. How to Redirect Both Output (stdout) and Errors (stderr) to Files</a></li>
+<li><a href="#org8080934">6. How to Share Folder Between Guest and Host in virt-manager (KVM)</a></li>
+<li><a href="#org8fc4924">7. How to Use Yum History to Roll Back an Update in Red Hat Enterprise Linux 6 and Later</a></li>
+<li><a href="#orgd5c0fd3">8. Yum Priorities</a></li>
+<li><a href="#orge56b3e5">9. Yum Repositories</a></li>
+<li><a href="#org3337efb">10. Delete the File Content (Large) Without Opening It</a></li>
+<li><a href="#org8ef278b">11. How to Deal with Stopped Jobs</a></li>
+<li><a href="#orgeaee44c">12. What is Load Average in Linux</a></li>
+<li><a href="#orgf7481a4">13. How to Understand the Reason Why the Server Rebooted</a></li>
+<li><a href="#orga5c1fa9">14. How to Show the Most Recent Login of All Users</a>
+<ul>
+<li><a href="#org83a9f82">14.1. Troubleshooting: Stale Output from `who` Command</a></li>
+</ul>
+</li>
+<li><a href="#orgac2a734">15. How to See the Kernel Messages</a></li>
+<li><a href="#org9fd8233">16. How to See Inode Usage in a Folder</a></li>
+<li><a href="#org631fc82">17. How to Get the Absolute Path from a Symlink</a></li>
+<li><a href="#org9a7435e">18. How to Configure Directory for Consistent Group Ownership</a></li>
+<li><a href="#orgfa2865b">19. How to Check if Linux is Running on a Physical System or Virtual Machine</a></li>
+<li><a href="#org975d6d1">20. How to Query Systemd Journal</a></li>
+<li><a href="#orgfc49798">21. How to Partition, Mount, and Unmount Disks</a></li>
+<li><a href="#org65ed4bf">22. How to Logout a User from the System</a></li>
+<li><a href="#org5a4962b">23. How to List the Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
+<li><a href="#org16481a4">24. How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
+<li><a href="#org250bac6">25. How to Install a Package to a Specific Directory Using `yum`</a></li>
+<li><a href="#org0bc111a">26. How to Find Configuration Files That Have Been Altered Since Installation</a></li>
+<li><a href="#org12a39e2">27. Error: Nothing to Do When Installing Local RPM&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
+<li><a href="#org3b2adf1">28. How to Download and Install an RPM Package</a></li>
+<li><a href="#orgf249445">29. CentOS</a>
+<ul>
+<li><a href="#org0d14d21">29.1. How to List Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
+<li><a href="#orgc96143d">29.2. How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
+<li><a href="#org052fc7c">29.3. How to Install a Package to a Specific Directory Using Yum</a></li>
+<li><a href="#org2933d10">29.4. How to Find Configuration Files That Have Been Altered Since Installation</a></li>
+<li><a href="#orgc1e8854">29.5. Error: "Nothing to Do" When Installing Local RPM</a></li>
+<li><a href="#orgb4b02c6">29.6. How to Download and Install an RPM Package</a></li>
+</ul>
+</li>
+<li><a href="#org9a24094">30. Ubuntu</a>
+<ul>
+<li><a href="#org8ac988a">30.1. How to Use `dpkg` Command</a></li>
+<li><a href="#orgbd3a47f">30.2. Installing Older Versions of Java</a></li>
+<li><a href="#orgc294cd6">30.3. How to Restart Network Services</a></li>
+<li><a href="#org2c9b78f">30.4. How to Connect/Disconnect from VPN via Command Line</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org9908e26" class="outline-2">
+<h2 id="org9908e26"><span class="section-number-2">1.</span> Difference Between `source script.sh` and `sh script.sh`</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><b><b>`source script.sh` or `. script.sh`:</b></b>
+<ul class="org-ul">
+<li><b><b>Execution Context:</b></b> The script is executed in the <b>current shell</b>, affecting its environment directly.</li>
+<li><b><b>Environment Variables:</b></b> Any changes (e.g., setting variables, changing directories) persist in the current shell after the script finishes.</li>
+<li><b><b>Command Type:</b></b> Built-in shell command.</li>
+</ul></li>
+
+<li><b><b>`sh script.sh`:</b></b>
+<ul class="org-ul">
+<li><b><b>Execution Context:</b></b> Runs the script in a <b>new shell process</b> (subshell), isolating its effects from the current shell.</li>
+<li><b><b>Environment Variables:</b></b> Changes made by the script only affect the subshell and are discarded once the script ends.</li>
+<li><b><b>Compatibility:</b></b> Ensures the script is executed using `sh`, regardless of the current shell.</li>
+</ul></li>
+
+<li><b><b>Summary:</b></b>
+<ul class="org-ul">
+<li>`source script.sh` executes the script in the current shell, impacting its environment.</li>
+<li>`sh script.sh` runs the script in a separate subshell, isolating its changes.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orge4c12ac" class="outline-2">
+<h2 id="orge4c12ac"><span class="section-number-2">2.</span> How to Create a Multiboot USB</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><b><b>What is a Multiboot USB?</b></b>
+<ul class="org-ul">
+<li>A Multiboot USB allows multiple bootable ISO images (e.g., operating systems, recovery tools) to coexist on a single USB drive. It is useful for:
+<ul class="org-ul">
+<li>Installing various operating systems.</li>
+<li>Running live environments (e.g., Linux distributions).</li>
+<li>Using recovery and diagnostic tools like Clonezilla, GRML, or Knoppix.</li>
+</ul></li>
+</ul></li>
+
+<li><b><b>Tool: YUMI</b></b>
+<ul class="org-ul">
+<li>YUMI (Your Universal Multiboot Installer) is a user-friendly tool that works on both Linux and Windows to create Multiboot USB drives.</li>
+<li>It supports a wide range of ISO images.</li>
+</ul></li>
+
+<li><b><b>Steps:</b></b>
+<ol class="org-ol">
+<li>Download and install YUMI from <a href="https://pendrivelinux.com/yumi-multiboot-usb-creator/">pendrivelinux.com</a>.</li>
+<li>Launch YUMI and select your USB drive.</li>
+<li>Add ISO images one by one using the interface.</li>
+<li>Boot from the USB drive and select the desired ISO from the boot menu.</li>
+</ol></li>
+
+<li><b><b>Use Case Examples:</b></b>
+<ul class="org-ul">
+<li>Install Linux distributions like Ubuntu, Fedora, or Debian.</li>
+<li>Run system recovery tools such as Clonezilla or GRML.</li>
+<li>Carry multiple OS installers for convenience.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgec41355" class="outline-2">
+<h2 id="orgec41355"><span class="section-number-2">3.</span> How to Learn the Disk Usage in Terms of Gigabyte</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><b><b>Objective:</b></b> Quickly display the disk usage of all mounted file systems in gigabytes.</li>
+
+<li><p>
+<b><b>Command:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">df -BG
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">`df`: Displays disk space usage of file systems.</span>
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">`-B`: Specifies the block size for output. In this case, `G` ensures sizes are shown in gigabytes.</span>
+</pre>
+</div></li>
+
+<li><b><b>Example Output:</b></b>
+Filesystem 1G-blocks Used Available Use% Mounted on /dev/sda1 100G 45G 55G 45% / /dev/sdb1 500G 300G 200G 60% /data</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgf81d5b8" class="outline-2">
+<h2 id="orgf81d5b8"><span class="section-number-2">4.</span> How to Use Cron Jobs</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><b><b>Objective:</b></b> Automate the execution of tasks or scripts at specific intervals using the cron service.</li>
+
+<li><b><b>Key Commands:</b></b></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Edit the user's crontab file</span>
+crontab -e
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">List current cron jobs</span>
+crontab -l
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><b><b>Example Cron Job:</b></b></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash">30-45 16 * * * /Users/sbilmis/Ninbox/truba_scripts/cron_test.sh &gt; /Users/sbilmis/Ninbox/truba_scripts/test.txt 2&gt; /Users/sbilmis/Ninbox/truba_scripts/testerr.txt
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">This runs the script `cron_test.sh` between 16:30 and 16:45 daily.</span>
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">`&gt;` redirects standard output (stdout) to test.txt.</span>
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">`2&gt;` redirects errors (stderr) to testerr.txt.</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><b><b>Cron Time Syntax:</b></b></li>
+<li>`* * * * *`: (minute, hour, day, month, day of the week)</li>
+<li>Example shortcuts:
+<ul class="org-ul">
+<li>`@reboot`: Run at system startup.</li>
+<li>`@hourly`, `@daily`, `@weekly`, `@monthly`, `@yearly`: Run at specified intervals.</li>
+</ul></li>
+
+<li><b><b>Special Characters:</b></b></li>
+<li>`,`: Separate list items (e.g., `0 14,20 * * *` for 14:00 and 20:00).</li>
+<li>`-`: Define a range (e.g., `30-45` for minutes 30 to 45).</li>
+
+<li><b><b>Important Notes:</b></b></li>
+<li>On macOS, grant <b><b>Full Disk Access</b></b> to cron for it to function properly:
+<ul class="org-ul">
+<li><b>System Preferences → Security &amp; Privacy → Full Disk Access</b>.</li>
+</ul></li>
+<li>In Linux, ensure the executable's full path is specified if `PATH` is not set in the crontab file.</li>
+<li>For systems that sleep, use `rtcwake` in Linux or launchd in macOS for more reliability.</li>
+
+<li><b><b>Define PATH in Crontab:</b></b></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #BA36A5;">SHELL</span>=/bin/sh
+<span style="color: #BA36A5;">PATH</span>=/opt/homebrew/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+19-23 12 * * * /path/to/your_script.sh &gt;&gt; /path/to/log.txt 2&gt;&gt; /path/to/error.txt
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org85c5516" class="outline-2">
+<h2 id="org85c5516"><span class="section-number-2">5.</span> How to Redirect Both Output (stdout) and Errors (stderr) to Files</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li><b><b>Objective:</b></b> Capture both the standard output (stdout) and error output (stderr) of a command.</li>
+
+<li><b><b>Syntax:</b></b></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Redirect stdout to a file and stderr to a different file</span>
+command1 &gt; out.txt 2&gt; err.txt
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Redirect both stdout and stderr to the same file</span>
+command1 &gt; everything.txt 2&gt;&amp;1
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b></li>
+<li>`&gt;` redirects stdout.</li>
+<li>`2&gt;` redirects stderr.</li>
+<li>`2&gt;&amp;1` merges stderr into stdout, sending both to the same file.</li>
+
+<li><b><b>Descriptors:</b></b></li>
+<li>`0`: stdin (standard input)</li>
+<li>`1`: stdout (standard output)</li>
+<li>`2`: stderr (standard error)</li>
+
+<li><b><b>Examples:</b></b></li>
+<li><p>
+Save the output of a script while capturing any errors separately:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">myscript.sh &gt; output.log 2&gt; error.log
+</pre>
+</div></li>
+<li><p>
+Combine both outputs into a single log file:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">myscript.sh &gt; combined.log 2&gt;&amp;1
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org8080934" class="outline-2">
+<h2 id="org8080934"><span class="section-number-2">6.</span> How to Share Folder Between Guest and Host in virt-manager (KVM)</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li><b><b>Objective:</b></b> Share a folder between the host and guest operating systems in KVM using virt-manager.</li>
+
+<li><b><b>Steps to Configure:</b></b>
+<ol class="org-ol">
+<li>Power off the guest machine.</li>
+<li>Open the virtual machine console in virt-manager:
+<ul class="org-ul">
+<li>Navigate to <b><b>Hardware Details → Memory → Enable Shared Memory</b></b>.</li>
+</ul></li>
+<li>Click the <b><b>"Add Hardware"</b></b> button:
+<ul class="org-ul">
+<li>Select <b><b>File System</b></b>.</li>
+<li>Set the <b><b>Driver</b></b> to `virtio-9p`.</li>
+<li>Browse to select the <b><b>host path</b></b> to share.</li>
+<li>Specify a <b><b>target path name</b></b> (e.g., `tag<sub>myfolder</sub>`).</li>
+</ul></li>
+<li>Start the guest machine.</li>
+</ol></li>
+
+<li><p>
+<b><b>Mount the Shared Folder in the Guest Machine:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Create a directory to mount the shared folder</span>
+sudo mkdir /mnt/myfolder
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Mount the folder using the virtio driver</span>
+sudo mount -t 9p -o <span style="color: #BA36A5;">trans</span>=virtio tag_my_folder /mnt/myfolder
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Alternative command for newer Ubuntu versions</span>
+sudo mount -t virtiofs tag_my_folder /mnt/myfolder
+</pre>
+</div></li>
+
+<li><b><b>Notes:</b></b>
+<ul class="org-ul">
+<li>Replace `tag<sub>my</sub><sub>folder</sub>` with the target path name you specified in virt-manager.</li>
+<li>Use `virtiofs` if `virtio-9p` is not supported in your system.</li>
+</ul></li>
+
+<li><b><b>References:</b></b>
+<ul class="org-ul">
+<li>[Debugpoint: Share Folder in virt-manager](<a href="https://www.debugpoint.com/share-folder-virt-manager/">https://www.debugpoint.com/share-folder-virt-manager/</a>)</li>
+<li>[QEMU 9p Setup Documentation](<a href="https://wiki.qemu.org/Documentation/9psetup#Mounting_the_shared_path">https://wiki.qemu.org/Documentation/9psetup#Mounting_the_shared_path</a>)</li>
+<li>[UTM GitHub Issue #4386](<a href="https://github.com/utmapp/UTM/issues/4386">https://github.com/utmapp/UTM/issues/4386</a>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="outline-container-org8fc4924" class="outline-2">
+<h2 id="org8fc4924"><span class="section-number-2">7.</span> How to Use Yum History to Roll Back an Update in Red Hat Enterprise Linux 6 and Later</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li><b><b>Objective:</b></b> Roll back or downgrade a package update using yum history in CentOS/RHEL.</li>
+
+<li><b><b>Steps to Roll Back an Update:</b></b>
+<ol class="org-ol">
+<li><p>
+Identify the transaction ID of the update to be undone:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">List yum transaction history</span>
+yum history
+</pre>
+</div></li>
+
+<li><p>
+Use the `undo` command with the identified transaction ID:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Roll back the update using transaction ID (e.g., 8)</span>
+yum history undo 8
+</pre>
+</div></li>
+</ol></li>
+
+<li><b><b>Alternative: Downgrade a Package</b></b>
+<ul class="org-ul">
+<li><p>
+If rolling back is not an option or specific version control is needed:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Downgrade a package to a specific version</span>
+yum downgrade httpd-2.2.3-22.el5
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Notes:</b></b>
+<ul class="org-ul">
+<li>The `yum history` command displays all recent transactions with their IDs.</li>
+<li>Rolling back may also undo dependencies installed during the transaction.</li>
+<li>Downgrading requires the specific version of the package to be available in the repository.</li>
+</ul></li>
+
+<li><b><b>References:</b></b>
+<ul class="org-ul">
+<li>[Red Hat Documentation: Roll Back an Update Using Yum History](<a href="https://access.redhat.com/solutions/64069link">https://access.redhat.com/solutions/64069link</a>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orgd5c0fd3" class="outline-2">
+<h2 id="orgd5c0fd3"><span class="section-number-2">8.</span> Yum Priorities</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li><b><b>Objective:</b></b> Manage and troubleshoot yum priorities, especially when packages are excluded due to repository priority protections.</li>
+
+<li><b><b>Steps:</b></b>
+
+<ol class="org-ol">
+<li><p>
+<b><b>Disable Yum Priorities Temporarily:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Use the following option to disable yum priorities for a single command</span>
+yum --disableplugin=priorities
+</pre>
+</div></li>
+
+<li><p>
+<b><b>Disable Yum Priorities Globally:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Edit the yum priorities configuration file</span>
+sudo nano /etc/yum/pluginconf.d/priorities.conf
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Set the following:</span>
+enabled = 0
+</pre>
+</div></li>
+
+<li><b><b>Identify Excluded Packages:</b></b>
+<ul class="org-ul">
+<li><p>
+To check which packages are excluded due to priority protections:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">List updates with detailed debug information</span>
+yum list updates --debuglevel 3
+</pre>
+</div></li>
+</ul></li>
+</ol></li>
+
+<li><b><b>Notes:</b></b>
+<ul class="org-ul">
+<li>Yum priorities help manage package selection when multiple repositories provide the same package. Higher priority repositories are favored.</li>
+<li>Disabling priorities can temporarily allow access to lower-priority packages, which may help resolve dependency issues.</li>
+</ul></li>
+
+<li><b><b>References:</b></b>
+<ul class="org-ul">
+<li>[ServerFault: Yum Priorities and Excluded Packages](<a href="https://serverfault.com/questions/312472/what-does-that-mean-packages-excluded-due-to-repository-priority-protections">https://serverfault.com/questions/312472/what-does-that-mean-packages-excluded-due-to-repository-priority-protections</a>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orge56b3e5" class="outline-2">
+<h2 id="orge56b3e5"><span class="section-number-2">9.</span> Yum Repositories</h2>
+<div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li><b><b>Objective:</b></b> Manage yum repositories for package updates effectively.</li>
+
+<li><b><b>Steps:</b></b>
+
+<ol class="org-ol">
+<li><b><b>View All Available Repositories:</b></b>
+<ul class="org-ul">
+<li><p>
+Use the following command to list all enabled repositories on your system:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum repolist
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Exclude a Repository Temporarily:</b></b>
+<ul class="org-ul">
+<li><p>
+If you want to exclude a specific repository (e.g., `mongodb-org-3.0`) during an update:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum --disablerepo=mongodb-org-3.0 update
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Exclude Multiple Repositories Temporarily:</b></b>
+<ul class="org-ul">
+<li><p>
+To exclude multiple repositories in a single update command:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum update --disablerepo=mongodb-org-3.0,dockerrepo,epel
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Enable Specific Repositories While Disabling Others:</b></b>
+<ul class="org-ul">
+<li><p>
+Combine enabling and disabling repositories for fine-grained control:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum update --disablerepo=* --enablerepo=mongodb-org-3.0
+</pre>
+</div></li>
+</ul></li>
+</ol></li>
+
+<li><b><b>Notes:</b></b>
+<ul class="org-ul">
+<li>Excluding repositories is useful when you want to avoid conflicts or unnecessary updates from specific repositories.</li>
+<li>The `&#x2013;disablerepo` option is temporary and only applies to the current command. For persistent changes, modify repository configuration files under `/etc/yum.repos.d/`.</li>
+</ul></li>
+
+<li><b><b>References:</b></b>
+<ul class="org-ul">
+<li>[The Geek Stuff: Managing Yum Repositories](<a href="https://www.thegeekstuff.com/2016/05/yum-update-disable-repo/">https://www.thegeekstuff.com/2016/05/yum-update-disable-repo/</a>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org3337efb" class="outline-2">
+<h2 id="org3337efb"><span class="section-number-2">10.</span> Delete the File Content (Large) Without Opening It</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li><b><b>Objective:</b></b> Clear the content of a file without deleting or recreating the file itself. This is useful for managing large log files like `access.log`.</li>
+
+<li><b><b>Methods:</b></b>
+<ol class="org-ol">
+<li><b><b>Redirect the File to Null:</b></b>
+<ul class="org-ul">
+<li><p>
+This effectively empties the file:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">&gt; access.log
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Redirect `/dev/null` to the File:</b></b>
+<ul class="org-ul">
+<li><p>
+Another way to clear the file's content:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cat /dev/null &gt; access.log
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Copy `/dev/null` to the File:</b></b>
+<ul class="org-ul">
+<li><p>
+This works similarly to the above:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cp /dev/null access.log
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Use `dd` Command:</b></b>
+<ul class="org-ul">
+<li><p>
+A versatile method to achieve the same result:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">dd <span style="color: #BA36A5;">if</span>=/dev/null <span style="color: #BA36A5;">of</span>=access.log
+</pre>
+</div></li>
+</ul></li>
+</ol></li>
+
+<li><b><b>Notes:</b></b>
+<ul class="org-ul">
+<li>These methods only empty the file but retain its metadata such as permissions and ownership.</li>
+<li>Make sure the file is not being actively written by another process when clearing its content to avoid inconsistencies.</li>
+</ul></li>
+
+<li><b><b>References:</b></b>
+<ul class="org-ul">
+<li>[TecMint: Empty/Delete File Content Without Opening It](<a href="https://www.tecmint.com/empty-delete-file-content-linux/">https://www.tecmint.com/empty-delete-file-content-linux/</a>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="outline-container-org8ef278b" class="outline-2">
+<h2 id="org8ef278b"><span class="section-number-2">11.</span> How to Deal with Stopped Jobs</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li><b><b>Overview:</b></b>
+<ul class="org-ul">
+<li>A <b>stopped job</b> is a process that has been temporarily moved to the background and paused, but it still occupies system resources (e.g., memory).</li>
+</ul></li>
+
+<li><b><b>Common Commands:</b></b>
+<ol class="org-ol">
+<li><b><b>List Running and Stopped Jobs:</b></b>
+<ul class="org-ul">
+<li><p>
+Displays all active and stopped jobs in the current shell session:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #006FE0;">jobs</span>
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Resume a Stopped Job in the Foreground:</b></b>
+<ul class="org-ul">
+<li><p>
+Use the job ID to bring it back to the foreground:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #006FE0;">fg</span> 1
+</pre>
+</div></li>
+<li>Replace `1` with the relevant job ID listed by the `jobs` command.</li>
+</ul></li>
+
+<li><b><b>Send a Job to the Background:</b></b>
+<ul class="org-ul">
+<li>You can stop a job by pressing `Ctrl+Z`, which sends it to the background.</li>
+</ul></li>
+</ol></li>
+
+<li><b><b>Notes:</b></b>
+<ul class="org-ul">
+<li>If a job is no longer needed, you can terminate it using `kill` with the appropriate job ID.</li>
+<li>Use `bg` to resume a stopped job in the background instead of bringing it to the foreground.</li>
+</ul></li>
+
+<li><b><b>References:</b></b>
+<ul class="org-ul">
+<li>[Unix StackExchange: Handling Stopped Jobs](<a href="https://unix.stackexchange.com/questions/116959/there-are-stopped-jobs-on-bash-exit">https://unix.stackexchange.com/questions/116959/there-are-stopped-jobs-on-bash-exit</a>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-orgeaee44c" class="outline-2">
+<h2 id="orgeaee44c"><span class="section-number-2">12.</span> What is Load Average in Linux</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li><b><b>Overview:</b></b>
+<ul class="org-ul">
+<li>Load average in Linux is a measure of CPU utilization at any given time.</li>
+<li>It reflects the number of processes actively using or waiting for CPU time.</li>
+<li>An idle system has a load of `0`. Each active or queued process adds `1` to the load.</li>
+</ul></li>
+
+<li><b><b>Key Details:</b></b>
+<ol class="org-ol">
+<li><b><b>Load Average Values:</b></b>
+<ul class="org-ul">
+<li>Load average is usually represented as three numbers (e.g., `0.03, 0.03, 0.01`):
+<ul class="org-ul">
+<li><b><b>First Value:</b></b> Average CPU load over the last minute.</li>
+<li><b><b>Second Value:</b></b> Average CPU load over the last 5 minutes.</li>
+<li><b><b>Third Value:</b></b> Average CPU load over the last 15 minutes.</li>
+</ul></li>
+<li>These averages help track short-term and long-term CPU trends.</li>
+</ul></li>
+
+<li><b><b>Understanding Load Average:</b></b>
+<ul class="org-ul">
+<li>A load average of `1.0` on a single-core CPU means the CPU is fully utilized.</li>
+<li>For multi-core CPUs, divide the load average by the number of cores to assess utilization.
+<ul class="org-ul">
+<li>Example: On a 4-core system, a load average of `4.0` indicates full utilization, while `2.0` suggests half utilization.</li>
+</ul></li>
+</ul></li>
+
+<li><b><b>Why Load Average is Useful:</b></b>
+<ul class="org-ul">
+<li>It helps monitor system performance and identify bottlenecks.</li>
+<li>Load averages change quickly as processes start and stop, making it a dynamic performance metric.</li>
+</ul></li>
+</ol></li>
+
+<li><b><b>Example Output:</b></b>
+<ul class="org-ul">
+<li><p>
+Command:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">uptime
+</pre>
+</div></li>
+
+<li><p>
+Output:
+</p>
+<pre class="example" id="orgf3e631c">
+17:45:26 up 3 days, 4:12,  2 users,  load average: 0.03, 0.03, 0.01
+</pre>
+<ul class="org-ul">
+<li><b><b>Interpretation:</b></b>
+<ul class="org-ul">
+<li>System time: `17:45:26`.</li>
+<li>System uptime: `3 days, 4 hours, 12 minutes`.</li>
+<li>Number of users logged in: `2`.</li>
+<li>Load averages:
+<ul class="org-ul">
+<li><b><b>1-minute:</b></b> `0.03` (very low usage).</li>
+<li><b><b>5-minute:</b></b> `0.03` (very low usage).</li>
+<li><b><b>15-minute:</b></b> `0.01` (nearly idle).</li>
+</ul></li>
+</ul></li>
+</ul></li>
+
+<li><p>
+Using `top`:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">top
+</pre>
+</div></li>
+
+<li><p>
+Sample `top` Output:
+</p>
+<pre class="example" id="org297ec51">
+top - 17:46:38 up 3 days, 4:13,  2 users,  load average: 0.03, 0.03, 0.01
+Tasks: 110 total,   1 running, 109 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  1.0 us,  0.5 sy,  0.0 ni, 98.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :  8012340 total,  1223344 free,  3445784 used,  3343212 buff/cache
+KiB Swap:  2097148 total,  2097148 free,        0 used.  4343212 avail Mem 
+</pre>
+<ul class="org-ul">
+<li><b><b>Interpretation:</b></b>
+<ul class="org-ul">
+<li>Load averages: `0.03`, `0.03`, `0.01` (low utilization).</li>
+<li>CPU utilization: 1% user processes, 0.5% system processes, 98.5% idle.</li>
+<li>Memory: Total `8GB`, used `3.4GB`, free `1.2GB`.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+
+<li><b><b>Tools to Monitor Load Average:</b></b>
+<ul class="org-ul">
+<li><p>
+`uptime`: Displays the current time, system uptime, and load averages.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">uptime
+</pre>
+</div></li>
+<li><p>
+`top`: Provides real-time CPU, memory, and load average information.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">top
+</pre>
+</div></li>
+<li>`htop`: An enhanced version of `top` with an interactive interface.</li>
+</ul></li>
+
+<li><b><b>References:</b></b>
+<ul class="org-ul">
+<li>Linux Manual Pages for `uptime`, `top`, and `htop`.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+
+
+
+
+<div id="outline-container-orgf7481a4" class="outline-2">
+<h2 id="orgf7481a4"><span class="section-number-2">13.</span> How to Understand the Reason Why the Server Rebooted</h2>
+<div class="outline-text-2" id="text-13">
+<ul class="org-ul">
+<li><b><b>Log File Locations:</b></b>
+<ul class="org-ul">
+<li>For <b><b>CentOS/RHEL systems</b></b>, check the logs at `/var/log/messages`.</li>
+<li>For <b><b>Ubuntu/Debian systems</b></b>, check the logs at `/var/log/syslog`.</li>
+<li>Use the `tail` command or a text editor to filter or search for specific information about reboots.</li>
+</ul></li>
+
+<li><b><b>Analyze Systemd Journal:</b></b>
+<ul class="org-ul">
+<li><p>
+<b><b>List all logged boots:</b></b>
+Use `journalctl` to list the boots recorded by the system:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">journalctl --list-boots
+</pre>
+</div>
+<ul class="org-ul">
+<li>This command displays a list of previous boots with an index number (`-1`, `-2`, etc.).</li>
+<li><p>
+Example output:
+</p>
+<pre class="example" id="org8cd08d6">
+  -2 4c3b5b2f2a4c401c8506ab65e03b3df7 Mon 2024-11-10 09:15:00 UTC—Mon 2024-11-10 17:35:00 UTC
+  -1 1a2f33ef3d3c401dbe36b5647e03fdf7 Mon 2024-11-11 09:20:00 UTC—Mon 2024-11-11 17:40:00 UTC
+   0 c2a3b5b2f2a3c4dc6506ab56e03c3de5 Tue 2024-11-12 08:00:00 UTC—Tue 2024-11-12 16:20:00 UTC
+</pre></li>
+</ul></li>
+
+<li><p>
+<b><b>Analyze a specific boot:</b></b>
+Use the boot index to examine logs from that boot:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">journalctl -b {num} -n
+</pre>
+</div>
+<ul class="org-ul">
+<li>Replace `{num}` with the boot index (e.g., `-1` for the previous boot).</li>
+<li>Use `-n` to limit the number of lines displayed.</li>
+</ul></li>
+</ul></li>
+
+<li><b><b>Check When the Server Rebooted:</b></b>
+<ul class="org-ul">
+<li><p>
+Use the `who` command to find the last reboot time:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">who -b
+</pre>
+</div>
+<ul class="org-ul">
+<li><p>
+Example output:
+</p>
+<pre class="example" id="org95ab0c0">
+         system boot  2024-11-12 08:00
+</pre></li>
+</ul></li>
+
+<li><p>
+Alternatively, use the `last` command to view reboot history:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">last -x | head | tac
+</pre>
+</div>
+<ul class="org-ul">
+<li><p>
+Example output:
+</p>
+<pre class="example" id="org04f6c0a">
+reboot   system boot  5.15.0-43-generic Fri Nov 10 09:15 - 17:35  (08:20)
+reboot   system boot  5.15.0-43-generic Mon Nov 12 08:00 - 16:20  (08:20)
+</pre></li>
+</ul></li>
+</ul></li>
+
+<li><b><b>Tips:</b></b>
+<ul class="org-ul">
+<li><p>
+Use `grep` with `journalctl` to filter messages related to shutdown or restart:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">journalctl | grep -i <span style="color: #008000;">"shutdown"</span>
+journalctl | grep -i <span style="color: #008000;">"reboot"</span>
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>References:</b></b>
+<ul class="org-ul">
+<li>`man journalctl`</li>
+<li>Linux system logs documentation</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-orga5c1fa9" class="outline-2">
+<h2 id="orga5c1fa9"><span class="section-number-2">14.</span> How to Show the Most Recent Login of All Users</h2>
+<div class="outline-text-2" id="text-14">
+<ul class="org-ul">
+<li><b><b>`lastlog` Command:</b></b>
+<ul class="org-ul">
+<li>Works on Linux (not macOS).</li>
+<li><p>
+Shows the most recent login of all users or a specific user.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">lastlog
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>`last` Command:</b></b>
+<ul class="org-ul">
+<li>Works on both Linux and macOS.</li>
+<li>Shows the history of user logins.</li>
+<li><p>
+Example to include IP addresses for a specific user:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">last sbilmis -i
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>`w`, `who`, and `users` Commands:</b></b>
+<ul class="org-ul">
+<li><p>
+To list users currently logged in:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">w      <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Displays active users and their activity.</span>
+who    <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Lists logged-in users.</span>
+users  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Outputs the usernames of all logged-in users.</span>
+</pre>
+</div></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org83a9f82" class="outline-3">
+<h3 id="org83a9f82"><span class="section-number-3">14.1.</span> Troubleshooting: Stale Output from `who` Command</h3>
+<div class="outline-text-3" id="text-14-1">
+<ul class="org-ul">
+<li><b><b>Problem:</b></b>
+<ul class="org-ul">
+<li>`who` command may not show current logged-in users but outdated data.</li>
+<li>The file `~/var/run/utmp` might still fill up with login information.</li>
+</ul></li>
+<li><b><b>Solution:</b></b>
+<ul class="org-ul">
+<li><p>
+Look for defunct "login" processes and kill them:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">ps -aux | grep defunct | awk <span style="color: #008000;">'{print $2}'</span> | xargs kill -9
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[RedHat Solution](<a href="https://access.redhat.com/solutions/119773">https://access.redhat.com/solutions/119773</a>)</li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgac2a734" class="outline-2">
+<h2 id="orgac2a734"><span class="section-number-2">15.</span> How to See the Kernel Messages</h2>
+<div class="outline-text-2" id="text-15">
+<ul class="org-ul">
+<li><b><b>`dmesg` Command:</b></b>
+<ul class="org-ul">
+<li>Displays kernel messages.</li>
+<li><p>
+Example command:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">dmesg
+</pre>
+</div></li>
+<li>The first column in the output is the timestamp of the event in seconds (relative to kernel boot time).</li>
+</ul></li>
+
+<li><p>
+<b><b>For Human-Readable Timestamps:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">dmesg -T
+</pre>
+</div></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9fd8233" class="outline-2">
+<h2 id="org9fd8233"><span class="section-number-2">16.</span> How to See Inode Usage in a Folder</h2>
+<div class="outline-text-2" id="text-16">
+<ul class="org-ul">
+<li><b><b>Command to Check Inode Usage:</b></b>
+<ul class="org-ul">
+<li><p>
+This script calculates the inode usage for each subfolder in the current directory.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #006FE0;">echo</span> <span style="color: #008000;">"Detailed Inode usage for: $(</span><span style="color: #FF1493;">pwd</span><span style="color: #008000;">)"</span> ; <span style="color: #008000;">\</span>
+<span style="color: #0000FF; font-weight: bold;">for</span> d<span style="color: #0000FF; font-weight: bold;"> in</span> <span style="color: #FF1493;">`find -maxdepth 1 -type d |cut -d\/ -f2 |grep -xv . |sort`</span>; <span style="color: #0000FF; font-weight: bold;">do</span> <span style="color: #008000;">\</span>
+  <span style="color: #BA36A5;">c</span>=$(<span style="color: #FF1493;">find $d |wc -l</span>) ; <span style="color: #006FE0;">printf</span> <span style="color: #008000;">"$c\t\t- $d\n"</span> ; <span style="color: #008000;">\</span>
+<span style="color: #0000FF; font-weight: bold;">done</span> ; <span style="color: #008000;">\</span>
+<span style="color: #006FE0;">printf</span> <span style="color: #008000;">"Total: \t\t$(</span><span style="color: #FF1493;">find $(pwd</span><span style="color: #008000;">) | wc -l)\n"</span>
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Output Example:</b></b>
+<ul class="org-ul">
+<li><p>
+This will show the count of inodes for each subdirectory and the total:
+</p>
+<pre class="example" id="orgaebfc38">
+Detailed Inode usage for: /my/directory
+12              - subfolder1
+8               - subfolder2
+35              - subfolder3
+Total:          55
+</pre></li>
+</ul></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[2DayGeek](<a href="https://www.2daygeek.com/linux-check-count-inode-usage/">https://www.2daygeek.com/linux-check-count-inode-usage/</a>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="outline-container-org631fc82" class="outline-2">
+<h2 id="org631fc82"><span class="section-number-2">17.</span> How to Get the Absolute Path from a Symlink</h2>
+<div class="outline-text-2" id="text-17">
+<ul class="org-ul">
+<li><b><b>Get the Target of a Symlink:</b></b>
+<ul class="org-ul">
+<li><p>
+To find the file or directory that the symlink points to:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">readlink path/to/file
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Get the Absolute Path of a File (Including Symlinks):</b></b>
+<ul class="org-ul">
+<li><p>
+Resolves all symlinks and provides the absolute path:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">readlink -f path/to/file
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Check if a Symlink is Broken:</b></b>
+<ul class="org-ul">
+<li><p>
+Validates if the symlink is pointing to an existing file:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">realpath path/to/file
+</pre>
+</div></li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org9a7435e" class="outline-2">
+<h2 id="org9a7435e"><span class="section-number-2">18.</span> How to Configure Directory for Consistent Group Ownership</h2>
+<div class="outline-text-2" id="text-18">
+<ul class="org-ul">
+<li><b><b>Use `chmod` to Set the Setgid Bit:</b></b>
+<ul class="org-ul">
+<li><p>
+Ensures that all files and directories created within a folder inherit the group's ownership.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">chmod g+s foobar  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Applies the setgid bit.</span>
+
+ls -l  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Verify permissions; 's' indicates the sticky bit.</span>
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Example output:</span>
+drwxrws---  8 root mygroup 4096 Jan 12  2022 foobar
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>What the `s` Sticky Bit Does:</b></b>
+<ul class="org-ul">
+<li>The setgid bit ensures that files created in the directory inherit the parent directory's group ownership.</li>
+</ul></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[Unix Stack Exchange](<a href="https://unix.stackexchange.com/questions/722202/configure-directory-so-that-each-new-file-has-always-same-group-ownership">https://unix.stackexchange.com/questions/722202/configure-directory-so-that-each-new-file-has-always-same-group-ownership</a>)</li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgfa2865b" class="outline-2">
+<h2 id="orgfa2865b"><span class="section-number-2">19.</span> How to Check if Linux is Running on a Physical System or Virtual Machine</h2>
+<div class="outline-text-2" id="text-19">
+<ul class="org-ul">
+<li><b><b>Determine System Manufacturer:</b></b>
+<ul class="org-ul">
+<li><p>
+Use `dmidecode` to identify the hardware type:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">sudo dmidecode -s system-manufacturer
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Interpreting the Output:</b></b>
+<ul class="org-ul">
+<li>If the output is `QEMU` or `innotek Gmbh` (VirtualBox), the system is virtual.</li>
+<li>If it lists a manufacturer like `Dell` or `Lenovo`, the system is physical.</li>
+</ul></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[Linux Handbook](<a href="https://linuxhandbook.com/server-virtual-or-physical/">https://linuxhandbook.com/server-virtual-or-physical/</a>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-org975d6d1" class="outline-2">
+<h2 id="org975d6d1"><span class="section-number-2">20.</span> How to Query Systemd Journal</h2>
+<div class="outline-text-2" id="text-20">
+<ul class="org-ul">
+<li><b><b>View Logs from the Current Boot:</b></b>
+<ul class="org-ul">
+<li><p>
+Display all log messages for the current boot session:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">journalctl -b
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>List All Previous Boots:</b></b>
+<ul class="org-ul">
+<li><p>
+Show a list of logged boots with their indices:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">journalctl --list-boots
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Analyze Logs for a Specific Boot:</b></b>
+<ul class="org-ul">
+<li><p>
+Replace `{index}` with the desired boot index:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">journalctl -b {index}
+</pre>
+</div></li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfc49798" class="outline-2">
+<h2 id="orgfc49798"><span class="section-number-2">21.</span> How to Partition, Mount, and Unmount Disks</h2>
+<div class="outline-text-2" id="text-21">
+<ul class="org-ul">
+<li><b><b>Definitions:</b></b>
+<ul class="org-ul">
+<li><b><b>MBR (Master Boot Record):</b></b>
+<ul class="org-ul">
+<li>Traditional partition table with a 2TB limit and 4 primary partitions.</li>
+</ul></li>
+<li><b><b>GPT (GUID Partition Table):</b></b>
+<ul class="org-ul">
+<li>Modern table with support for volumes larger than 2TB and unlimited partitions.</li>
+</ul></li>
+<li><b><b>Cluster:</b></b> Minimum space a file occupies on disk.</li>
+<li><b><b>Volume:</b></b> A storage area with a single filesystem across one or multiple devices.</li>
+<li><b><b>Partition:</b></b> Logical division of a disk to create independent storage spaces.</li>
+</ul></li>
+
+<li><p>
+<b><b>Using `parted` for Disk Management:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">List all connected disks:</span>
+sudo parted -l 
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Connect to a specific disk (e.g., /dev/sdc):</span>
+sudo parted /dev/sdc
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Inside the parted environment:</span>
+mklabel gpt  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Set GPT as the partition table.</span>
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Create a primary ext4 partition from 1 MiB to 8 GiB:</span>
+mkpart primary ext4 1MIB 8GIB
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Create a primary NTFS partition for the remaining space:</span>
+mkpart primary ntfs 8GIB 100%
+
+quit  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Exit the parted environment.</span>
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Format the created partitions:</span>
+sudo mkfs -t ext4 /dev/sdc1
+sudo mkfs -t ntfs /dev/sdc2
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Mount the partitions:</span>
+sudo mount /dev/sdc1 /media/sbilmis/myext4
+sudo mount /dev/sdc2 /media/sbilmis/myntfs
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Unmount the partitions:</span>
+sudo umount /media/sbilmis/myext4
+sudo umount /dev/sdc1
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Enable a swap partition (if applicable):</span>
+sudo mkswap /dev/sdc3
+sudo swapon /dev/sdc3
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">View all storage devices in a tree-like format:</span>
+lsblk
+</pre>
+</div></li>
+
+<li><b><b>Persistent Mounts:</b></b>
+<ul class="org-ul">
+<li>Edit `/etc/fstab` to configure partitions for automatic mounting during boot.</li>
+</ul></li>
+
+<li><b><b>Additional Notes:</b></b>
+<ul class="org-ul">
+<li>Hard links in Linux reference file records, not file names. Renaming the original file does not break the link.</li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org65ed4bf" class="outline-2">
+<h2 id="org65ed4bf"><span class="section-number-2">22.</span> How to Logout a User from the System</h2>
+<div class="outline-text-2" id="text-22">
+<ul class="org-ul">
+<li><b><b>List Logged-In Users:</b></b>
+<ul class="org-ul">
+<li><p>
+Identify active user sessions:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">who       <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Basic list of logged-in users.</span>
+w         <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Detailed information about user activities.</span>
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Logout a Specific User:</b></b>
+<ul class="org-ul">
+<li><p>
+Forcefully terminate a user session:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">pkill -KILL -u {username}
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>User-Initiated Logout:</b></b>
+<ul class="org-ul">
+<li><p>
+Users can log out from their session using:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #0000FF; font-weight: bold;">logout</span>
+</pre>
+</div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+
+
+
+
+
+<div id="outline-container-org5a4962b" class="outline-2">
+<h2 id="org5a4962b"><span class="section-number-2">23.</span> How to List the Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h2>
+<div class="outline-text-2" id="text-23">
+<ul class="org-ul">
+<li><p>
+To view all the files installed by a specific package, use the following command:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">rpm -ql <span style="color: #008000;">"package-name"</span>
+</pre>
+</div></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org16481a4" class="outline-2">
+<h2 id="org16481a4"><span class="section-number-2">24.</span> How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h2>
+<div class="outline-text-2" id="text-24">
+<ul class="org-ul">
+<li>Use the `yum` package manager to list and install specific versions of a package.</li>
+
+<li><p>
+<b><b>List Available Versions of a Package:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum --showduplicates list httpd
+</pre>
+</div></li>
+
+<li><p>
+<b><b>Install a Specific Version of a Package:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum install httpd-2.4.6-6
+</pre>
+</div></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[How to Install a Specific Package Version on CentOS](<a href="https://unix.stackexchange.com/questions/151689/how-can-i-instruct-yum-to-install-a-specific-version-of-package-x">https://unix.stackexchange.com/questions/151689/how-can-i-instruct-yum-to-install-a-specific-version-of-package-x</a>)</li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org250bac6" class="outline-2">
+<h2 id="org250bac6"><span class="section-number-2">25.</span> How to Install a Package to a Specific Directory Using `yum`</h2>
+<div class="outline-text-2" id="text-25">
+<ul class="org-ul">
+<li><p>
+Use the `&#x2013;installroot` option to specify a custom directory for the package installation:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum --installroot=/opt/temp-packages install git
+</pre>
+</div></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[Install Package to a Specific Directory with Yum](<a href="https://linuxhint.com/install-package-to-a-specific-directory-using-yum/">https://linuxhint.com/install-package-to-a-specific-directory-using-yum/</a>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+
+
+
+
+<div id="outline-container-org0bc111a" class="outline-2">
+<h2 id="org0bc111a"><span class="section-number-2">26.</span> How to Find Configuration Files That Have Been Altered Since Installation</h2>
+<div class="outline-text-2" id="text-26">
+<ul class="org-ul">
+<li>Use the `rpm` command to verify package files and determine which configuration files have been altered.</li>
+
+<li><p>
+<b><b>Check Files Modified in a Specific Package:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">rpm -V NAMEOFPACKAGE
+</pre>
+</div></li>
+
+<li><p>
+<b><b>List All Modified Files Across Installed Packages:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">rpm -Va
+</pre>
+</div></li>
+
+<li><p>
+<b><b>List Only Modified Configuration Files for a Specific Package:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">rpm -Vc NAMEOFPACKAGE
+</pre>
+</div></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[How to Find Altered Configuration Files on Fedora](<a href="https://superuser.com/questions/1558398/on-fedora-how-do-i-find-configuration-files-which-have-been-altered-since-in">https://superuser.com/questions/1558398/on-fedora-how-do-i-find-configuration-files-which-have-been-altered-since-in</a>)</li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org12a39e2" class="outline-2">
+<h2 id="org12a39e2"><span class="section-number-2">27.</span> Error: Nothing to Do When Installing Local RPM&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h2>
+<div class="outline-text-2" id="text-27">
+<ul class="org-ul">
+<li>If you encounter this error while installing an RPM package locally:
+<ul class="org-ul">
+<li><p>
+Try installing the package in verbose mode to diagnose the issue:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum -v install /path/to/package.rpm
+    <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">or</span>
+rpm -v -i /path/to/package.rpm
+</pre>
+</div></li>
+<li>Check the `~/.yum.conf` file for excluded packages and remove any relevant entries (e.g., `exclude=slurm*`).</li>
+</ul></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[ServerFault: Error While Installing RPM](<a href="https://serverfault.com/questions/659513/error-nothing-to-do-trying-to-install-local-rpm">https://serverfault.com/questions/659513/error-nothing-to-do-trying-to-install-local-rpm</a>)</li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org3b2adf1" class="outline-2">
+<h2 id="org3b2adf1"><span class="section-number-2">28.</span> How to Download and Install an RPM Package</h2>
+<div class="outline-text-2" id="text-28">
+<ul class="org-ul">
+<li><p>
+To download and install an RPM package in a single step:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">sudo rpm -i &lt;URL&gt;  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Using rpm command</span>
+
+sudo yum install -y &lt;URL&gt;  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Using yum command</span>
+</pre>
+</div></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[Download and Install RPM in One Line](<a href="https://unix.stackexchange.com/questions/245920/how-to-download-an-rpm-package-and-install-it-in-one-line">https://unix.stackexchange.com/questions/245920/how-to-download-an-rpm-package-and-install-it-in-one-line</a>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgf249445" class="outline-2">
+<h2 id="orgf249445"><span class="section-number-2">29.</span> CentOS</h2>
+<div class="outline-text-2" id="text-29">
+</div>
+<div id="outline-container-org0d14d21" class="outline-3">
+<h3 id="org0d14d21"><span class="section-number-3">29.1.</span> How to List Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h3>
+<div class="outline-text-3" id="text-29-1">
+<ul class="org-ul">
+<li>Use the `rpm` command to display all files installed by a specific package.</li>
+
+<li><p>
+<b><b>Command:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">rpm -ql &lt;package-name&gt;
+</pre>
+</div></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc96143d" class="outline-3">
+<h3 id="orgc96143d"><span class="section-number-3">29.2.</span> How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h3>
+<div class="outline-text-3" id="text-29-2">
+<ul class="org-ul">
+<li>Use the `yum` command with the `&#x2013;showduplicates` option to list all available versions of a package.</li>
+
+<li><p>
+<b><b>List Available Versions:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum --showduplicates list httpd
+</pre>
+</div></li>
+
+<li><p>
+<b><b>Install a Specific Version:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum install httpd-2.4.6-6
+</pre>
+</div></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[Unix StackExchange: Install Specific Version of Package](<a href="https://unix.stackexchange.com/questions/151689/how-can-i-instruct-yum-to-install-a-specific-version-of-package-x">https://unix.stackexchange.com/questions/151689/how-can-i-instruct-yum-to-install-a-specific-version-of-package-x</a>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org052fc7c" class="outline-3">
+<h3 id="org052fc7c"><span class="section-number-3">29.3.</span> How to Install a Package to a Specific Directory Using Yum</h3>
+<div class="outline-text-3" id="text-29-3">
+<ul class="org-ul">
+<li>To install a package into a custom directory, use the `&#x2013;installroot` option with `yum`. This is useful for testing or isolated environments.</li>
+
+<li><p>
+<b><b>Command:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum --installroot=/opt/temp-packages install git
+</pre>
+</div></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[LinuxHint: Install Package to a Specific Directory](<a href="https://linuxhint.com/install-package-to-a-specific-directory-using-yum/">https://linuxhint.com/install-package-to-a-specific-directory-using-yum/</a>)</li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2933d10" class="outline-3">
+<h3 id="org2933d10"><span class="section-number-3">29.4.</span> How to Find Configuration Files That Have Been Altered Since Installation</h3>
+<div class="outline-text-3" id="text-29-4">
+<ul class="org-ul">
+<li>Use the `rpm` command to verify and list files that have been modified since package installation.</li>
+
+<li><b><b>Commands:</b></b>
+<ul class="org-ul">
+<li><p>
+Verify which files from a package have been modified:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">rpm -V &lt;package-name&gt;
+</pre>
+</div></li>
+<li><p>
+List all modified files:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">rpm -Va
+</pre>
+</div></li>
+<li><p>
+List only modified configuration files:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">rpm -Vc &lt;package-name&gt;
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[SuperUser: Find Altered Configuration Files](<a href="https://superuser.com/questions/1558398/on-fedora-how-do-i-find-configuration-files-which-have-been-altered-since-in">https://superuser.com/questions/1558398/on-fedora-how-do-i-find-configuration-files-which-have-been-altered-since-in</a>)</li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc1e8854" class="outline-3">
+<h3 id="orgc1e8854"><span class="section-number-3">29.5.</span> Error: "Nothing to Do" When Installing Local RPM</h3>
+<div class="outline-text-3" id="text-29-5">
+<ul class="org-ul">
+<li>If you encounter an error while installing a local RPM with `yum` or `rpm`, here are some troubleshooting tips:
+<ul class="org-ul">
+<li><p>
+Run the installation in verbose mode for more details:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum -v install &lt;package-name&gt;.rpm
+rpm -v -i &lt;package-name&gt;.rpm
+</pre>
+</div></li>
+<li>Check `/etc/yum.conf` for any excluded packages and remove exclusions, e.g., `exclude=slurm*`.</li>
+</ul></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[ServerFault: Error Troubleshooting for Local RPM Installation](<a href="https://serverfault.com/questions/659513/error-nothing-to-do-trying-to-install-local-rpm">https://serverfault.com/questions/659513/error-nothing-to-do-trying-to-install-local-rpm</a>)</li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb4b02c6" class="outline-3">
+<h3 id="orgb4b02c6"><span class="section-number-3">29.6.</span> How to Download and Install an RPM Package</h3>
+<div class="outline-text-3" id="text-29-6">
+<ul class="org-ul">
+<li>To directly install an RPM from a URL or file:</li>
+
+<li><b><b>Commands:</b></b>
+<ul class="org-ul">
+<li><p>
+Using `rpm`:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">sudo rpm -i &lt;URL&gt;
+</pre>
+</div></li>
+<li><p>
+Using `yum`:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">yum install -y &lt;URL&gt;
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[Unix StackExchange: Download and Install RPM](<a href="https://unix.stackexchange.com/questions/245920/how-to-download-an-rpm-package-and-install-it-in-one-line">https://unix.stackexchange.com/questions/245920/how-to-download-an-rpm-package-and-install-it-in-one-line</a>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org9a24094" class="outline-2">
+<h2 id="org9a24094"><span class="section-number-2">30.</span> Ubuntu</h2>
+<div class="outline-text-2" id="text-30">
+</div>
+<div id="outline-container-org8ac988a" class="outline-3">
+<h3 id="org8ac988a"><span class="section-number-3">30.1.</span> How to Use `dpkg` Command</h3>
+<div class="outline-text-3" id="text-30-1">
+<ul class="org-ul">
+<li>`dpkg` is a package manager for Debian-based systems (e.g., Ubuntu) to handle `.deb` packages.</li>
+
+<li><b><b>Commands:</b></b>
+<ul class="org-ul">
+<li><p>
+Install a `.deb` package:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">dpkg -i &lt;package.deb&gt;
+</pre>
+</div></li>
+<li><p>
+Show the status of an installed package:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">dpkg -s &lt;package&gt;
+</pre>
+</div></li>
+<li><p>
+List packages matching a pattern:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">dpkg -L &lt;pattern&gt;
+</pre>
+</div></li>
+<li><p>
+List file locations of a specific package:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">dpkg -L &lt;package&gt;
+</pre>
+</div></li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbd3a47f" class="outline-3">
+<h3 id="orgbd3a47f"><span class="section-number-3">30.2.</span> Installing Older Versions of Java</h3>
+<div class="outline-text-3" id="text-30-2">
+<ul class="org-ul">
+<li>Some older systems require older Java versions for compatibility.
+<ul class="org-ul">
+<li>Example use case: Connecting to legacy servers or applications.</li>
+<li>Ubuntu desktop versions often have older Java versions available for installation.</li>
+</ul></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[ServerFault: Resolving Java Compatibility Issues](<a href="https://serverfault.com/questions/853051/java-issue-driving-me-crazy">https://serverfault.com/questions/853051/java-issue-driving-me-crazy</a>)</li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc294cd6" class="outline-3">
+<h3 id="orgc294cd6"><span class="section-number-3">30.3.</span> How to Restart Network Services</h3>
+<div class="outline-text-3" id="text-30-3">
+<ul class="org-ul">
+<li>Use these commands to restart network services depending on your system setup:</li>
+
+<li><b><b>Commands:</b></b>
+<ul class="org-ul">
+<li><p>
+Restart the Network Manager service:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">sudo service network-manager restart
+sudo systemctl restart NetworkManager.service
+</pre>
+</div></li>
+<li><p>
+For newer Ubuntu versions (22.04, 20.04, 18.04), use `nmcli`:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">sudo nmcli networking off
+sudo nmcli networking on
+</pre>
+</div></li>
+<li><p>
+Use `ifdown` and `ifup`:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">sudo ifdown -a &amp;&amp; sudo ifup -a
+</pre>
+</div></li>
+<li><p>
+Text-based GUI for network configuration:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">sudo nmtui
+</pre>
+</div></li>
+<li><p>
+Set specific network interfaces up or down:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">ip link show
+sudo ip link set enp0s3 down
+sudo ip link set enp0s3 up
+</pre>
+</div></li>
+</ul></li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2c9b78f" class="outline-3">
+<h3 id="org2c9b78f"><span class="section-number-3">30.4.</span> How to Connect/Disconnect from VPN via Command Line</h3>
+<div class="outline-text-3" id="text-30-4">
+<ul class="org-ul">
+<li>Use the `nmcli` command to manage VPN connections on Network Manager-enabled systems.</li>
+
+<li><b><b>Commands:</b></b>
+<ul class="org-ul">
+<li><p>
+List available connections:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">nmcli con
+</pre>
+</div></li>
+<li><p>
+Activate a VPN connection by name:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">nmcli con up id ConnectionName
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Troubleshooting VPN Issues:</b></b>
+<ul class="org-ul">
+<li>If you encounter `Error: Connection activation failed: no valid VPN secrets`:
+<ol class="org-ol">
+<li><p>
+Edit the VPN configuration file:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">sudo nano /etc/NetworkManager/system-connections/ConnectionName
+</pre>
+</div></li>
+<li><p>
+Under the `[vpn]` section, update the `password-flags` to:
+</p>
+<pre class="example">
+password-flags=0
+</pre></li>
+<li><p>
+Add the following block below `[vpn]`:
+</p>
+<pre class="example">
+[vpn-secrets]
+password=YourPassword
+</pre></li>
+<li><p>
+If you changed `Xauth password-flags`, also add:
+</p>
+<pre class="example">
+Xauth password=YourPassword
+</pre></li>
+<li><p>
+Restart the Network Manager service:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">sudo systemctl restart NetworkManager.service
+</pre>
+</div></li>
+</ol></li>
+</ul></li>
+
+<li><b><b>Reference:</b></b>
+<ul class="org-ul">
+<li>[AskUbuntu: VPN Connection via Command Line](<a href="https://askubuntu.com/questions/57339/connect-disconnect-from-vpn-from-the-command-line">https://askubuntu.com/questions/57339/connect-disconnect-from-vpn-from-the-command-line</a>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sbilmis</p>
+<p class="date">Created: 2024-12-13 Fri 17:06</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

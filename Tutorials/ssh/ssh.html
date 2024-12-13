@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-13 Fri 17:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SSH Tutorial</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sbilmis" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">SSH Tutorial</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9bc905d">1. How to Log in to a Server via SSH Without Needing to Enter a Password</a>
+<ul>
+<li><a href="#org6d8a5c8">1.1. Step 1: Generate an SSH Key Pair on Your Local Machine</a></li>
+<li><a href="#orgdb0fe43">1.2. Step 2: Copy the Public Key to Your Server</a></li>
+<li><a href="#org63481c4">1.3. Step 3: Log In Without a Password</a></li>
+<li><a href="#org5228f88">1.4. Step 4: Troubleshooting</a></li>
+<li><a href="#orga234f22">1.5. Step 5: Using an SSH Agent for Managing Passphrases</a></li>
+<li><a href="#orgfce5095">1.6. Common SSH Commands</a></li>
+</ul>
+</li>
+<li><a href="#org4400090">2. Changing the SSH Key Password</a></li>
+<li><a href="#org5201da3">3. Using SSH Agent to Manage Passphrase</a></li>
+<li><a href="#org9d10e51">4. Automating SSH Key Setup for Multiple Servers Using sshpass</a></li>
+<li><a href="#org7fede71">5. Keeping SSH Sessions Alive</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org9bc905d" class="outline-2">
+<h2 id="org9bc905d"><span class="section-number-2">1.</span> How to Log in to a Server via SSH Without Needing to Enter a Password</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+To set up passwordless SSH login, follow these steps to generate an SSH key pair and configure your server to recognize it. This allows you to connect to your server without entering a password every time.
+</p>
+</div>
+
+<div id="outline-container-org6d8a5c8" class="outline-3">
+<h3 id="org6d8a5c8"><span class="section-number-3">1.1.</span> Step 1: Generate an SSH Key Pair on Your Local Machine</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Use the command <code>ssh-keygen -t rsa -b 4096</code> to generate a new SSH key pair.</li>
+<li>When prompted, choose the location to save the key. The default path is <code>~/.ssh/id_rsa</code>.</li>
+<li>You may opt to enter a passphrase to secure the key or leave it empty for simpler access.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdb0fe43" class="outline-3">
+<h3 id="orgdb0fe43"><span class="section-number-3">1.2.</span> Step 2: Copy the Public Key to Your Server</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>To enable passwordless login, copy your public key to the server using:
+<code>ssh-copy-id your_username@server_address</code></li>
+<li>Replace <code>your_username</code> with your server’s username and <code>server_address</code> with the server's IP or domain.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org63481c4" class="outline-3">
+<h3 id="org63481c4"><span class="section-number-3">1.3.</span> Step 3: Log In Without a Password</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>After setting up, log in to the server without a password using:
+<code>ssh your_username@server_address</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5228f88" class="outline-3">
+<h3 id="org5228f88"><span class="section-number-3">1.4.</span> Step 4: Troubleshooting</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li><b><b>Permissions</b></b>: Ensure that the <code>~/.ssh</code> directory has <code>700</code> permissions and <code>~/.ssh/authorized_keys</code> has <code>600</code> permissions on the server.</li>
+<li><b><b>Server Configuration</b></b>: Verify that <code>PubkeyAuthentication</code> is set to <code>yes</code> in the SSH configuration file on the server (<code>/etc/ssh/sshd_config</code>).</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga234f22" class="outline-3">
+<h3 id="orga234f22"><span class="section-number-3">1.5.</span> Step 5: Using an SSH Agent for Managing Passphrases</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>If your SSH key has a passphrase, you can use an SSH agent to avoid repeated passphrase entry.</li>
+<li><p>
+Start the SSH agent:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">     <span style="color: #006FE0;">eval</span> $(<span style="color: #FF1493;">ssh-agent -s</span>)
+     ssh-add ~/.ssh/id_rsa
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfce5095" class="outline-3">
+<h3 id="orgfce5095"><span class="section-number-3">1.6.</span> Common SSH Commands</h3>
+<div class="outline-text-3" id="text-1-6">
+<ul class="org-ul">
+<li><p>
+Here is a list of useful commands for managing SSH keys and connections:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Generate a new SSH key if it does not exist</span>
+     <span style="color: #006FE0;">cd</span> ~/.ssh
+     ssh-keygen -t rsa -b 4096 -C <span style="color: #008000;">"your_email@example.com"</span>
+
+     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Copy the public key to the server</span>
+     ssh-copy-id remote_username@server_ip_address
+     <span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">Once the user is authenticated, the public key will be appended to the remote user authorized_keys file and connection will be closed.</span>
+
+     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">If ssh-copy-id is unavailable, use this alternative method:</span>
+     cat ~/.ssh/id_rsa.pub | ssh remote_username@server_ip_address <span style="color: #008000;">"mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys &amp;&amp; chmod 600 ~/.ssh/authorized_keys"</span>
+</pre>
+</div></li>
+
+<li>Additional resources: <a href="https://linuxize.com/post/how-to-setup-passwordless-ssh-login">Passwordless SSH Login Guide</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4400090" class="outline-2">
+<h2 id="org4400090"><span class="section-number-2">2.</span> Changing the SSH Key Password</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+If you need to change the passphrase of your SSH key for added security or convenience, follow these steps to update it.
+</p>
+
+<ul class="org-ul">
+<li><p>
+To change the passphrase of your SSH key, use:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">     ssh-keygen -p -P oldpasswd -N newpassword -f ~/.ssh/id_rsa
+</pre>
+</div></li>
+<li><p>
+Alternatively, run interactively:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">     ssh-keygen -p -f ~/.ssh/id_rsa
+</pre>
+</div></li>
+<li>When prompted, choose a passphrase with at least four characters, which can include words, numbers, and punctuation for stronger security.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org5201da3" class="outline-2">
+<h2 id="org5201da3"><span class="section-number-2">3.</span> Using SSH Agent to Manage Passphrase</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+If you used a passphrase when creating your SSH key and want to avoid entering it every time, you can use an SSH agent to manage your keys.
+</p>
+
+<ul class="org-ul">
+<li><p>
+Start the SSH agent and add your key:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">     <span style="color: #006FE0;">eval</span> $(<span style="color: #FF1493;">ssh-agent -s</span>)
+     ssh-add ~/.ssh/id_rsa
+</pre>
+</div></li>
+<li>This enables secure, convenient server access without needing to enter the passphrase every time.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org9d10e51" class="outline-2">
+<h2 id="org9d10e51"><span class="section-number-2">4.</span> Automating SSH Key Setup for Multiple Servers Using sshpass</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+When deploying to multiple servers, `sshpass` can automate SSH key setup by bypassing the password entry process for each server.
+</p>
+
+<ul class="org-ul">
+<li><p>
+Use the following command:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">     sshpass -p <span style="color: #008000;">'your_password_here'</span> ssh-copy-id user@server
+</pre>
+</div></li>
+<li>Clear sensitive commands from history with <code>history -d "line_number"</code>.</li>
+<li><p>
+For more automation, use `expect` to script interactions:
+</p>
+<div class="org-src-container">
+<pre class="src src-expect">     #!/usr/bin/expect
+
+     set timeout 20
+     set password "your_password_here"
+     set server "server_address"
+     set user "your_username"
+
+     spawn ssh-copy-id $user@$server
+     expect "password:"
+     send "$password\r"
+     expect eof
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org7fede71" class="outline-2">
+<h2 id="org7fede71"><span class="section-number-2">5.</span> Keeping SSH Sessions Alive</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+If your SSH session disconnects after inactivity, you can configure keep-alive settings to maintain the connection.
+</p>
+
+<ul class="org-ul">
+<li><p>
+To apply keep-alive settings globally for all hosts:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Edit SSH config file (~/.ssh/config)</span>
+     chmod 600 ~/.ssh/config
+
+     Host remotehost
+         HostName remotehost.com
+         ServerAliveInterval 240
+
+     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">To apply keep-alive settings globally for all hosts, use:</span>
+     Host *
+         ServerAliveInterval 240
+</pre>
+</div></li>
+
+<li><a href="https://stackoverflow.com/questions/25084288/keep-ssh-session-alive">Further info on keeping SSH sessions alive</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sbilmis</p>
+<p class="date">Created: 2024-12-13 Fri 17:06</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
