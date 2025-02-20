@@ -3,301 +3,306 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-13 Fri 17:06 -->
+<!-- 2025-02-20 Thu 17:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sitemap</title>
-<meta name="generator" content="Org mode" />
+<title>Tech Notes &amp; How-tos</title>
 <meta name="author" content="sbilmis" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: auto;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline; margin-top: 14px;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .equation-container {
-    display: table;
-    text-align: center;
-    width: 100%;
-  }
-  .equation {
-    vertical-align: middle;
-  }
-  .equation-label {
-    display: table-cell;
-    text-align: right;
-    vertical-align: middle;
-  }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
-</style>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                     <link rel="stylesheet" type="text/css" href="org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                     <link rel="stylesheet" type="text/css" href="org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                     <link rel="stylesheet" type="text/css" href="org-html-themes/src/readtheorg_theme/css/search.css" />
+                     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                     <script type="text/javascript" src="org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                     <script type="text/javascript" src="org-html-themes/src/readtheorg_theme/js/search.js"></script>
 </head>
 <body>
-<div id="content">
-<h1 class="title">Sitemap</h1>
-<ul class="org-ul">
-<li>container
-<ul class="org-ul">
-<li><a href="container/docker.html">Docker Guide</a></li>
-</ul></li>
-<li>emacs
-<ul class="org-ul">
-<li><a href="emacs/emacs.html">Emacs Guide</a></li>
-<li><a href="emacs/org_mode.html">Org Mode Tips and Tricks</a></li>
-</ul></li>
-<li>firefox
-<ul class="org-ul">
-<li><a href="firefox/firefox.html">Firefox Tips and Tricks</a></li>
-</ul></li>
-<li>general
-<ul class="org-ul">
-<li><a href="general/general.html">Miscellaneous Tips and Tricks</a></li>
-<li><a href="general/apps_to_use.html">Recommended Apps and Software</a></li>
-<li><a href="general/fonts.html">Recommended Fonts</a></li>
-<li><a href="general/unison.html">Unison File Synchronization</a></li>
-</ul></li>
-<li>git
-<ul class="org-ul">
-<li><a href="git/git.html">Git Guide</a></li>
-</ul></li>
-<li>hugo
-<ul class="org-ul">
-<li><a href="hugo/hugo.html">Hugo Tips and Resources</a></li>
-</ul></li>
-<li>jupyter
-<ul class="org-ul">
-<li><a href="jupyter/jupyter.html">Jupyter Guide</a></li>
-</ul></li>
-<li>latex
-<ul class="org-ul">
-<li><a href="latex/latex.html">LaTeX Guide</a></li>
-</ul></li>
-<li>linux
-<ul class="org-ul">
-<li><a href="linux/cve_vulnerabilities.html">CVE Vulnerabilities                                                :centos:</a></li>
-<li><a href="linux/apps-Linux.html">Linux</a></li>
-</ul></li>
-<li>macos
-<ul class="org-ul">
-<li><a href="macos/macos.html">macOS Tips and Tricks</a></li>
-</ul></li>
-<li>mathematica
-<ul class="org-ul">
-<li><a href="mathematica/mathematica.html">Mathematica Guide</a></li>
-</ul></li>
-<li>matlab
-<ul class="org-ul">
-<li><a href="matlab/matlab.html">MATLAB Tips and Resources</a></li>
-</ul></li>
-<li>rclone
-<ul class="org-ul">
-<li><a href="rclone/rclone.html">rclone Guide</a></li>
-</ul></li>
-<li>rsync
-<ul class="org-ul">
-<li><a href="rsync/rsync.html">rsync Guide</a></li>
-</ul></li>
-<li>ssh
-<ul class="org-ul">
-<li><a href="ssh/ssh.html">SSH Tutorial</a></li>
-</ul></li>
-<li>tmux
-<ul class="org-ul">
-<li><a href="tmux/tmux.html">tmux Guide</a></li>
-</ul></li>
-<li>zotero
-<ul class="org-ul">
-<li><a href="zotero/zotero.html">Zotero Notes</a></li>
-</ul></li>
+<div id="content" class="content">
+<h1 class="title">Tech Notes &amp; How-tos</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orga686273">1. Container</a>
+<ul>
+<li><a href="#org20725c8">1.1. Docker Guide</a></li>
 </ul>
+</li>
+<li><a href="#org7c9ca8b">2. Devonthink</a>
+<ul>
+<li><a href="#org575122d">2.1. DEVONthink Overview and Notes</a></li>
+</ul>
+</li>
+<li><a href="#org99b13d6">3. Emacs</a>
+<ul>
+<li><a href="#orgfed7754">3.1. Emacs Guide</a></li>
+<li><a href="#org34544e2">3.2. Org Mode Tips and Tricks</a></li>
+</ul>
+</li>
+<li><a href="#org54e04c3">4. Firefox</a>
+<ul>
+<li><a href="#org3833d42">4.1. Firefox Tips and Tricks</a></li>
+</ul>
+</li>
+<li><a href="#org3a08106">5. General</a>
+<ul>
+<li><a href="#orgdcfc312">5.1. Miscellaneous Tips and Tricks</a></li>
+<li><a href="#orgb0335d0">5.2. Recommended Apps and Software</a></li>
+<li><a href="#org2ba0d32">5.3. Recommended Fonts</a></li>
+<li><a href="#org02c05ff">5.4. Unison File Synchronization</a></li>
+</ul>
+</li>
+<li><a href="#org06e312c">6. Git</a>
+<ul>
+<li><a href="#orgf2fc684">6.1. Git Guide</a></li>
+</ul>
+</li>
+<li><a href="#org892fa3c">7. Hpc</a>
+<ul>
+<li><a href="#orgdc69e0a">7.1. Linux and HPC Tutorials: A Practical Guide for Beginners</a></li>
+<li><a href="#orgf2eb833">7.2. Opensees<sub>installation</sub></a></li>
+</ul>
+</li>
+<li><a href="#org528a068">8. Hugo</a>
+<ul>
+<li><a href="#org0b9d9c6">8.1. Hugo Tips and Resources</a></li>
+</ul>
+</li>
+<li><a href="#org6258928">9. Jupyter</a>
+<ul>
+<li><a href="#orgf42f1f1">9.1. Jupyter Guide</a></li>
+</ul>
+</li>
+<li><a href="#orgcb4bad9">10. Latex</a>
+<ul>
+<li><a href="#org7a3d46b">10.1. LaTeX Guide</a></li>
+</ul>
+</li>
+<li><a href="#orgb48575a">11. Linux</a>
+<ul>
+<li><a href="#org2118ca8">11.1. CVE Vulnerabilities                                                :centos:</a></li>
+<li><a href="#org60617eb">11.2. Linux</a></li>
+</ul>
+</li>
+<li><a href="#orgdab610d">12. Macos</a>
+<ul>
+<li><a href="#orge106a73">12.1. MacOS Tips and Tricks</a></li>
+</ul>
+</li>
+<li><a href="#org2371880">13. Mathematica</a>
+<ul>
+<li><a href="#org1f9c2b4">13.1. Mathematica Guide</a></li>
+</ul>
+</li>
+<li><a href="#orgbf94dee">14. Matlab</a>
+<ul>
+<li><a href="#org0c96556">14.1. MATLAB Tips and Resources</a></li>
+</ul>
+</li>
+<li><a href="#org8f12a78">15. Rclone</a>
+<ul>
+<li><a href="#orga160724">15.1. Rclone Guide</a></li>
+</ul>
+</li>
+<li><a href="#orgfaad16d">16. Rsync</a>
+<ul>
+<li><a href="#orgcb7d74b">16.1. Rsync Guide</a></li>
+</ul>
+</li>
+<li><a href="#org7b2b6dd">17. Ssh</a>
+<ul>
+<li><a href="#org75c9e0b">17.1. SSH Tutorial</a></li>
+</ul>
+</li>
+<li><a href="#org2899dd9">18. Tmux</a>
+<ul>
+<li><a href="#org9a86aa3">18.1. Tmux Guide</a></li>
+</ul>
+</li>
+<li><a href="#orgd8840d9">19. Zotero</a>
+<ul>
+<li><a href="#org247fff2">19.1. Zotero Notes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga686273" class="outline-2">
+<h2 id="orga686273"><span class="section-number-2">1.</span> Container</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org20725c8" class="outline-3">
+<h3 id="org20725c8"><span class="section-number-3">1.1.</span> <a href="container/docker.html">Docker Guide</a></h3>
+</div>
+</div>
+<div id="outline-container-org7c9ca8b" class="outline-2">
+<h2 id="org7c9ca8b"><span class="section-number-2">2.</span> Devonthink</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org575122d" class="outline-3">
+<h3 id="org575122d"><span class="section-number-3">2.1.</span> <a href="devonthink/devonthink.html">DEVONthink Overview and Notes</a></h3>
+</div>
+</div>
+<div id="outline-container-org99b13d6" class="outline-2">
+<h2 id="org99b13d6"><span class="section-number-2">3.</span> Emacs</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgfed7754" class="outline-3">
+<h3 id="orgfed7754"><span class="section-number-3">3.1.</span> <a href="emacs/emacs.html">Emacs Guide</a></h3>
+</div>
+<div id="outline-container-org34544e2" class="outline-3">
+<h3 id="org34544e2"><span class="section-number-3">3.2.</span> <a href="emacs/org_mode.html">Org Mode Tips and Tricks</a></h3>
+</div>
+</div>
+<div id="outline-container-org54e04c3" class="outline-2">
+<h2 id="org54e04c3"><span class="section-number-2">4.</span> Firefox</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org3833d42" class="outline-3">
+<h3 id="org3833d42"><span class="section-number-3">4.1.</span> <a href="firefox/firefox.html">Firefox Tips and Tricks</a></h3>
+</div>
+</div>
+<div id="outline-container-org3a08106" class="outline-2">
+<h2 id="org3a08106"><span class="section-number-2">5.</span> General</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgdcfc312" class="outline-3">
+<h3 id="orgdcfc312"><span class="section-number-3">5.1.</span> <a href="general/general.html">Miscellaneous Tips and Tricks</a></h3>
+</div>
+<div id="outline-container-orgb0335d0" class="outline-3">
+<h3 id="orgb0335d0"><span class="section-number-3">5.2.</span> <a href="general/apps_to_use.html">Recommended Apps and Software</a></h3>
+</div>
+<div id="outline-container-org2ba0d32" class="outline-3">
+<h3 id="org2ba0d32"><span class="section-number-3">5.3.</span> <a href="general/fonts.html">Recommended Fonts</a></h3>
+</div>
+<div id="outline-container-org02c05ff" class="outline-3">
+<h3 id="org02c05ff"><span class="section-number-3">5.4.</span> <a href="general/unison.html">Unison File Synchronization</a></h3>
+</div>
+</div>
+<div id="outline-container-org06e312c" class="outline-2">
+<h2 id="org06e312c"><span class="section-number-2">6.</span> Git</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orgf2fc684" class="outline-3">
+<h3 id="orgf2fc684"><span class="section-number-3">6.1.</span> <a href="git/git.html">Git Guide</a></h3>
+</div>
+</div>
+<div id="outline-container-org892fa3c" class="outline-2">
+<h2 id="org892fa3c"><span class="section-number-2">7.</span> Hpc</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgdc69e0a" class="outline-3">
+<h3 id="orgdc69e0a"><span class="section-number-3">7.1.</span> <a href="hpc/hpc.html">Linux and HPC Tutorials: A Practical Guide for Beginners</a></h3>
+</div>
+<div id="outline-container-orgf2eb833" class="outline-3">
+<h3 id="orgf2eb833"><span class="section-number-3">7.2.</span> <a href="hpc/opensees_installation.html">Opensees<sub>installation</sub></a></h3>
+</div>
+</div>
+<div id="outline-container-org528a068" class="outline-2">
+<h2 id="org528a068"><span class="section-number-2">8.</span> Hugo</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org0b9d9c6" class="outline-3">
+<h3 id="org0b9d9c6"><span class="section-number-3">8.1.</span> <a href="hugo/hugo.html">Hugo Tips and Resources</a></h3>
+</div>
+</div>
+<div id="outline-container-org6258928" class="outline-2">
+<h2 id="org6258928"><span class="section-number-2">9.</span> Jupyter</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-orgf42f1f1" class="outline-3">
+<h3 id="orgf42f1f1"><span class="section-number-3">9.1.</span> <a href="jupyter/jupyter.html">Jupyter Guide</a></h3>
+</div>
+</div>
+<div id="outline-container-orgcb4bad9" class="outline-2">
+<h2 id="orgcb4bad9"><span class="section-number-2">10.</span> Latex</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org7a3d46b" class="outline-3">
+<h3 id="org7a3d46b"><span class="section-number-3">10.1.</span> <a href="latex/latex.html">LaTeX Guide</a></h3>
+</div>
+</div>
+<div id="outline-container-orgb48575a" class="outline-2">
+<h2 id="orgb48575a"><span class="section-number-2">11.</span> Linux</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-org2118ca8" class="outline-3">
+<h3 id="org2118ca8"><span class="section-number-3">11.1.</span> <a href="linux/cve_vulnerabilities.html">CVE Vulnerabilities                                                :centos:</a></h3>
+</div>
+<div id="outline-container-org60617eb" class="outline-3">
+<h3 id="org60617eb"><span class="section-number-3">11.2.</span> <a href="linux/apps-Linux.html">Linux</a></h3>
+</div>
+</div>
+<div id="outline-container-orgdab610d" class="outline-2">
+<h2 id="orgdab610d"><span class="section-number-2">12.</span> Macos</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-orge106a73" class="outline-3">
+<h3 id="orge106a73"><span class="section-number-3">12.1.</span> <a href="macos/macos.html">MacOS Tips and Tricks</a></h3>
+</div>
+</div>
+<div id="outline-container-org2371880" class="outline-2">
+<h2 id="org2371880"><span class="section-number-2">13.</span> Mathematica</h2>
+<div class="outline-text-2" id="text-13">
+</div>
+<div id="outline-container-org1f9c2b4" class="outline-3">
+<h3 id="org1f9c2b4"><span class="section-number-3">13.1.</span> <a href="mathematica/mathematica.html">Mathematica Guide</a></h3>
+</div>
+</div>
+<div id="outline-container-orgbf94dee" class="outline-2">
+<h2 id="orgbf94dee"><span class="section-number-2">14.</span> Matlab</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+<div id="outline-container-org0c96556" class="outline-3">
+<h3 id="org0c96556"><span class="section-number-3">14.1.</span> <a href="matlab/matlab.html">MATLAB Tips and Resources</a></h3>
+</div>
+</div>
+<div id="outline-container-org8f12a78" class="outline-2">
+<h2 id="org8f12a78"><span class="section-number-2">15.</span> Rclone</h2>
+<div class="outline-text-2" id="text-15">
+</div>
+<div id="outline-container-orga160724" class="outline-3">
+<h3 id="orga160724"><span class="section-number-3">15.1.</span> <a href="rclone/rclone.html">Rclone Guide</a></h3>
+</div>
+</div>
+<div id="outline-container-orgfaad16d" class="outline-2">
+<h2 id="orgfaad16d"><span class="section-number-2">16.</span> Rsync</h2>
+<div class="outline-text-2" id="text-16">
+</div>
+<div id="outline-container-orgcb7d74b" class="outline-3">
+<h3 id="orgcb7d74b"><span class="section-number-3">16.1.</span> <a href="rsync/rsync.html">Rsync Guide</a></h3>
+</div>
+</div>
+<div id="outline-container-org7b2b6dd" class="outline-2">
+<h2 id="org7b2b6dd"><span class="section-number-2">17.</span> Ssh</h2>
+<div class="outline-text-2" id="text-17">
+</div>
+<div id="outline-container-org75c9e0b" class="outline-3">
+<h3 id="org75c9e0b"><span class="section-number-3">17.1.</span> <a href="ssh/ssh.html">SSH Tutorial</a></h3>
+</div>
+</div>
+<div id="outline-container-org2899dd9" class="outline-2">
+<h2 id="org2899dd9"><span class="section-number-2">18.</span> Tmux</h2>
+<div class="outline-text-2" id="text-18">
+</div>
+<div id="outline-container-org9a86aa3" class="outline-3">
+<h3 id="org9a86aa3"><span class="section-number-3">18.1.</span> <a href="tmux/tmux.html">Tmux Guide</a></h3>
+</div>
+</div>
+<div id="outline-container-orgd8840d9" class="outline-2">
+<h2 id="orgd8840d9"><span class="section-number-2">19.</span> Zotero</h2>
+<div class="outline-text-2" id="text-19">
+</div>
+<div id="outline-container-org247fff2" class="outline-3">
+<h3 id="org247fff2"><span class="section-number-3">19.1.</span> <a href="zotero/zotero.html">Zotero Notes</a></h3>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2024-12-13 Fri 17:06</p>
+<p class="date">Created: 2025-02-20 Thu 17:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

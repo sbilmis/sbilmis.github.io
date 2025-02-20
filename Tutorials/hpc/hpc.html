@@ -1,0 +1,3463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-02-20 Thu 17:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Linux and HPC Tutorials: A Practical Guide for Beginners</title>
+<meta name="author" content="sbilmis" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/search.css" />
+                   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/search.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Linux and HPC Tutorials: A Practical Guide for Beginners</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgfb8eb15">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
+<ul>
+<li><a href="#org848f882">Introduction</a></li>
+<li><a href="#org39c3f44">Why Root Privileges Are Restricted</a></li>
+<li><a href="#orgd2d5234">Installing Software Locally</a>
+<ul>
+<li><a href="#org947eedb">Step 1: Prepare a Directory for Local Installations</a>
+<ul>
+<li><a href="#orgdb56ff9">What this command does:</a></li>
+<li><a href="#orgdf4073f">Viewing Hidden Files</a></li>
+</ul>
+</li>
+<li><a href="#orgf0a0444">Step 2: Modify the PATH Variable</a>
+<ul>
+<li><a href="#org574962b">What is the PATH Variable?</a></li>
+<li><a href="#org13bcee8">What is the LD<sub>LIBRARY</sub><sub>PATH</sub> Variable?</a></li>
+<li><a href="#orgd3afdfb">Why is This Important for Local Installations?</a>
+<ul>
+<li><a href="#orge2fc8c6">Example</a></li>
+</ul>
+</li>
+<li><a href="#org80c4346">Steps to Update the PATH Variable</a>
+<ul>
+<li><a href="#orge54428a">What this command does:**</a></li>
+<li><a href="#orgeeb6e5c">What this command does:**</a></li>
+</ul>
+</li>
+<li><a href="#org4564c25">Verifying the Changes</a></li>
+<li><a href="#orgc5ff20d">Understanding <code>.bashrc</code> and <code>.bash_profile</code></a></li>
+<li><a href="#orga8d039b">Example Scenario:</a></li>
+</ul>
+</li>
+<li><a href="#org90d1db8">Step 3: Understand the Basics of Building Software from Source</a>
+<ul>
+<li><a href="#orge02721b">Why Build Software from Source?</a></li>
+<li><a href="#org10e11db">The Three Steps in Detail:</a></li>
+<li><a href="#org4e92bbe">Summary of the Process:</a></li>
+<li><a href="#org63b459c">Additional Notes:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgaba9c67">Hands-on Session: Installing Software on HPC User Interface</a>
+<ul>
+<li><a href="#orgdb5b111">Installing <b>inxi</b> (binary)</a>
+<ul>
+<li><a href="#org2706cc5">What is <b>inxi</b> and Why is it Useful?</a></li>
+<li><a href="#org9aafccb">What is a Binary and Why Use It?</a></li>
+<li><a href="#org470afa0">Organizing Files and Folders for Local Installation</a></li>
+<li><a href="#org60b8c36">Steps to Install and Use <b>inxi</b></a></li>
+<li><a href="#org6f49ea2">Troubleshooting Common Issues</a></li>
+<li><a href="#orgfe5ed14">Removing <b>inxi</b></a></li>
+<li><a href="#org8b3d4d8">Recap</a></li>
+</ul>
+</li>
+<li><a href="#org45a348d">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
+<ul>
+<li><a href="#orgd9d03c2">What is <b>ncdu</b> and Why is it Useful?</a></li>
+<li><a href="#org256123f">Where Will <b>ncdu</b> Be Installed?</a></li>
+<li><a href="#org8d71c3f">Steps to Install <b>ncdu</b></a></li>
+<li><a href="#org48df790">Example Usage of <b>ncdu</b></a></li>
+<li><a href="#org817a36c">Troubleshooting Compilation Issues</a></li>
+<li><a href="#orgc9ff0ac">How to remove <b>ncdu</b></a></li>
+</ul>
+</li>
+<li><a href="#org46f0095">Installing <b>Octave</b> in HPC Environment</a>
+<ul>
+<li><a href="#orgcbb6bc7">What is Octave and Why Use It?</a></li>
+<li><a href="#orgf379e79">Steps to Install Octave</a>
+<ul>
+<li><a href="#org7fb64e5">1. Load Necessary Modules</a></li>
+<li><a href="#org1f6edfe">2. Download the Source Code</a></li>
+<li><a href="#org2ebb80a">3. Configure the Build</a></li>
+<li><a href="#org83a92d8">4. Build and Install</a></li>
+<li><a href="#org1ebea3b">5. Verify the Installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org501c261">Installing <b>MadGraph</b> (with HPC Modules for Dependencies)</a>
+<ul>
+<li><a href="#orgfe4df6a">What is <b>MadGraph</b> and Why is it Useful?</a></li>
+<li><a href="#org88198e1">What are HPC Modules?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org378732a">Hands-on Session: Installing Software on HPC User Interface</a>
+<ul>
+<li><a href="#org250239f">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
+<ul>
+<li><a href="#org536dcc7">What is <b>ncdu</b> and Why is it Useful?</a></li>
+<li><a href="#org0aaf5f4">Steps to Install <b>ncdu</b></a></li>
+</ul>
+</li>
+<li><a href="#org9048bce">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
+<ul>
+<li><a href="#orgc67f629">What is <b>ncdu</b> and Why is it Useful?</a></li>
+<li><a href="#org8bf16c0">Example Use Case:</a></li>
+</ul>
+</li>
+<li><a href="#orga39070d">Installing `ncdu` (with `configure`, `make`, and `make install`)</a></li>
+<li><a href="#org3b4b809">Example with HPC Modules: Installing Software Dependencies</a></li>
+</ul>
+</li>
+<li><a href="#org2e80f32">Useful Tools: `tldr` and `cheat`</a></li>
+<li><a href="#orgc546f7f">Removing Locally Installed Applications</a></li>
+<li><a href="#orgc0bb542">Troubleshooting Tips</a></li>
+<li><a href="#org850a343">Conclusion</a>
+<ul>
+<li>
+<ul>
+<li><a href="#org725ae18">Steps to Install <b>MadGraph</b></a>
+<ul>
+<li><a href="#orgd366f1a">Additional Requirements for <b>MadGraph</b>: Handling Dependencies Like `six`</a>
+<ul>
+<li><a href="#org96d36df">1. Handling the `six` Module Dependency**</a></li>
+</ul>
+</li>
+<li><a href="#org4eed82f">Updated Steps for Running <b>MadGraph</b></a></li>
+<li><a href="#orgc9d624d">How to Remove <b>MadGraph</b></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgff7f4f7">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
+<ul>
+<li><a href="#orga5b5f59">Introduction</a></li>
+<li><a href="#orgcaed0b9">Why Root Privileges Are Restricted</a></li>
+<li><a href="#orgf61dbca">Installing Software Locally</a></li>
+<li><a href="#orge1677c8">Example 1: Installing Inxi (Binary Package)</a>
+<ul>
+<li><a href="#org3c4b83c">What is Inxi?</a></li>
+<li><a href="#org9f6f35a">Installation Steps</a></li>
+</ul>
+</li>
+<li><a href="#org028aac8">Example 2: Installing ncdu (Source Compilation)</a>
+<ul>
+<li><a href="#orgabf05ac">What is ncdu?</a></li>
+<li><a href="#org0db6e15">Installation Steps</a></li>
+</ul>
+</li>
+<li><a href="#org2fcbfc8">Example 3: Installing mc (Midnight Commander)</a>
+<ul>
+<li><a href="#orgea5fb0e">What is Midnight Commander (mc)?</a></li>
+<li><a href="#org7bf602a">Installation Steps</a></li>
+</ul>
+</li>
+<li><a href="#org86b67b5">Using Modules in an HPC Environment</a>
+<ul>
+<li><a href="#orge00b523">Example: Loading a Module and Installing Software</a></li>
+</ul>
+</li>
+<li><a href="#org1fba9ff">Understanding TLDR and Cheat Commands</a></li>
+<li><a href="#orge8fa099">Unzipping and Untarring Software Archives</a></li>
+<li><a href="#orgca1f3e7">Removing Locally Installed Applications</a></li>
+<li><a href="#org4caf815">Troubleshooting Tips</a></li>
+<li><a href="#org6204b22">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="#orge18ea23">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
+<ul>
+<li><a href="#orgeaebe04">Introduction</a></li>
+<li><a href="#org44952d0">Why Root Privileges Are Restricted</a></li>
+<li><a href="#orgdc7d588">Installing Software Locally</a></li>
+<li><a href="#orgc8ec1a9">Example: Installing Inxi from Source</a></li>
+<li><a href="#orgf035f87">Additional Examples: mc and ncdu</a>
+<ul>
+<li><a href="#org5024d76">Midnight Commander (mc)</a></li>
+<li><a href="#org475eb23">ncdu</a></li>
+</ul>
+</li>
+<li><a href="#org0266009">Troubleshooting Tips</a></li>
+<li><a href="#org74da3d8">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="#orgd92092a">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
+<ul>
+<li><a href="#org9e1765e">Introduction</a></li>
+<li><a href="#orgb30abb4">Why Root Privileges Are Restricted</a></li>
+<li><a href="#org96baa51">Installing Software Locally</a></li>
+<li><a href="#orgb5f563f">Example: Installing Inxi from Source</a></li>
+<li><a href="#org7c26485">Troubleshooting Tips</a></li>
+<li><a href="#org08046bd">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfb8eb15" class="outline-2">
+<h2 id="orgfb8eb15">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
+<div class="outline-text-2" id="text-orgfb8eb15">
+</div>
+<div id="outline-container-org848f882" class="outline-3">
+<h3 id="org848f882">Introduction</h3>
+<div class="outline-text-3" id="text-org848f882">
+<p>
+In most HPC systems, users do not have <b>root</b> privileges. This tutorial focuses on installing software <b>locally</b> in your <b>home</b> directory <b>without root access</b>.
+</p>
+
+<p>
+While the examples are based on Rocky Linux, a popular distribution in HPC environments, the steps outlined here will work on most Linux distributions with little or no modification.
+</p>
+
+<div class="note" id="org7e3cfc4">
+<p>
+It's important to note that commands requiring root privileges, such as <code>yum install</code>, <code>dnf install</code>, or <code>sudo apt-get install</code>, are not available to regular users on HPC systems. When consulting software documentation, focus on sections describing how to install from source or methods for user-level installation, as these do not require administrative access.
+</p>
+
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org39c3f44" class="outline-3">
+<h3 id="org39c3f44">Why Root Privileges Are Restricted</h3>
+<div class="outline-text-3" id="text-org39c3f44">
+<ul class="org-ul">
+<li>HPC systems are <b>shared environments with multiple users</b> running jobs simultaneously.</li>
+<li>Restricting root access ensures <b>stability, security, and integrity</b> of the shared system.</li>
+<li>Users are encouraged to install their software locally <b>to avoid affecting global configurations</b>.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgd2d5234" class="outline-3">
+<h3 id="orgd2d5234">Installing Software Locally</h3>
+<div class="outline-text-3" id="text-orgd2d5234">
+</div>
+<div id="outline-container-org947eedb" class="outline-4">
+<h4 id="org947eedb">Step 1: Prepare a Directory for Local Installations</h4>
+<div class="outline-text-4" id="text-org947eedb">
+<p>
+To install software locally, you first need a place to store the files. The `~/.local` directory is commonly used because it follows standard Linux conventions and helps keep your files organized.
+</p>
+
+<p>
+The command below creates two directories:
+</p>
+<ul class="org-ul">
+<li>`~/.local/bin`: This is where you will store executable files (programs you can run directly from the terminal).</li>
+<li>`~/.local/src`: This is where you will store the source code for the software you are installing.</li>
+</ul>
+
+<p>
+Here is the command to create these directories:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">mkdir -p ~/.local/bin ~/.local/src
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgdb56ff9" class="outline-5">
+<h5 id="orgdb56ff9">What this command does:</h5>
+<div class="outline-text-5" id="text-orgdb56ff9">
+<ul class="org-ul">
+<li>`mkdir`: Stands for <b><b>make directory</b></b>. It is used to create new directories in your file system.</li>
+<li>`-p`: Ensures that the command creates the entire directory structure, even if some parts (like `~/.local`) don’t exist yet. If the directories already exist, it won’t cause an error.</li>
+<li>`~/.local/bin` and `~/.local/src`: These are the directories being created. The `~` symbol refers to your home directory, so `~/.local` is a hidden folder inside your home directory.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdf4073f" class="outline-5">
+<h5 id="orgdf4073f">Viewing Hidden Files</h5>
+<div class="outline-text-5" id="text-orgdf4073f">
+<p>
+The `~/.local` directory is hidden by default because it starts with a `.` (dot). Hidden files and directories do not appear in the output of the regular `ls` command. To view them, use the `-a` option with `ls`:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ls -a
+</pre>
+</div>
+
+<p>
+This command will list all files and directories, including hidden ones, in the current directory. You can use it to confirm that `~/.local` and its subdirectories have been created successfully.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf0a0444" class="outline-4">
+<h4 id="orgf0a0444">Step 2: Modify the PATH Variable</h4>
+<div class="outline-text-4" id="text-orgf0a0444">
+<p>
+The system needs to know where to find the software you install locally. This is achieved by updating the <b>`PATH`</b> variable, which tells your shell where to look for executable files.
+</p>
+</div>
+
+<div id="outline-container-org574962b" class="outline-5">
+<h5 id="org574962b">What is the PATH Variable?</h5>
+<div class="outline-text-5" id="text-org574962b">
+<ul class="org-ul">
+<li>The `PATH` variable is an environment variable in Linux that contains a list of directories. These directories are searched, in order, whenever you type a command in the terminal.</li>
+<li>For example, when you type <code>ls</code>, the system looks in the directories listed in `PATH` to find the <code>ls</code> program.</li>
+</ul>
+
+<p>
+By adding <code>$HOME/.local/bin</code> to the `PATH`, you allow the shell to find and execute programs stored in your local <code>bin</code> directory.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org13bcee8" class="outline-5">
+<h5 id="org13bcee8">What is the LD<sub>LIBRARY</sub><sub>PATH</sub> Variable?</h5>
+<div class="outline-text-5" id="text-org13bcee8">
+<p>
+Shared libraries are files with the `.so` (shared object) extension that contain code and functions used by multiple programs. Instead of including this code directly in each program, shared libraries allow programs to "share" the same code, which saves memory and simplifies updates.
+</p>
+
+<p>
+For example, many programs rely on common libraries like `libc` (C standard library). Rather than embedding `libc` in every program, the system provides it as a shared library that all programs can access.
+</p>
+
+<p>
+The <code>LD_LIBRARY_PATH</code> variable tells the system where to look for these shared libraries when a program is executed. If the system cannot find the required libraries in the standard locations (like `/usr/lib` or `/lib`), it will search in the directories listed in <code>LD_LIBRARY_PATH</code>.
+</p>
+
+<p>
+By adding `~/.local/lib` to <code>LD_LIBRARY_PATH</code>, you ensure that any shared libraries installed locally in your home directory can be found and used by your programs.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd3afdfb" class="outline-5">
+<h5 id="orgd3afdfb">Why is This Important for Local Installations?</h5>
+<div class="outline-text-5" id="text-orgd3afdfb">
+<p>
+When you install software locally, it may come with its own shared libraries stored in `~/.local/lib`. If these libraries are not in a directory that the system searches by default, the program may fail to run, displaying errors like:
+</p>
+<pre class="example">
+error while loading shared libraries: libexample.so: cannot open shared object file: No such file or directory
+</pre>
+
+<p>
+Setting <code>LD_LIBRARY_PATH</code> to include `~/.local/lib` resolves this issue by explicitly telling the system to search for shared libraries in your local directory.
+</p>
+</div>
+
+<div id="outline-container-orge2fc8c6" class="outline-6">
+<h6 id="orge2fc8c6">Example</h6>
+<div class="outline-text-6" id="text-orge2fc8c6">
+<p>
+Suppose you install a program `myprogram` that depends on a shared library `libexample.so` located in `~/.local/lib`. Without setting <code>LD_LIBRARY_PATH</code>, running `myprogram` might result in an error. After adding the following line to your shell configuration file:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+</pre>
+</div>
+
+<p>
+And reloading it with:
+</p>
+<pre class="example">
+source ~/.bashrc
+</pre>
+
+<p>
+The system will now find libexample.so in ~/.local/lib, allowing myprogram to run successfully.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org80c4346" class="outline-5">
+<h5 id="org80c4346">Steps to Update the PATH Variable</h5>
+<div class="outline-text-5" id="text-org80c4346">
+<ol class="org-ol">
+<li><p>
+Open your shell configuration file:
+</p>
+<ul class="org-ul">
+<li><b><b>For Bash users:</b></b> Open <code>.bashrc</code>  in a text editor.</li>
+<li><b><b>For Zsh users:</b></b> Open <code>.zshrc</code>.</li>
+<li><b><b>Optional:</b></b> Some systems also use <code>.bash_profile</code>. If it exists, changes to <code>.bashrc</code> might not take effect unless explicitly sourced from <code>.bash_profile</code>. To ensure changes apply, you can include the following in your <code>.bash_profile</code>:</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-bash">if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+</pre>
+</div></li>
+
+<li><p>
+Add the following lines to the configuration file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">export PATH=$HOME/.local/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+</pre>
+</div></li>
+</ol>
+</div>
+
+<div id="outline-container-orge54428a" class="outline-6">
+<h6 id="orge54428a">What this command does:**</h6>
+<div class="outline-text-6" id="text-orge54428a">
+<ul class="org-ul">
+<li><code>export</code>: Marks a variable to be available to child processes started from the terminal.</li>
+<li><code>PATH=$HOME/.local/bin:$PATH</code>: Prepends <code>.local/bin</code> to the current <code>PATH</code>. This ensures your locally installed executables are prioritized over system-wide ones if they have the same name.</li>
+<li><code>LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH</code>: Prepends <code>.local/lib</code> to the current library search path.</li>
+</ul>
+<ol class="org-ol">
+<li><p>
+Reload your shell configuration:
+After saving your changes to <code>.bashrc</code> (or <code>.zshrc</code>), apply them to the current shell session by running:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">source ~/.bashrc
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgeeb6e5c" class="outline-6">
+<h6 id="orgeeb6e5c">What this command does:**</h6>
+<div class="outline-text-6" id="text-orgeeb6e5c">
+<ul class="org-ul">
+<li>The <code>source</code> command reads and executes the contents of the file (<code>.bashrc</code> in this case) in the current shell session. This ensures the changes take effect without needing to log out and back in.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4564c25" class="outline-5">
+<h5 id="org4564c25">Verifying the Changes</h5>
+<div class="outline-text-5" id="text-org4564c25">
+<p>
+You can check if the <code>PATH</code> and <code>LD_LIBRARY_PATH</code> variables were updated successfully by running:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">echo $PATH
+echo $LD_LIBRARY_PATH
+</pre>
+</div>
+
+<p>
+These commands will display the values of the respective environment variables. Look for <code>$HOME/.local/bin</code> in <code>PATH</code> and <code>$HOME/.local/lib</code> in <code>LD_LIBRARY_PATH</code>.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgc5ff20d" class="outline-5">
+<h5 id="orgc5ff20d">Understanding <code>.bashrc</code> and <code>.bash_profile</code></h5>
+<div class="outline-text-5" id="text-orgc5ff20d">
+<p>
+When configuring your shell environment, it’s important to understand the roles of `~/.bashrc` and `~/.bash<sub>profile</sub>`. These files are executed by Bash under different circumstances.
+</p>
+
+<ol class="org-ol">
+<li><p>
+<b><b><code>.bashrc</code>: For Non-Login Interactive Shells</b></b>
+</p>
+<ul class="org-ul">
+<li>The `~/.bashrc` file is executed whenever you open a <b>non-login shell*</b>. A <b><b>non-login shell</b></b> is a terminal session that you start without logging in, such as when you open a new terminal window in a graphical desktop environment.</li>
+<li>This is the file where you usually define environment variables (like `PATH`) and shell aliases because it applies to most terminal sessions.</li>
+</ul>
+
+<p>
+<b><b>Example:</b></b> When you open a terminal from your desktop environment (e.g., GNOME Terminal or Konsole), Bash reads `~/.bashrc` to set up your shell.
+</p></li>
+
+<li><p>
+<b><b><code>.bash_profile</code>: For Login Shells</b></b>
+</p>
+<ul class="org-ul">
+<li>The `~/.bash<sub>profile</sub>` file is executed when you log in to a shell session. A <b><b>login shell</b></b> is a terminal session where you log in, such as when you connect to a remote server via SSH or log in from a text console (e.g., Ctrl+Alt+F2).</li>
+<li>On many systems, `~/.bash<sub>profile</sub>` is used to configure environment variables for login sessions and to ensure that `~/.bashrc` is also sourced.</li>
+</ul>
+
+<p>
+<b><b>Example:</b></b> When you SSH into a remote server, Bash reads `~/.bash<sub>profile</sub>` during the login process to configure your environment.
+</p></li>
+
+<li><p>
+<b><b>How They Work Together</b></b>
+</p>
+<ul class="org-ul">
+<li>On many systems, `~/.bash<sub>profile</sub>` is set up to <b><b>source</b></b> (include) `~/.bashrc`. This ensures that any settings defined in `~/.bashrc` are applied to both login and non-login shells.</li>
+<li>If your `~/.bash<sub>profile</sub>` does not source `~/.bashrc`, changes made to `~/.bashrc` (like updating `PATH`) may not apply to login shells.</li>
+</ul>
+
+<p>
+To source `~/.bashrc` from `~/.bash<sub>profile</sub>`, include the following line in `~/.bash<sub>profile</sub>`:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">## add this line into your !/.bash_profile
+   if [ -f ~/.bashrc ]; then
+       source ~/.bashrc
+   fi
+</pre>
+</div></li>
+
+<li><b><b>Troubleshooting:</b></b> Changes in .bashrc Aren’t Taking Effect
+
+<ul class="org-ul">
+<li>If you’ve updated ~/.bashrc and don’t see the changes in your terminal, the issue might be that ~/.bash<sub>profile</sub> is not sourcing ~/.bashrc.</li>
+<li>Add the line above to ~/.bash<sub>profile</sub>, save the file, and restart your terminal or SSH session to apply the changes.</li>
+</ul></li>
+
+<li><b><b>Summary</b></b>
+<ul class="org-ul">
+<li>Use ~/.bashrc for most environment variable changes and customizations since it is executed for non-login shells (the most common terminal type).</li>
+<li>Ensure that ~/.bash<sub>profile</sub> sources ~/.bashrc so your settings work consistently across both login and non-login shells.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orga8d039b" class="outline-5">
+<h5 id="orga8d039b">Example Scenario:</h5>
+<div class="outline-text-5" id="text-orga8d039b">
+<ol class="org-ol">
+<li><p>
+You add this line to <b><code>/.bashrc</code></b> to update your <b>PATH</b>:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">export PATH=$HOME/.local/bin:$PATH
+</pre>
+</div></li>
+<li><p>
+If your <b><code>/.bash_profile</code></b> does not source <b><code>/.bashrc</code></b>, this change will not apply when you SSH into a remote server. Adding the following line to <b><code>/.bash_profile</code></b> fixes this:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+</pre>
+</div></li>
+<li>Now, the <b>PATH</b> variable will be updated in all shell sessions, whether login or non-login.</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org90d1db8" class="outline-4">
+<h4 id="org90d1db8">Step 3: Understand the Basics of Building Software from Source</h4>
+<div class="outline-text-4" id="text-org90d1db8">
+<p>
+When installing software from source, the process typically follows three key steps: <b>`configure`</b>, <b>`make`</b>, and <b>`make install`</b>. These steps are designed to prepare, compile, and install the software on your system.
+</p>
+</div>
+
+<div id="outline-container-orge02721b" class="outline-5">
+<h5 id="orge02721b">Why Build Software from Source?</h5>
+<div class="outline-text-5" id="text-orge02721b">
+<ul class="org-ul">
+<li><b><b>Flexibility:</b></b> You can customize the installation to suit your specific needs. For example:
+<ul class="org-ul">
+<li><p>
+Imagine you are installing a program that supports optional features like GUI tools or database support. When building from source, you can enable or disable these features using options in the `configure` step. For instance:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">./configure --prefix=$HOME/.local --enable-gui --disable-database
+</pre>
+</div>
+<p>
+This command installs the program with GUI support but without database functionality, tailored to your requirements.
+</p></li>
+<li>Such customizations are often not possible with pre-built binaries, which are typically compiled with default settings.</li>
+</ul></li>
+
+<li><b><b>Portability:</b></b> Source code can be compiled and adapted to work on different systems, as long as the necessary tools (like compilers) and dependencies are present. Unlike pre-built binaries, which are often specific to a particular operating system or hardware architecture, source code is more flexible. For example:
+<ul class="org-ul">
+<li>A binary compiled for <b><b>Ubuntu</b></b> may not work on <b><b>CentOS</b></b> due to differences in system libraries or architecture.</li>
+<li>However, source code can be compiled on both systems to produce binaries that work natively.</li>
+</ul></li>
+
+<li><b><b>Control:</b></b> You can install software in a <b>specific directory</b>, such as `~/.local`, without requiring root privileges.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org10e11db" class="outline-5">
+<h5 id="org10e11db">The Three Steps in Detail:</h5>
+<div class="outline-text-5" id="text-org10e11db">
+<ol class="org-ol">
+<li><b><b>`configure`: Preparing the Build</b></b>
+<ul class="org-ul">
+<li>The `configure` script sets up the software for compilation. It checks your system to ensure all required dependencies and libraries are available.</li>
+<li>It also allows you to customize the build by using options like `&#x2013;prefix` to specify the installation directory.</li>
+<li><p>
+Example:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">./configure --prefix=$HOME/.local
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><b><b>What happens during `configure`:</b></b></li>
+<li>The script checks for compilers (e.g., `gcc`), libraries, and other tools required to build the software.</li>
+<li>It generates configuration files and Makefiles that tell the `make` command how to build the software.</li>
+</ul></li>
+<li><b><b>Common issues during `configure`:</b></b>
+<ul class="org-ul">
+<li>Missing dependencies: The script may fail if required libraries are not installed. Use tools like <b>`module load`</b> (on HPC systems) or install missing dependencies locally. We will have an example for this below.</li>
+</ul></li>
+</ul></li>
+</ol>
+<div class="note" id="org5e06b8f">
+<p>
+It is important to read the output of the code for missing dependencies and errors.
+</p>
+
+</div>
+
+<ol class="org-ol">
+<li><b><b>`make`: Compiling the Source Code</b></b>
+<ul class="org-ul">
+<li>The `make` command uses the Makefile generated by `configure` to compile the source code into binary executables.</li>
+<li><p>
+Example:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">make
+</pre>
+</div></li>
+
+<li><b><b>What happens during `make`:</b></b>
+<ul class="org-ul">
+<li>The source code files (usually written in C, C++, etc.) are translated into machine code by a compiler.</li>
+<li>This step may <b>take time depending on the size of the software</b> and your system’s performance.</li>
+</ul></li>
+
+<li><b><b>Common issues during `make`:</b></b>
+<ul class="org-ul">
+<li>Compiler errors: These can happen if the source code is not compatible with your system or if dependencies are missing.</li>
+</ul></li>
+</ul></li>
+
+<li><b><b>`make install`: Installing the Compiled Software</b></b>
+<ul class="org-ul">
+<li>The `make install` command copies the compiled binaries, libraries, and other files to the specified installation directory (e.g., `~/.local/bin`).</li>
+<li><p>
+Example:
+</p>
+<pre class="example">
+make install
+</pre></li>
+
+<li><b><b>What happens during `make install`:</b></b>
+<ul class="org-ul">
+<li>Binaries are copied to `~/.local/bin` (or the directory specified with `&#x2013;prefix` during `configure`).</li>
+<li>Shared libraries and other resources are placed in the appropriate locations, such as `~/.local/lib`.</li>
+</ul></li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org4e92bbe" class="outline-5">
+<h5 id="org4e92bbe">Summary of the Process:</h5>
+<div class="outline-text-5" id="text-org4e92bbe">
+<ol class="org-ol">
+<li><b><b>`configure`:</b></b> Prepares the source code for your system and customizes the installation.</li>
+<li><b><b>`make`:</b></b> Builds the software by compiling the source code.</li>
+<li><b><b>`make install`:</b></b> Installs the built software in the target directory.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org63b459c" class="outline-5">
+<h5 id="org63b459c">Additional Notes:</h5>
+<div class="outline-text-5" id="text-org63b459c">
+<ul class="org-ul">
+<li><b><b>Customizing the Installation:</b></b>
+<ul class="org-ul">
+<li>Use <b>`./configure &#x2013;help`</b> to see all available options. For example, you can disable optional features or specify non-default library paths.</li>
+</ul></li>
+
+<li><b><b>Verifying the Installation:</b></b>
+<ul class="org-ul">
+<li><p>
+After running <b>`make install`</b>, check that the program is accessible by running:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">$HOME/.local/bin/&lt;program-name&gt; --version
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Cleaning Up:</b></b>
+<ul class="org-ul">
+<li><p>
+To remove compiled files and start fresh, use:
+</p>
+<pre class="example">
+make clean
+</pre></li>
+</ul></li>
+</ul>
+
+<p>
+By understanding these steps, you’ll be able to install a wide variety of software from source, even on systems where you don’t have root access.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgaba9c67" class="outline-3">
+<h3 id="orgaba9c67">Hands-on Session: Installing Software on HPC User Interface</h3>
+<div class="outline-text-3" id="text-orgaba9c67">
+</div>
+<div id="outline-container-orgdb5b111" class="outline-4">
+<h4 id="orgdb5b111">Installing <b>inxi</b> (binary)</h4>
+<div class="outline-text-4" id="text-orgdb5b111">
+</div>
+<div id="outline-container-org2706cc5" class="outline-5">
+<h5 id="org2706cc5">What is <b>inxi</b> and Why is it Useful?</h5>
+<div class="outline-text-5" id="text-org2706cc5">
+<p>
+<b>inxi</b> is a versatile and powerful command-line system information tool. It provides detailed hardware, system, and software diagnostics, making it a valuable tool for users and administrators in environments like HPC.
+</p>
+
+<p>
+<b>Features:</b>
+</p>
+<ul class="org-ul">
+<li>Displays details about CPUs, GPUs, memory, storage devices, and more.</li>
+<li>Helps troubleshoot hardware or software issues.</li>
+<li>Provides quick system overviews (`inxi -F`) and in-depth diagnostics (`inxi -v 7`).</li>
+</ul>
+
+<p>
+By default, <b>inxi</b> is not pre-installed on most HPC systems. If you try to run it without installation, you’ll encounter an error like:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">-bash: inxi: command not found
+</pre>
+</div>
+
+<p>
+On systems without root privileges (e.g., HPC environments), you need to install <b>inxi</b> locally in your home directory.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9aafccb" class="outline-5">
+<h5 id="org9aafccb">What is a Binary and Why Use It?</h5>
+<div class="outline-text-5" id="text-org9aafccb">
+<p>
+A <b><b>binary</b></b> is a pre-compiled executable file that is ready to run without needing compilation. Unlike source code, which requires tools like `gcc` to convert it into an executable, binaries are already prepared for execution.
+</p>
+
+<p>
+<b>Advantages of Binaries:</b>
+</p>
+<ul class="org-ul">
+<li><b><b>No Compilation Needed</b></b>: Binaries eliminate the need for building software, saving time and avoiding dependency issues.</li>
+<li><b><b>Portability</b></b>: A binary works as long as it matches your operating system and architecture (e.g., Linux x86<sub>64</sub>).</li>
+<li><b><b>Ease of Installation</b></b>: Just download, place it in your `bin` directory, and make it executable.</li>
+</ul>
+
+<p>
+<b>For *inxi</b>, this means you can download the script, copy it to your `~/.local/bin` directory, and run it directly without worrying about dependencies or compilation.*
+</p>
+</div>
+</div>
+
+<div id="outline-container-org470afa0" class="outline-5">
+<h5 id="org470afa0">Organizing Files and Folders for Local Installation</h5>
+<div class="outline-text-5" id="text-org470afa0">
+<p>
+To maintain a clean and organized environment, use the following folder structure for installing and managing locally installed software:
+</p>
+<ul class="org-ul">
+<li><b><b>`~/.local/bin`</b></b>: Store executables (binaries/scripts).</li>
+<li><b><b>`~/.local/src`</b></b>: Store source files and archives (e.g., `.zip`, `.tar.gz`).</li>
+<li><b><b>`~/.local/lib`</b></b>: Store libraries if needed for more complex installations.</li>
+</ul>
+
+<p>
+Ensure that `~/.local/bin` is in your `PATH` variable so that the system can locate and run your binaries:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">export PATH=$HOME/.local/bin:$PATH
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org60b8c36" class="outline-5">
+<h5 id="org60b8c36">Steps to Install and Use <b>inxi</b></h5>
+<div class="outline-text-5" id="text-org60b8c36">
+<p>
+Follow these steps to install <b>inxi</b> as a binary.
+</p>
+
+<ol class="org-ol">
+<li><p>
+<b><b>Download the Script</b></b>
+Navigate to your local `src` directory and download the <b>inxi</b> archive:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">mkdir -p ~/.local/src
+cd ~/.local/src
+wget -O inxi.zip https://github.com/smxi/inxi/archive/master.zip
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li>`mkdir -p ~/.local/src`: Ensures that the `src` directory exists.</li>
+<li>`wget -O inxi.zip`: Downloads the pre-compiled <b>inxi</b> script and saves it as `inxi.zip`.</li>
+</ul></li>
+
+<li><p>
+<b><b>Extract and Install</b></b>
+Unzip the downloaded file, navigate to the extracted folder, and install the script:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">unzip inxi.zip
+cd inxi-master
+cp inxi $HOME/.local/bin/
+chmod +x $HOME/.local/bin/inxi
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li>`unzip inxi.zip`: Extracts the downloaded archive.</li>
+<li>`cp inxi $HOME/.local/bin/`: Copies the <b>inxi</b> script to your local `bin` directory.</li>
+<li>`chmod +x $HOME/.local/bin/inxi`: Makes the script executable so it can be run as a command.</li>
+</ul></li>
+
+<li><p>
+<b><b>Verify the Installation</b></b>
+Check if <b>inxi</b> is installed by verifying its version:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">inxi --version
+</pre>
+</div>
+
+<p>
+If this command returns the <b>inxi</b> version, the installation was successful. Otherwise, ensure `~/.local/bin` is included in your `PATH`:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">echo $PATH
+</pre>
+</div></li>
+
+<li><b><b>Using <b>inxi</b></b></b>
+Once installed, you can use <b>inxi</b> to gather system information:
+<ul class="org-ul">
+<li><p>
+Quick overview of the system:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">inxi -F
+</pre>
+</div></li>
+
+<li><p>
+Detailed hardware diagnostics:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">inxi -v 7
+</pre>
+</div></li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+
+
+<div id="outline-container-org6f49ea2" class="outline-5">
+<h5 id="org6f49ea2">Troubleshooting Common Issues</h5>
+<div class="outline-text-5" id="text-org6f49ea2">
+<ol class="org-ol">
+<li><b><b>Error: Command `inxi` not found</b></b>
+<ul class="org-ul">
+<li><b>Cause</b>: The system cannot locate the `inxi` script because `~/.local/bin` is not in your `PATH`.</li>
+<li><p>
+<b>Solution</b>: Add `~/.local/bin` to your `PATH`:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">export PATH=$HOME/.local/bin:$PATH
+</pre>
+</div></li>
+
+<li>Make it permanent by adding the line above to your `~/.bashrc` or `~/.zshrc`.</li>
+</ul></li>
+
+<li><b><b>Permission Denied When Running the Script</b></b>
+<ul class="org-ul">
+<li><b>Cause</b>: The script is not executable.</li>
+<li><p>
+<b>Solution</b>: Ensure the script has executable permissions:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">chmod +x $HOME/.local/bin/inxi
+</pre>
+</div></li>
+</ul></li>
+
+<li><b><b>Downloaded File Not Found</b></b>
+<ul class="org-ul">
+<li><b>Cause</b>: Incorrect or outdated download link.</li>
+<li><p>
+<b>Solution</b>: Double-check the URL or download the script directly from the <b>inxi</b> repository:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">wget -O inxi https://codeberg.org/smxi/inxi/raw/master/inxi
+chmod +x inxi
+mv inxi $HOME/.local/bin/
+</pre>
+</div></li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgfe5ed14" class="outline-5">
+<h5 id="orgfe5ed14">Removing <b>inxi</b></h5>
+<div class="outline-text-5" id="text-orgfe5ed14">
+<p>
+If you no longer want to use <b>inxi</b>, you can remove it by deleting the script:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">rm -f $HOME/.local/bin/inxi
+</pre>
+</div>
+
+<p>
+Additionally, if you downloaded the source archive, you can clean up the files from the `~/.local/src` directory:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">rm -rf $HOME/.local/src/inxi*
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8b3d4d8" class="outline-5">
+<h5 id="org8b3d4d8">Recap</h5>
+<div class="outline-text-5" id="text-org8b3d4d8">
+<ul class="org-ul">
+<li><b>inxi</b> is a powerful tool for system diagnostics, especially in HPC environments.</li>
+<li>Installing <b>inxi</b> as a binary simplifies the process by skipping compilation.</li>
+<li>By organizing files into directories like `~/.local/bin` and `~/.local/src`, you keep your environment clean and efficient.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-org45a348d" class="outline-4">
+<h4 id="org45a348d">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
+<div class="outline-text-4" id="text-org45a348d">
+</div>
+<div id="outline-container-orgd9d03c2" class="outline-5">
+<h5 id="orgd9d03c2">What is <b>ncdu</b> and Why is it Useful?</h5>
+<div class="outline-text-5" id="text-orgd9d03c2">
+<p>
+<b>ncdu</b> (NCurses Disk Usage) is a disk usage analyzer that runs in the terminal. It is particularly useful for identifying large files or directories, especially in environments with limited storage, like HPC systems. 
+</p>
+
+<p>
+<b>Key features:</b>
+</p>
+<ul class="org-ul">
+<li>Provides a visual, interactive display of disk usage in the terminal.</li>
+<li>Allows users to navigate and sort through directories to identify which files or folders are consuming the most space.</li>
+<li>Lightweight and fast compared to GUI-based alternatives, making it ideal for remote or resource-constrained systems.</li>
+</ul>
+
+<p>
+<b>Example Use Case:</b>  
+If your HPC system runs out of storage or your job fails due to insufficient space, you can use <b>ncdu</b> to quickly pinpoint and remove unnecessary files from your home or scratch directory.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org256123f" class="outline-5">
+<h5 id="org256123f">Where Will <b>ncdu</b> Be Installed?</h5>
+<div class="outline-text-5" id="text-org256123f">
+<p>
+When using `&#x2013;prefix=$HOME/.local`, the compiled binary and related files will be placed in standard subdirectories:
+</p>
+<ul class="org-ul">
+<li>Executables will be installed in `~/.local/bin`.</li>
+<li>Libraries will be placed in `~/.local/lib`.</li>
+<li>Configuration files or other resources will go into `~/.local/etc`.</li>
+</ul>
+
+<p>
+This is the conventional way to organize local installations in Linux, making it easy to manage and integrate with your shell environment (e.g., `PATH` and `LD<sub>LIBRARY</sub><sub>PATH</sub>`).
+</p>
+
+<p>
+Alternatively, you can specify a dedicated directory for <b>ncdu</b> by using:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">./configure --prefix=$HOME/.local/ncdu
+</pre>
+</div>
+
+<p>
+In this case:
+</p>
+<ul class="org-ul">
+<li>Executables will be in `~/.local/ncdu/bin`.</li>
+<li>Libraries will be in `~/.local/ncdu/lib`.</li>
+<li>Configuration files will be in `~/.local/ncdu/etc`.</li>
+</ul>
+
+<p>
+Using a dedicated directory like `~/.local/ncdu` can help isolate installations, making it easier to upgrade or uninstall specific programs without affecting others. However, this approach requires additional manual configuration to add the new directories to `PATH` and `LD<sub>LIBRARY</sub><sub>PATH</sub>`.
+</p>
+
+<p>
+<b>For simplicity, this tutorial uses the conventional method with `&#x2013;prefix=$HOME/.local`.</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8d71c3f" class="outline-5">
+<h5 id="org8d71c3f">Steps to Install <b>ncdu</b></h5>
+<div class="outline-text-5" id="text-org8d71c3f">
+<ol class="org-ol">
+<li><p>
+<b><b>Download the Source</b></b>  
+Start by downloading the source code for <b>ncdu</b> from its official website, extracting it, and navigating to the source directory:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cd ~/.local/src
+wget https://dev.yorhel.nl/download/ncdu-1.21.tar.gz
+tar -xvzf ncdu-1.21.tar.gz
+cd ncdu-1.21
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li><code>cd</code>: Change direcory to your source folder</li>
+<li><code>wget</code>: Downloads the compressed tarball (<code>.tar.gz</code>) containing the source code.</li>
+<li><code>tar -xvzf</code>: Extracts the contents of the tarball. The options mean:
+<ul class="org-ul">
+<li>`-x`: Extract.</li>
+<li>`-v`: Verbose (shows the extraction process).</li>
+<li>`-z`: Decompress a gzip file.</li>
+<li>`-f`: File to process.</li>
+</ul></li>
+<li><code>cd ncdu-1.21</code>: Changes into the extracted source code directory.</li>
+</ul></li>
+
+<li><p>
+<b><b>Build and Install</b></b>  
+Compile the source code and install the binary:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">./configure --prefix=$HOME/.local
+make
+make install
+</pre>
+</div>
+
+<p>
+<b>Explanation of Each Step:</b>
+</p>
+<ul class="org-ul">
+<li><code>./configure --prefix=$HOME/.local</code>:
+<ul class="org-ul">
+<li>Prepares the source code for your system. It checks for required libraries, compilers, and dependencies.</li>
+<li>The <code>--prefix</code> option specifies the installation directory (<code>/.local</code>) where the compiled binary and other files will be installed.</li>
+<li><p>
+If <code>./configure</code> fails, it may leave incomplete files or configurations. Before trying again, it’s recommended to clean the build directory:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">make clean
+</pre>
+</div>
+<p>
+This ensures a fresh start by removing any temporary or incomplete files.
+</p></li>
+</ul></li>
+
+<li><code>make</code>:
+<ul class="org-ul">
+<li>Compiles the source code into a binary executable by following the instructions in the Makefile created during the `configure` step.</li>
+<li>This step may take a few seconds to several minutes, depending on the size of the program and your system's performance.</li>
+</ul></li>
+
+<li><code>make install</code>:
+<ul class="org-ul">
+<li>Copies the compiled binary (<code>ncdu</code>) and any other required files to the specified installation directory (e.g., <code>.local/bin</code>).</li>
+</ul></li>
+</ul></li>
+
+<li><p>
+<b><b>Verify Installation</b></b>  
+Confirm that <b>ncdu</b> has been installed successfully by checking its version:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">ncdu --version
+</pre>
+</div>
+
+<p>
+<b>Expected Output:</b>  
+If the installation is successful, this command will output the installed version of <b>ncdu</b>.
+</p></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org48df790" class="outline-5">
+<h5 id="org48df790">Example Usage of <b>ncdu</b></h5>
+<div class="outline-text-5" id="text-org48df790">
+<p>
+Once installed, you can use <b>ncdu</b> to analyze disk usage. For example:
+</p>
+<ol class="org-ol">
+<li><p>
+Scan your home directory:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">ncdu ~
+</pre>
+</div></li>
+
+<li>Navigate through directories interactively using the arrow keys to identify and delete large files.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org817a36c" class="outline-5">
+<h5 id="org817a36c">Troubleshooting Compilation Issues</h5>
+<div class="outline-text-5" id="text-org817a36c">
+<ul class="org-ul">
+<li><p>
+<b>Missing Dependencies:</b>  
+If <code>./configure</code> fails, it may indicate missing libraries or tools. Use the module system on your HPC to load necessary dependencies, such as:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">module load gcc
+module load ncurses
+</pre>
+</div></li>
+
+<li><b>Permission Errors During Installation:</b>  
+Ensure you have write access to your <code>.local</code> directory and that the <code>--prefix</code> option is pointing to a directory within your home folder.</li>
+</ul>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orgc9ff0ac" class="outline-5">
+<h5 id="orgc9ff0ac">How to remove <b>ncdu</b></h5>
+<div class="outline-text-5" id="text-orgc9ff0ac">
+<p>
+If you decide to uninstall <b>ncdu</b>, follow these steps:
+</p>
+
+<ol class="org-ol">
+<li><p>
+Navigate to the source directory you used to compile <b>ncdu</b>:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cd ~/.local/src/ncdu-1.21
+</pre>
+</div></li>
+
+<li><p>
+Run the following command to remove all installed files:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">make uninstall
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li>The `make uninstall` command removes files that were installed by the `make install` step. It relies on the Makefile to know where all the installed files are located.</li>
+</ul></li>
+
+<li><p>
+If `make uninstall` is not supported or fails, you can manually remove the installed files:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">rm $HOME/.local/bin/ncdu
+</pre>
+</div>
+
+<p>
+Additionally, check and remove any leftover configuration files in `~/.local/etc` or libraries in `~/.local/lib` (if applicable).
+</p></li>
+</ol>
+
+
+
+<p>
+By following these steps, you’ve learned how to install <b>ncdu</b> from source, understand where it’s installed, and safely remove it if needed.
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div id="outline-container-org46f0095" class="outline-4">
+<h4 id="org46f0095">Installing <b>Octave</b> in HPC Environment</h4>
+<div class="outline-text-4" id="text-org46f0095">
+</div>
+<div id="outline-container-orgcbb6bc7" class="outline-5">
+<h5 id="orgcbb6bc7">What is Octave and Why Use It?</h5>
+<div class="outline-text-5" id="text-orgcbb6bc7">
+<p>
+GNU Octave is an open-source programming language primarily intended for numerical computations. It provides a high-level language for solving linear and nonlinear problems, performing numerical experiments, and visualizing data. Octave is often used as an alternative to MATLAB due to its compatibility with many MATLAB scripts.
+</p>
+
+<p>
+<b>Features:</b>
+</p>
+<ul class="org-ul">
+<li>Support for numerical linear algebra, optimization, and integration.</li>
+<li>Plotting and visualization capabilities.</li>
+<li>Extensibility through user-defined functions and C++ integration.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgf379e79" class="outline-5">
+<h5 id="orgf379e79">Steps to Install Octave</h5>
+<div class="outline-text-5" id="text-orgf379e79">
+<p>
+Octave requires compilation from source, which provides an opportunity to explore various `configure` options for customizing the build.
+</p>
+</div>
+
+
+
+<div id="outline-container-org7fb64e5" class="outline-6">
+<h6 id="org7fb64e5">1. Load Necessary Modules</h6>
+<div class="outline-text-6" id="text-org7fb64e5">
+<p>
+Octave depends on several libraries and tools for successful installation. Start by loading the required modules:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">module load comp/gcc/12.3.0 comp/cmake/3.31.1 lib/openmpi/4.1.6
+module load apps/gnuplot/5.4.10 lib/fftw/3.3.10-impi-oneapi-2024 lib/openblas/0.3.29
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li>`gcc`: Required compiler for building Octave.</li>
+<li>`cmake`: Required for dependency management.</li>
+<li>`openmpi`: Enables parallel computation support.</li>
+<li>`gnuplot`: For plotting and visualization.</li>
+<li>`fftw`: For fast Fourier transforms.</li>
+<li>`lapack`: For numerical linear algebra operations.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org1f6edfe" class="outline-6">
+<h6 id="org1f6edfe">2. Download the Source Code</h6>
+<div class="outline-text-6" id="text-org1f6edfe">
+<p>
+Download the latest Octave source code from its official repository:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cd ~/.local/src
+wget https://ftp.gnu.org/gnu/octave/octave-8.3.0.tar.gz
+tar -xvzf octave-8.3.0.tar.gz
+cd octave-8.3.0
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li>`cd ~/.local/src`: Organizes the source files in the local directory.</li>
+<li>`wget`: Downloads the source archive.</li>
+<li>`tar`: Extracts the archive.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2ebb80a" class="outline-6">
+<h6 id="org2ebb80a">3. Configure the Build</h6>
+<div class="outline-text-6" id="text-org2ebb80a">
+<p>
+Run the `configure` script with the appropriate options to customize the build:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">export BLAS_LIBS="-L/usr/lib64 -lblas"
+export LAPACK_LIBS="-L/usr/lib64 -llapack"
+
+./configure --prefix=$HOME/.local/app/octave \
+            --enable-64 \
+            --enable-shared \
+            --disable-docs \
+            CC=gcc CXX=g++ FC=gfortran
+
+
+</pre>
+</div>
+
+<p>
+<b>Explanation of Options:</b>
+</p>
+<ul class="org-ul">
+<li>`&#x2013;prefix=$HOME/.local`: Installs Octave in your local directory.</li>
+<li>`&#x2013;enable-64`: Ensures 64-bit integer support.</li>
+<li>`&#x2013;enable-shared`: Builds shared libraries for extensibility.</li>
+<li>`&#x2013;disable-docs`: Skips building documentation to save time and avoid additional dependencies.</li>
+<li>`&#x2013;with-blas="-lopenblas"`: Uses OpenBLAS for optimized linear algebra operations.</li>
+<li>`&#x2013;with-lapack`: Ensures LAPACK is used for linear algebra.</li>
+<li>`CC`, `CXX`, `FC`: Specifies the C, C++, and Fortran compilers.</li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org83a92d8" class="outline-6">
+<h6 id="org83a92d8">4. Build and Install</h6>
+<div class="outline-text-6" id="text-org83a92d8">
+<p>
+Compile and install Octave:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">make -j4
+make install
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li>`make -j4`: Compiles the source code using 4 threads to speed up the process.</li>
+<li>`make install`: Installs Octave in the directory specified by `&#x2013;prefix`.</li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1ebea3b" class="outline-6">
+<h6 id="org1ebea3b">5. Verify the Installation</h6>
+<div class="outline-text-6" id="text-org1ebea3b">
+<p>
+Confirm that Octave is installed and accessible:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">$HOME/.local/app/octave/bin/octave --version
+</pre>
+</div>
+
+<p>
+Expected Output:
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<div id="outline-container-org501c261" class="outline-4">
+<h4 id="org501c261">Installing <b>MadGraph</b> (with HPC Modules for Dependencies)</h4>
+<div class="outline-text-4" id="text-org501c261">
+</div>
+<div id="outline-container-orgfe4df6a" class="outline-5">
+<h5 id="orgfe4df6a">What is <b>MadGraph</b> and Why is it Useful?</h5>
+<div class="outline-text-5" id="text-orgfe4df6a">
+<p>
+<b>MadGraph</b> is a powerful tool for simulating particle physics processes. It allows researchers to generate and analyze events for high-energy physics experiments. MadGraph requires various dependencies, such as compilers (e.g., GCC) and Python, which can be managed using the <b>module</b> system in HPC environments.
+</p>
+
+<p>
+<b>Key features:</b>
+</p>
+<ul class="org-ul">
+<li>Simulates high-energy particle interactions.</li>
+<li>Provides detailed event generation for physics analysis.</li>
+<li>Extensively used in collider physics and beyond.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org88198e1" class="outline-5">
+<h5 id="org88198e1">What are HPC Modules?</h5>
+<div class="outline-text-5" id="text-org88198e1">
+<p>
+HPC systems use a <b>module</b> system to manage software dependencies. Modules allow you to dynamically modify your environment to use specific versions of compilers, libraries, and tools without requiring installation. This is especially useful when building software like <b>MadGraph</b>.
+</p>
+
+<p>
+<b>Key Commands:</b>
+</p>
+<ol class="org-ol">
+<li><code>module avail</code>: Lists all available modules.</li>
+<li><code>module list</code>: Shows the currently loaded modules.</li>
+<li><code>module load &lt;module-name&gt;</code>: Loads a specific module and updates the environment.</li>
+<li><code>module unload &lt;module-name&gt;</code>: Unloads a specific module.</li>
+<li><p>
+<code>module purge</code>: Unloads all currently loaded modules, providing a clean environment.
+</p>
+
+<p>
+<b>Why use <code>module purge</code>?</b>
+</p>
+<ul class="org-ul">
+<li>When encountering errors during a build process, conflicting modules could be a cause.</li>
+<li>Purging modules ensures you are starting with a clean slate before loading the specific modules required for your task.</li>
+</ul></li>
+
+<li><p>
+<b><b>To Search for Specific Modules:</b></b>  
+While <code>module avail</code> lists all available modules, you can filter the output to search for specific modules like <b>gcc</b> by using the `grep` command:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">module avail 2&gt;&amp;1 | grep gcc
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li><code>module avail</code>: Lists all available modules.</li>
+<li><code>2&gt;&amp;1</code>: Redirects both standard output and error streams to the <code>grep</code> command.</li>
+<li><code>grep gcc</code>: Filters the output to show only modules containing the keyword <b>gcc</b>.</li>
+</ul>
+
+<p>
+<b>Example Output:</b>
+gcc/8.3.0 gcc/9.3.0 gcc/10.2.0
+</p></li>
+</ol>
+
+<p>
+Use this approach to search for other keywords, such as <code>python</code> or <code>mpi</code>.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org378732a" class="outline-3">
+<h3 id="org378732a">Hands-on Session: Installing Software on HPC User Interface</h3>
+<div class="outline-text-3" id="text-org378732a">
+</div>
+<div id="outline-container-org250239f" class="outline-4">
+<h4 id="org250239f">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
+<div class="outline-text-4" id="text-org250239f">
+</div>
+<div id="outline-container-org536dcc7" class="outline-5">
+<h5 id="org536dcc7">What is <b>ncdu</b> and Why is it Useful?</h5>
+<div class="outline-text-5" id="text-org536dcc7">
+<p>
+<b>ncdu</b> (NCurses Disk Usage) is a disk usage analyzer that runs in the terminal. It is particularly useful for identifying large files or directories, especially in environments with limited storage, like HPC systems. 
+</p>
+
+<p>
+<b>Key features:</b>
+</p>
+<ul class="org-ul">
+<li>Provides a visual, interactive display of disk usage in the terminal.</li>
+<li>Allows users to navigate and sort through directories to identify which files or folders are consuming the most space.</li>
+<li>Lightweight and fast compared to GUI-based alternatives, making it ideal for remote or resource-constrained systems.</li>
+</ul>
+
+<p>
+<b>Example Use Case:</b>  
+If your HPC system runs out of storage or your job fails due to insufficient space, you can use <b>ncdu</b> to quickly pinpoint and remove unnecessary files from your home or scratch directory.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0aaf5f4" class="outline-5">
+<h5 id="org0aaf5f4">Steps to Install <b>ncdu</b></h5>
+<div class="outline-text-5" id="text-org0aaf5f4">
+<p>
+Unlike <b>inxi</b>, <b>ncdu</b> is distributed as source code that must be compiled into a binary before it can be used. This demonstrates the typical <b>configure</b>, <b>make</b>, and <b>make install</b> process for building software from source.
+</p>
+
+<ol class="org-ol">
+<li><p>
+<b><b>Download the Source</b></b>  
+Start by downloading the source code for <b>ncdu</b> from its official website, extracting it, and navigating to the source directory:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cd ~/.local/src 
+wget https://dev.yorhel.nl/download/ncdu-1.21.tar.gz
+tar -xvzf ncdu-1.21.tar.gz
+cd ncdu-1.21
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li>First navigate to the local source directory</li>
+<li><code>wget</code>: Downloads the compressed tarball (<code>.tar.gz</code>) containing the source code.</li>
+<li><code>tar -xvzf</code>: Extracts the contents of the tarball. The options mean:
+<ul class="org-ul">
+<li>`-x`: Extract.</li>
+<li>`-v`: Verbose (shows the extraction process).</li>
+<li>`-z`: Decompress a gzip file.</li>
+<li>`-f`: File to process.</li>
+</ul></li>
+<li><code>cd ncdu-1.21</code>: Changes into the extracted source code directory.</li>
+</ul></li>
+
+<li><p>
+<b><b>Build and Install</b></b>  
+Compile the source code and install the binary:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">./configure --prefix=$HOME/.local
+make
+make install
+</pre>
+</div>
+
+<p>
+<b>Explanation of Each Step:</b>
+</p>
+<ul class="org-ul">
+<li><code>./configure --prefix=$HOME/.local</code>:
+<ul class="org-ul">
+<li>Prepares the source code for your system. It checks for required libraries, compilers, and dependencies.</li>
+<li>The <code>--prefix</code> option specifies the installation directory (<code>/.local</code>) where the compiled binary and other files will be installed.</li>
+<li>Be sure you do not get any errors at this step.</li>
+</ul></li>
+<li><code>make</code>:
+<ul class="org-ul">
+<li>Compiles the source code into a binary executable by following the instructions in the Makefile created during the `configure` step.</li>
+<li>This step may take a few seconds to several minutes, depending on the size of the program and your system's performance.</li>
+</ul></li>
+<li><code>make install</code>:
+<ul class="org-ul">
+<li>Copies the compiled binary (<code>ncdu</code>) and any other required files to the specified installation directory (e.g., <code>.local/bin</code>).</li>
+</ul></li>
+</ul></li>
+
+<li><p>
+<b><b>Verify Installation</b></b>  
+Confirm that <b>ncdu</b> has been installed successfully by checking its version:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">ncdu --version
+</pre>
+</div>
+
+<p>
+<b>Expected Output:</b>  
+If the installation is successful, this command will output the installed version of <b>ncdu</b>.
+</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org9048bce" class="outline-4">
+<h4 id="org9048bce">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
+<div class="outline-text-4" id="text-org9048bce">
+</div>
+<div id="outline-container-orgc67f629" class="outline-5">
+<h5 id="orgc67f629">What is <b>ncdu</b> and Why is it Useful?</h5>
+<div class="outline-text-5" id="text-orgc67f629">
+<p>
+<b>ncdu</b> (NCurses Disk Usage) is a disk usage analyzer that runs in the terminal. It is particularly useful for identifying large files or directories, especially in environments with limited storage, like HPC systems. 
+</p>
+
+<p>
+Key features:
+</p>
+<ul class="org-ul">
+<li>Provides a visual, interactive display of disk usage in the terminal.</li>
+<li>Allows users to navigate and sort through directories to identify which files or folders are consuming the most space.</li>
+<li>Lightweight and fast compared to GUI-based alternatives, making it ideal for remote or resource-constrained systems.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8bf16c0" class="outline-5">
+<h5 id="org8bf16c0">Example Use Case:</h5>
+<div class="outline-text-5" id="text-org8bf16c0">
+<p>
+If your HPC system runs out of storage or your job fails due to insufficient space, you can use <b>ncdu</b> to quickly pinpoint and remove unnecessary files from your home or scratch directory.
+</p>
+
+<p>
+&#x2014;
+</p>
+
+<p>
+#### Steps to Install <b>ncdu</b>
+Unlike <b>inxi</b>, <b>ncdu</b> is distributed as source code that must be compiled into a binary before it can be used. This demonstrates the typical <b>configure</b>, <b>make</b>, and <b>make install</b> process for building software from source.
+</p>
+
+<ol class="org-ol">
+<li><p>
+<b><b>Download the Source</b></b>
+Start by downloading the source code for <b>ncdu</b> from its official website, extracting it, and navigating to the source directory:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">wget https://dev.yorhel.nl/download/ncdu-1.21.tar.gz
+tar -xvzf ncdu-1.21.tar.gz
+cd ncdu-1.21
+</pre>
+</div>
+
+<p>
+<b><b>Explanation:</b></b>
+</p>
+<ul class="org-ul">
+<li><code>wget</code>: Downloads the compressed tarball (`.tar.gz`) containing the source code.</li>
+<li><code>tar -xvzf</code>: Extracts the contents of the tarball. The options mean:
+<ul class="org-ul">
+<li>`-x`: Extract.</li>
+<li>`-v`: Verbose (shows the extraction process).</li>
+<li>`-z`: Decompress a gzip file.</li>
+<li>`-f`: File to process.</li>
+</ul></li>
+<li><code>cd ncdu-1.21</code>: Changes into the extracted source code directory.</li>
+</ul></li>
+
+<li><p>
+<b><b>Build and Install</b></b>
+Compile the source code and install the binary:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">./configure --prefix=$HOME/.local
+make
+make install
+</pre>
+</div>
+
+<p>
+<b><b>Explanation of Each Step:</b></b>
+</p>
+<ul class="org-ul">
+<li><code>./configure --prefix=$HOME/.local</code>:
+<ul class="org-ul">
+<li>Prepares the source code for your system. It checks for required libraries, compilers, and dependencies.</li>
+<li>The `&#x2013;prefix` option specifies the installation directory (`~/.local`) where the compiled binary and other files will be installed.</li>
+</ul></li>
+<li><code>make</code>:
+<ul class="org-ul">
+<li>Compiles the source code into a binary executable by following the instructions in the Makefile created during the `configure` step.</li>
+<li>This step may take a few seconds to several minutes, depending on the size of the program and your system's performance.</li>
+</ul></li>
+<li><code>make install</code>:
+<ul class="org-ul">
+<li>Copies the compiled binary (`ncdu`) and any other required files to the specified installation directory (e.g., `~/.local/bin`).</li>
+</ul></li>
+</ul></li>
+
+<li><p>
+<b><b>Verify Installation</b></b>
+Confirm that <b>ncdu</b> has been installed successfully by checking its version:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">ncdu --version
+</pre>
+</div>
+
+<p>
+<b><b>Expected Output:</b></b>
+If the installation is successful, this command will output the installed version of <b>ncdu</b>.
+</p></li>
+</ol>
+
+<p>
+&#x2014;
+</p>
+
+<p>
+#### Example Usage of <b>ncdu</b>
+Once installed, you can use <b>ncdu</b> to analyze disk usage. For example:
+</p>
+<ol class="org-ol">
+<li><p>
+Scan your home directory:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">ncdu ~
+</pre>
+</div></li>
+<li>Navigate through directories interactively using the arrow keys to identify and delete large files.</li>
+</ol>
+
+<p>
+#### Troubleshooting Compilation Issues
+</p>
+<ul class="org-ul">
+<li><p>
+<b><b>Missing Dependencies:</b></b>
+If `./configure` fails, it may indicate missing libraries or tools. Use the module system on your HPC to load necessary dependencies, such as:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">module load gcc
+module load ncurses
+</pre>
+</div></li>
+<li><b><b>Permission Errors During Installation:</b></b>
+Ensure you have write access to your `~/.local` directory and that the `&#x2013;prefix` option is pointing to a directory within your home folder.</li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+
+<p>
+By following these steps, you’ve learned how to install <b>ncdu</b> from source and use it to efficiently manage disk usage in an HPC environment.
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orga39070d" class="outline-4">
+<h4 id="orga39070d">Installing `ncdu` (with `configure`, `make`, and `make install`)</h4>
+<div class="outline-text-4" id="text-orga39070d">
+<ol class="org-ol">
+<li><p>
+<b><b>Download the Source</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">wget https://dev.yorhel.nl/download/ncdu-1.21.tar.gz
+tar -xvzf ncdu-1.21.tar.gz
+cd ncdu-1.21
+</pre>
+</div></li>
+
+<li><p>
+<b><b>Build and Install</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">./configure --prefix=$HOME/.local
+make
+make install
+</pre>
+</div></li>
+
+<li><p>
+<b><b>Verify Installation</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">ncdu --version
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-org3b4b809" class="outline-4">
+<h4 id="org3b4b809">Example with HPC Modules: Installing Software Dependencies</h4>
+<div class="outline-text-4" id="text-org3b4b809">
+<p>
+Many HPC systems provide software modules that allow loading dependencies without installation:
+</p>
+<ol class="org-ol">
+<li><p>
+List available modules:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">module avail
+</pre>
+</div></li>
+<li><p>
+Load a required module:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">module load gcc
+</pre>
+</div></li>
+<li>Build your software using the loaded module.</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org2e80f32" class="outline-3">
+<h3 id="org2e80f32">Useful Tools: `tldr` and `cheat`</h3>
+<div class="outline-text-3" id="text-org2e80f32">
+<ul class="org-ul">
+<li><p>
+<b><b>`tldr`:</b></b> Provides simplified, community-driven examples for commands. Install it locally:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">pip install --user tldr
+tldr tar
+</pre>
+</div></li>
+<li><p>
+<b><b>`cheat`:</b></b> Allows creating and viewing custom cheat sheets.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">pip install --user cheat
+cheat tar
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgc546f7f" class="outline-3">
+<h3 id="orgc546f7f">Removing Locally Installed Applications</h3>
+<div class="outline-text-3" id="text-orgc546f7f">
+<p>
+To remove software:
+</p>
+<ol class="org-ol">
+<li><p>
+For binaries:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">rm $HOME/.local/bin/&lt;binary&gt;
+</pre>
+</div></li>
+<li><p>
+For source-built software:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">make uninstall
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgc0bb542" class="outline-3">
+<h3 id="orgc0bb542">Troubleshooting Tips</h3>
+<div class="outline-text-3" id="text-orgc0bb542">
+<ul class="org-ul">
+<li><b><b>Command not found:</b></b> Verify that `~/.local/bin` is in your `PATH`.</li>
+<li><b><b>Missing dependencies:</b></b> Use modules or install dependencies locally.</li>
+<li><b><b>Permission errors:</b></b> Ensure your home directory permissions are correct and use `chmod +x` for executable files.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org850a343" class="outline-3">
+<h3 id="org850a343">Conclusion</h3>
+<div class="outline-text-3" id="text-org850a343">
+<p>
+Installing software locally empowers you to work efficiently in an HPC environment without requiring root privileges. With practice, building software from source and managing your tools will become second nature.
+</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="outline-container-org725ae18" class="outline-5">
+<h5 id="org725ae18">Steps to Install <b>MadGraph</b></h5>
+<div class="outline-text-5" id="text-org725ae18">
+<ol class="org-ol">
+<li><b><b>Search for Available Modules</b></b></li>
+</ol>
+<p>
+To find available modules on your system, use:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">module avail
+</pre>
+</div>
+
+<p>
+To filter the output for <b>gcc</b> modules:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">module avail 2&gt;&amp;1 | grep gcc
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li>Use this filtered search to quickly identify the versions of GCC or other tools available on your system.</li>
+
+<li><b><b>Purge and Load the Required Modules</b></b></li>
+</ul>
+<p>
+Before starting, unload all currently loaded modules to avoid conflicts:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">module purge
+</pre>
+</div>
+
+<p>
+Then load the necessary modules for building MadGraph. For example:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">module load comp/gcc/12.3.0
+module load comp/python/3.12.0
+</pre>
+</div>
+
+<p>
+Verify the loaded modules using:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">module list
+</pre>
+</div>
+
+<p>
+<b>Output Example:</b>
+Currently Loaded Modulefiles:
+</p>
+<ol class="org-ol">
+<li>comp/gcc/12.3.0   2) comp/python/3.12.0</li>
+</ol>
+
+
+<ol class="org-ol">
+<li><b><b>Download and Extract MadGraph</b></b></li>
+</ol>
+<p>
+Download the MadGraph source code from its official website or repository:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cd ~/.local/src
+wget https://launchpad.net/mg5amcnlo/3.0/3.6.x/+download/MG5_aMC_v2.9.22.tar.gz
+tar -xvzf MG5_aMC_v2.9.22.tar.gz
+cd MG5_aMC_v2_9_22
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li><code>wget</code>: Downloads the tarball containing MadGraph.</li>
+<li><code>tar -xvzf</code>: Extracts the tarball.</li>
+<li><code>cd MG5_aMC_v3_4_0</code>: Navigates to the extracted directory.</li>
+
+<li><b><b>Run MadGraph Installation</b></b></li>
+</ul>
+<p>
+MadGraph doesn’t require traditional <code>make</code> and <code>make install</code> steps. Instead, you can run it directly:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">python3 bin/mg5_aMC
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li>This command starts MadGraph in interactive mode, where you can configure processes and generate events.</li>
+<li>Ensure you are using the Python version loaded via the module system.</li>
+</ul>
+
+
+<ol class="org-ol">
+<li><b><b>Verify Installation</b></b></li>
+</ol>
+<p>
+To confirm that MadGraph is installed and working, check its version:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">python3 bin/mg5_aMC --version
+</pre>
+</div>
+
+<p>
+If successful, you’ll see output showing the installed version of MadGraph.
+</p>
+</div>
+
+
+<div id="outline-container-orgd366f1a" class="outline-6">
+<h6 id="orgd366f1a">Additional Requirements for <b>MadGraph</b>: Handling Dependencies Like `six`</h6>
+<div class="outline-text-6" id="text-orgd366f1a">
+<p>
+During the installation of <b>MadGraph</b>, you might encounter a warning and a dependency requirement for the Python module `six`. Here’s how to address it:
+</p>
+</div>
+
+<div id="outline-container-org96d36df" class="outline-7">
+<h7 id="org96d36df">1. Handling the `six` Module Dependency**</h7>
+<div class="outline-text-7" id="text-org96d36df">
+<p>
+   The `six` module is a Python library required by <b>MadGraph</b>. If it is missing, you will encounter the following message:
+madgraph requires the six module. The easiest way to install it is to run "pip3 install six &#x2013;user"
+</p>
+
+
+<p>
+Here’s how to resolve this issue:
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgc0ef26f"></a>Using `pip` to Install `six`**<br />
+<div class="outline-text-8" id="text-orgc0ef26f">
+<p>
+If `pip` is available on your system, install the `six` module as follows:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">pip3 install six --user
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li>`pip3 install`: Installs the `six` module for Python 3.</li>
+<li>`&#x2013;user`: Installs the module in your home directory without requiring root privileges.</li>
+</ul>
+
+<p>
+Specifically, it is installed in the following location (depending on your Python version):
+Note that we loaded python 3.12, for this example
+</p>
+<pre class="example">
+~/.local/lib/python&lt;version&gt;/site-packages/
+</pre>
+
+<ul class="org-ul">
+<li>To verify the installation directory:</li>
+</ul>
+<pre class="example">
+python3 -m site --user-site
+</pre>
+<p>
+This will output the exact directory where pip installs user-level modules.
+</p>
+
+<p>
+You can also manually check by listing the contents of the directory:
+</p>
+<pre class="example">
+ls ~/.local/lib/python3.8/site-packages/
+</pre>
+
+<ul class="org-ul">
+<li><p>
+Note that you can see the PYTHONPATH variable via running code:
+</p>
+<pre class="example">
+echo $PATH
+</pre>
+
+<p>
+If the directory is not already included in your PYTHONPATH environment variable, you may need to add it:
+Edit your ~/.bashrc
+</p>
+<pre class="example">
+export PYTHONPATH=$HOME/.local/lib/python3.12/site-packages:$PYTHONPATH
+</pre>
+<p>
+Then reload your shell configuration
+</p>
+<pre class="example">
+source ~/.bashrc
+</pre></li>
+</ul>
+
+<p>
+b. <b><b>If `pip` is Unavailable</b></b>
+If `pip` is not available, you can manually download and install the `six` module:
+</p>
+<ol class="org-ol">
+<li><p>
+Download the module:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">wget https://files.pythonhosted.org/packages/source/s/six/six-1.16.0.tar.gz
+tar -xvzf six-1.16.0.tar.gz
+</pre>
+</div></li>
+
+<li><p>
+Add the `six.py` file to your `$PYTHONPATH`:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">export PYTHONPATH=$HOME/.local/lib/python3.12/site-packages:$PYTHONPATH
+cp six-1.16.0/six.py $HOME/.local/lib/python3.12/site-packages/
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li>`PYTHONPATH`: Specifies additional directories where Python should look for modules.</li>
+<li>`cp six.py`: Copies the `six.py` file to the specified directory within `$PYTHONPATH`.</li>
+</ul></li>
+
+<li><b><b>Verify the Installation</b></b></li>
+</ol>
+<p>
+After resolving the `six` dependency, verify that it is installed:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">python3 -c "import six; print(six.__version__)"
+</pre>
+</div>
+
+<p>
+<b>Expected Output:</b>  
+1.16.0
+</p>
+
+<p>
+If the version of `six` is displayed without errors, the module is correctly installed.
+</p>
+
+<ol class="org-ol">
+<li><b><b>Reloading Environment Variables</b></b></li>
+</ol>
+<p>
+If you added `six.py` manually, reload your shell configuration to ensure the changes take effect:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">source ~/.bashrc
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4eed82f" class="outline-6">
+<h6 id="org4eed82f">Updated Steps for Running <b>MadGraph</b></h6>
+<div class="outline-text-6" id="text-org4eed82f">
+<p>
+Once the warning and dependency are resolved, always use the following command to start <b>MadGraph</b>:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">./bin/mg5_aMC
+</pre>
+</div>
+
+<p>
+This ensures you’re using the supported script and that required dependencies like `six` are available.
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgc9d624d" class="outline-6">
+<h6 id="orgc9d624d">How to Remove <b>MadGraph</b></h6>
+<div class="outline-text-6" id="text-orgc9d624d">
+<p>
+To remove MadGraph from your local directory, follow these steps:
+</p>
+<ol class="org-ol">
+<li>Navigate to the source directory:</li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-bash">cd ~/.local/src/MG5_aMC_v3_4_0
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>Delete the entire folder:</li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-bash">rm -rf ~/.local/src/MG5_aMC_v3_4_0
+</pre>
+</div>
+
+<p>
+<b>Explanation:</b>
+</p>
+<ul class="org-ul">
+<li><code>rm -rf</code>: Recursively removes the directory and all its contents. Be cautious with this command to avoid deleting unintended files.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="outline-container-orgff7f4f7" class="outline-2">
+<h2 id="orgff7f4f7">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
+<div class="outline-text-2" id="text-orgff7f4f7">
+</div>
+<div id="outline-container-orga5b5f59" class="outline-3">
+<h3 id="orga5b5f59">Introduction</h3>
+<div class="outline-text-3" id="text-orga5b5f59">
+<p>
+High-Performance Computing (HPC) systems are powerful tools that enable users to perform complex computations efficiently. However, these systems are shared resources, and to maintain their stability and security, users typically do not have root privileges. This means that installing software system-wide using package managers like `yum` or `dnf` is not possible for regular users. Instead, users are encouraged to install software locally within their home directories.
+</p>
+
+<p>
+This tutorial will guide you through the process of installing software locally from source code on an HPC system running <b><b>Rocky Linux</b></b>. We will use examples such as <b><b>inxi</b></b> (a binary package) and <b><b>ncdu</b></b> (which requires configuration and compilation). Additionally, we will explore using modules in an HPC environment, alternatives to traditional man pages, and methods to remove locally installed applications.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgcaed0b9" class="outline-3">
+<h3 id="orgcaed0b9">Why Root Privileges Are Restricted</h3>
+<div class="outline-text-3" id="text-orgcaed0b9">
+<ul class="org-ul">
+<li><b><b>Shared Resources:</b></b> HPC systems are utilized by multiple users simultaneously. Allowing root access could lead to conflicts and resource mismanagement.</li>
+<li><b><b>System Integrity:</b></b> Limiting root access prevents accidental or malicious changes that could compromise the system's stability and security.</li>
+<li><b><b>Encouraging Best Practices:</b></b> Users are motivated to install software locally, fostering a better understanding of software management without affecting the global environment.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgf61dbca" class="outline-3">
+<h3 id="orgf61dbca">Installing Software Locally</h3>
+<div class="outline-text-3" id="text-orgf61dbca">
+<p>
+To install software without root privileges, follow these general steps:
+</p>
+
+<ol class="org-ol">
+<li><p>
+<b><b>Prepare a Directory for Local Installations</b></b>
+It is recommended to use `~/.local` for local installations. This directory adheres to the [XDG Base Directory Specification](<a href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html">https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html</a>), ensuring compatibility with many tools.
+</p>
+
+<p>
+```bash
+mkdir -p ~/.local/bin ~/.local/src
+```
+</p>
+
+<ul class="org-ul">
+<li>`~/.local/bin`: Directory where executable binaries will be stored.</li>
+<li>`~/.local/src`: Directory for storing source code of applications.</li>
+</ul></li>
+
+<li><p>
+<b><b>Modify the PATH and LD<sub>LIBRARY</sub><sub>PATH</sub> Variables</b></b>
+To ensure the system recognizes the locally installed software, update your environment variables by adding the local `bin` and `lib` directories to `PATH` and `LD<sub>LIBRARY</sub><sub>PATH</sub>`, respectively.
+</p>
+
+<p>
+Add the following lines to your shell configuration file (e.g., `~/.bashrc` or `~/.zshrc`):
+</p>
+
+<p>
+```bash
+export PATH=$HOME/.local/bin:$PATH
+export LD<sub>LIBRARY</sub><sub>PATH</sub>=$HOME/.local/lib:$LD<sub>LIBRARY</sub><sub>PATH</sub>
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>PATH:</b></b> Specifies directories where executable programs are located. Adding `~/.local/bin` allows the shell to locate your locally installed executables.</li>
+<li><b><b>LD<sub>LIBRARY</sub><sub>PATH</sub>:</b></b> Specifies directories where shared libraries are searched for first. Adding `~/.local/lib` ensures that any locally installed libraries are found by applications.</li>
+</ul>
+
+<p>
+<b><b>Reload Your Shell Configuration:</b></b>
+</p>
+
+<p>
+```bash
+source ~/.bashrc
+```
+</p>
+
+<p>
+This command applies the changes without requiring you to restart the terminal.
+</p></li>
+
+<li><b><b>Understanding Common Installation Commands</b></b>
+When installing software from source, you'll frequently encounter the following commands:
+
+<ul class="org-ul">
+<li><b><b>`configure`:</b></b> A script that prepares the build system for your specific environment. It checks for necessary dependencies and configures makefiles accordingly.</li>
+<li><b><b>`make`:</b></b> Compiles the source code into executable binaries based on the configurations set by `configure`.</li>
+<li><b><b>`make install`:</b></b> Installs the compiled binaries and other necessary files into the specified directories (e.g., `~/.local`).</li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orge1677c8" class="outline-3">
+<h3 id="orge1677c8">Example 1: Installing Inxi (Binary Package)</h3>
+<div class="outline-text-3" id="text-orge1677c8">
+</div>
+<div id="outline-container-org3c4b83c" class="outline-4">
+<h4 id="org3c4b83c">What is Inxi?</h4>
+<div class="outline-text-4" id="text-org3c4b83c">
+<p>
+Inxi is a powerful command-line system information tool that provides detailed information about your system's hardware and software configurations.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9f6f35a" class="outline-4">
+<h4 id="org9f6f35a">Installation Steps</h4>
+<div class="outline-text-4" id="text-org9f6f35a">
+<ol class="org-ol">
+<li><p>
+<b><b>Download the Inxi Script</b></b>
+Navigate to the source directory and download the inxi script.
+</p>
+
+<p>
+```bash
+cd ~/.local/src
+wget -O inxi <a href="https://github.com/smxi/inxi/raw/master/inxi">https://github.com/smxi/inxi/raw/master/inxi</a>
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> `wget` downloads the inxi script directly from its GitHub repository and saves it as `inxi` in the `~/.local/src` directory.</li>
+</ul></li>
+
+<li><p>
+<b><b>Install the Inxi Script</b></b>
+Copy the script to the local `bin` directory and make it executable.
+</p>
+
+<p>
+```bash
+cp inxi ~/.local/bin/
+chmod +x ~/.local/bin/inxi
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>`cp inxi ~/.local/bin/`:</b></b> Copies the inxi script to `~/.local/bin` so it can be executed from anywhere.</li>
+<li><b><b>`chmod +x ~/.local/bin/inxi`:</b></b> Grants execute permissions to the script.</li>
+</ul></li>
+
+<li><p>
+<b><b>Verify the Installation</b></b>
+</p>
+
+<p>
+```bash
+inxi &#x2013;version
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> This command checks if inxi is accessible and displays its version, confirming a successful installation.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org028aac8" class="outline-3">
+<h3 id="org028aac8">Example 2: Installing ncdu (Source Compilation)</h3>
+<div class="outline-text-3" id="text-org028aac8">
+</div>
+<div id="outline-container-orgabf05ac" class="outline-4">
+<h4 id="orgabf05ac">What is ncdu?</h4>
+<div class="outline-text-4" id="text-orgabf05ac">
+<p>
+`ncdu` (NCurses Disk Usage) is a disk usage analyzer with a text-based interface, ideal for identifying large files or directories on an HPC system.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0db6e15" class="outline-4">
+<h4 id="org0db6e15">Installation Steps</h4>
+<div class="outline-text-4" id="text-org0db6e15">
+<ol class="org-ol">
+<li><p>
+<b><b>Download the Source Code</b></b>
+</p>
+
+<p>
+```bash
+cd ~/.local/src
+wget <a href="https://dev.yorhel.nl/download/ncdu-1.21.tar.gz">https://dev.yorhel.nl/download/ncdu-1.21.tar.gz</a>
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Downloads the `ncdu` source tarball to `~/.local/src`.</li>
+</ul></li>
+
+<li><p>
+<b><b>Extract the Archive</b></b>
+</p>
+
+<p>
+```bash
+tar -xzvf ncdu-1.21.tar.gz
+cd ncdu-1.21
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>`tar -xzvf`:</b></b> Extracts the compressed tarball.</li>
+<li><b><b>`cd ncdu-1.21`:</b></b> Navigates into the extracted source directory.</li>
+</ul></li>
+
+<li><p>
+<b><b>Configure the Build Environment</b></b>
+</p>
+
+<p>
+```bash
+./configure &#x2013;prefix=$HOME/.local
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Prepares the build system to install `ncdu` into the `~/.local` directory. The `&#x2013;prefix` flag specifies the installation directory.</li>
+</ul></li>
+
+<li><p>
+<b><b>Compile the Source Code</b></b>
+</p>
+
+<p>
+```bash
+make
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Compiles the source code into executable binaries based on the configurations set by the `configure` script.</li>
+</ul></li>
+
+<li><p>
+<b><b>Install the Compiled Software</b></b>
+</p>
+
+<p>
+```bash
+make install
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Installs the compiled binaries and necessary files into the specified directories within `~/.local`.</li>
+</ul></li>
+
+<li><p>
+<b><b>Verify the Installation</b></b>
+</p>
+
+<p>
+```bash
+ncdu &#x2013;version
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Checks if `ncdu` is accessible and displays its version, confirming a successful installation.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org2fcbfc8" class="outline-3">
+<h3 id="org2fcbfc8">Example 3: Installing mc (Midnight Commander)</h3>
+<div class="outline-text-3" id="text-org2fcbfc8">
+</div>
+<div id="outline-container-orgea5fb0e" class="outline-4">
+<h4 id="orgea5fb0e">What is Midnight Commander (mc)?</h4>
+<div class="outline-text-4" id="text-orgea5fb0e">
+<p>
+Midnight Commander is a text-based file manager that provides a user-friendly interface for navigating and managing files directly from the command line. It includes features like directory browsing, file manipulation, and file viewing.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7bf602a" class="outline-4">
+<h4 id="org7bf602a">Installation Steps</h4>
+<div class="outline-text-4" id="text-org7bf602a">
+<ol class="org-ol">
+<li><p>
+<b><b>Download the Source Code</b></b>
+</p>
+
+<p>
+```bash
+cd ~/.local/src
+wget <a href="http://ftp.midnight-commander.org/mc-4.8.27.tar.xz">http://ftp.midnight-commander.org/mc-4.8.27.tar.xz</a>
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Note:</b></b> Replace `4.8.27` with the latest version number if necessary.</li>
+</ul></li>
+
+<li><p>
+<b><b>Extract the Archive</b></b>
+</p>
+
+<p>
+```bash
+tar -xJvf mc-4.8.27.tar.xz
+cd mc-4.8.27
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>`tar -xJvf`:</b></b> Extracts the `.tar.xz` compressed tarball.</li>
+</ul></li>
+
+<li><p>
+<b><b>Configure the Build Environment</b></b>
+</p>
+
+<p>
+```bash
+./configure &#x2013;prefix=$HOME/.local
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Sets up the build system to install `mc` into `~/.local`.</li>
+</ul></li>
+
+<li><p>
+<b><b>Compile the Source Code</b></b>
+</p>
+
+<p>
+```bash
+make
+```
+</p></li>
+
+<li><p>
+<b><b>Install the Compiled Software</b></b>
+</p>
+
+<p>
+```bash
+make install
+```
+</p></li>
+
+<li><p>
+<b><b>Verify the Installation</b></b>
+</p>
+
+<p>
+```bash
+mc &#x2013;version
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Checks if `mc` is accessible and displays its version, confirming a successful installation.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org86b67b5" class="outline-3">
+<h3 id="org86b67b5">Using Modules in an HPC Environment</h3>
+<div class="outline-text-3" id="text-org86b67b5">
+<p>
+Many HPC systems use environment modules to manage software and their dependencies. Modules allow users to dynamically modify their shell environment to access different software versions without interfering with each other.
+</p>
+</div>
+
+<div id="outline-container-orge00b523" class="outline-4">
+<h4 id="orge00b523">Example: Loading a Module and Installing Software</h4>
+<div class="outline-text-4" id="text-orge00b523">
+<ol class="org-ol">
+<li><p>
+<b><b>List Available Modules</b></b>
+</p>
+
+<p>
+```bash
+module avail
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Displays all available modules that can be loaded.</li>
+</ul></li>
+
+<li><p>
+<b><b>Load a Specific Module</b></b>
+</p>
+
+<p>
+```bash
+module load gcc/9.3.0
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Loads GCC version 9.3.0, which may be required for compiling certain software.</li>
+</ul></li>
+
+<li><p>
+<b><b>Verify Loaded Modules</b></b>
+</p>
+
+<p>
+```bash
+module list
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Lists all currently loaded modules in your environment.</li>
+</ul></li>
+
+<li><p>
+<b><b>Install Software Using Loaded Modules</b></b>
+</p>
+
+<p>
+Follow the standard installation steps (download, extract, configure, make, make install) while the necessary modules are loaded to ensure all dependencies are met.
+</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org1fba9ff" class="outline-3">
+<h3 id="org1fba9ff">Understanding TLDR and Cheat Commands</h3>
+<div class="outline-text-3" id="text-org1fba9ff">
+<p>
+For users who find traditional man pages (`man`) overwhelming or verbose, `tldr` and `cheat` provide simplified and practical command examples.
+</p>
+
+<ol class="org-ol">
+<li><b><b>tldr</b></b>
+
+<ul class="org-ul">
+<li><b><b>What is tldr?</b></b> A collection of simplified and community-driven man pages.</li>
+
+<li><p>
+<b><b>Installation:</b></b>
+</p>
+
+<p>
+```bash
+</p>
+
+<p>
+pip install tldr
+```
+</p></li>
+
+<li><p>
+<b><b>Usage Example:</b></b>
+</p>
+
+<p>
+```bash
+tldr tar
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Displays concise usage information and common examples for the `tar` command.</li>
+</ul></li>
+</ul></li>
+
+<li><b><b>cheat</b></b>
+
+<ul class="org-ul">
+<li><b><b>What is cheat?</b></b> A tool that allows users to create and view interactive cheat sheets for various commands.</li>
+
+<li><p>
+<b><b>Installation:</b></b>
+</p>
+
+<p>
+```bash
+</p>
+
+<p>
+pip install cheat
+```
+</p></li>
+
+<li><p>
+<b><b>Usage Example:</b></b>
+</p>
+
+<p>
+```bash
+cheat tar
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Shows practical examples and usage scenarios for the `tar` command.</li>
+</ul></li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orge8fa099" class="outline-3">
+<h3 id="orge8fa099">Unzipping and Untarring Software Archives</h3>
+<div class="outline-text-3" id="text-orge8fa099">
+<p>
+When installing software from compressed archives, understanding how to extract them is crucial.
+</p>
+
+<ol class="org-ol">
+<li><p>
+<b><b>Unzip (`.zip` files)</b></b>
+</p>
+
+<p>
+```bash
+unzip filename.zip -d destination<sub>directory</sub>
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>`-d destination<sub>directory</sub>`:</b></b> Specifies the directory to extract files into.</li>
+</ul></li>
+
+<li><b><b>Untar (`.tar.gz` or `.tar.xz` files)</b></b>
+
+<ul class="org-ul">
+<li><p>
+<b><b>For `.tar.gz` files:</b></b>
+</p>
+
+<p>
+```bash
+tar -xzvf filename.tar.gz -C destination<sub>directory</sub>
+```
+</p></li>
+
+<li><p>
+<b><b>For `.tar.xz` files:</b></b>
+</p>
+
+<p>
+```bash
+tar -xJvf filename.tar.xz -C destination<sub>directory</sub>
+```
+</p></li>
+
+<li><b><b>Explanation:</b></b>
+<ul class="org-ul">
+<li>`-x`: Extract files.</li>
+<li>`-z`: Filter the archive through gzip.</li>
+<li>`-J`: Filter the archive through xz.</li>
+<li>`-v`: Verbosely list files processed.</li>
+<li>`-f`: Use archive file.</li>
+<li>`-C destination<sub>directory</sub>`: Change to directory before performing any operations.</li>
+</ul></li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgca1f3e7" class="outline-3">
+<h3 id="orgca1f3e7">Removing Locally Installed Applications</h3>
+<div class="outline-text-3" id="text-orgca1f3e7">
+<p>
+If you need to remove a locally installed application, follow these steps:
+</p>
+
+<ol class="org-ol">
+<li><p>
+<b><b>Delete Executable Binaries</b></b>
+</p>
+
+<p>
+```bash
+rm ~/.local/bin/application<sub>name</sub>
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Removes the executable from the `bin` directory.</li>
+</ul></li>
+
+<li><p>
+<b><b>Delete Library Files (if any)</b></b>
+</p>
+
+<p>
+```bash
+rm -r ~/.local/lib/application<sub>name</sub>
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Removes any associated libraries.</li>
+</ul></li>
+
+<li><p>
+<b><b>Delete Source Code (optional)</b></b>
+</p>
+
+<p>
+```bash
+rm -r ~/.local/src/application<sub>source</sub><sub>directory</sub>
+```
+</p>
+
+<ul class="org-ul">
+<li><b><b>Explanation:</b></b> Removes the source code directory if you no longer need it.</li>
+</ul></li>
+
+<li><p>
+<b><b>Update Environment Variables (if necessary)</b></b>
+</p>
+
+<p>
+If you added specific environment variables for the application, remove or comment them out from your shell configuration file (`~/.bashrc` or `~/.zshrc`), then reload the configuration:
+</p>
+
+<p>
+```bash
+source ~/.bashrc
+```
+</p></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-org4caf815" class="outline-3">
+<h3 id="org4caf815">Troubleshooting Tips</h3>
+<div class="outline-text-3" id="text-org4caf815">
+<ul class="org-ul">
+<li><b><b>Problem:</b></b> `command not found` after installing the software.
+<ul class="org-ul">
+<li><b><b>Solution:</b></b> Ensure the `PATH` variable includes `~/.local/bin` by running `echo $PATH`. If not, revisit the <b><b>Modify the PATH and LD<sub>LIBRARY</sub><sub>PATH</sub> Variables</b></b> section.</li>
+</ul></li>
+
+<li><b><b>Problem:</b></b> Missing dependencies during installation.
+<ul class="org-ul">
+<li><b><b>Solution:</b></b> Use modules provided by the HPC center (e.g., `module load gcc`) or install dependencies locally following the same installation procedures.</li>
+</ul></li>
+
+<li><b><b>Problem:</b></b> Permissions errors while copying or executing files.
+<ul class="org-ul">
+<li><b><b>Solution:</b></b> Ensure you have write permissions in your home directory. Use `chmod +x` to make scripts executable if necessary.</li>
+</ul></li>
+
+<li><b><b>Problem:</b></b> Compilation errors during `make`.
+<ul class="org-ul">
+<li><b><b>Solution:</b></b> Verify that all required development libraries and tools are installed. Load necessary modules using `module load`.</li>
+</ul></li>
+
+<li><b><b>Problem:</b></b> Issues with library paths or missing shared libraries.
+<ul class="org-ul">
+<li><b><b>Solution:</b></b> Ensure that `LD<sub>LIBRARY</sub><sub>PATH</sub>` includes directories where required libraries are installed. You may need to add `~/.local/lib` if not already present.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org6204b22" class="outline-3">
+<h3 id="org6204b22">Conclusion</h3>
+<div class="outline-text-3" id="text-org6204b22">
+<p>
+Installing software locally on an HPC system empowers you to customize your computing environment without requiring administrative privileges. By using your home directory and properly configuring environment variables, you can access a wide range of tools tailored to your needs. Understanding the installation process—from downloading and extracting source code to compiling and installing—ensures you can manage software effectively. Additionally, leveraging tools like `tldr` and `cheat` can simplify command usage, enhancing your productivity. Remember to maintain your local installations and remove any unnecessary applications to keep your environment clean and efficient.
+</p>
+
+<p>
+Happy Computing!
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orge18ea23" class="outline-2">
+<h2 id="orge18ea23">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
+<div class="outline-text-2" id="text-orge18ea23">
+</div>
+<div id="outline-container-orgeaebe04" class="outline-3">
+<h3 id="orgeaebe04">Introduction</h3>
+<div class="outline-text-3" id="text-orgeaebe04">
+<p>
+In most HPC systems, users do not have root privileges, and in this case, the system is running <b><b>Rocky Linux</b></b>. Root privileges, such as running `yum install` or `dnf install` commands, are not possible for regular users. This ensures the stability and security of the shared computing environment. 
+</p>
+
+<p>
+When searching for documentation on how to install software, avoid instructions that require root access (e.g., using package managers like `yum` or `dnf`). Instead, focus on guides for installing software from source or using user-level installation methods.
+</p>
+
+<p>
+This tutorial will guide you through the process of installing software locally, using the example of installing <b><b>inxi package</b></b> from source.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org44952d0" class="outline-3">
+<h3 id="org44952d0">Why Root Privileges Are Restricted</h3>
+<div class="outline-text-3" id="text-org44952d0">
+<ul class="org-ul">
+<li>HPC systems are shared resources where multiple users run jobs simultaneously.</li>
+<li>Limiting root access ensures system integrity and prevents accidental or malicious changes.</li>
+<li>Users are encouraged to install software locally without impacting the global environment.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgdc7d588" class="outline-3">
+<h3 id="orgdc7d588">Installing Software Locally</h3>
+<div class="outline-text-3" id="text-orgdc7d588">
+<ol class="org-ol">
+<li><p>
+<b><b>Prepare a Directory for Local Installations</b></b>
+As a general practice, it is recommended to use `~/.local` for local installations. This directory follows standard conventions and is automatically recognized by many tools. However, note that `~/.local` is a hidden directory. To view it, you need to use the `~ls -a~` command, as it will not appear in a normal `ls` listing.
+</p>
+
+<p>
+Create a directory in your home folder to store installed software:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">mkdir -p ~/.local/bin ~/.local/src
+</pre>
+</div></li>
+
+<li><p>
+<b><b>Modify the PATH Variable</b></b>
+Update your environment variables to include the local installation directory in your PATH. Add the following lines to your shell configuration file (e.g., `~/.bashrc` or `~/.zshrc`):
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">export PATH=~/.local/bin:$PATH
+export LD_LIBRARY_PATH=~/.local/lib:$LD_LIBRARY_PATH
+</pre>
+</div>
+<p>
+Reload your shell configuration:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">source ~/.bashrc
+</pre>
+</div></li>
+</ol>
+<p>
+‼ test
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc8ec1a9" class="outline-3">
+<h3 id="orgc8ec1a9">Example: Installing Inxi from Source</h3>
+<div class="outline-text-3" id="text-orgc8ec1a9">
+<ol class="org-ol">
+<li><p>
+<b><b>Download the Source Code</b></b>
+Navigate to the source directory and download the inxi source code:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cd ~/.local/src
+wget -O inxi https://github.com/smxi/inxi/archive/master.zip
+</pre>
+</div></li>
+
+<li><p>
+<b><b>Extract the Archive</b></b>
+Extract the downloaded file:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">unzip inxi
+cd inxi-master
+</pre>
+</div></li>
+
+<li><p>
+<b><b>Install the Script</b></b>
+Copy the inxi script to the local `bin` directory:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cp inxi ~/.local/bin/
+chmod +x ~/.local/bin/inxi
+</pre>
+</div></li>
+
+<li><p>
+<b><b>Verify the Installation</b></b>
+Confirm that inxi is installed and accessible:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">inxi --version
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgf035f87" class="outline-3">
+<h3 id="orgf035f87">Additional Examples: mc and ncdu</h3>
+<div class="outline-text-3" id="text-orgf035f87">
+</div>
+<div id="outline-container-org5024d76" class="outline-4">
+<h4 id="org5024d76">Midnight Commander (mc)</h4>
+<div class="outline-text-4" id="text-org5024d76">
+<ul class="org-ul">
+<li><b><b>What is it?</b></b>
+Midnight Commander is a text-based file manager that provides a user-friendly interface for navigating and managing files directly from the command line. It includes features like directory browsing, file manipulation, and file viewing.</li>
+
+<li><b><b>Source Code:</b></b>
+<ul class="org-ul">
+<li>Official Website: [<a href="https://midnight-commander.org/">https://midnight-commander.org/</a>](<a href="https://midnight-commander.org/">https://midnight-commander.org/</a>)</li>
+<li>Git Repository: [<a href="https://github.com/MidnightCommander/mc">https://github.com/MidnightCommander/mc</a>](<a href="https://github.com/MidnightCommander/mc">https://github.com/MidnightCommander/mc</a>)</li>
+<li>Release Tarballs: [<a href="https://ftp.midnight-commander.org/">https://ftp.midnight-commander.org/</a>](<a href="https://ftp.midnight-commander.org/">https://ftp.midnight-commander.org/</a>)</li>
+</ul></li>
+</ul>
+
+<p>
+wget <a href="http://ftp.midnight-commander.org/mc-4.6.1.tar.gz">http://ftp.midnight-commander.org/mc-4.6.1.tar.gz</a>
+</p>
+
+<ul class="org-ul">
+<li><p>
+<b><b>Installation Steps:</b></b>
+After downloading the source code from the above links, follow the standard build process:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">./configure --prefix=$HOME/.local
+make
+make install
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org475eb23" class="outline-4">
+<h4 id="org475eb23">ncdu</h4>
+<div class="outline-text-4" id="text-org475eb23">
+<ul class="org-ul">
+<li><b><b>What is it?</b></b>
+ncdu (NCurses Disk Usage) is a disk usage analyzer with a text-based interface, ideal for identifying large files or directories on an HPC system.</li>
+
+<li><b><b>Source Code:</b></b>
+<ul class="org-ul">
+<li>Official Website: [<a href="https://dev.yorhel.nl/ncdu">https://dev.yorhel.nl/ncdu</a>](<a href="https://dev.yorhel.nl/ncdu">https://dev.yorhel.nl/ncdu</a>)</li>
+<li>Git Repository: [<a href="https://g.blicky.net/ncdu.git">https://g.blicky.net/ncdu.git</a>](<a href="https://g.blicky.net/ncdu.git">https://g.blicky.net/ncdu.git</a>)</li>
+</ul></li>
+</ul>
+
+<p>
+wget <a href="https://dev.yorhel.nl/download/ncdu-1.21.tar.gz">https://dev.yorhel.nl/download/ncdu-1.21.tar.gz</a>
+</p>
+
+<ul class="org-ul">
+<li><p>
+<b><b>Installation Steps:</b></b>
+Clone the repository or download the source tarball, then build and install:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">./configure --prefix=$HOME/.local
+make
+make install
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org0266009" class="outline-3">
+<h3 id="org0266009">Troubleshooting Tips</h3>
+<div class="outline-text-3" id="text-org0266009">
+<ul class="org-ul">
+<li><b><b>Problem:</b></b> `command not found` after installing the software.
+<ul class="org-ul">
+<li><b><b>Solution:</b></b> Ensure the PATH variable includes `~/.local/bin` by running `echo $PATH`.</li>
+</ul></li>
+<li><b><b>Problem:</b></b> Missing dependencies during installation.
+<ul class="org-ul">
+<li><b><b>Solution:</b></b> Use modules provided by the HPC center or install dependencies locally.</li>
+</ul></li>
+<li><b><b>Problem:</b></b> Permissions errors while copying or executing files.
+<ul class="org-ul">
+<li><b><b>Solution:</b></b> Ensure you have write permissions in your home directory and use `chmod +x` to make scripts executable.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org74da3d8" class="outline-3">
+<h3 id="org74da3d8">Conclusion</h3>
+<div class="outline-text-3" id="text-org74da3d8">
+<p>
+Installing software locally on an HPC system is straightforward when you understand the process. By using your home directory and updating your PATH, you can have the flexibility to use the tools you need without requiring administrative access. For consistency and compatibility, it is recommended to use `~/.local` for local installations. Remember that `~/.local` is hidden, and you can view it with the `ls -a` command.
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgd92092a" class="outline-2">
+<h2 id="orgd92092a">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
+<div class="outline-text-2" id="text-orgd92092a">
+</div>
+<div id="outline-container-org9e1765e" class="outline-3">
+<h3 id="org9e1765e">Introduction</h3>
+<div class="outline-text-3" id="text-org9e1765e">
+<p>
+In most HPC systems, users do not have root privileges, and in this case, the system is running <b><b>Rocky Linux</b></b>. Root privileges, such as running `yum install` or `dnf install` commands, are not possible for regular users. This ensures the stability and security of the shared computing environment. 
+</p>
+
+<p>
+When searching for documentation on how to install software, avoid instructions that require root access (e.g., using package managers like `*yum*`, `*dnf*` or <b>`apt-get`</b>). Instead, focus on guides for installing software from source or using user-level installation methods.
+</p>
+
+<p>
+This tutorial will guide you through the process of installing software locally, using the example of installing <b><b>inxi</b></b> from source.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgb30abb4" class="outline-3">
+<h3 id="orgb30abb4">Why Root Privileges Are Restricted</h3>
+<div class="outline-text-3" id="text-orgb30abb4">
+<ul class="org-ul">
+<li>HPC systems are shared resources where multiple users run jobs simultaneously.</li>
+<li>Limiting root access ensures system integrity and prevents accidental or malicious changes.</li>
+<li>Users are encouraged to install software locally without impacting the global environment.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org96baa51" class="outline-3">
+<h3 id="org96baa51">Installing Software Locally</h3>
+<div class="outline-text-3" id="text-org96baa51">
+<ol class="org-ol">
+<li><p>
+<b><b>Prepare a Directory for Local Installations</b></b>
+As a general practice, it is recommended to use `~/.local` for local installations. This directory follows standard conventions and is automatically recognized by many tools. However, note that `~/.local` is a hidden directory. To view it, you need to use the `ls -a` command, as it will not appear in a normal `ls` listing.
+</p>
+
+<p>
+Create a directory in your home folder to store installed software:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">mkdir -p ~/.local/bin ~/.local/src
+</pre>
+</div></li>
+
+<li><p>
+<b><b>Modify the PATH Variable</b></b>
+Update your environment variables to include the local installation directory in your PATH. Add the following lines to your shell configuration file (e.g., `~/.bashrc` or `~/.zshrc`):
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">export PATH=~/.local/bin:$PATH
+export LD_LIBRARY_PATH=~/.local/lib:$LD_LIBRARY_PATH
+</pre>
+</div>
+<p>
+Reload your shell configuration:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">source ~/.bashrc
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgb5f563f" class="outline-3">
+<h3 id="orgb5f563f">Example: Installing Inxi from Source</h3>
+<div class="outline-text-3" id="text-orgb5f563f">
+<ol class="org-ol">
+<li><p>
+<b><b>Download the Source Code</b></b>
+Navigate to the source directory and download the inxi source code:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cd ~/.local/src
+wget -O inxi https://github.com/smxi/inxi/archive/master.zip
+</pre>
+</div></li>
+
+<li><p>
+<b><b>Extract the Archive</b></b>
+Extract the downloaded file:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">unzip master.zip
+cd inxi-master
+</pre>
+</div></li>
+
+<li><p>
+<b><b>Install the Script</b></b>
+Copy the inxi script to the local `bin` directory:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cp inxi ~/.local/bin/
+chmod +x ~/.local/bin/inxi
+</pre>
+</div></li>
+
+<li><p>
+<b><b>Verify the Installation</b></b>
+Confirm that inxi is installed and accessible:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">inxi --version
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-org7c26485" class="outline-3">
+<h3 id="org7c26485">Troubleshooting Tips</h3>
+<div class="outline-text-3" id="text-org7c26485">
+<ul class="org-ul">
+<li><b><b>Problem:</b></b> `command not found` after installing the software.
+<ul class="org-ul">
+<li><b><b>Solution:</b></b> Ensure the PATH variable includes `~/.local/bin` by running `echo $PATH`.</li>
+</ul></li>
+<li><b><b>Problem:</b></b> Missing dependencies during installation.
+<ul class="org-ul">
+<li><b><b>Solution:</b></b> Use modules provided by the HPC center or install dependencies locally.</li>
+</ul></li>
+<li><b><b>Problem:</b></b> Permissions errors while copying or executing files.
+<ul class="org-ul">
+<li><b><b>Solution:</b></b> Ensure you have write permissions in your home directory and use `chmod +x` to make scripts executable.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org08046bd" class="outline-3">
+<h3 id="org08046bd">Conclusion</h3>
+<div class="outline-text-3" id="text-org08046bd">
+<p>
+Installing software locally on an HPC system is straightforward when you understand the process. By using your home directory and updating your PATH, you can have the flexibility to use the tools you need without requiring administrative access. For consistency and compatibility, it is recommended to use `~/.local` for local installations. Remember that `~/.local` is hidden, and you can view it with the `ls -a` command.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sbilmis</p>
+<p class="date">Created: 2025-02-20 Thu 17:11</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -3,49 +3,26 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-13 Fri 17:06 -->
+<!-- 2025-02-20 Thu 17:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linux</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="sbilmis" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/search.css" />
+                   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/search.js"></script>
 </head>
 <body>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Linux</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
 <li><a href="#org9908e26">1. Difference Between `source script.sh` and `sh script.sh`</a></li>
 <li><a href="#orge4c12ac">2. How to Create a Multiboot USB</a></li>
@@ -74,19 +51,19 @@
 <li><a href="#orgfc49798">21. How to Partition, Mount, and Unmount Disks</a></li>
 <li><a href="#org65ed4bf">22. How to Logout a User from the System</a></li>
 <li><a href="#org5a4962b">23. How to List the Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
-<li><a href="#org16481a4">24. How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
+<li><a href="#org9fc888a">24. How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
 <li><a href="#org250bac6">25. How to Install a Package to a Specific Directory Using `yum`</a></li>
-<li><a href="#org0bc111a">26. How to Find Configuration Files That Have Been Altered Since Installation</a></li>
+<li><a href="#org9b00aa3">26. How to Find Configuration Files That Have Been Altered Since Installation</a></li>
 <li><a href="#org12a39e2">27. Error: Nothing to Do When Installing Local RPM&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
-<li><a href="#org3b2adf1">28. How to Download and Install an RPM Package</a></li>
+<li><a href="#org1889850">28. How to Download and Install an RPM Package</a></li>
 <li><a href="#orgf249445">29. CentOS</a>
 <ul>
 <li><a href="#org0d14d21">29.1. How to List Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
-<li><a href="#orgc96143d">29.2. How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
+<li><a href="#org02a7bd0">29.2. How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
 <li><a href="#org052fc7c">29.3. How to Install a Package to a Specific Directory Using Yum</a></li>
-<li><a href="#org2933d10">29.4. How to Find Configuration Files That Have Been Altered Since Installation</a></li>
+<li><a href="#orgf30d848">29.4. How to Find Configuration Files That Have Been Altered Since Installation</a></li>
 <li><a href="#orgc1e8854">29.5. Error: "Nothing to Do" When Installing Local RPM</a></li>
-<li><a href="#orgb4b02c6">29.6. How to Download and Install an RPM Package</a></li>
+<li><a href="#orgd8cd75d">29.6. How to Download and Install an RPM Package</a></li>
 </ul>
 </li>
 <li><a href="#org9a24094">30. Ubuntu</a>
@@ -180,8 +157,8 @@
 </p>
 <div class="org-src-container">
 <pre class="src src-bash">df -BG
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">`df`: Displays disk space usage of file systems.</span>
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">`-B`: Specifies the block size for output. In this case, `G` ensures sizes are shown in gigabytes.</span>
+# `df`: Displays disk space usage of file systems.
+# `-B`: Specifies the block size for output. In this case, `G` ensures sizes are shown in gigabytes.
 </pre>
 </div></li>
 
@@ -201,9 +178,9 @@ Filesystem 1G-blocks Used Available Use% Mounted on /dev/sda1 100G 45G 55G 45% /
 <li><b><b>Key Commands:</b></b></li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Edit the user's crontab file</span>
+<pre class="src src-bash"># Edit the user's crontab file
 crontab -e
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">List current cron jobs</span>
+# List current cron jobs
 crontab -l
 </pre>
 </div>
@@ -213,9 +190,9 @@ crontab -l
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash">30-45 16 * * * /Users/sbilmis/Ninbox/truba_scripts/cron_test.sh &gt; /Users/sbilmis/Ninbox/truba_scripts/test.txt 2&gt; /Users/sbilmis/Ninbox/truba_scripts/testerr.txt
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">This runs the script `cron_test.sh` between 16:30 and 16:45 daily.</span>
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">`&gt;` redirects standard output (stdout) to test.txt.</span>
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">`2&gt;` redirects errors (stderr) to testerr.txt.</span>
+# This runs the script `cron_test.sh` between 16:30 and 16:45 daily.
+# `&gt;` redirects standard output (stdout) to test.txt.
+# `2&gt;` redirects errors (stderr) to testerr.txt.
 </pre>
 </div>
 
@@ -243,8 +220,8 @@ crontab -l
 <li><b><b>Define PATH in Crontab:</b></b></li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #BA36A5;">SHELL</span>=/bin/sh
-<span style="color: #BA36A5;">PATH</span>=/opt/homebrew/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+<pre class="src src-bash">SHELL=/bin/sh
+PATH=/opt/homebrew/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 19-23 12 * * * /path/to/your_script.sh &gt;&gt; /path/to/log.txt 2&gt;&gt; /path/to/error.txt
 </pre>
 </div>
@@ -261,10 +238,10 @@ crontab -l
 <li><b><b>Syntax:</b></b></li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Redirect stdout to a file and stderr to a different file</span>
+<pre class="src src-bash"># Redirect stdout to a file and stderr to a different file
 command1 &gt; out.txt 2&gt; err.txt
 
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Redirect both stdout and stderr to the same file</span>
+# Redirect both stdout and stderr to the same file
 command1 &gt; everything.txt 2&gt;&amp;1
 </pre>
 </div>
@@ -327,13 +304,13 @@ Combine both outputs into a single log file:
 <b><b>Mount the Shared Folder in the Guest Machine:</b></b>
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Create a directory to mount the shared folder</span>
+<pre class="src src-bash"># Create a directory to mount the shared folder
 sudo mkdir /mnt/myfolder
 
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Mount the folder using the virtio driver</span>
-sudo mount -t 9p -o <span style="color: #BA36A5;">trans</span>=virtio tag_my_folder /mnt/myfolder
+# Mount the folder using the virtio driver
+sudo mount -t 9p -o trans=virtio tag_my_folder /mnt/myfolder
 
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Alternative command for newer Ubuntu versions</span>
+# Alternative command for newer Ubuntu versions
 sudo mount -t virtiofs tag_my_folder /mnt/myfolder
 </pre>
 </div></li>
@@ -388,7 +365,7 @@ sudo mount -t virtiofs tag_my_folder /mnt/myfolder
 Identify the transaction ID of the update to be undone:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">List yum transaction history</span>
+<pre class="src src-bash"># List yum transaction history
 yum history
 </pre>
 </div></li>
@@ -397,7 +374,7 @@ yum history
 Use the `undo` command with the identified transaction ID:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Roll back the update using transaction ID (e.g., 8)</span>
+<pre class="src src-bash"># Roll back the update using transaction ID (e.g., 8)
 yum history undo 8
 </pre>
 </div></li>
@@ -409,7 +386,7 @@ yum history undo 8
 If rolling back is not an option or specific version control is needed:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Downgrade a package to a specific version</span>
+<pre class="src src-bash"># Downgrade a package to a specific version
 yum downgrade httpd-2.2.3-22.el5
 </pre>
 </div></li>
@@ -446,7 +423,7 @@ yum downgrade httpd-2.2.3-22.el5
 <b><b>Disable Yum Priorities Temporarily:</b></b>
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Use the following option to disable yum priorities for a single command</span>
+<pre class="src src-bash"># Use the following option to disable yum priorities for a single command
 yum --disableplugin=priorities
 </pre>
 </div></li>
@@ -455,10 +432,10 @@ yum --disableplugin=priorities
 <b><b>Disable Yum Priorities Globally:</b></b>
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Edit the yum priorities configuration file</span>
+<pre class="src src-bash"># Edit the yum priorities configuration file
 sudo nano /etc/yum/pluginconf.d/priorities.conf
 
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Set the following:</span>
+# Set the following:
 enabled = 0
 </pre>
 </div></li>
@@ -469,7 +446,7 @@ enabled = 0
 To check which packages are excluded due to priority protections:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">List updates with detailed debug information</span>
+<pre class="src src-bash"># List updates with detailed debug information
 yum list updates --debuglevel 3
 </pre>
 </div></li>
@@ -609,7 +586,7 @@ This works similarly to the above:
 A versatile method to achieve the same result:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash">dd <span style="color: #BA36A5;">if</span>=/dev/null <span style="color: #BA36A5;">of</span>=access.log
+<pre class="src src-bash">dd if=/dev/null of=access.log
 </pre>
 </div></li>
 </ul></li>
@@ -667,7 +644,7 @@ A versatile method to achieve the same result:
 Displays all active and stopped jobs in the current shell session:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #006FE0;">jobs</span>
+<pre class="src src-bash">jobs
 </pre>
 </div></li>
 </ul></li>
@@ -678,7 +655,7 @@ Displays all active and stopped jobs in the current shell session:
 Use the job ID to bring it back to the foreground:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #006FE0;">fg</span> 1
+<pre class="src src-bash">fg 1
 </pre>
 </div></li>
 <li>Replace `1` with the relevant job ID listed by the `jobs` command.</li>
@@ -761,7 +738,7 @@ Command:
 <li><p>
 Output:
 </p>
-<pre class="example" id="orgf3e631c">
+<pre class="example" id="org5118c89">
 17:45:26 up 3 days, 4:12,  2 users,  load average: 0.03, 0.03, 0.01
 </pre>
 <ul class="org-ul">
@@ -790,7 +767,7 @@ Using `top`:
 <li><p>
 Sample `top` Output:
 </p>
-<pre class="example" id="org297ec51">
+<pre class="example" id="org319f934">
 top - 17:46:38 up 3 days, 4:13,  2 users,  load average: 0.03, 0.03, 0.01
 Tasks: 110 total,   1 running, 109 sleeping,   0 stopped,   0 zombie
 %Cpu(s):  1.0 us,  0.5 sy,  0.0 ni, 98.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
@@ -865,10 +842,10 @@ Use `journalctl` to list the boots recorded by the system:
 <li><p>
 Example output:
 </p>
-<pre class="example" id="org8cd08d6">
-  -2 4c3b5b2f2a4c401c8506ab65e03b3df7 Mon 2024-11-10 09:15:00 UTC—Mon 2024-11-10 17:35:00 UTC
-  -1 1a2f33ef3d3c401dbe36b5647e03fdf7 Mon 2024-11-11 09:20:00 UTC—Mon 2024-11-11 17:40:00 UTC
-   0 c2a3b5b2f2a3c4dc6506ab56e03c3de5 Tue 2024-11-12 08:00:00 UTC—Tue 2024-11-12 16:20:00 UTC
+<pre class="example" id="orgafa48cb">
+-2 4c3b5b2f2a4c401c8506ab65e03b3df7 Mon 2024-11-10 09:15:00 UTC—Mon 2024-11-10 17:35:00 UTC
+-1 1a2f33ef3d3c401dbe36b5647e03fdf7 Mon 2024-11-11 09:20:00 UTC—Mon 2024-11-11 17:40:00 UTC
+ 0 c2a3b5b2f2a3c4dc6506ab56e03c3de5 Tue 2024-11-12 08:00:00 UTC—Tue 2024-11-12 16:20:00 UTC
 </pre></li>
 </ul></li>
 
@@ -899,8 +876,8 @@ Use the `who` command to find the last reboot time:
 <li><p>
 Example output:
 </p>
-<pre class="example" id="org95ab0c0">
-         system boot  2024-11-12 08:00
+<pre class="example" id="org98611a4">
+system boot  2024-11-12 08:00
 </pre></li>
 </ul></li>
 
@@ -915,7 +892,7 @@ Alternatively, use the `last` command to view reboot history:
 <li><p>
 Example output:
 </p>
-<pre class="example" id="org04f6c0a">
+<pre class="example" id="orgff09ed0">
 reboot   system boot  5.15.0-43-generic Fri Nov 10 09:15 - 17:35  (08:20)
 reboot   system boot  5.15.0-43-generic Mon Nov 12 08:00 - 16:20  (08:20)
 </pre></li>
@@ -928,8 +905,8 @@ reboot   system boot  5.15.0-43-generic Mon Nov 12 08:00 - 16:20  (08:20)
 Use `grep` with `journalctl` to filter messages related to shutdown or restart:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash">journalctl | grep -i <span style="color: #008000;">"shutdown"</span>
-journalctl | grep -i <span style="color: #008000;">"reboot"</span>
+<pre class="src src-bash">journalctl | grep -i "shutdown"
+journalctl | grep -i "reboot"
 </pre>
 </div></li>
 </ul></li>
@@ -980,9 +957,9 @@ Example to include IP addresses for a specific user:
 To list users currently logged in:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash">w      <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Displays active users and their activity.</span>
-who    <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Lists logged-in users.</span>
-users  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Outputs the usernames of all logged-in users.</span>
+<pre class="src src-bash">w      # Displays active users and their activity.
+who    # Lists logged-in users.
+users  # Outputs the usernames of all logged-in users.
 </pre>
 </div></li>
 </ul></li>
@@ -1004,7 +981,7 @@ users  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-
 Look for defunct "login" processes and kill them:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash">ps -aux | grep defunct | awk <span style="color: #008000;">'{print $2}'</span> | xargs kill -9
+<pre class="src src-bash">ps -aux | grep defunct | awk '{print $2}' | xargs kill -9
 </pre>
 </div></li>
 </ul></li>
@@ -1064,11 +1041,11 @@ Example command:
 This script calculates the inode usage for each subfolder in the current directory.
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #006FE0;">echo</span> <span style="color: #008000;">"Detailed Inode usage for: $(</span><span style="color: #FF1493;">pwd</span><span style="color: #008000;">)"</span> ; <span style="color: #008000;">\</span>
-<span style="color: #0000FF; font-weight: bold;">for</span> d<span style="color: #0000FF; font-weight: bold;"> in</span> <span style="color: #FF1493;">`find -maxdepth 1 -type d |cut -d\/ -f2 |grep -xv . |sort`</span>; <span style="color: #0000FF; font-weight: bold;">do</span> <span style="color: #008000;">\</span>
-  <span style="color: #BA36A5;">c</span>=$(<span style="color: #FF1493;">find $d |wc -l</span>) ; <span style="color: #006FE0;">printf</span> <span style="color: #008000;">"$c\t\t- $d\n"</span> ; <span style="color: #008000;">\</span>
-<span style="color: #0000FF; font-weight: bold;">done</span> ; <span style="color: #008000;">\</span>
-<span style="color: #006FE0;">printf</span> <span style="color: #008000;">"Total: \t\t$(</span><span style="color: #FF1493;">find $(pwd</span><span style="color: #008000;">) | wc -l)\n"</span>
+<pre class="src src-bash">echo "Detailed Inode usage for: $(pwd)" ; \
+for d in `find -maxdepth 1 -type d |cut -d\/ -f2 |grep -xv . |sort`; do \
+  c=$(find $d |wc -l) ; printf "$c\t\t- $d\n" ; \
+done ; \
+printf "Total: \t\t$(find $(pwd) | wc -l)\n"
 </pre>
 </div></li>
 </ul></li>
@@ -1078,7 +1055,7 @@ This script calculates the inode usage for each subfolder in the current directo
 <li><p>
 This will show the count of inodes for each subdirectory and the total:
 </p>
-<pre class="example" id="orgaebfc38">
+<pre class="example" id="orge9550cd">
 Detailed Inode usage for: /my/directory
 12              - subfolder1
 8               - subfolder2
@@ -1158,10 +1135,10 @@ Validates if the symlink is pointing to an existing file:
 Ensures that all files and directories created within a folder inherit the group's ownership.
 </p>
 <div class="org-src-container">
-<pre class="src src-bash">chmod g+s foobar  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Applies the setgid bit.</span>
+<pre class="src src-bash">chmod g+s foobar  # Applies the setgid bit.
 
-ls -l  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Verify permissions; 's' indicates the sticky bit.</span>
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Example output:</span>
+ls -l  # Verify permissions; 's' indicates the sticky bit.
+# Example output:
 drwxrws---  8 root mygroup 4096 Jan 12  2022 foobar
 </pre>
 </div></li>
@@ -1283,40 +1260,40 @@ Replace `{index}` with the desired boot index:
 <b><b>Using `parted` for Disk Management:</b></b>
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">List all connected disks:</span>
+<pre class="src src-bash"># List all connected disks:
 sudo parted -l 
 
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Connect to a specific disk (e.g., /dev/sdc):</span>
+# Connect to a specific disk (e.g., /dev/sdc):
 sudo parted /dev/sdc
 
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Inside the parted environment:</span>
-mklabel gpt  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Set GPT as the partition table.</span>
+# Inside the parted environment:
+mklabel gpt  # Set GPT as the partition table.
 
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Create a primary ext4 partition from 1 MiB to 8 GiB:</span>
+# Create a primary ext4 partition from 1 MiB to 8 GiB:
 mkpart primary ext4 1MIB 8GIB
 
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Create a primary NTFS partition for the remaining space:</span>
+# Create a primary NTFS partition for the remaining space:
 mkpart primary ntfs 8GIB 100%
 
-quit  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Exit the parted environment.</span>
+quit  # Exit the parted environment.
 
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Format the created partitions:</span>
+# Format the created partitions:
 sudo mkfs -t ext4 /dev/sdc1
 sudo mkfs -t ntfs /dev/sdc2
 
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Mount the partitions:</span>
+# Mount the partitions:
 sudo mount /dev/sdc1 /media/sbilmis/myext4
 sudo mount /dev/sdc2 /media/sbilmis/myntfs
 
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Unmount the partitions:</span>
+# Unmount the partitions:
 sudo umount /media/sbilmis/myext4
 sudo umount /dev/sdc1
 
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Enable a swap partition (if applicable):</span>
+# Enable a swap partition (if applicable):
 sudo mkswap /dev/sdc3
 sudo swapon /dev/sdc3
 
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">View all storage devices in a tree-like format:</span>
+# View all storage devices in a tree-like format:
 lsblk
 </pre>
 </div></li>
@@ -1348,8 +1325,8 @@ lsblk
 Identify active user sessions:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash">who       <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Basic list of logged-in users.</span>
-w         <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Detailed information about user activities.</span>
+<pre class="src src-bash">who       # Basic list of logged-in users.
+w         # Detailed information about user activities.
 </pre>
 </div></li>
 </ul></li>
@@ -1371,7 +1348,7 @@ Forcefully terminate a user session:
 Users can log out from their session using:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #0000FF; font-weight: bold;">logout</span>
+<pre class="src src-bash">logout
 </pre>
 </div></li>
 </ul></li>
@@ -1393,7 +1370,7 @@ Users can log out from their session using:
 To view all the files installed by a specific package, use the following command:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash">rpm -ql <span style="color: #008000;">"package-name"</span>
+<pre class="src src-bash">rpm -ql "package-name"
 </pre>
 </div></li>
 </ul>
@@ -1405,8 +1382,8 @@ To view all the files installed by a specific package, use the following command
 </div>
 
 
-<div id="outline-container-org16481a4" class="outline-2">
-<h2 id="org16481a4"><span class="section-number-2">24.</span> How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h2>
+<div id="outline-container-org9fc888a" class="outline-2">
+<h2 id="org9fc888a"><span class="section-number-2">24.</span> How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h2>
 <div class="outline-text-2" id="text-24">
 <ul class="org-ul">
 <li>Use the `yum` package manager to list and install specific versions of a package.</li>
@@ -1465,8 +1442,8 @@ Use the `&#x2013;installroot` option to specify a custom directory for the packa
 
 
 
-<div id="outline-container-org0bc111a" class="outline-2">
-<h2 id="org0bc111a"><span class="section-number-2">26.</span> How to Find Configuration Files That Have Been Altered Since Installation</h2>
+<div id="outline-container-org9b00aa3" class="outline-2">
+<h2 id="org9b00aa3"><span class="section-number-2">26.</span> How to Find Configuration Files That Have Been Altered Since Installation</h2>
 <div class="outline-text-2" id="text-26">
 <ul class="org-ul">
 <li>Use the `rpm` command to verify package files and determine which configuration files have been altered.</li>
@@ -1519,7 +1496,7 @@ Try installing the package in verbose mode to diagnose the issue:
 </p>
 <div class="org-src-container">
 <pre class="src src-bash">yum -v install /path/to/package.rpm
-    <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">or</span>
+    # or
 rpm -v -i /path/to/package.rpm
 </pre>
 </div></li>
@@ -1539,17 +1516,17 @@ rpm -v -i /path/to/package.rpm
 </div>
 
 
-<div id="outline-container-org3b2adf1" class="outline-2">
-<h2 id="org3b2adf1"><span class="section-number-2">28.</span> How to Download and Install an RPM Package</h2>
+<div id="outline-container-org1889850" class="outline-2">
+<h2 id="org1889850"><span class="section-number-2">28.</span> How to Download and Install an RPM Package</h2>
 <div class="outline-text-2" id="text-28">
 <ul class="org-ul">
 <li><p>
 To download and install an RPM package in a single step:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash">sudo rpm -i &lt;URL&gt;  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Using rpm command</span>
+<pre class="src src-bash">sudo rpm -i &lt;URL&gt;  # Using rpm command
 
-sudo yum install -y &lt;URL&gt;  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Using yum command</span>
+sudo yum install -y &lt;URL&gt;  # Using yum command
 </pre>
 </div></li>
 
@@ -1588,8 +1565,8 @@ sudo yum install -y &lt;URL&gt;  <span style="color: #8D8D84;"># </span><span st
 </div>
 </div>
 
-<div id="outline-container-orgc96143d" class="outline-3">
-<h3 id="orgc96143d"><span class="section-number-3">29.2.</span> How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h3>
+<div id="outline-container-org02a7bd0" class="outline-3">
+<h3 id="org02a7bd0"><span class="section-number-3">29.2.</span> How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h3>
 <div class="outline-text-3" id="text-29-2">
 <ul class="org-ul">
 <li>Use the `yum` command with the `&#x2013;showduplicates` option to list all available versions of a package.</li>
@@ -1645,8 +1622,8 @@ sudo yum install -y &lt;URL&gt;  <span style="color: #8D8D84;"># </span><span st
 </div>
 </div>
 
-<div id="outline-container-org2933d10" class="outline-3">
-<h3 id="org2933d10"><span class="section-number-3">29.4.</span> How to Find Configuration Files That Have Been Altered Since Installation</h3>
+<div id="outline-container-orgf30d848" class="outline-3">
+<h3 id="orgf30d848"><span class="section-number-3">29.4.</span> How to Find Configuration Files That Have Been Altered Since Installation</h3>
 <div class="outline-text-3" id="text-29-4">
 <ul class="org-ul">
 <li>Use the `rpm` command to verify and list files that have been modified since package installation.</li>
@@ -1717,8 +1694,8 @@ rpm -v -i &lt;package-name&gt;.rpm
 </div>
 </div>
 
-<div id="outline-container-orgb4b02c6" class="outline-3">
-<h3 id="orgb4b02c6"><span class="section-number-3">29.6.</span> How to Download and Install an RPM Package</h3>
+<div id="outline-container-orgd8cd75d" class="outline-3">
+<h3 id="orgd8cd75d"><span class="section-number-3">29.6.</span> How to Download and Install an RPM Package</h3>
 <div class="outline-text-3" id="text-29-6">
 <ul class="org-ul">
 <li>To directly install an RPM from a URL or file:</li>
@@ -1955,7 +1932,7 @@ Restart the Network Manager service:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2024-12-13 Fri 17:06</p>
+<p class="date">Created: 2025-02-20 Thu 17:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

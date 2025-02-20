@@ -3,49 +3,26 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-13 Fri 17:03 -->
+<!-- 2025-02-20 Thu 17:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>rclone Guide</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="sbilmis" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/search.css" />
+                   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/search.js"></script>
 </head>
 <body>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">rclone Guide</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
 <li><a href="#orgb6bc916">1. rclone</a></li>
 <li><a href="#orgda66332">2. Important Flags</a></li>
@@ -84,10 +61,10 @@
 The following flags are useful for most `rclone` commands. Use them carefully to avoid data loss.
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    -n, --dry-run         <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Do a trial run with no permanent changes</span>
-    -i, --interactive     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Enable interactive mode</span>
-    -v, --verbose         <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Print detailed output (use multiple times for more verbosity)</span>
-    -P, --progress        <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Show the progress of the transfer</span>
+<pre class="src src-shell">-n, --dry-run         # Do a trial run with no permanent changes
+-i, --interactive     # Enable interactive mode
+-v, --verbose         # Print detailed output (use multiple times for more verbosity)
+-P, --progress        # Show the progress of the transfer
 </pre>
 </div></li>
 </ul>
@@ -102,7 +79,7 @@ The following flags are useful for most `rclone` commands. Use them carefully to
 To configure cloud storage interactively:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    rclone config
+<pre class="src src-shell">rclone config
 </pre>
 </div>
 <ul class="org-ul">
@@ -113,7 +90,7 @@ To configure cloud storage interactively:
 To list configured remotes:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    rclone listremotes
+<pre class="src src-shell">rclone listremotes
 </pre>
 </div></li>
 </ul>
@@ -128,7 +105,7 @@ To list configured remotes:
 List directories at the top level of a remote:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    rclone lsd pcloud:my_folder
+<pre class="src src-shell">rclone lsd pcloud:my_folder
 </pre>
 </div></li>
 
@@ -136,7 +113,7 @@ List directories at the top level of a remote:
 List all files in a remote folder:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    rclone ls pcloud:my_folder
+<pre class="src src-shell">rclone ls pcloud:my_folder
 </pre>
 </div></li>
 
@@ -144,7 +121,7 @@ List all files in a remote folder:
 Copy files from local to cloud with progress tracking:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    rclone copy --verbose --progress ~/local_test pcloud:my_folder
+<pre class="src src-shell">rclone copy --verbose --progress ~/local_test pcloud:my_folder
 </pre>
 </div>
 <ul class="org-ul">
@@ -152,7 +129,7 @@ Copy files from local to cloud with progress tracking:
 <b><b>Tip</b></b>: Add `&#x2013;update` to skip files on the destination with newer modified times:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">      rclone copy --update ~/local_test pcloud:my_folder --verbose --progress
+<pre class="src src-shell">rclone copy --update ~/local_test pcloud:my_folder --verbose --progress
 </pre>
 </div></li>
 </ul></li>
@@ -172,7 +149,7 @@ Copy files from local to cloud with progress tracking:
 <li><b><b>Caution</b></b>: Always test `sync` with `&#x2013;dry-run` or `&#x2013;interactive` flags to prevent accidental data loss.</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-shell">    rclone sync <span style="color: #008000;">"source:sourcepath"</span> <span style="color: #008000;">"destination:destinationpath"</span>
+<pre class="src src-shell">rclone sync "source:sourcepath" "destination:destinationpath"
 </pre>
 </div></li>
 </ul>
@@ -187,7 +164,7 @@ Copy files from local to cloud with progress tracking:
 Copy files that changed in the last 24 hours:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    rclone copy --max-age 24h --no-traverse /path/to/src remote:
+<pre class="src src-shell">rclone copy --max-age 24h --no-traverse /path/to/src remote:
 </pre>
 </div></li>
 
@@ -195,7 +172,7 @@ Copy files that changed in the last 24 hours:
 <b><b>Bidirectional Sync (Bisync)</b></b>: Synchronize changes in both directions with `rclone bisync`.
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    rclone bisync --resync ~/local_test pcloud:my_folder --verbose --progress
+<pre class="src src-shell">rclone bisync --resync ~/local_test pcloud:my_folder --verbose --progress
 </pre>
 </div></li>
 </ul>
@@ -210,14 +187,14 @@ Copy files that changed in the last 24 hours:
 To mount and unmount cloud storage:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    <span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">Mount</span>
-    rclone mount remote:path/to/files /path/to/local/mount
+<pre class="src src-shell">## Mount
+rclone mount remote:path/to/files /path/to/local/mount
 
-    <span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">Unmount (Linux)</span>
-    fusermount -u ~/gdrive
+## Unmount (Linux)
+fusermount -u ~/gdrive
 
-    <span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">Unmount (macOS)</span>
-    umount /path/to/local/mount
+## Unmount (macOS)
+umount /path/to/local/mount
 </pre>
 </div></li>
 </ul>
@@ -241,11 +218,11 @@ To mount and unmount cloud storage:
 Check files to delete with `&#x2013;dry-run`, then delete:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    <span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">Dry run</span>
-    rclone --dry-run delete remote:path
+<pre class="src src-shell">## Dry run
+rclone --dry-run delete remote:path
 
-    <span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">Actual deletion with interactive mode</span>
-    rclone -i delete remote:path
+## Actual deletion with interactive mode
+rclone -i delete remote:path
 </pre>
 </div></li>
 
@@ -253,7 +230,7 @@ Check files to delete with `&#x2013;dry-run`, then delete:
 Delete empty directories:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    rclone -n rmdirs remote:path
+<pre class="src src-shell">rclone -n rmdirs remote:path
 </pre>
 </div></li>
 </ul>
@@ -268,7 +245,7 @@ Delete empty directories:
 Create a new directory in a cloud storage location:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    rclone mkdir gdrive:cloud_test
+<pre class="src src-shell">rclone mkdir gdrive:cloud_test
 </pre>
 </div></li>
 </ul>
@@ -283,7 +260,7 @@ Create a new directory in a cloud storage location:
 After an initial sync, avoid full re-syncs by copying only recently changed files:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    rclone copy --max-age 24h --no-traverse -i --progress /Users/sbilmis/local_test pcloud:cloud_test
+<pre class="src src-shell">rclone copy --max-age 24h --no-traverse -i --progress /Users/sbilmis/local_test pcloud:cloud_test
 </pre>
 </div></li>
 </ul>
@@ -298,14 +275,14 @@ After an initial sync, avoid full re-syncs by copying only recently changed file
 Monthly backup script to copy `my<sub>projects</sub>` from `pcloud` to `gdrive`.
 </p>
 <div class="org-src-container">
-<pre class="src src-bash">    <span style="color: #8D8D84;">#</span><span style="color: #8D8D84; font-style: italic;">!/bin/bash</span>
+<pre class="src src-bash">#!/bin/bash
 
-    <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Define source and destination paths</span>
-    <span style="color: #BA36A5;">SOURCE</span>=<span style="color: #008000;">"pcloud:my_projects"</span>
-    <span style="color: #BA36A5;">DESTINATION</span>=<span style="color: #008000;">"gdrive:My_Files/Depo/my_projects_$(</span><span style="color: #FF1493;">date +\%Y\%m\%d</span><span style="color: #008000;">)"</span>
+# Define source and destination paths
+SOURCE="pcloud:my_projects"
+DESTINATION="gdrive:My_Files/Depo/my_projects_$(date +\%Y\%m\%d)"
 
-    <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Run rclone copy command with progress and transfer settings</span>
-    rclone copy -vv --progress --transfers 30 <span style="color: #008000;">"$SOURCE"</span> <span style="color: #008000;">"$DESTINATION"</span>
+# Run rclone copy command with progress and transfer settings
+rclone copy -vv --progress --transfers 30 "$SOURCE" "$DESTINATION"
 </pre>
 </div></li>
 </ul>
@@ -314,7 +291,7 @@ Monthly backup script to copy `my<sub>projects</sub>` from `pcloud` to `gdrive`.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2024-12-13 Fri 17:03</p>
+<p class="date">Created: 2025-02-20 Thu 17:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,49 +3,26 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-13 Fri 17:06 -->
+<!-- 2025-02-20 Thu 17:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Guide</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="sbilmis" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/search.css" />
+                   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/search.js"></script>
 </head>
 <body>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Emacs Guide</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
 <li><a href="#orgf6390e6">1. Emacs Overview</a></li>
 <li><a href="#orgc2cae8e">2. Performing Replace Operations Across Multiple Files</a></li>
@@ -67,7 +44,17 @@
 <li><a href="#org567c5d7">7.3. Code Blocks in Org Mode</a></li>
 </ul>
 </li>
-<li><a href="#orgfbbfe09">8. Useful Links</a></li>
+<li><a href="#org78a03dc">8. Starting Emacs with a Specific Init File</a>
+<ul>
+<li><a href="#orgc9573ac">8.1. Using the `-q` option</a></li>
+<li><a href="#orgb6ceb7b">8.2. Using the `&#x2013;no-init-file` option</a></li>
+<li><a href="#org3bf9680">8.3. Loading a Specific Init File</a></li>
+<li><a href="#orgf01e404">8.4. Running Emacs with a Temporary Init File</a></li>
+<li><a href="#org435b59a">8.5. Debugging Initialization Issues</a></li>
+<li><a href="#org35443d1">8.6. Example Usage</a></li>
+</ul>
+</li>
+<li><a href="#orgfbbfe09">9. Useful Links</a></li>
 </ul>
 </div>
 </div>
@@ -92,13 +79,13 @@
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">Using Dired mode (directory mode):</span>
-  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">1. Open Dired mode with `M-x dired` or `C-x d`.</span>
-  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">2. Mark files to operate on with `t`.</span>
-  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">3. Press `Q` to start a `query-replace-regexp` on the marked files.</span>
-  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">4. Press `!` to accept all replacements.</span>
+<pre class="src src-emacs-lisp">;; Using Dired mode (directory mode):
+;; 1. Open Dired mode with `M-x dired` or `C-x d`.
+;; 2. Mark files to operate on with `t`.
+;; 3. Press `Q` to start a `query-replace-regexp` on the marked files.
+;; 4. Press `!` to accept all replacements.
 
-  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">Alternatively, use `tags-query-replace` with a TAGS file.</span>
+;; Alternatively, use `tags-query-replace` with a TAGS file.
 </pre>
 </div>
 </div>
@@ -361,9 +348,9 @@
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-jupyter">  import pandas as pd
-  data = [[1, 2], [3, 4]]
-  pd.DataFrame(data, columns=["Foo", "Bar"])
+<pre class="src src-jupyter">import pandas as pd
+data = [[1, 2], [3, 4]]
+pd.DataFrame(data, columns=["Foo", "Bar"])
 </pre>
 </div>
 </div>
@@ -389,11 +376,11 @@ To prevent underscores from creating subscripts, add the following option:
 <h3 id="org7941765"><span class="section-number-3">7.2.</span> Installing and Deleting Packages</h3>
 <div class="outline-text-3" id="text-7-2">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">To install a package</span>
-  M-x package-install
-  
-  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">To delete a package</span>
-  M-x package-delete
+<pre class="src src-emacs-lisp">;; To install a package
+M-x package-install
+
+;; To delete a package
+M-x package-delete
 </pre>
 </div>
 </div>
@@ -407,9 +394,146 @@ To prevent underscores from creating subscripts, add the following option:
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-python">  <span style="color: #BA36A5;">friends</span> = [<span style="color: #008000;">'pisu'</span>, <span style="color: #008000;">'ada'</span>, <span style="color: #008000;">'makmus'</span>]
-  <span style="color: #0000FF; font-weight: bold;">for</span> i <span style="color: #0000FF; font-weight: bold;">in</span> friends:
-      <span style="color: #006FE0;">print</span>(<span style="color: #008000;">"Hello "</span> + i)
+<pre class="src src-python">friends = ['pisu', 'ada', 'makmus']
+for i in friends:
+    print("Hello " + i)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org78a03dc" class="outline-2">
+<h2 id="org78a03dc"><span class="section-number-2">8.</span> Starting Emacs with a Specific Init File</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+To start Emacs with a specific initialization file, you can use the `-q`, `&#x2013;no-init-file`, or `-l FILENAME` options when launching Emacs.
+</p>
+</div>
+
+<div id="outline-container-orgc9573ac" class="outline-3">
+<h3 id="orgc9573ac"><span class="section-number-3">8.1.</span> Using the `-q` option</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+If you want to start Emacs without loading any user init file (`~/.emacs`, `~/.emacs.d/init.el`, or `~/.config/emacs/init.el`), use:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">emacs -q
+</pre>
+</div>
+<p>
+This ensures that no user configuration is loaded.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb6ceb7b" class="outline-3">
+<h3 id="orgb6ceb7b"><span class="section-number-3">8.2.</span> Using the `&#x2013;no-init-file` option</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+This is equivalent to `-q`:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">emacs --no-init-file
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3bf9680" class="outline-3">
+<h3 id="org3bf9680"><span class="section-number-3">8.3.</span> Loading a Specific Init File</h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+To start Emacs with a custom initialization file, use the `-l` or `&#x2013;load` option followed by the filename:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">emacs -l ~/.emacs.d/custom-init.el
+</pre>
+</div>
+<p>
+or
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">emacs --load ~/.config/emacs/my-init.el
+</pre>
+</div>
+<p>
+This loads the specified file as the initialization file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf01e404" class="outline-3">
+<h3 id="orgf01e404"><span class="section-number-3">8.4.</span> Running Emacs with a Temporary Init File</h3>
+<div class="outline-text-3" id="text-8-4">
+<p>
+If you want to run Emacs with a completely different configuration, you can specify a different home directory using the `&#x2013;init-directory` (Emacs 29+) or set `HOME`:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">HOME=~/my-emacs-config emacs
+</pre>
+</div>
+<p>
+This makes Emacs look for an init file in `~/my-emacs-config/.emacs.d/init.el` instead of the default location.
+</p>
+
+<p>
+Alternatively, you can start Emacs with `&#x2013;init-directory` (Emacs 29+):
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">emacs --init-directory ~/my-emacs-config
+</pre>
+</div>
+<p>
+This allows you to use a custom Emacs directory without changing `HOME`.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org435b59a" class="outline-3">
+<h3 id="org435b59a"><span class="section-number-3">8.5.</span> Debugging Initialization Issues</h3>
+<div class="outline-text-3" id="text-8-5">
+<p>
+If you suspect issues in your init file, you can start Emacs in debug mode:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">emacs --debug-init
+</pre>
+</div>
+<p>
+This prints errors that occur during initialization.
+</p>
+
+<p>
+If you want to temporarily bypass init file errors and start with a clean session, use:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">emacs -Q
+</pre>
+</div>
+<p>
+This is similar to `-q` but also skips loading site-wide configurations.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org35443d1" class="outline-3">
+<h3 id="org35443d1"><span class="section-number-3">8.6.</span> Example Usage</h3>
+<div class="outline-text-3" id="text-8-6">
+<p>
+To load a custom init file and run in debug mode:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">emacs --debug-init -l ~/.config/emacs/alternative-init.el
+</pre>
+</div>
+
+<p>
+For a minimal Emacs session without user configuration:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">emacs -Q
 </pre>
 </div>
 </div>
@@ -418,8 +542,8 @@ To prevent underscores from creating subscripts, add the following option:
 
 
 <div id="outline-container-orgfbbfe09" class="outline-2">
-<h2 id="orgfbbfe09"><span class="section-number-2">8.</span> Useful Links</h2>
-<div class="outline-text-2" id="text-8">
+<h2 id="orgfbbfe09"><span class="section-number-2">9.</span> Useful Links</h2>
+<div class="outline-text-2" id="text-9">
 <ul class="org-ul">
 <li><a href="https://systemcrafters.net/publishing-websites-with-org-mode/automated-site-publishing/">Automated Org Mode Website Publishing</a></li>
 <li><a href="https://plantuml.com/emacs">Using PlantUML in Emacs</a></li>
@@ -432,7 +556,7 @@ To prevent underscores from creating subscripts, add the following option:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2024-12-13 Fri 17:06</p>
+<p class="date">Created: 2025-02-20 Thu 17:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

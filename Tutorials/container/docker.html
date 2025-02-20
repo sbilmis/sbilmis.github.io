@@ -3,49 +3,26 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-13 Fri 17:06 -->
+<!-- 2025-02-20 Thu 17:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Docker Guide</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="sbilmis" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/search.css" />
+                   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/search.js"></script>
 </head>
 <body>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Docker Guide</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
 <li><a href="#orgf4b4ddd">1. Docker Basics</a></li>
 <li><a href="#orga4bc377">2. References</a></li>
@@ -72,7 +49,7 @@
 Attach to a running container:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    docker attach CONTAINER_ID
+<pre class="src src-shell">docker attach CONTAINER_ID
 </pre>
 </div>
 <ul class="org-ul">
@@ -109,7 +86,7 @@ Attach to a running container:
 Containers based on OS images exit immediately if they aren’t running any active processes.
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    docker run -it centos
+<pre class="src src-shell">docker run -it centos
 </pre>
 </div></li>
 
@@ -117,8 +94,8 @@ Containers based on OS images exit immediately if they aren’t running any acti
 Install a package and save changes:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    yum install man
-    docker commit CONTAINER_ID mycentos
+<pre class="src src-shell">yum install man
+docker commit CONTAINER_ID mycentos
 </pre>
 </div></li>
 </ul>
@@ -134,7 +111,7 @@ Install a package and save changes:
 Example:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    docker pull nginx
+<pre class="src src-shell">docker pull nginx
 </pre>
 </div></li>
 </ul>
@@ -145,9 +122,9 @@ Example:
 <h2 id="org112e134"><span class="section-number-2">5.</span> Listing Images</h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
-<pre class="src src-shell">  docker image ls
-  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">or</span>
-  docker images
+<pre class="src src-shell">docker image ls
+# or
+docker images
 </pre>
 </div>
 </div>
@@ -157,19 +134,19 @@ Example:
 <h2 id="orgf60f105"><span class="section-number-2">6.</span> Running a Container with NGINX (as an example)</h2>
 <div class="outline-text-2" id="text-6">
 <div class="org-src-container">
-<pre class="src src-shell">  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Basic syntax</span>
-  docker run IMAGE
+<pre class="src src-shell"># Basic syntax
+docker run IMAGE
 
-  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Run NGINX in detached mode</span>
-  docker run -d nginx
+# Run NGINX in detached mode
+docker run -d nginx
 
-  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Name the container</span>
-  docker run --name mynginx -d nginx
+# Name the container
+docker run --name mynginx -d nginx
 
-  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Map port 80 in the container to localhost:8080</span>
-  docker run -d -p 8080:80 nginx
+# Map port 80 in the container to localhost:8080
+docker run -d -p 8080:80 nginx
 
-  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Open a browser and go to localhost:8080 to see the "Welcome to nginx" page.</span>
+# Open a browser and go to localhost:8080 to see the "Welcome to nginx" page.
 </pre>
 </div>
 </div>
@@ -179,14 +156,14 @@ Example:
 <h2 id="org637b289"><span class="section-number-2">7.</span> Listing Containers</h2>
 <div class="outline-text-2" id="text-7">
 <div class="org-src-container">
-<pre class="src src-shell">  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">List running containers</span>
-  docker ps
+<pre class="src src-shell"># List running containers
+docker ps
 
-  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">List all containers (including stopped)</span>
-  docker ps --all
+# List all containers (including stopped)
+docker ps --all
 
-  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">List only container IDs</span>
-  docker ps -aq
+# List only container IDs
+docker ps -aq
 </pre>
 </div>
 </div>
@@ -196,8 +173,8 @@ Example:
 <h2 id="org597c291"><span class="section-number-2">8.</span> Running Commands Interactively in a Running Container</h2>
 <div class="outline-text-2" id="text-8">
 <div class="org-src-container">
-<pre class="src src-shell">  docker exec -it CONTAINER_ID bash
-  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Use -it for interactive mode. This will open a bash session in the container.</span>
+<pre class="src src-shell">docker exec -it CONTAINER_ID bash
+# Use -it for interactive mode. This will open a bash session in the container.
 </pre>
 </div>
 </div>
@@ -207,11 +184,11 @@ Example:
 <h2 id="org18a6839"><span class="section-number-2">9.</span> Stopping and Restarting Containers</h2>
 <div class="outline-text-2" id="text-9">
 <div class="org-src-container">
-<pre class="src src-shell">  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Stop a running container</span>
-  docker stop CONTAINER_ID
+<pre class="src src-shell"># Stop a running container
+docker stop CONTAINER_ID
 
-  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Start a stopped container by its ID</span>
-  docker start CONTAINER_ID
+# Start a stopped container by its ID
+docker start CONTAINER_ID
 </pre>
 </div>
 </div>
@@ -221,14 +198,14 @@ Example:
 <h2 id="orgd0748da"><span class="section-number-2">10.</span> Removing Containers</h2>
 <div class="outline-text-2" id="text-10">
 <div class="org-src-container">
-<pre class="src src-shell">  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Remove a container</span>
-  docker rm CONTAINER_ID
+<pre class="src src-shell"># Remove a container
+docker rm CONTAINER_ID
 
-  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Force remove a running container</span>
-  docker rm -f CONTAINER_ID
+# Force remove a running container
+docker rm -f CONTAINER_ID
 
-  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Remove all containers</span>
-  docker rm -f $(<span style="color: #FF1493;">docker ps -aq</span>)
+# Remove all containers
+docker rm -f $(docker ps -aq)
 </pre>
 </div>
 </div>
@@ -238,10 +215,10 @@ Example:
 <h2 id="orge3923a6"><span class="section-number-2">11.</span> Mapping a Local Directory into a Container</h2>
 <div class="outline-text-2" id="text-11">
 <div class="org-src-container">
-<pre class="src src-shell">  docker run -v HOST_DIR:CONTAINER_DIR IMAGE
+<pre class="src src-shell">docker run -v HOST_DIR:CONTAINER_DIR IMAGE
 
-  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Example: Map the current directory to /website in the container</span>
-  docker run -d -p 8080:80 --name website2 -v $(<span style="color: #FF1493;">pwd</span>):/website nginx
+# Example: Map the current directory to /website in the container
+docker run -d -p 8080:80 --name website2 -v $(pwd):/website nginx
 </pre>
 </div>
 </div>
@@ -251,7 +228,7 @@ Example:
 <h2 id="orgfa6f935"><span class="section-number-2">12.</span> Removing Images</h2>
 <div class="outline-text-2" id="text-12">
 <div class="org-src-container">
-<pre class="src src-shell">  docker image rm IMAGE_ID
+<pre class="src src-shell">docker image rm IMAGE_ID
 </pre>
 </div>
 </div>
@@ -273,7 +250,7 @@ Example:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2024-12-13 Fri 17:06</p>
+<p class="date">Created: 2025-02-20 Thu 17:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

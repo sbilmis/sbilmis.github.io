@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-02-20 Thu 17:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="sbilmis" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/search.css" />
+                   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/search.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgdfcbaf3">1. Installation Steps</a></li>
+<li><a href="#orgab19362">2. Script (Not tested yet)</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdfcbaf3" class="outline-2">
+<h2 id="orgdfcbaf3"><span class="section-number-2">1.</span> Installation Steps</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+module load comp/cmake/3.31.1
+module load comp/oneapi/2024
+module load lib/hdf5/1.14.3-oneapi-2024
+</p>
+
+
+<p>
+mkdir -p ~/local/{python3.11,conan-env,eigen3,mumps,tcl}
+</p>
+
+<p>
+cd ~/local/python3.11
+wget <a href="https://www.python.org/ftp/python/3.11.7/Python-3.11.7.tgz">https://www.python.org/ftp/python/3.11.7/Python-3.11.7.tgz</a>
+tar xzf Python-3.11.7.tgz
+cd Python-3.11.7
+</p>
+
+<p>
+./configure &#x2013;prefix=$HOME/local/python3.11 \
+            &#x2013;enable-shared \
+            &#x2013;enable-optimizations \
+            CFLAGS="-fPIC" \
+            LDFLAGS="-Wl,-rpath=$HOME/local/python3.11/lib"
+</p>
+
+
+<p>
+make -j32
+make install
+</p>
+
+
+<p>
+export PATH=$HOME/local/python3.11/bin:$PATH
+export LD<sub>LIBRARY</sub><sub>PATH</sub>=$HOME/local/python3.11/lib:$LD<sub>LIBRARY</sub><sub>PATH</sub>
+</p>
+
+
+<p>
+pip3 install conan==1.66.0
+conan &#x2013;version 
+</p>
+
+
+
+<p>
+## Install Eigen
+cd ~/local/eigen3
+wget <a href="https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz">https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz</a> 
+tar xzf eigen-3.4.0.tar.gz
+cd eigen-3.4.0
+mkdir build &amp;&amp; cd build
+cmake .. -DCMAKE<sub>INSTALL</sub><sub>PREFIX</sub>=$HOME/local/eigen3
+make install
+</p>
+
+<p>
+## Install tcl
+cd ~/local/tcl
+wget <a href="https://prdownloads.sourceforge.net/tcl/tcl8.6.16-src.tar.gz">https://prdownloads.sourceforge.net/tcl/tcl8.6.16-src.tar.gz</a>
+tar xzf tcl8.6.16-src.tar.gz
+cd tcl8.6.16/unix
+./configure &#x2013;prefix=$HOME/local/tcl &#x2013;enable-shared &#x2013;enable-threads
+make -j32
+make install
+</p>
+
+
+<p>
+export PATH=$HOME/local/tcl/bin:$PATH
+export LD<sub>LIBRARY</sub><sub>PATH</sub>=$HOME/local/tcl/lib:$LD<sub>LIBRARY</sub><sub>PATH</sub>
+</p>
+
+
+
+<p>
+## mumps
+</p>
+
+<p>
+cd ~/local
+git clone <a href="https://github.com/OpenSees/mumps.git">https://github.com/OpenSees/mumps.git</a>
+cd mumps
+mkdir build
+cd build
+</p>
+
+<p>
+cmake .. \
+    -Darith=d \
+    -DCMAKE<sub>C</sub><sub>COMPILER</sub>=icx \
+    -DCMAKE<sub>CXX</sub><sub>COMPILER</sub>=icpx \
+    -DCMAKE<sub>Fortran</sub><sub>COMPILER</sub>=ifort \
+    -DCMAKE<sub>INSTALL</sub><sub>PREFIX</sub>=$HOME/local/mumps
+</p>
+
+<p>
+cmake &#x2013;build . &#x2013;config Release &#x2013;parallel 32
+</p>
+
+<p>
+cmake &#x2013;install .
+</p>
+
+<p>
+cd
+git clone <a href="https://github.com/OpenSees/OpenSees.git">https://github.com/OpenSees/OpenSees.git</a>
+</p>
+
+<p>
+cd ~/OpenSees
+mkdir build &amp;&amp; cd build
+</p>
+
+<p>
+cmake .. -DCMAKE<sub>INSTALL</sub><sub>PREFIX</sub>=$HOME/opensees \
+         -DMUMPS<sub>DIR</sub>=$HOME/local/mumps \
+         -DEIGEN3<sub>INCLUDE</sub><sub>DIR</sub>=$HOME/local/eigen3/include/eigen3 \
+         -DCMAKE<sub>CXX</sub><sub>FLAGS</sub>="-I$HOME/local/eigen3/include/eigen3" \
+         -DCMAKE<sub>C</sub><sub>COMPILER</sub>=icx \
+         -DCMAKE<sub>CXX</sub><sub>COMPILER</sub>=icpx \
+         -DCMAKE<sub>Fortran</sub><sub>COMPILER</sub>=ifort \
+         -DTCL<sub>LIBRARY</sub>=$HOME/local/tcl/lib/libtcl8.6.so \
+         -DTCL<sub>INCLUDE</sub><sub>PATH</sub>=$HOME/local/tcl/include \
+         -DPYTHON<sub>EXECUTABLE</sub>=$HOME/local/python3.11/bin/python3
+</p>
+
+
+<p>
+cmake &#x2013;build . &#x2013;target OpenSees -j32
+cmake &#x2013;build . &#x2013;target OpenSeesPy -j32
+</p>
+
+<p>
+mv ./OpenSeesPy.so ./opensees.so
+cmake &#x2013;install .
+</p>
+
+<hr />
+</div>
+</div>
+
+<div id="outline-container-orgab19362" class="outline-2">
+<h2 id="orgab19362"><span class="section-number-2">2.</span> Script (Not tested yet)</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-bash">  #!/bin/bash
+
+# Exit on any error
+set -e
+
+# Function to print success message
+print_success() {
+    echo -e "\033[0;32m[SUCCESS]\033[0m $1"
+}
+
+# Function to print error message and exit
+print_error() {
+    echo -e "\033[0;31m[ERROR]\033[0m $1"
+    exit 1
+}
+
+echo "Starting OpenSees installation..."
+
+# Load required modules
+echo "Loading required modules..."
+module load comp/cmake/3.31.1 || print_error "Failed to load cmake module"
+module load comp/oneapi/2024 || print_error "Failed to load oneapi module"
+module load lib/hdf5/1.14.3-oneapi-2024 || print_error "Failed to load hdf5 module"
+print_success "Modules loaded successfully"
+
+# Create base directories
+echo "Creating directory structure..."
+mkdir -p ~/local/{python3.11,conan-env,eigen3,mumps,tcl} || print_error "Failed to create directories"
+print_success "Directories created"
+
+# Install Python
+echo "Installing Python 3.11..."
+cd ~/local/python3.11
+wget https://www.python.org/ftp/python/3.11.7/Python-3.11.7.tgz || print_error "Failed to download Python"
+tar xzf Python-3.11.7.tgz || print_error "Failed to extract Python"
+cd Python-3.11.7
+
+./configure --prefix=$HOME/local/python3.11 \
+            --enable-shared \
+            --enable-optimizations \
+            CFLAGS="-fPIC" \
+            LDFLAGS="-Wl,-rpath=$HOME/local/python3.11/lib" || print_error "Python configure failed"
+
+make -j32 || print_error "Python make failed"
+make install || print_error "Python installation failed"
+print_success "Python installed successfully"
+
+# Set Python environment variables
+export PATH=$HOME/local/python3.11/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/local/python3.11/lib:$LD_LIBRARY_PATH
+
+# Install Conan
+echo "Installing Conan..."
+pip3 install conan==1.66.0 || print_error "Conan installation failed"
+conan --version || print_error "Conan verification failed"
+print_success "Conan installed successfully"
+
+# Install Eigen
+echo "Installing Eigen..."
+cd ~/local/eigen3
+wget https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz || print_error "Failed to download Eigen"
+tar xzf eigen-3.4.0.tar.gz || print_error "Failed to extract Eigen"
+cd eigen-3.4.0
+mkdir build &amp;&amp; cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/local/eigen3 || print_error "Eigen cmake configuration failed"
+make install || print_error "Eigen installation failed"
+print_success "Eigen installed successfully"
+
+# Install TCL
+echo "Installing TCL..."
+cd ~/local/tcl
+wget https://prdownloads.sourceforge.net/tcl/tcl8.6.16-src.tar.gz || print_error "Failed to download TCL"
+tar xzf tcl8.6.16-src.tar.gz || print_error "Failed to extract TCL"
+cd tcl8.6.16/unix
+./configure --prefix=$HOME/local/tcl --enable-shared --enable-threads || print_error "TCL configure failed"
+make -j32 || print_error "TCL make failed"
+make install || print_error "TCL installation failed"
+print_success "TCL installed successfully"
+
+# Set TCL environment variables
+export PATH=$HOME/local/tcl/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/local/tcl/lib:$LD_LIBRARY_PATH
+
+# Install MUMPS
+echo "Installing MUMPS..."
+cd ~/local
+git clone https://github.com/OpenSees/mumps.git || print_error "Failed to clone MUMPS"
+cd mumps
+mkdir build &amp;&amp; cd build
+
+cmake .. \
+    -Darith=d \
+    -DCMAKE_C_COMPILER=icx \
+    -DCMAKE_CXX_COMPILER=icpx \
+    -DCMAKE_Fortran_COMPILER=ifort \
+    -DCMAKE_INSTALL_PREFIX=$HOME/local/mumps || print_error "MUMPS cmake configuration failed"
+
+cmake --build . --config Release --parallel 32 || print_error "MUMPS build failed"
+cmake --install . || print_error "MUMPS installation failed"
+print_success "MUMPS installed successfully"
+
+# Install OpenSees
+echo "Installing OpenSees..."
+cd
+git clone https://github.com/OpenSees/OpenSees.git || print_error "Failed to clone OpenSees"
+cd ~/OpenSees
+mkdir build &amp;&amp; cd build
+
+cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/opensees \
+         -DMUMPS_DIR=$HOME/local/mumps \
+         -DEIGEN3_INCLUDE_DIR=$HOME/local/eigen3/include/eigen3 \
+         -DCMAKE_CXX_FLAGS="-I$HOME/local/eigen3/include/eigen3" \
+         -DCMAKE_C_COMPILER=icx \
+         -DCMAKE_CXX_COMPILER=icpx \
+         -DCMAKE_Fortran_COMPILER=ifort \
+         -DTCL_LIBRARY=$HOME/local/tcl/lib/libtcl8.6.so \
+         -DTCL_INCLUDE_PATH=$HOME/local/tcl/include \
+         -DPYTHON_EXECUTABLE=$HOME/local/python3.11/bin/python3 || print_error "OpenSees cmake configuration failed"
+
+cmake --build . --target OpenSees -j32 || print_error "OpenSees build failed"
+cmake --build . --target OpenSeesPy -j32 || print_error "OpenSeesPy build failed"
+
+mv ./OpenSeesPy.so ./opensees.so || print_error "Failed to rename OpenSeesPy.so"
+cmake --install . || print_error "OpenSees installation failed"
+print_success "OpenSees installed successfully"
+
+echo "Installation completed successfully!"
+
+</pre>
+</div>
+
+
+<ul class="org-ul">
+<li><p>
+Save this as install<sub>opensees.sh</sub> and run:
+</p>
+<pre class="example">
+chmod +x install_opensees.sh
+./install_opensees.sh
+</pre></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sbilmis</p>
+<p class="date">Created: 2025-02-20 Thu 17:11</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

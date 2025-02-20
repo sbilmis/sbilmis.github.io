@@ -3,55 +3,33 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-13 Fri 17:06 -->
+<!-- 2025-02-20 Thu 17:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Zotero Notes</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="sbilmis" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/search.css" />
+                   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/search.js"></script>
 </head>
 <body>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Zotero Notes</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
 <li><a href="#orgc890466">1. What is Zotero?</a></li>
 <li><a href="#org78f6f10">2. WebDAV Sync</a></li>
 <li><a href="#orgeb20fa2">3. Using Multiple Profiles</a></li>
 <li><a href="#org99470fe">4. Addons for Zotero</a></li>
-<li><a href="#org13bafc2">5. Additional Notes</a></li>
+<li><a href="#org22d76dc">5. Zotxt: Emacs Integration for Zotero</a></li>
+<li><a href="#org09b6fda">6. Zotero Actions &amp; Tags (AT): Automate and Organize Your Workflow</a></li>
 </ul>
 </div>
 </div>
@@ -84,7 +62,7 @@
 Zotero allows the creation of multiple profiles for managing different libraries or accounts. Use the `-P` option when launching Zotero to choose a profile:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    zotero -P
+<pre class="src src-shell">zotero -P
 </pre>
 </div></li>
 <li>Example: The `sbilmis<sub>mybooks</sub>` profile was created using the account `sbilmis@outlook.com`.</li>
@@ -96,6 +74,11 @@ Zotero allows the creation of multiple profiles for managing different libraries
 <div id="outline-container-org99470fe" class="outline-2">
 <h2 id="org99470fe"><span class="section-number-2">4.</span> Addons for Zotero</h2>
 <div class="outline-text-2" id="text-4">
+<p>
+<a href="https://www.zotero.org/support/plugins">Official Zotero Plugin Directory</a> provides a comprehensive list of supported and tested plugins. Here I list that I commonly use.
+</p>
+
+
 <ul class="org-ul">
 <li><a href="https://github.com/syt2/zotero-addons">Zotero Addons Manager</a>:
 <ul class="org-ul">
@@ -150,20 +133,137 @@ Zotero allows the creation of multiple profiles for managing different libraries
 </div>
 </div>
 
-<div id="outline-container-org13bafc2" class="outline-2">
-<h2 id="org13bafc2"><span class="section-number-2">5.</span> Additional Notes</h2>
+
+
+
+
+
+
+
+<div id="outline-container-org22d76dc" class="outline-2">
+<h2 id="org22d76dc"><span class="section-number-2">5.</span> Zotxt: Emacs Integration for Zotero</h2>
 <div class="outline-text-2" id="text-5">
+<p>
+<code>zotxt</code> is an essential add-on that connects Zotero with Emacs, enabling seamless citation management. It allows you to search for references and insert them directly into your documents while working in Emacs.
+</p>
+
+<p>
+<b><b>Installation Steps</b></b>
+</p>
+<ol class="org-ol">
+<li><b><b>Install zotxt Add-on in Zotero</b></b>:
 <ul class="org-ul">
-<li>Use addons wisely to enhance productivity and tailor Zotero to specific needs.</li>
-<li><a href="https://www.zotero.org/support/plugins">Official Zotero Plugin Directory</a> provides a comprehensive list of supported and tested plugins.</li>
+<li>Download the plugin from the official repository:  
+<a href="https://github.com/egh/zotxt">zotxt GitHub Repository</a>.</li>
+<li>In Zotero, navigate to <code>Tools &gt; Add-ons &gt; Install Add-on From File</code> and select the downloaded <code>.xpi</code> file.</li>
+<li>Restart Zotero to activate the plugin.</li>
+</ul></li>
+
+<li><b><b>Set Up zotxt in Emacs</b></b>:
+<ul class="org-ul">
+<li><p>
+Add the following configuration to your Emacs init file (<code>init.el</code>):
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package zotxt
+  :ensure t
+  :config
+  (setq zotxt-default-bibliography-style "apa"))
+</pre>
+</div></li>
+
+<li>Reload your configuration or restart Emacs.</li>
+</ul></li>
+
+<li><b><b>Usage</b></b>:
+<ul class="org-ul">
+<li>Search for references using: <code>M-x zotxt-select</code>.</li>
+<li>Insert a citation into your text with: <code>M-x zotxt-insert-reference</code>.</li>
+</ul></li>
+</ol>
+
+<p>
+<b><b>Example in Org Mode</b></b>:
+</p>
+<div class="org-src-container">
+<pre class="src src-org">Here is an example citation [cite:@example2024].
+</pre>
+</div>
+
+<p>
+With <code>zotxt</code>, referencing items from your Zotero library becomes a seamless part of your Emacs writing workflow.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org09b6fda" class="outline-2">
+<h2 id="org09b6fda"><span class="section-number-2">6.</span> Zotero Actions &amp; Tags (AT): Automate and Organize Your Workflow</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Actions &amp; Tags (AT), also known as <b>Zotero Tag</b>, is a powerful plugin for Zotero that helps you automate tasks and organize your workflow using tags and scripts.
+</p>
+
+<p>
+<b><b>Key Features</b></b>
+AT provides the following capabilities:
+</p>
+<ol class="org-ol">
+<li><b><b>Automatic Tagging</b></b>:  
+<ul class="org-ul">
+<li>Automatically tag Zotero items based on events like new items added or user-defined shortcuts.</li>
+</ul></li>
+
+<li><b><b>Custom Scripts for Automation</b></b>:  
+<ul class="org-ul">
+<li>Replace tags dynamically.</li>
+<li>Copy item links quickly.</li>
+<li>Auto-generate notes when opening an item.</li>
+<li>Auto-translate the title or abstract of newly added items.</li>
+</ul></li>
+</ol>
+
+<p>
+<b><b>Installation Steps</b></b>
+</p>
+<ol class="org-ol">
+<li>Download the plugin from the official GitHub repository:  
+<a href="https://github.com/windingwind/zotero-actions-tags">Zotero Actions Tags GitHub Page</a>.</li>
+<li>Install the add-on in Zotero:
+<ul class="org-ul">
+<li>Go to <code>Tools &gt; Add-ons &gt; Install Add-on From File</code>.</li>
+<li>Select the downloaded <code>.xpi</code> file and restart Zotero.</li>
+</ul></li>
+</ol>
+
+<p>
+<b><b>Example Use Cases</b></b>
+</p>
+<ul class="org-ul">
+<li><b><b>Replace Tags</b></b>: Update an outdated tag with a new one in bulk.</li>
+<li><b><b>Copy Item Link</b></b>: Copy a Zotero item's link for quick sharing or referencing.</li>
+<li><b><b>Auto-Generate Notes</b></b>: Automatically generate a note when you open a Zotero item to add annotations.</li>
+<li><b><b>Auto-Translate</b></b>: Automatically translate the title or abstract of newly added items using predefined scripts.</li>
+</ul>
+
+<p>
+<b><b>Example Workflow</b></b>:
+</p>
+<ol class="org-ol">
+<li>Add a tag <code>auto-note</code> to an item.</li>
+<li>Open the item → a note is automatically generated.</li>
+<li>Use shortcut <code>Ctrl+Shift+C</code> to copy the item link.</li>
+</ol>
+
+<p>
+<b><b>Benefits</b></b>:
+</p>
+<ul class="org-ul">
+<li>Save time by automating repetitive actions.</li>
+<li>Maintain consistency in tagging and metadata management.</li>
+<li>Integrate seamlessly with other tools like Emacs or Markdown editors.</li>
 </ul>
 </div>
 </div>
-</div>
-<div id="postamble" class="status">
-<p class="author">Author: sbilmis</p>
-<p class="date">Created: 2024-12-13 Fri 17:06</p>
-<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

@@ -3,49 +3,26 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-13 Fri 17:03 -->
+<!-- 2025-02-20 Thu 17:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>rsync Guide</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="sbilmis" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/search.css" />
+                   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/search.js"></script>
 </head>
 <body>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">rsync Guide</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
 <li><a href="#org9145bdb">1. rsync Overview</a></li>
 <li><a href="#org52af7b7">2. Basic rsync Commands</a>
@@ -56,7 +33,9 @@
 </ul>
 </div>
 </div>
-
+<p>
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+</p>
 <div id="outline-container-org9145bdb" class="outline-2">
 <h2 id="org9145bdb"><span class="section-number-2">1.</span> rsync Overview</h2>
 <div class="outline-text-2" id="text-1">
@@ -75,7 +54,7 @@
 <b><b>Basic Sync</b></b>: Sync `path1` to `path2`, preserving permissions, timestamps, and ownership.
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">    rsync -avzhP path1 path2
+<pre class="src src-shell">rsync -avzhP path1 path2
 </pre>
 </div>
 <ul class="org-ul">
@@ -93,7 +72,7 @@
 <li>Use `-L` if you want to download the files that are symlinked. Without `-L`, rsync keeps symlinks intact.</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-shell">    rsync -avzhPL path1 path2
+<pre class="src src-shell">rsync -avzhPL path1 path2
 </pre>
 </div></li>
 
@@ -104,7 +83,7 @@
 <li>Delete files from the destination that do not exist in the source:</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-shell">    rsync --delete -avzhP path1 path2
+<pre class="src src-shell">rsync --delete -avzhP path1 path2
 </pre>
 </div></li>
 
@@ -115,7 +94,7 @@
 <li>Use `-u` to skip files in the destination that are newer than those in the source.</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-shell">    rsync -avu path1 path2
+<pre class="src src-shell">rsync -avu path1 path2
 </pre>
 </div></li>
 
@@ -126,7 +105,7 @@
 <li>To exclude certain files or directories, use the `&#x2013;exclude` option:</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-shell">    rsync -avzhP --exclude=EXCLUDED_FOLDER path1 path2
+<pre class="src src-shell">rsync -avzhP --exclude=EXCLUDED_FOLDER path1 path2
 </pre>
 </div></li>
 </ul>
@@ -145,7 +124,7 @@
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2024-12-13 Fri 17:03</p>
+<p class="date">Created: 2025-02-20 Thu 17:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

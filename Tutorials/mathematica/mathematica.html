@@ -3,71 +3,58 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-13 Fri 17:03 -->
+<!-- 2025-02-20 Thu 17:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mathematica Guide</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="sbilmis" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/search.css" />
+                   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/search.js"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
 
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Mathematica Guide</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
 <li><a href="#org85d2b39">1. To clear all old definitions:</a></li>
 <li><a href="#orga1cc8dc">2. Patterns (TBO)</a></li>
@@ -94,7 +81,7 @@
 <h2 id="org85d2b39"><span class="section-number-2">1.</span> To clear all old definitions:</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
-<pre class="src src-wolfram">  Clear["Global`*"]
+<pre class="src src-wolfram">Clear["Global`*"]
 </pre>
 </div>
 </div>
@@ -121,9 +108,9 @@
 These expressions are equivalent in Mathematica:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    Mean[{1, 2, 3}]
-    Mean@{1, 2, 3}
-    {1, 2, 3} // Mean
+<pre class="src src-wolfram">Mean[{1, 2, 3}]
+Mean@{1, 2, 3}
+{1, 2, 3} // Mean
 </pre>
 </div></li>
 </ul>
@@ -139,8 +126,8 @@ These expressions are equivalent in Mathematica:
 The following expressions are equivalent:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    Part[{x, y, z}, 2]
-    {x, y, z}[[2]]
+<pre class="src src-wolfram">Part[{x, y, z}, 2]
+{x, y, z}[[2]]
 </pre>
 </div></li>
 </ul>
@@ -260,8 +247,8 @@ The following expressions are equivalent:
 Concatenate strings:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    StringJoin["Hello", "World"]
-    (* Output: HelloWorld *)
+<pre class="src src-wolfram">StringJoin["Hello", "World"]
+(* Output: HelloWorld *)
 </pre>
 </div></li>
 </ul>
@@ -277,7 +264,7 @@ Concatenate strings:
 To remove the docked header in the notebook:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    SetOptions[EvaluationNotebook[], DockedCells -&gt; {}]
+<pre class="src src-wolfram">SetOptions[EvaluationNotebook[], DockedCells -&gt; {}]
 </pre>
 </div></li>
 </ul>
@@ -293,7 +280,7 @@ To remove the docked header in the notebook:
 Remove duplicates from a list:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    DeleteDuplicates[{1, 7, 8, 4, 3, 1, 9, 9, 8, 2}]
+<pre class="src src-wolfram">DeleteDuplicates[{1, 7, 8, 4, 3, 1, 9, 9, 8, 2}]
 </pre>
 </div></li>
 
@@ -301,7 +288,7 @@ Remove duplicates from a list:
 Count distinct elements in a list:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    CountDistinct[{1, 7, 8, 4, 3, 1, 9, 9, 8, 2}]
+<pre class="src src-wolfram">CountDistinct[{1, 7, 8, 4, 3, 1, 9, 9, 8, 2}]
 </pre>
 </div></li>
 </ul>
@@ -317,13 +304,13 @@ Count distinct elements in a list:
 Use `Head` to check the type of a variable:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    list = {1, 2, 3};
-    integer = 1;
-    real = 0.1;
+<pre class="src src-wolfram">list = {1, 2, 3};
+integer = 1;
+real = 0.1;
 
-    Head[list]
-    Head@integer
-    Head@real
+Head[list]
+Head@integer
+Head@real
 </pre>
 </div></li>
 </ul>
@@ -339,9 +326,9 @@ Use `Head` to check the type of a variable:
 Example to export data to a file:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    s01 = 10;
-    myDataS01 = Table[{i, i^2}, {i, 1, 10}];
-    Export["./results/ground_mass_etac_s0_" &lt;&gt; ToString[s01] &lt;&gt; "fit_ground.dat", myDataS01]
+<pre class="src src-wolfram">s01 = 10;
+myDataS01 = Table[{i, i^2}, {i, 1, 10}];
+Export["./results/ground_mass_etac_s0_" &lt;&gt; ToString[s01] &lt;&gt; "fit_ground.dat", myDataS01]
 </pre>
 </div></li>
 
@@ -349,10 +336,10 @@ Example to export data to a file:
 Create a directory and export data if it doesn’t exist:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    SetDirectory[NotebookDirectory[]]
-    path = "./test/";
-    myDataS01 = Table[{i, i^2}, {i, 1, 10}];
-    Export[path &lt;&gt; "test.dat", myDataS01]
+<pre class="src src-wolfram">SetDirectory[NotebookDirectory[]]
+path = "./test/";
+myDataS01 = Table[{i, i^2}, {i, 1, 10}];
+Export[path &lt;&gt; "test.dat", myDataS01]
 </pre>
 </div></li>
 </ul>
@@ -369,11 +356,11 @@ Install <a href="https://github.com/szhorvat/MaTeX">MaTeX</a> for LaTeX typesett
 </p>
 
 <div class="org-src-container">
-<pre class="src src-wolfram">    &lt;&lt; MaTeX`
-    ConfigureMaTeX[
-      "pdfLaTeX" -&gt; "/Library/TeX/texbin/pdflatex",
-      "Ghostscript" -&gt; "/usr/local/bin/gs"
-    ]
+<pre class="src src-wolfram">&lt;&lt; MaTeX`
+ConfigureMaTeX[
+  "pdfLaTeX" -&gt; "/Library/TeX/texbin/pdflatex",
+  "Ghostscript" -&gt; "/usr/local/bin/gs"
+]
 </pre>
 </div></li>
 
@@ -381,10 +368,10 @@ Install <a href="https://github.com/szhorvat/MaTeX">MaTeX</a> for LaTeX typesett
 Import data:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    SetDirectory[NotebookDirectory[]]
-    data1 = Import["./results/ground_mass_etac_s0_9fit_ground.dat"];
-    data2 = Import["./results/ground_mass_etac_s0_10fit_ground.dat"];
-    data3 = Import["./results/ground_mass_etac_s0_11fit_ground.dat"];
+<pre class="src src-wolfram">SetDirectory[NotebookDirectory[]]
+data1 = Import["./results/ground_mass_etac_s0_9fit_ground.dat"];
+data2 = Import["./results/ground_mass_etac_s0_10fit_ground.dat"];
+data3 = Import["./results/ground_mass_etac_s0_11fit_ground.dat"];
 </pre>
 </div></li>
 
@@ -392,7 +379,7 @@ Import data:
 Apply a cut to the data:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    pdata1 = Select[data1, 7.0 &lt;= #[[1]] &lt;= 14.0 &amp;];
+<pre class="src src-wolfram">pdata1 = Select[data1, 7.0 &lt;= #[[1]] &lt;= 14.0 &amp;];
 </pre>
 </div></li>
 </ul>
@@ -408,20 +395,20 @@ Apply a cut to the data:
 Set plot options and LaTeX labels:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    texStyle = {FontFamily -&gt; "Latin Modern Roman", FontSize -&gt; 12};
+<pre class="src src-wolfram">texStyle = {FontFamily -&gt; "Latin Modern Roman", FontSize -&gt; 12};
 
-    myPlotOptions1 = {
-      PlotTheme -&gt; {"Scientific"},
-      PlotLegends -&gt; {
-        MaTeX["s_0 = 9~\\rm{GeV}^2", Magnification -&gt; 1.2],
-        MaTeX["s_0 = 10~\\rm{GeV}^2", Magnification -&gt; 1.2],
-        MaTeX["s_0 = 11~\\rm{GeV}^2", Magnification -&gt; 1.2]
-      },
-      FrameLabel -&gt; MaTeX[{"M^2~\\rm{GeV^2}", "m_{\\eta_c}"}, Magnification -&gt; 1.2],
-      PlotRange -&gt; {{7, 14}, {1.0, 3.0}}
-    }
+myPlotOptions1 = {
+  PlotTheme -&gt; {"Scientific"},
+  PlotLegends -&gt; {
+    MaTeX["s_0 = 9~\\rm{GeV}^2", Magnification -&gt; 1.2],
+    MaTeX["s_0 = 10~\\rm{GeV}^2", Magnification -&gt; 1.2],
+    MaTeX["s_0 = 11~\\rm{GeV}^2", Magnification -&gt; 1.2]
+  },
+  FrameLabel -&gt; MaTeX[{"M^2~\\rm{GeV^2}", "m_{\\eta_c}"}, Magnification -&gt; 1.2],
+  PlotRange -&gt; {{7, 14}, {1.0, 3.0}}
+}
 
-    ListLinePlot[{pdata1, pdata2, pdata3}, Evaluate[myPlotOptions1], BaseStyle -&gt; texStyle]
+ListLinePlot[{pdata1, pdata2, pdata3}, Evaluate[myPlotOptions1], BaseStyle -&gt; texStyle]
 </pre>
 </div></li>
 </ul>
@@ -437,11 +424,11 @@ Set plot options and LaTeX labels:
 Fit a model to data, plot residuals, and calculate \(\chi^2\):
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    data = {{0, 2.52}, {1., 2.83}, {2., 3}, {3., 3.2}, {4.1, 3.35}, {5., 3.47}, {6, 3.57}, {7, 3.66}};
-    model = k x + b Tanh[c (x - x0)] + d;
-    fit = NonlinearModelFit[data, model, {{k, .1}, b, c, d, {x0, 20}}, x];
+<pre class="src src-wolfram">data = {{0, 2.52}, {1., 2.83}, {2., 3}, {3., 3.2}, {4.1, 3.35}, {5., 3.47}, {6, 3.57}, {7, 3.66}};
+model = k x + b Tanh[c (x - x0)] + d;
+fit = NonlinearModelFit[data, model, {{k, .1}, b, c, d, {x0, 20}}, x];
 
-    Plot[fit[x], {x, 0, 25}, Epilog -&gt; {{Red, PointSize[.01], Point[data]}, Inset[fit["ParameterTable"], {9, 9}]}, Frame -&gt; True, PlotLabel -&gt; fit[x]]
+Plot[fit[x], {x, 0, 25}, Epilog -&gt; {{Red, PointSize[.01], Point[data]}, Inset[fit["ParameterTable"], {9, 9}]}, Frame -&gt; True, PlotLabel -&gt; fit[x]]
 </pre>
 </div></li>
 </ul>
@@ -457,8 +444,8 @@ Fit a model to data, plot residuals, and calculate \(\chi^2\):
 Use `Solve` and `Reduce` for equation solving, with assumptions and domains:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    Solve[x^2 + y^2 == 4 &amp;&amp; 2 x - 2 == 0, {x, y}, Assumptions -&gt; y &gt; 0 &amp;&amp; x &lt; 0]
-    Solve[x^2 == -1, x, Complexes]
+<pre class="src src-wolfram">Solve[x^2 + y^2 == 4 &amp;&amp; 2 x - 2 == 0, {x, y}, Assumptions -&gt; y &gt; 0 &amp;&amp; x &lt; 0]
+Solve[x^2 == -1, x, Complexes]
 </pre>
 </div></li>
 </ul>
@@ -474,8 +461,8 @@ Use `Solve` and `Reduce` for equation solving, with assumptions and domains:
 Concatenate two lists `{x1, x2, x3}` and `{y1, y2, y3}` as `{{x1, y1}, {x2, y2}}`:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    Thread[{a, b, c}, {x, y, z}]
-    (* Output: {f[a, x], f[b, y], f[c, z]} *)
+<pre class="src src-wolfram">Thread[{a, b, c}, {x, y, z}]
+(* Output: {f[a, x], f[b, y], f[c, z]} *)
 </pre>
 </div></li>
 </ul>
@@ -491,7 +478,7 @@ Concatenate two lists `{x1, x2, x3}` and `{y1, y2, y3}` as `{{x1, y1}, {x2, y2}}
 Find available Python versions:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    FindExternalEvaluators["Python"]
+<pre class="src src-wolfram">FindExternalEvaluators["Python"]
 </pre>
 </div></li>
 
@@ -499,7 +486,7 @@ Find available Python versions:
 Set a specific Python version:
 </p>
 <div class="org-src-container">
-<pre class="src src-wolfram">    RegisterExternalEvaluator["Python", "/usr/local/bin/python3.9"]
+<pre class="src src-wolfram">RegisterExternalEvaluator["Python", "/usr/local/bin/python3.9"]
 </pre>
 </div></li>
 </ul>
@@ -519,7 +506,7 @@ Set a specific Python version:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2024-12-13 Fri 17:03</p>
+<p class="date">Created: 2025-02-20 Thu 17:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
