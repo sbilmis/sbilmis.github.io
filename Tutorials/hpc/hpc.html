@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-02-20 Thu 17:23 -->
+<!-- 2025-02-20 Thu 17:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linux and HPC Tutorials: A Practical Guide for Beginners</title>
@@ -24,11 +24,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9dd3365">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
+<li><a href="#orgd6333db">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
 <ul>
-<li><a href="#org6bdb22e">Introduction</a></li>
-<li><a href="#orgbddc15a">Why Root Privileges Are Restricted</a></li>
-<li><a href="#orge1c30b5">Installing Software Locally</a>
+<li><a href="#orgde61066">Introduction</a></li>
+<li><a href="#orge2f4bf4">Why Root Privileges Are Restricted</a></li>
+<li><a href="#orgc9d983e">Installing Software Locally</a>
 <ul>
 <li><a href="#org947eedb">Step 1: Prepare a Directory for Local Installations</a>
 <ul>
@@ -47,8 +47,8 @@
 </li>
 <li><a href="#org80c4346">Steps to Update the PATH Variable</a>
 <ul>
-<li><a href="#org3d9e8b6">What this command does:**</a></li>
-<li><a href="#orgf7d7a6a">What this command does:**</a></li>
+<li><a href="#orgf755184">What this command does:**</a></li>
+<li><a href="#org88c989a">What this command does:**</a></li>
 </ul>
 </li>
 <li><a href="#org4564c25">Verifying the Changes</a></li>
@@ -66,7 +66,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#org4cfe105">Hands-on Session: Installing Software on HPC User Interface</a>
+<li><a href="#org70dff88">Hands-on Session: Installing Software on HPC User Interface</a>
 <ul>
 <li><a href="#orgdb5b111">Installing <b>inxi</b> (binary)</a>
 <ul>
@@ -79,11 +79,11 @@
 <li><a href="#org8b3d4d8">Recap</a></li>
 </ul>
 </li>
-<li><a href="#org07a76e0">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
+<li><a href="#orgea4a319">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
 <ul>
-<li><a href="#org73cd2fb">What is <b>ncdu</b> and Why is it Useful?</a></li>
+<li><a href="#org1fddf51">What is <b>ncdu</b> and Why is it Useful?</a></li>
 <li><a href="#org256123f">Where Will <b>ncdu</b> Be Installed?</a></li>
-<li><a href="#org293bba6">Steps to Install <b>ncdu</b></a></li>
+<li><a href="#org164db6d">Steps to Install <b>ncdu</b></a></li>
 <li><a href="#org48df790">Example Usage of <b>ncdu</b></a></li>
 <li><a href="#org817a36c">Troubleshooting Compilation Issues</a></li>
 <li><a href="#orgc9ff0ac">How to remove <b>ncdu</b></a></li>
@@ -111,17 +111,17 @@
 </li>
 </ul>
 </li>
-<li><a href="#org89a74f7">Hands-on Session: Installing Software on HPC User Interface</a>
+<li><a href="#org0324e3d">Hands-on Session: Installing Software on HPC User Interface</a>
 <ul>
-<li><a href="#org8484c28">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
+<li><a href="#orgc59059b">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
 <ul>
-<li><a href="#org924d71c">What is <b>ncdu</b> and Why is it Useful?</a></li>
-<li><a href="#org7269a53">Steps to Install <b>ncdu</b></a></li>
+<li><a href="#orga8b73e9">What is <b>ncdu</b> and Why is it Useful?</a></li>
+<li><a href="#org0c303da">Steps to Install <b>ncdu</b></a></li>
 </ul>
 </li>
-<li><a href="#orgee113aa">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
+<li><a href="#orga234d83">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
 <ul>
-<li><a href="#orgefee616">What is <b>ncdu</b> and Why is it Useful?</a></li>
+<li><a href="#org824286a">What is <b>ncdu</b> and Why is it Useful?</a></li>
 <li><a href="#org8bf16c0">Example Use Case:</a></li>
 </ul>
 </li>
@@ -130,9 +130,9 @@
 </ul>
 </li>
 <li><a href="#org2e80f32">Useful Tools: `tldr` and `cheat`</a></li>
-<li><a href="#orga0f98de">Removing Locally Installed Applications</a></li>
-<li><a href="#org8fb1b16">Troubleshooting Tips</a></li>
-<li><a href="#org2c5429e">Conclusion</a>
+<li><a href="#org8e710eb">Removing Locally Installed Applications</a></li>
+<li><a href="#orge8f3eab">Troubleshooting Tips</a></li>
+<li><a href="#org25f286b">Conclusion</a>
 <ul>
 <li>
 <ul>
@@ -153,27 +153,27 @@
 </li>
 </ul>
 </li>
-<li><a href="#org8a48ac6">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
+<li><a href="#org0c2ef61">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
 <ul>
-<li><a href="#org4740363">Introduction</a></li>
-<li><a href="#orgeb9c96c">Why Root Privileges Are Restricted</a></li>
-<li><a href="#org7ad60ff">Installing Software Locally</a></li>
+<li><a href="#org61b880a">Introduction</a></li>
+<li><a href="#org17197bb">Why Root Privileges Are Restricted</a></li>
+<li><a href="#org4625854">Installing Software Locally</a></li>
 <li><a href="#orge1677c8">Example 1: Installing Inxi (Binary Package)</a>
 <ul>
 <li><a href="#org3c4b83c">What is Inxi?</a></li>
-<li><a href="#orgc27486b">Installation Steps</a></li>
+<li><a href="#org2d883b8">Installation Steps</a></li>
 </ul>
 </li>
 <li><a href="#org028aac8">Example 2: Installing ncdu (Source Compilation)</a>
 <ul>
 <li><a href="#orgabf05ac">What is ncdu?</a></li>
-<li><a href="#org64aa362">Installation Steps</a></li>
+<li><a href="#org87e8e76">Installation Steps</a></li>
 </ul>
 </li>
 <li><a href="#org2fcbfc8">Example 3: Installing mc (Midnight Commander)</a>
 <ul>
 <li><a href="#orgea5fb0e">What is Midnight Commander (mc)?</a></li>
-<li><a href="#orgdd4bca8">Installation Steps</a></li>
+<li><a href="#org6797cde">Installation Steps</a></li>
 </ul>
 </li>
 <li><a href="#org86b67b5">Using Modules in an HPC Environment</a>
@@ -183,48 +183,48 @@
 </li>
 <li><a href="#org1fba9ff">Understanding TLDR and Cheat Commands</a></li>
 <li><a href="#orge8fa099">Unzipping and Untarring Software Archives</a></li>
-<li><a href="#org30b19ae">Removing Locally Installed Applications</a></li>
-<li><a href="#org34dede8">Troubleshooting Tips</a></li>
-<li><a href="#org353318b">Conclusion</a></li>
+<li><a href="#org9d626ef">Removing Locally Installed Applications</a></li>
+<li><a href="#org28698c6">Troubleshooting Tips</a></li>
+<li><a href="#org450fe58">Conclusion</a></li>
 </ul>
 </li>
-<li><a href="#org2b2aee0">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
+<li><a href="#orgc8cd366">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
 <ul>
-<li><a href="#orgbb03361">Introduction</a></li>
-<li><a href="#orge66f9d1">Why Root Privileges Are Restricted</a></li>
-<li><a href="#org8736d0d">Installing Software Locally</a></li>
-<li><a href="#org4ac2628">Example: Installing Inxi from Source</a></li>
+<li><a href="#org974517a">Introduction</a></li>
+<li><a href="#orgf94e49c">Why Root Privileges Are Restricted</a></li>
+<li><a href="#orgdcc891a">Installing Software Locally</a></li>
+<li><a href="#org8775d55">Example: Installing Inxi from Source</a></li>
 <li><a href="#orgf035f87">Additional Examples: mc and ncdu</a>
 <ul>
 <li><a href="#org5024d76">Midnight Commander (mc)</a></li>
 <li><a href="#org475eb23">ncdu</a></li>
 </ul>
 </li>
-<li><a href="#orgb974c78">Troubleshooting Tips</a></li>
-<li><a href="#org78b0b16">Conclusion</a></li>
+<li><a href="#org3a82f4e">Troubleshooting Tips</a></li>
+<li><a href="#org54cc46f">Conclusion</a></li>
 </ul>
 </li>
-<li><a href="#orgb6de78d">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
+<li><a href="#orgc71de55">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
 <ul>
-<li><a href="#org939766e">Introduction</a></li>
-<li><a href="#org3032335">Why Root Privileges Are Restricted</a></li>
-<li><a href="#orgcc6c8f9">Installing Software Locally</a></li>
-<li><a href="#org8aa2698">Example: Installing Inxi from Source</a></li>
-<li><a href="#org653e346">Troubleshooting Tips</a></li>
-<li><a href="#orgcc70602">Conclusion</a></li>
+<li><a href="#orgb31fc3c">Introduction</a></li>
+<li><a href="#org158b80f">Why Root Privileges Are Restricted</a></li>
+<li><a href="#org24cef5e">Installing Software Locally</a></li>
+<li><a href="#org74e3c73">Example: Installing Inxi from Source</a></li>
+<li><a href="#org5d0987b">Troubleshooting Tips</a></li>
+<li><a href="#orgd213fb7">Conclusion</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9dd3365" class="outline-2">
-<h2 id="org9dd3365">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
-<div class="outline-text-2" id="text-org9dd3365">
+<div id="outline-container-orgd6333db" class="outline-2">
+<h2 id="orgd6333db">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
+<div class="outline-text-2" id="text-orgd6333db">
 </div>
-<div id="outline-container-org6bdb22e" class="outline-3">
-<h3 id="org6bdb22e">Introduction</h3>
-<div class="outline-text-3" id="text-org6bdb22e">
+<div id="outline-container-orgde61066" class="outline-3">
+<h3 id="orgde61066">Introduction</h3>
+<div class="outline-text-3" id="text-orgde61066">
 <p>
 In most HPC systems, users do not have <b>root</b> privileges. This tutorial focuses on installing software <b>locally</b> in your <b>home</b> directory <b>without root access</b>.
 </p>
@@ -233,7 +233,7 @@ In most HPC systems, users do not have <b>root</b> privileges. This tutorial foc
 While the examples are based on Rocky Linux, a popular distribution in HPC environments, the steps outlined here will work on most Linux distributions with little or no modification.
 </p>
 
-<div class="note" id="org35ec038">
+<div class="note" id="org55cac05">
 <p>
 It's important to note that commands requiring root privileges, such as <code>yum install</code>, <code>dnf install</code>, or <code>sudo apt-get install</code>, are not available to regular users on HPC systems. When consulting software documentation, focus on sections describing how to install from source or methods for user-level installation, as these do not require administrative access.
 </p>
@@ -243,9 +243,9 @@ It's important to note that commands requiring root privileges, such as <code>yu
 </div>
 
 
-<div id="outline-container-orgbddc15a" class="outline-3">
-<h3 id="orgbddc15a">Why Root Privileges Are Restricted</h3>
-<div class="outline-text-3" id="text-orgbddc15a">
+<div id="outline-container-orge2f4bf4" class="outline-3">
+<h3 id="orge2f4bf4">Why Root Privileges Are Restricted</h3>
+<div class="outline-text-3" id="text-orge2f4bf4">
 <ul class="org-ul">
 <li>HPC systems are <b>shared environments with multiple users</b> running jobs simultaneously.</li>
 <li>Restricting root access ensures <b>stability, security, and integrity</b> of the shared system.</li>
@@ -255,9 +255,9 @@ It's important to note that commands requiring root privileges, such as <code>yu
 </div>
 
 
-<div id="outline-container-orge1c30b5" class="outline-3">
-<h3 id="orge1c30b5">Installing Software Locally</h3>
-<div class="outline-text-3" id="text-orge1c30b5">
+<div id="outline-container-orgc9d983e" class="outline-3">
+<h3 id="orgc9d983e">Installing Software Locally</h3>
+<div class="outline-text-3" id="text-orgc9d983e">
 </div>
 <div id="outline-container-org947eedb" class="outline-4">
 <h4 id="org947eedb">Step 1: Prepare a Directory for Local Installations</h4>
@@ -430,9 +430,9 @@ export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 </ol>
 </div>
 
-<div id="outline-container-org3d9e8b6" class="outline-6">
-<h6 id="org3d9e8b6">What this command does:**</h6>
-<div class="outline-text-6" id="text-org3d9e8b6">
+<div id="outline-container-orgf755184" class="outline-6">
+<h6 id="orgf755184">What this command does:**</h6>
+<div class="outline-text-6" id="text-orgf755184">
 <ul class="org-ul">
 <li><code>export</code>: Marks a variable to be available to child processes started from the terminal.</li>
 <li><code>PATH=$HOME/.local/bin:$PATH</code>: Prepends <code>.local/bin</code> to the current <code>PATH</code>. This ensures your locally installed executables are prioritized over system-wide ones if they have the same name.</li>
@@ -452,9 +452,9 @@ After saving your changes to <code>.bashrc</code> (or <code>.zshrc</code>), appl
 </div>
 </div>
 
-<div id="outline-container-orgf7d7a6a" class="outline-6">
-<h6 id="orgf7d7a6a">What this command does:**</h6>
-<div class="outline-text-6" id="text-orgf7d7a6a">
+<div id="outline-container-org88c989a" class="outline-6">
+<h6 id="org88c989a">What this command does:**</h6>
+<div class="outline-text-6" id="text-org88c989a">
 <ul class="org-ul">
 <li>The <code>source</code> command reads and executes the contents of the file (<code>.bashrc</code> in this case) in the current shell session. This ensures the changes take effect without needing to log out and back in.</li>
 </ul>
@@ -643,7 +643,7 @@ Example:
 </ul></li>
 </ul></li>
 </ol>
-<div class="note" id="orgeab16fa">
+<div class="note" id="orgfe16ce7">
 <p>
 It is important to read the output of the code for missing dependencies and errors.
 </p>
@@ -746,9 +746,9 @@ By understanding these steps, you’ll be able to install a wide variety of soft
 
 
 
-<div id="outline-container-org4cfe105" class="outline-3">
-<h3 id="org4cfe105">Hands-on Session: Installing Software on HPC User Interface</h3>
-<div class="outline-text-3" id="text-org4cfe105">
+<div id="outline-container-org70dff88" class="outline-3">
+<h3 id="org70dff88">Hands-on Session: Installing Software on HPC User Interface</h3>
+<div class="outline-text-3" id="text-org70dff88">
 </div>
 <div id="outline-container-orgdb5b111" class="outline-4">
 <h4 id="orgdb5b111">Installing <b>inxi</b> (binary)</h4>
@@ -1006,13 +1006,13 @@ Additionally, if you downloaded the source archive, you can clean up the files f
 
 
 
-<div id="outline-container-org07a76e0" class="outline-4">
-<h4 id="org07a76e0">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
-<div class="outline-text-4" id="text-org07a76e0">
+<div id="outline-container-orgea4a319" class="outline-4">
+<h4 id="orgea4a319">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
+<div class="outline-text-4" id="text-orgea4a319">
 </div>
-<div id="outline-container-org73cd2fb" class="outline-5">
-<h5 id="org73cd2fb">What is <b>ncdu</b> and Why is it Useful?</h5>
-<div class="outline-text-5" id="text-org73cd2fb">
+<div id="outline-container-org1fddf51" class="outline-5">
+<h5 id="org1fddf51">What is <b>ncdu</b> and Why is it Useful?</h5>
+<div class="outline-text-5" id="text-org1fddf51">
 <p>
 <b>ncdu</b> (NCurses Disk Usage) is a disk usage analyzer that runs in the terminal. It is particularly useful for identifying large files or directories, especially in environments with limited storage, like HPC systems. 
 </p>
@@ -1076,9 +1076,9 @@ Using a dedicated directory like `~/.local/ncdu` can help isolate installations,
 </div>
 </div>
 
-<div id="outline-container-org293bba6" class="outline-5">
-<h5 id="org293bba6">Steps to Install <b>ncdu</b></h5>
-<div class="outline-text-5" id="text-org293bba6">
+<div id="outline-container-org164db6d" class="outline-5">
+<h5 id="org164db6d">Steps to Install <b>ncdu</b></h5>
+<div class="outline-text-5" id="text-org164db6d">
 <ol class="org-ol">
 <li><p>
 <b><b>Download the Source</b></b>  
@@ -1528,17 +1528,17 @@ Use this approach to search for other keywords, such as <code>python</code> or <
 
 
 
-<div id="outline-container-org89a74f7" class="outline-3">
-<h3 id="org89a74f7">Hands-on Session: Installing Software on HPC User Interface</h3>
-<div class="outline-text-3" id="text-org89a74f7">
+<div id="outline-container-org0324e3d" class="outline-3">
+<h3 id="org0324e3d">Hands-on Session: Installing Software on HPC User Interface</h3>
+<div class="outline-text-3" id="text-org0324e3d">
 </div>
-<div id="outline-container-org8484c28" class="outline-4">
-<h4 id="org8484c28">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
-<div class="outline-text-4" id="text-org8484c28">
+<div id="outline-container-orgc59059b" class="outline-4">
+<h4 id="orgc59059b">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
+<div class="outline-text-4" id="text-orgc59059b">
 </div>
-<div id="outline-container-org924d71c" class="outline-5">
-<h5 id="org924d71c">What is <b>ncdu</b> and Why is it Useful?</h5>
-<div class="outline-text-5" id="text-org924d71c">
+<div id="outline-container-orga8b73e9" class="outline-5">
+<h5 id="orga8b73e9">What is <b>ncdu</b> and Why is it Useful?</h5>
+<div class="outline-text-5" id="text-orga8b73e9">
 <p>
 <b>ncdu</b> (NCurses Disk Usage) is a disk usage analyzer that runs in the terminal. It is particularly useful for identifying large files or directories, especially in environments with limited storage, like HPC systems. 
 </p>
@@ -1559,9 +1559,9 @@ If your HPC system runs out of storage or your job fails due to insufficient spa
 </div>
 </div>
 
-<div id="outline-container-org7269a53" class="outline-5">
-<h5 id="org7269a53">Steps to Install <b>ncdu</b></h5>
-<div class="outline-text-5" id="text-org7269a53">
+<div id="outline-container-org0c303da" class="outline-5">
+<h5 id="org0c303da">Steps to Install <b>ncdu</b></h5>
+<div class="outline-text-5" id="text-org0c303da">
 <p>
 Unlike <b>inxi</b>, <b>ncdu</b> is distributed as source code that must be compiled into a binary before it can be used. This demonstrates the typical <b>configure</b>, <b>make</b>, and <b>make install</b> process for building software from source.
 </p>
@@ -1646,13 +1646,13 @@ If the installation is successful, this command will output the installed versio
 </div>
 
 
-<div id="outline-container-orgee113aa" class="outline-4">
-<h4 id="orgee113aa">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
-<div class="outline-text-4" id="text-orgee113aa">
+<div id="outline-container-orga234d83" class="outline-4">
+<h4 id="orga234d83">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
+<div class="outline-text-4" id="text-orga234d83">
 </div>
-<div id="outline-container-orgefee616" class="outline-5">
-<h5 id="orgefee616">What is <b>ncdu</b> and Why is it Useful?</h5>
-<div class="outline-text-5" id="text-orgefee616">
+<div id="outline-container-org824286a" class="outline-5">
+<h5 id="org824286a">What is <b>ncdu</b> and Why is it Useful?</h5>
+<div class="outline-text-5" id="text-org824286a">
 <p>
 <b>ncdu</b> (NCurses Disk Usage) is a disk usage analyzer that runs in the terminal. It is particularly useful for identifying large files or directories, especially in environments with limited storage, like HPC systems. 
 </p>
@@ -1895,9 +1895,9 @@ cheat tar
 </div>
 
 
-<div id="outline-container-orga0f98de" class="outline-3">
-<h3 id="orga0f98de">Removing Locally Installed Applications</h3>
-<div class="outline-text-3" id="text-orga0f98de">
+<div id="outline-container-org8e710eb" class="outline-3">
+<h3 id="org8e710eb">Removing Locally Installed Applications</h3>
+<div class="outline-text-3" id="text-org8e710eb">
 <p>
 To remove software:
 </p>
@@ -1921,9 +1921,9 @@ For source-built software:
 </div>
 
 
-<div id="outline-container-org8fb1b16" class="outline-3">
-<h3 id="org8fb1b16">Troubleshooting Tips</h3>
-<div class="outline-text-3" id="text-org8fb1b16">
+<div id="outline-container-orge8f3eab" class="outline-3">
+<h3 id="orge8f3eab">Troubleshooting Tips</h3>
+<div class="outline-text-3" id="text-orge8f3eab">
 <ul class="org-ul">
 <li><b><b>Command not found:</b></b> Verify that `~/.local/bin` is in your `PATH`.</li>
 <li><b><b>Missing dependencies:</b></b> Use modules or install dependencies locally.</li>
@@ -1933,9 +1933,9 @@ For source-built software:
 </div>
 
 
-<div id="outline-container-org2c5429e" class="outline-3">
-<h3 id="org2c5429e">Conclusion</h3>
-<div class="outline-text-3" id="text-org2c5429e">
+<div id="outline-container-org25f286b" class="outline-3">
+<h3 id="org25f286b">Conclusion</h3>
+<div class="outline-text-3" id="text-org25f286b">
 <p>
 Installing software locally empowers you to work efficiently in an HPC environment without requiring root privileges. With practice, building software from source and managing your tools will become second nature.
 </p>
@@ -2376,13 +2376,13 @@ To remove MadGraph from your local directory, follow these steps:
 
 
 
-<div id="outline-container-org8a48ac6" class="outline-2">
-<h2 id="org8a48ac6">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
-<div class="outline-text-2" id="text-org8a48ac6">
+<div id="outline-container-org0c2ef61" class="outline-2">
+<h2 id="org0c2ef61">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
+<div class="outline-text-2" id="text-org0c2ef61">
 </div>
-<div id="outline-container-org4740363" class="outline-3">
-<h3 id="org4740363">Introduction</h3>
-<div class="outline-text-3" id="text-org4740363">
+<div id="outline-container-org61b880a" class="outline-3">
+<h3 id="org61b880a">Introduction</h3>
+<div class="outline-text-3" id="text-org61b880a">
 <p>
 High-Performance Computing (HPC) systems are powerful tools that enable users to perform complex computations efficiently. However, these systems are shared resources, and to maintain their stability and security, users typically do not have root privileges. This means that installing software system-wide using package managers like `yum` or `dnf` is not possible for regular users. Instead, users are encouraged to install software locally within their home directories.
 </p>
@@ -2394,9 +2394,9 @@ This tutorial will guide you through the process of installing software locally 
 </div>
 
 
-<div id="outline-container-orgeb9c96c" class="outline-3">
-<h3 id="orgeb9c96c">Why Root Privileges Are Restricted</h3>
-<div class="outline-text-3" id="text-orgeb9c96c">
+<div id="outline-container-org17197bb" class="outline-3">
+<h3 id="org17197bb">Why Root Privileges Are Restricted</h3>
+<div class="outline-text-3" id="text-org17197bb">
 <ul class="org-ul">
 <li><b><b>Shared Resources:</b></b> HPC systems are utilized by multiple users simultaneously. Allowing root access could lead to conflicts and resource mismanagement.</li>
 <li><b><b>System Integrity:</b></b> Limiting root access prevents accidental or malicious changes that could compromise the system's stability and security.</li>
@@ -2406,9 +2406,9 @@ This tutorial will guide you through the process of installing software locally 
 </div>
 
 
-<div id="outline-container-org7ad60ff" class="outline-3">
-<h3 id="org7ad60ff">Installing Software Locally</h3>
-<div class="outline-text-3" id="text-org7ad60ff">
+<div id="outline-container-org4625854" class="outline-3">
+<h3 id="org4625854">Installing Software Locally</h3>
+<div class="outline-text-3" id="text-org4625854">
 <p>
 To install software without root privileges, follow these general steps:
 </p>
@@ -2491,9 +2491,9 @@ Inxi is a powerful command-line system information tool that provides detailed i
 </div>
 </div>
 
-<div id="outline-container-orgc27486b" class="outline-4">
-<h4 id="orgc27486b">Installation Steps</h4>
-<div class="outline-text-4" id="text-orgc27486b">
+<div id="outline-container-org2d883b8" class="outline-4">
+<h4 id="org2d883b8">Installation Steps</h4>
+<div class="outline-text-4" id="text-org2d883b8">
 <ol class="org-ol">
 <li><p>
 <b><b>Download the Inxi Script</b></b>
@@ -2560,9 +2560,9 @@ inxi &#x2013;version
 </div>
 </div>
 
-<div id="outline-container-org64aa362" class="outline-4">
-<h4 id="org64aa362">Installation Steps</h4>
-<div class="outline-text-4" id="text-org64aa362">
+<div id="outline-container-org87e8e76" class="outline-4">
+<h4 id="org87e8e76">Installation Steps</h4>
+<div class="outline-text-4" id="text-org87e8e76">
 <ol class="org-ol">
 <li><p>
 <b><b>Download the Source Code</b></b>
@@ -2669,9 +2669,9 @@ Midnight Commander is a text-based file manager that provides a user-friendly in
 </div>
 </div>
 
-<div id="outline-container-orgdd4bca8" class="outline-4">
-<h4 id="orgdd4bca8">Installation Steps</h4>
-<div class="outline-text-4" id="text-orgdd4bca8">
+<div id="outline-container-org6797cde" class="outline-4">
+<h4 id="org6797cde">Installation Steps</h4>
+<div class="outline-text-4" id="text-org6797cde">
 <ol class="org-ol">
 <li><p>
 <b><b>Download the Source Code</b></b>
@@ -2961,9 +2961,9 @@ tar -xJvf filename.tar.xz -C destination<sub>directory</sub>
 </div>
 
 
-<div id="outline-container-org30b19ae" class="outline-3">
-<h3 id="org30b19ae">Removing Locally Installed Applications</h3>
-<div class="outline-text-3" id="text-org30b19ae">
+<div id="outline-container-org9d626ef" class="outline-3">
+<h3 id="org9d626ef">Removing Locally Installed Applications</h3>
+<div class="outline-text-3" id="text-org9d626ef">
 <p>
 If you need to remove a locally installed application, follow these steps:
 </p>
@@ -3029,9 +3029,9 @@ source ~/.bashrc
 </div>
 
 
-<div id="outline-container-org34dede8" class="outline-3">
-<h3 id="org34dede8">Troubleshooting Tips</h3>
-<div class="outline-text-3" id="text-org34dede8">
+<div id="outline-container-org28698c6" class="outline-3">
+<h3 id="org28698c6">Troubleshooting Tips</h3>
+<div class="outline-text-3" id="text-org28698c6">
 <ul class="org-ul">
 <li><b><b>Problem:</b></b> `command not found` after installing the software.
 <ul class="org-ul">
@@ -3062,9 +3062,9 @@ source ~/.bashrc
 </div>
 
 
-<div id="outline-container-org353318b" class="outline-3">
-<h3 id="org353318b">Conclusion</h3>
-<div class="outline-text-3" id="text-org353318b">
+<div id="outline-container-org450fe58" class="outline-3">
+<h3 id="org450fe58">Conclusion</h3>
+<div class="outline-text-3" id="text-org450fe58">
 <p>
 Installing software locally on an HPC system empowers you to customize your computing environment without requiring administrative privileges. By using your home directory and properly configuring environment variables, you can access a wide range of tools tailored to your needs. Understanding the installation process—from downloading and extracting source code to compiling and installing—ensures you can manage software effectively. Additionally, leveraging tools like `tldr` and `cheat` can simplify command usage, enhancing your productivity. Remember to maintain your local installations and remove any unnecessary applications to keep your environment clean and efficient.
 </p>
@@ -3077,13 +3077,13 @@ Happy Computing!
 </div>
 
 
-<div id="outline-container-org2b2aee0" class="outline-2">
-<h2 id="org2b2aee0">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
-<div class="outline-text-2" id="text-org2b2aee0">
+<div id="outline-container-orgc8cd366" class="outline-2">
+<h2 id="orgc8cd366">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
+<div class="outline-text-2" id="text-orgc8cd366">
 </div>
-<div id="outline-container-orgbb03361" class="outline-3">
-<h3 id="orgbb03361">Introduction</h3>
-<div class="outline-text-3" id="text-orgbb03361">
+<div id="outline-container-org974517a" class="outline-3">
+<h3 id="org974517a">Introduction</h3>
+<div class="outline-text-3" id="text-org974517a">
 <p>
 In most HPC systems, users do not have root privileges, and in this case, the system is running <b><b>Rocky Linux</b></b>. Root privileges, such as running `yum install` or `dnf install` commands, are not possible for regular users. This ensures the stability and security of the shared computing environment. 
 </p>
@@ -3099,9 +3099,9 @@ This tutorial will guide you through the process of installing software locally,
 </div>
 
 
-<div id="outline-container-orge66f9d1" class="outline-3">
-<h3 id="orge66f9d1">Why Root Privileges Are Restricted</h3>
-<div class="outline-text-3" id="text-orge66f9d1">
+<div id="outline-container-orgf94e49c" class="outline-3">
+<h3 id="orgf94e49c">Why Root Privileges Are Restricted</h3>
+<div class="outline-text-3" id="text-orgf94e49c">
 <ul class="org-ul">
 <li>HPC systems are shared resources where multiple users run jobs simultaneously.</li>
 <li>Limiting root access ensures system integrity and prevents accidental or malicious changes.</li>
@@ -3111,9 +3111,9 @@ This tutorial will guide you through the process of installing software locally,
 </div>
 
 
-<div id="outline-container-org8736d0d" class="outline-3">
-<h3 id="org8736d0d">Installing Software Locally</h3>
-<div class="outline-text-3" id="text-org8736d0d">
+<div id="outline-container-orgdcc891a" class="outline-3">
+<h3 id="orgdcc891a">Installing Software Locally</h3>
+<div class="outline-text-3" id="text-orgdcc891a">
 <ol class="org-ol">
 <li><p>
 <b><b>Prepare a Directory for Local Installations</b></b>
@@ -3151,9 +3151,9 @@ Reload your shell configuration:
 </div>
 </div>
 
-<div id="outline-container-org4ac2628" class="outline-3">
-<h3 id="org4ac2628">Example: Installing Inxi from Source</h3>
-<div class="outline-text-3" id="text-org4ac2628">
+<div id="outline-container-org8775d55" class="outline-3">
+<h3 id="org8775d55">Example: Installing Inxi from Source</h3>
+<div class="outline-text-3" id="text-org8775d55">
 <ol class="org-ol">
 <li><p>
 <b><b>Download the Source Code</b></b>
@@ -3271,9 +3271,9 @@ make install
 </div>
 
 
-<div id="outline-container-orgb974c78" class="outline-3">
-<h3 id="orgb974c78">Troubleshooting Tips</h3>
-<div class="outline-text-3" id="text-orgb974c78">
+<div id="outline-container-org3a82f4e" class="outline-3">
+<h3 id="org3a82f4e">Troubleshooting Tips</h3>
+<div class="outline-text-3" id="text-org3a82f4e">
 <ul class="org-ul">
 <li><b><b>Problem:</b></b> `command not found` after installing the software.
 <ul class="org-ul">
@@ -3292,9 +3292,9 @@ make install
 </div>
 
 
-<div id="outline-container-org78b0b16" class="outline-3">
-<h3 id="org78b0b16">Conclusion</h3>
-<div class="outline-text-3" id="text-org78b0b16">
+<div id="outline-container-org54cc46f" class="outline-3">
+<h3 id="org54cc46f">Conclusion</h3>
+<div class="outline-text-3" id="text-org54cc46f">
 <p>
 Installing software locally on an HPC system is straightforward when you understand the process. By using your home directory and updating your PATH, you can have the flexibility to use the tools you need without requiring administrative access. For consistency and compatibility, it is recommended to use `~/.local` for local installations. Remember that `~/.local` is hidden, and you can view it with the `ls -a` command.
 </p>
@@ -3304,13 +3304,13 @@ Installing software locally on an HPC system is straightforward when you underst
 
 
 
-<div id="outline-container-orgb6de78d" class="outline-2">
-<h2 id="orgb6de78d">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
-<div class="outline-text-2" id="text-orgb6de78d">
+<div id="outline-container-orgc71de55" class="outline-2">
+<h2 id="orgc71de55">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
+<div class="outline-text-2" id="text-orgc71de55">
 </div>
-<div id="outline-container-org939766e" class="outline-3">
-<h3 id="org939766e">Introduction</h3>
-<div class="outline-text-3" id="text-org939766e">
+<div id="outline-container-orgb31fc3c" class="outline-3">
+<h3 id="orgb31fc3c">Introduction</h3>
+<div class="outline-text-3" id="text-orgb31fc3c">
 <p>
 In most HPC systems, users do not have root privileges, and in this case, the system is running <b><b>Rocky Linux</b></b>. Root privileges, such as running `yum install` or `dnf install` commands, are not possible for regular users. This ensures the stability and security of the shared computing environment. 
 </p>
@@ -3326,9 +3326,9 @@ This tutorial will guide you through the process of installing software locally,
 </div>
 
 
-<div id="outline-container-org3032335" class="outline-3">
-<h3 id="org3032335">Why Root Privileges Are Restricted</h3>
-<div class="outline-text-3" id="text-org3032335">
+<div id="outline-container-org158b80f" class="outline-3">
+<h3 id="org158b80f">Why Root Privileges Are Restricted</h3>
+<div class="outline-text-3" id="text-org158b80f">
 <ul class="org-ul">
 <li>HPC systems are shared resources where multiple users run jobs simultaneously.</li>
 <li>Limiting root access ensures system integrity and prevents accidental or malicious changes.</li>
@@ -3338,9 +3338,9 @@ This tutorial will guide you through the process of installing software locally,
 </div>
 
 
-<div id="outline-container-orgcc6c8f9" class="outline-3">
-<h3 id="orgcc6c8f9">Installing Software Locally</h3>
-<div class="outline-text-3" id="text-orgcc6c8f9">
+<div id="outline-container-org24cef5e" class="outline-3">
+<h3 id="org24cef5e">Installing Software Locally</h3>
+<div class="outline-text-3" id="text-org24cef5e">
 <ol class="org-ol">
 <li><p>
 <b><b>Prepare a Directory for Local Installations</b></b>
@@ -3376,9 +3376,9 @@ Reload your shell configuration:
 </div>
 
 
-<div id="outline-container-org8aa2698" class="outline-3">
-<h3 id="org8aa2698">Example: Installing Inxi from Source</h3>
-<div class="outline-text-3" id="text-org8aa2698">
+<div id="outline-container-org74e3c73" class="outline-3">
+<h3 id="org74e3c73">Example: Installing Inxi from Source</h3>
+<div class="outline-text-3" id="text-org74e3c73">
 <ol class="org-ol">
 <li><p>
 <b><b>Download the Source Code</b></b>
@@ -3423,9 +3423,9 @@ Confirm that inxi is installed and accessible:
 </div>
 
 
-<div id="outline-container-org653e346" class="outline-3">
-<h3 id="org653e346">Troubleshooting Tips</h3>
-<div class="outline-text-3" id="text-org653e346">
+<div id="outline-container-org5d0987b" class="outline-3">
+<h3 id="org5d0987b">Troubleshooting Tips</h3>
+<div class="outline-text-3" id="text-org5d0987b">
 <ul class="org-ul">
 <li><b><b>Problem:</b></b> `command not found` after installing the software.
 <ul class="org-ul">
@@ -3444,9 +3444,9 @@ Confirm that inxi is installed and accessible:
 </div>
 
 
-<div id="outline-container-orgcc70602" class="outline-3">
-<h3 id="orgcc70602">Conclusion</h3>
-<div class="outline-text-3" id="text-orgcc70602">
+<div id="outline-container-orgd213fb7" class="outline-3">
+<h3 id="orgd213fb7">Conclusion</h3>
+<div class="outline-text-3" id="text-orgd213fb7">
 <p>
 Installing software locally on an HPC system is straightforward when you understand the process. By using your home directory and updating your PATH, you can have the flexibility to use the tools you need without requiring administrative access. For consistency and compatibility, it is recommended to use `~/.local` for local installations. Remember that `~/.local` is hidden, and you can view it with the `ls -a` command.
 </p>
@@ -3456,7 +3456,7 @@ Installing software locally on an HPC system is straightforward when you underst
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2025-02-20 Thu 17:23</p>
+<p class="date">Created: 2025-02-20 Thu 17:28</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

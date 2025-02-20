@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-02-20 Thu 17:23 -->
+<!-- 2025-02-20 Thu 17:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linux</title>
@@ -51,19 +51,19 @@
 <li><a href="#orgfc49798">21. How to Partition, Mount, and Unmount Disks</a></li>
 <li><a href="#org65ed4bf">22. How to Logout a User from the System</a></li>
 <li><a href="#org5a4962b">23. How to List the Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
-<li><a href="#org505dca7">24. How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
+<li><a href="#org4502653">24. How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
 <li><a href="#org250bac6">25. How to Install a Package to a Specific Directory Using `yum`</a></li>
-<li><a href="#org3d37ea8">26. How to Find Configuration Files That Have Been Altered Since Installation</a></li>
+<li><a href="#org7533275">26. How to Find Configuration Files That Have Been Altered Since Installation</a></li>
 <li><a href="#org12a39e2">27. Error: Nothing to Do When Installing Local RPM&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
-<li><a href="#org02e2587">28. How to Download and Install an RPM Package</a></li>
+<li><a href="#orgafcf9e1">28. How to Download and Install an RPM Package</a></li>
 <li><a href="#orgf249445">29. CentOS</a>
 <ul>
 <li><a href="#org0d14d21">29.1. How to List Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
-<li><a href="#orge276c18">29.2. How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
+<li><a href="#org9ce69a7">29.2. How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
 <li><a href="#org052fc7c">29.3. How to Install a Package to a Specific Directory Using Yum</a></li>
-<li><a href="#org0cd8279">29.4. How to Find Configuration Files That Have Been Altered Since Installation</a></li>
+<li><a href="#org4493d46">29.4. How to Find Configuration Files That Have Been Altered Since Installation</a></li>
 <li><a href="#orgc1e8854">29.5. Error: "Nothing to Do" When Installing Local RPM</a></li>
-<li><a href="#org946751a">29.6. How to Download and Install an RPM Package</a></li>
+<li><a href="#orgc5a9cf4">29.6. How to Download and Install an RPM Package</a></li>
 </ul>
 </li>
 <li><a href="#org9a24094">30. Ubuntu</a>
@@ -738,7 +738,7 @@ Command:
 <li><p>
 Output:
 </p>
-<pre class="example" id="orgee50945">
+<pre class="example" id="org5b17cc6">
 17:45:26 up 3 days, 4:12,  2 users,  load average: 0.03, 0.03, 0.01
 </pre>
 <ul class="org-ul">
@@ -767,7 +767,7 @@ Using `top`:
 <li><p>
 Sample `top` Output:
 </p>
-<pre class="example" id="org00f74c0">
+<pre class="example" id="orga2c5dc8">
 top - 17:46:38 up 3 days, 4:13,  2 users,  load average: 0.03, 0.03, 0.01
 Tasks: 110 total,   1 running, 109 sleeping,   0 stopped,   0 zombie
 %Cpu(s):  1.0 us,  0.5 sy,  0.0 ni, 98.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
@@ -842,7 +842,7 @@ Use `journalctl` to list the boots recorded by the system:
 <li><p>
 Example output:
 </p>
-<pre class="example" id="org8ff9824">
+<pre class="example" id="org06e01d8">
 -2 4c3b5b2f2a4c401c8506ab65e03b3df7 Mon 2024-11-10 09:15:00 UTC—Mon 2024-11-10 17:35:00 UTC
 -1 1a2f33ef3d3c401dbe36b5647e03fdf7 Mon 2024-11-11 09:20:00 UTC—Mon 2024-11-11 17:40:00 UTC
  0 c2a3b5b2f2a3c4dc6506ab56e03c3de5 Tue 2024-11-12 08:00:00 UTC—Tue 2024-11-12 16:20:00 UTC
@@ -876,7 +876,7 @@ Use the `who` command to find the last reboot time:
 <li><p>
 Example output:
 </p>
-<pre class="example" id="org0ba6f36">
+<pre class="example" id="org9f4c4e1">
 system boot  2024-11-12 08:00
 </pre></li>
 </ul></li>
@@ -892,7 +892,7 @@ Alternatively, use the `last` command to view reboot history:
 <li><p>
 Example output:
 </p>
-<pre class="example" id="org7dd63ce">
+<pre class="example" id="org64d091a">
 reboot   system boot  5.15.0-43-generic Fri Nov 10 09:15 - 17:35  (08:20)
 reboot   system boot  5.15.0-43-generic Mon Nov 12 08:00 - 16:20  (08:20)
 </pre></li>
@@ -1055,7 +1055,7 @@ printf "Total: \t\t$(find $(pwd) | wc -l)\n"
 <li><p>
 This will show the count of inodes for each subdirectory and the total:
 </p>
-<pre class="example" id="org062df24">
+<pre class="example" id="org5c413f1">
 Detailed Inode usage for: /my/directory
 12              - subfolder1
 8               - subfolder2
@@ -1382,8 +1382,8 @@ To view all the files installed by a specific package, use the following command
 </div>
 
 
-<div id="outline-container-org505dca7" class="outline-2">
-<h2 id="org505dca7"><span class="section-number-2">24.</span> How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h2>
+<div id="outline-container-org4502653" class="outline-2">
+<h2 id="org4502653"><span class="section-number-2">24.</span> How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h2>
 <div class="outline-text-2" id="text-24">
 <ul class="org-ul">
 <li>Use the `yum` package manager to list and install specific versions of a package.</li>
@@ -1442,8 +1442,8 @@ Use the `&#x2013;installroot` option to specify a custom directory for the packa
 
 
 
-<div id="outline-container-org3d37ea8" class="outline-2">
-<h2 id="org3d37ea8"><span class="section-number-2">26.</span> How to Find Configuration Files That Have Been Altered Since Installation</h2>
+<div id="outline-container-org7533275" class="outline-2">
+<h2 id="org7533275"><span class="section-number-2">26.</span> How to Find Configuration Files That Have Been Altered Since Installation</h2>
 <div class="outline-text-2" id="text-26">
 <ul class="org-ul">
 <li>Use the `rpm` command to verify package files and determine which configuration files have been altered.</li>
@@ -1516,8 +1516,8 @@ rpm -v -i /path/to/package.rpm
 </div>
 
 
-<div id="outline-container-org02e2587" class="outline-2">
-<h2 id="org02e2587"><span class="section-number-2">28.</span> How to Download and Install an RPM Package</h2>
+<div id="outline-container-orgafcf9e1" class="outline-2">
+<h2 id="orgafcf9e1"><span class="section-number-2">28.</span> How to Download and Install an RPM Package</h2>
 <div class="outline-text-2" id="text-28">
 <ul class="org-ul">
 <li><p>
@@ -1565,8 +1565,8 @@ sudo yum install -y &lt;URL&gt;  # Using yum command
 </div>
 </div>
 
-<div id="outline-container-orge276c18" class="outline-3">
-<h3 id="orge276c18"><span class="section-number-3">29.2.</span> How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h3>
+<div id="outline-container-org9ce69a7" class="outline-3">
+<h3 id="org9ce69a7"><span class="section-number-3">29.2.</span> How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h3>
 <div class="outline-text-3" id="text-29-2">
 <ul class="org-ul">
 <li>Use the `yum` command with the `&#x2013;showduplicates` option to list all available versions of a package.</li>
@@ -1622,8 +1622,8 @@ sudo yum install -y &lt;URL&gt;  # Using yum command
 </div>
 </div>
 
-<div id="outline-container-org0cd8279" class="outline-3">
-<h3 id="org0cd8279"><span class="section-number-3">29.4.</span> How to Find Configuration Files That Have Been Altered Since Installation</h3>
+<div id="outline-container-org4493d46" class="outline-3">
+<h3 id="org4493d46"><span class="section-number-3">29.4.</span> How to Find Configuration Files That Have Been Altered Since Installation</h3>
 <div class="outline-text-3" id="text-29-4">
 <ul class="org-ul">
 <li>Use the `rpm` command to verify and list files that have been modified since package installation.</li>
@@ -1694,8 +1694,8 @@ rpm -v -i &lt;package-name&gt;.rpm
 </div>
 </div>
 
-<div id="outline-container-org946751a" class="outline-3">
-<h3 id="org946751a"><span class="section-number-3">29.6.</span> How to Download and Install an RPM Package</h3>
+<div id="outline-container-orgc5a9cf4" class="outline-3">
+<h3 id="orgc5a9cf4"><span class="section-number-3">29.6.</span> How to Download and Install an RPM Package</h3>
 <div class="outline-text-3" id="text-29-6">
 <ul class="org-ul">
 <li>To directly install an RPM from a URL or file:</li>
@@ -1932,7 +1932,7 @@ Restart the Network Manager service:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2025-02-20 Thu 17:23</p>
+<p class="date">Created: 2025-02-20 Thu 17:28</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
