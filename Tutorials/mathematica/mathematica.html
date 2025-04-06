@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-02-20 Thu 17:28 -->
+<!-- 2025-04-06 Sun 16:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mathematica Guide</title>
@@ -56,29 +56,28 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org85d2b39">1. To clear all old definitions:</a></li>
-<li><a href="#orga1cc8dc">2. Patterns (TBO)</a></li>
-<li><a href="#orga867423">3. Input Expressions</a></li>
-<li><a href="#orgfdc732a">4. Accessing Parts of an Expression</a></li>
-<li><a href="#orga0e064b">5. Keyboard Shortcuts</a></li>
-<li><a href="#org50075e9">6. String Operations</a></li>
-<li><a href="#orgfd167ca">7. Removing Template Notebook Header</a></li>
-<li><a href="#org070fbba">8. Working with Lists</a></li>
-<li><a href="#org9d032fd">9. Determining Variable Types</a></li>
-<li><a href="#orgaeb6e4d">10. Exporting Data to a File</a></li>
-<li><a href="#orgfdcade7">11. Importing Data and Plotting</a></li>
-<li><a href="#org2a90810">12. Custom Plotting Options</a></li>
-<li><a href="#org9184e17">13. Fitting, Plotting Residuals, and Calculating Chi-Square</a></li>
-<li><a href="#orgd771917">14. Solving Equations</a></li>
-<li><a href="#org5e74367">15. Data Concatenation</a></li>
-<li><a href="#org62c4804">16. Setting Default External Evaluator for Python</a></li>
-<li><a href="#org450bd81">17. References</a></li>
+<li><a href="#org264c1f0">1. To clear all old definitions:</a></li>
+<li><a href="#org50c03b3">2. Patterns (TBO)</a></li>
+<li><a href="#orgc26583e">3. Input Expressions</a></li>
+<li><a href="#org556e7b1">4. Accessing Parts of an Expression</a></li>
+<li><a href="#orge4833b9">5. Keyboard Shortcuts</a></li>
+<li><a href="#org86949d4">6. String Operations</a></li>
+<li><a href="#org34e439c">7. Removing Template Notebook Header</a></li>
+<li><a href="#org7d2e27d">8. Working with Lists</a></li>
+<li><a href="#orgb27829c">9. Determining Variable Types</a></li>
+<li><a href="#org8c1cea2">10. Exporting Data to a File</a></li>
+<li><a href="#org4af5061">11. Importing Data and Plotting</a></li>
+<li><a href="#org8f1c492">12. Custom Plotting Options</a></li>
+<li><a href="#orgd247d72">13. Fitting, Plotting Residuals, and Calculating Chi-Square</a></li>
+<li><a href="#org5d18a36">14. Solving Equations</a></li>
+<li><a href="#orgb80a352">15. Data Concatenation</a></li>
+<li><a href="#org53e81cb">16. Setting Default External Evaluator for Python</a></li>
+<li><a href="#org231a8d0">17. References</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org85d2b39" class="outline-2">
-<h2 id="org85d2b39"><span class="section-number-2">1.</span> To clear all old definitions:</h2>
+<div id="outline-container-org264c1f0" class="outline-2">
+<h2 id="org264c1f0"><span class="section-number-2">1.</span> To clear all old definitions:</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-wolfram">Clear["Global`*"]
@@ -86,9 +85,8 @@
 </div>
 </div>
 </div>
-
-<div id="outline-container-orga1cc8dc" class="outline-2">
-<h2 id="orga1cc8dc"><span class="section-number-2">2.</span> Patterns (TBO)</h2>
+<div id="outline-container-org50c03b3" class="outline-2">
+<h2 id="org50c03b3"><span class="section-number-2">2.</span> Patterns (TBO)</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>`Blank[]` - Single unspecified object `x_`</li>
@@ -98,10 +96,8 @@
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orga867423" class="outline-2">
-<h2 id="orga867423"><span class="section-number-2">3.</span> Input Expressions</h2>
+<div id="outline-container-orgc26583e" class="outline-2">
+<h2 id="orgc26583e"><span class="section-number-2">3.</span> Input Expressions</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li><p>
@@ -116,10 +112,8 @@ Mean@{1, 2, 3}
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orgfdc732a" class="outline-2">
-<h2 id="orgfdc732a"><span class="section-number-2">4.</span> Accessing Parts of an Expression</h2>
+<div id="outline-container-org556e7b1" class="outline-2">
+<h2 id="org556e7b1"><span class="section-number-2">4.</span> Accessing Parts of an Expression</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><p>
@@ -133,10 +127,8 @@ The following expressions are equivalent:
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orga0e064b" class="outline-2">
-<h2 id="orga0e064b"><span class="section-number-2">5.</span> Keyboard Shortcuts</h2>
+<div id="outline-container-orge4833b9" class="outline-2">
+<h2 id="orge4833b9"><span class="section-number-2">5.</span> Keyboard Shortcuts</h2>
 <div class="outline-text-2" id="text-5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -237,10 +229,8 @@ The following expressions are equivalent:
 </table>
 </div>
 </div>
-
-
-<div id="outline-container-org50075e9" class="outline-2">
-<h2 id="org50075e9"><span class="section-number-2">6.</span> String Operations</h2>
+<div id="outline-container-org86949d4" class="outline-2">
+<h2 id="org86949d4"><span class="section-number-2">6.</span> String Operations</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li><p>
@@ -254,10 +244,8 @@ Concatenate strings:
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orgfd167ca" class="outline-2">
-<h2 id="orgfd167ca"><span class="section-number-2">7.</span> Removing Template Notebook Header</h2>
+<div id="outline-container-org34e439c" class="outline-2">
+<h2 id="org34e439c"><span class="section-number-2">7.</span> Removing Template Notebook Header</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li><p>
@@ -270,10 +258,8 @@ To remove the docked header in the notebook:
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org070fbba" class="outline-2">
-<h2 id="org070fbba"><span class="section-number-2">8.</span> Working with Lists</h2>
+<div id="outline-container-org7d2e27d" class="outline-2">
+<h2 id="org7d2e27d"><span class="section-number-2">8.</span> Working with Lists</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li><p>
@@ -294,10 +280,8 @@ Count distinct elements in a list:
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org9d032fd" class="outline-2">
-<h2 id="org9d032fd"><span class="section-number-2">9.</span> Determining Variable Types</h2>
+<div id="outline-container-orgb27829c" class="outline-2">
+<h2 id="orgb27829c"><span class="section-number-2">9.</span> Determining Variable Types</h2>
 <div class="outline-text-2" id="text-9">
 <ul class="org-ul">
 <li><p>
@@ -316,10 +300,8 @@ Head@real
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orgaeb6e4d" class="outline-2">
-<h2 id="orgaeb6e4d"><span class="section-number-2">10.</span> Exporting Data to a File</h2>
+<div id="outline-container-org8c1cea2" class="outline-2">
+<h2 id="org8c1cea2"><span class="section-number-2">10.</span> Exporting Data to a File</h2>
 <div class="outline-text-2" id="text-10">
 <ul class="org-ul">
 <li><p>
@@ -345,10 +327,8 @@ Export[path &lt;&gt; "test.dat", myDataS01]
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orgfdcade7" class="outline-2">
-<h2 id="orgfdcade7"><span class="section-number-2">11.</span> Importing Data and Plotting</h2>
+<div id="outline-container-org4af5061" class="outline-2">
+<h2 id="org4af5061"><span class="section-number-2">11.</span> Importing Data and Plotting</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
 <li><p>
@@ -385,10 +365,8 @@ Apply a cut to the data:
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org2a90810" class="outline-2">
-<h2 id="org2a90810"><span class="section-number-2">12.</span> Custom Plotting Options</h2>
+<div id="outline-container-org8f1c492" class="outline-2">
+<h2 id="org8f1c492"><span class="section-number-2">12.</span> Custom Plotting Options</h2>
 <div class="outline-text-2" id="text-12">
 <ul class="org-ul">
 <li><p>
@@ -414,10 +392,8 @@ ListLinePlot[{pdata1, pdata2, pdata3}, Evaluate[myPlotOptions1], BaseStyle -&gt;
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org9184e17" class="outline-2">
-<h2 id="org9184e17"><span class="section-number-2">13.</span> Fitting, Plotting Residuals, and Calculating Chi-Square</h2>
+<div id="outline-container-orgd247d72" class="outline-2">
+<h2 id="orgd247d72"><span class="section-number-2">13.</span> Fitting, Plotting Residuals, and Calculating Chi-Square</h2>
 <div class="outline-text-2" id="text-13">
 <ul class="org-ul">
 <li><p>
@@ -434,10 +410,8 @@ Plot[fit[x], {x, 0, 25}, Epilog -&gt; {{Red, PointSize[.01], Point[data]}, Inset
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orgd771917" class="outline-2">
-<h2 id="orgd771917"><span class="section-number-2">14.</span> Solving Equations</h2>
+<div id="outline-container-org5d18a36" class="outline-2">
+<h2 id="org5d18a36"><span class="section-number-2">14.</span> Solving Equations</h2>
 <div class="outline-text-2" id="text-14">
 <ul class="org-ul">
 <li><p>
@@ -451,10 +425,8 @@ Solve[x^2 == -1, x, Complexes]
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org5e74367" class="outline-2">
-<h2 id="org5e74367"><span class="section-number-2">15.</span> Data Concatenation</h2>
+<div id="outline-container-orgb80a352" class="outline-2">
+<h2 id="orgb80a352"><span class="section-number-2">15.</span> Data Concatenation</h2>
 <div class="outline-text-2" id="text-15">
 <ul class="org-ul">
 <li><p>
@@ -468,10 +440,8 @@ Concatenate two lists `{x1, x2, x3}` and `{y1, y2, y3}` as `{{x1, y1}, {x2, y2}}
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org62c4804" class="outline-2">
-<h2 id="org62c4804"><span class="section-number-2">16.</span> Setting Default External Evaluator for Python</h2>
+<div id="outline-container-org53e81cb" class="outline-2">
+<h2 id="org53e81cb"><span class="section-number-2">16.</span> Setting Default External Evaluator for Python</h2>
 <div class="outline-text-2" id="text-16">
 <ul class="org-ul">
 <li><p>
@@ -492,10 +462,8 @@ Set a specific Python version:
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org450bd81" class="outline-2">
-<h2 id="org450bd81"><span class="section-number-2">17.</span> References</h2>
+<div id="outline-container-org231a8d0" class="outline-2">
+<h2 id="org231a8d0"><span class="section-number-2">17.</span> References</h2>
 <div class="outline-text-2" id="text-17">
 <ul class="org-ul">
 <li><a href="https://reference.wolfram.com/language/workflow/ConfigurePythonForExternalEvaluate.html">https://reference.wolfram.com/language/workflow/ConfigurePythonForExternalEvaluate.html</a></li>
@@ -506,7 +474,7 @@ Set a specific Python version:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2025-02-20 Thu 17:28</p>
+<p class="date">Created: 2025-04-06 Sun 16:23</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

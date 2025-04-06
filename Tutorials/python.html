@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-04-06 Sun 16:23 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="sbilmis" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/search.css" />
+                   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/search.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgc876682">1. Python</a>
+<ul>
+<li><a href="#org36af624">1.1. Virtual Environments</a>
+<ul>
+<li><a href="#org1f5490c">1.1.1. Common Tools for Managing Virtual Environements</a>
+<ul>
+<li><a href="#org176aa1c">1.1.1.1. venv (built in)</a></li>
+<li><a href="#org227b7be">1.1.1.2. virtualenv</a></li>
+<li><a href="#orgd00ccea">1.1.1.3. conda</a></li>
+<li><a href="#org240c691">1.1.1.4. pyenv</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orge87548d">1.2. Pyenv</a></li>
+</ul>
+</li>
+<li><a href="#org913e513">2. Troubleshooting:</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc876682" class="outline-2">
+<h2 id="orgc876682"><span class="section-number-2">1.</span> Python</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org36af624" class="outline-3">
+<h3 id="org36af624"><span class="section-number-3">1.1.</span> Virtual Environments</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+A Python virtual environment is an isolated environment where you can install specific versions of Python and Python packages without affecting the global (system) Python installation. This is useful for:
+</p>
+
+<ul class="org-ul">
+<li>Avoiding conflicts between different projects.</li>
+<li>Ensuring reproducibility (e.g., using specific versions of libraries like numpy).</li>
+<li>Managing dependencies cleanly.</li>
+</ul>
+</div>
+<div id="outline-container-org1f5490c" class="outline-4">
+<h4 id="org1f5490c"><span class="section-number-4">1.1.1.</span> Common Tools for Managing Virtual Environements</h4>
+<div class="outline-text-4" id="text-1-1-1">
+</div>
+<div id="outline-container-org176aa1c" class="outline-5">
+<h5 id="org176aa1c"><span class="section-number-5">1.1.1.1.</span> venv (built in)</h5>
+<div class="outline-text-5" id="text-1-1-1-1">
+<ul class="org-ul">
+<li>Comes with python 3.3+</li>
+<li>simple and lightweight</li>
+<li>to create a virtual environment</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-nil">python3 -m venv myenv
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org227b7be" class="outline-5">
+<h5 id="org227b7be"><span class="section-number-5">1.1.1.2.</span> virtualenv</h5>
+<div class="outline-text-5" id="text-1-1-1-2">
+<ul class="org-ul">
+<li>More feature-rich than venv</li>
+<li>Works with older python versions</li>
+<li><p>
+to set up:
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">pip install virtualenv
+virtualenv myenv
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd00ccea" class="outline-5">
+<h5 id="orgd00ccea"><span class="section-number-5">1.1.1.3.</span> conda</h5>
+<div class="outline-text-5" id="text-1-1-1-3">
+<ul class="org-ul">
+<li>Popular in data science</li>
+<li>Manages both Python and non-Python packages</li>
+<li><div class="org-src-container">
+<pre class="src src-nil">conda create -n myenv python=3.9
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org240c691" class="outline-5">
+<h5 id="org240c691"><span class="section-number-5">1.1.1.4.</span> pyenv</h5>
+<div class="outline-text-5" id="text-1-1-1-4">
+<ul class="org-ul">
+<li>manages <b>multiple</b> Python versions</li>
+<li>can create virtual environments using pyenv-virtualenv</li>
+<li><div class="org-src-container">
+<pre class="src src-nil">pyenv install 3.9.6
+pyenv virtualenv 3.9.6 myenv
+</pre>
+</div></li>
+
+<li>In this tutorial, we will focus on pyenv</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge87548d" class="outline-3">
+<h3 id="orge87548d"><span class="section-number-3">1.2.</span> Pyenv</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>To install pyenv and pyenv-virtualenv</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sh">## install pyenv and pyenv-virtualenv
+brew install pyenv
+brew install pyenv-virtualenv
+
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Add the following to <code>.bash_profile</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Note that these lines should be added after exporting PATH for homebrew in <code>bash_profile</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">export PATH="/opt/homebrew/sbin:$PATH"
+export PATH=/opt/homebrew/bin:$PATH
+</pre>
+</div></li>
+</ul></li>
+</ul>
+
+<ul class="org-ul">
+<li><p>
+Useful commands about pyenv
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">
+##  List all Python versions available to pyenv
+pyenv versions
+
+## To list the available Python versions with pyenv
+pyenv install -l
+
+## To install python 3.9.21
+pyenv install 3.9.21
+
+## when installed; you can see the files in ~/.pyenv/versions
+## run pyenv versions to check
+pyenv versions
+
+
+
+## to list existing virtual environments
+pyenv virtualenvs
+
+
+</pre>
+</div></li>
+
+<li>Let us create a virtual environment for the examples and exercises in the book <a href="https://a.co/d/eusJ8zC">https://a.co/d/eusJ8zC</a>;</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-nil">## create a folder and change directory to that
+mkdir raschka_book
+cd raschka_book
+
+## create a virtual enviroenment name raschka_book with python 3.9.21
+pyenv virtualenv 3.9.21 raschka_book
+
+
+## list the existing virtualenvs
+pyenv viryaualenvs
+
+## Note that you may see two results for the same environemnt. That is accepted. One of them is just a symlink
+
+## to activate the virtualenv
+pyenv activate raschka_book
+
+## once activated you will see it on the terminal.  to check which python version is activated
+python --version
+
+## note that you will get different result if you run this command outside this folder.
+
+</pre>
+</div>
+
+
+<ul class="org-ul">
+<li><p>
+Create a requirements.txt
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">numpy==1.21.2
+scipy==1.7.0
+scikit-learn==1.0
+matplotlib==3.4.3
+pandas==1.3.2
+</pre>
+</div></li>
+
+<li><p>
+Then run
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">pip install -r  requirements.txt
+</pre>
+</div></li>
+
+<li><p>
+To verify the installation; to see the installed packages:
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">pip list
+</pre>
+</div></li>
+
+<li><p>
+If you add or remove dependencies in the future, you can update the requirements.txt file. To generate an updated requirements.txt file based on the currently installed packages, run:
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">pip freeze &gt; requirements.txt
+</pre>
+</div></li>
+</ul>
+
+
+<ul class="org-ul">
+<li>How to delete a pyenv virtual environment?</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-nil">pyenv virtualenv-delete &lt;venv-name&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org913e513" class="outline-2">
+<h2 id="org913e513"><span class="section-number-2">2.</span> Troubleshooting:</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Replace <code>&lt;venv-name&gt;</code> with the name of the virtual environment you want to delete.
+</p>
+
+<ul class="org-ul">
+<li><p>
+If there are multiple executables which match, display all:
+<code>which -a executable</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">
+which -a
+## gives this output
+/Users/sbilmis/.pyenv/shims/python3
+/opt/homebrew/bin/python3
+/usr/bin/python3
+
+
+/opt/homebrew/bin/python3 --version
+&gt; Python 3.13.2 (brew tarafindan yuklu olan)
+
+/usr/bin/python3 --version
+&gt; Python 3.9.6 (MacOS un kendi pythonu)
+
+/Users/sbilmis/.pyenv/shims/python3
+&gt; Python 3.13.2
+
+
+pyenv global system
+komutu brew versiyonuna yonlendirecek cunku bash_profile icerisinde bu export edilmis.
+
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>openssl@1 caused issues on M1. Once removed it worked.  See <a href="https://stackoverflow.com/questions/58280484/ssl-module-in-python-is-not-available-on-osx">https://stackoverflow.com/questions/58280484/ssl-module-in-python-is-not-available-on-osx</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sbilmis</p>
+<p class="date">Created: 2025-04-06 Sun 16:23</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

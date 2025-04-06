@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-02-20 Thu 17:28 -->
+<!-- 2025-04-06 Sun 16:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Docker Guide</title>
@@ -24,25 +24,38 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf4b4ddd">1. Docker Basics</a></li>
-<li><a href="#orga4bc377">2. References</a></li>
-<li><a href="#orgdb3d2f1">3. Running a Basic OS Container</a></li>
-<li><a href="#org5f1cc81">4. Installing (Pulling) Docker Images</a></li>
-<li><a href="#org112e134">5. Listing Images</a></li>
-<li><a href="#orgf60f105">6. Running a Container with NGINX (as an example)</a></li>
-<li><a href="#org637b289">7. Listing Containers</a></li>
-<li><a href="#org597c291">8. Running Commands Interactively in a Running Container</a></li>
-<li><a href="#org18a6839">9. Stopping and Restarting Containers</a></li>
-<li><a href="#orgd0748da">10. Removing Containers</a></li>
-<li><a href="#orge3923a6">11. Mapping a Local Directory into a Container</a></li>
-<li><a href="#orgfa6f935">12. Removing Images</a></li>
-<li><a href="#orgda29436">13. To Be Added</a></li>
+<li><a href="#org162bd76">1. Docker Basics</a></li>
+<li><a href="#orgef38ff9">2. References</a></li>
+<li><a href="#orgda23312">3. Running a Basic OS Container</a></li>
+<li><a href="#org75e25d5">4. Installing (Pulling) Docker Images</a></li>
+<li><a href="#org9da8930">5. Listing Images</a></li>
+<li><a href="#org78499bc">6. Running a Container with NGINX (as an example)</a></li>
+<li><a href="#orgeb8aa9c">7. Listing Containers</a></li>
+<li><a href="#org9f98aff">8. Running Commands Interactively in a Running Container</a></li>
+<li><a href="#orgd46d688">9. Stopping and Restarting Containers</a></li>
+<li><a href="#org43654d6">10. Removing Containers</a></li>
+<li><a href="#orgad0f3df">11. Mapping a Local Directory into a Container</a></li>
+<li><a href="#orgf1bbf52">12. Removing Images</a></li>
+<li><a href="#orgc068f5d">13. To Be Added</a></li>
 </ul>
 </div>
 </div>
+<p>
+-Containers vs. Images
+Images: Immutable templates containing application code and dependencies.
+Containers: Running instances of images with a writable layer for runtime changes.
+</p>
 
-<div id="outline-container-orgf4b4ddd" class="outline-2">
-<h2 id="orgf4b4ddd"><span class="section-number-2">1.</span> Docker Basics</h2>
+<ul class="org-ul">
+<li>Where Docker Stores Files</li>
+</ul>
+<p>
+Images: Stored in <i>var/lib/docker/overlay2</i> (Linux).
+Containers: Metadata and filesystem layers are in <i>var/lib/docker/containers</i>.
+Volumes: Persistent storage is located in <i>var/lib/docker/volumes</i>.
+</p>
+<div id="outline-container-org162bd76" class="outline-2">
+<h2 id="org162bd76"><span class="section-number-2">1.</span> Docker Basics</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><p>
@@ -66,9 +79,8 @@ Attach to a running container:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orga4bc377" class="outline-2">
-<h2 id="orga4bc377"><span class="section-number-2">2.</span> References</h2>
+<div id="outline-container-orgef38ff9" class="outline-2">
+<h2 id="orgef38ff9"><span class="section-number-2">2.</span> References</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><a href="https://dockerlabs.collabnix.com/docker/cheatsheet/">Docker Cheatsheet - Collabnix</a></li>
@@ -77,9 +89,8 @@ Attach to a running container:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgdb3d2f1" class="outline-2">
-<h2 id="orgdb3d2f1"><span class="section-number-2">3.</span> Running a Basic OS Container</h2>
+<div id="outline-container-orgda23312" class="outline-2">
+<h2 id="orgda23312"><span class="section-number-2">3.</span> Running a Basic OS Container</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li><p>
@@ -101,9 +112,8 @@ docker commit CONTAINER_ID mycentos
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org5f1cc81" class="outline-2">
-<h2 id="org5f1cc81"><span class="section-number-2">4.</span> Installing (Pulling) Docker Images</h2>
+<div id="outline-container-org75e25d5" class="outline-2">
+<h2 id="org75e25d5"><span class="section-number-2">4.</span> Installing (Pulling) Docker Images</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>Use <a href="https://hub.docker.com/">Docker Hub</a> to browse available images.</li>
@@ -117,9 +127,8 @@ Example:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org112e134" class="outline-2">
-<h2 id="org112e134"><span class="section-number-2">5.</span> Listing Images</h2>
+<div id="outline-container-org9da8930" class="outline-2">
+<h2 id="org9da8930"><span class="section-number-2">5.</span> Listing Images</h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
 <pre class="src src-shell">docker image ls
@@ -129,9 +138,8 @@ docker images
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgf60f105" class="outline-2">
-<h2 id="orgf60f105"><span class="section-number-2">6.</span> Running a Container with NGINX (as an example)</h2>
+<div id="outline-container-org78499bc" class="outline-2">
+<h2 id="org78499bc"><span class="section-number-2">6.</span> Running a Container with NGINX (as an example)</h2>
 <div class="outline-text-2" id="text-6">
 <div class="org-src-container">
 <pre class="src src-shell"># Basic syntax
@@ -151,9 +159,8 @@ docker run -d -p 8080:80 nginx
 </div>
 </div>
 </div>
-
-<div id="outline-container-org637b289" class="outline-2">
-<h2 id="org637b289"><span class="section-number-2">7.</span> Listing Containers</h2>
+<div id="outline-container-orgeb8aa9c" class="outline-2">
+<h2 id="orgeb8aa9c"><span class="section-number-2">7.</span> Listing Containers</h2>
 <div class="outline-text-2" id="text-7">
 <div class="org-src-container">
 <pre class="src src-shell"># List running containers
@@ -168,9 +175,8 @@ docker ps -aq
 </div>
 </div>
 </div>
-
-<div id="outline-container-org597c291" class="outline-2">
-<h2 id="org597c291"><span class="section-number-2">8.</span> Running Commands Interactively in a Running Container</h2>
+<div id="outline-container-org9f98aff" class="outline-2">
+<h2 id="org9f98aff"><span class="section-number-2">8.</span> Running Commands Interactively in a Running Container</h2>
 <div class="outline-text-2" id="text-8">
 <div class="org-src-container">
 <pre class="src src-shell">docker exec -it CONTAINER_ID bash
@@ -179,9 +185,8 @@ docker ps -aq
 </div>
 </div>
 </div>
-
-<div id="outline-container-org18a6839" class="outline-2">
-<h2 id="org18a6839"><span class="section-number-2">9.</span> Stopping and Restarting Containers</h2>
+<div id="outline-container-orgd46d688" class="outline-2">
+<h2 id="orgd46d688"><span class="section-number-2">9.</span> Stopping and Restarting Containers</h2>
 <div class="outline-text-2" id="text-9">
 <div class="org-src-container">
 <pre class="src src-shell"># Stop a running container
@@ -193,9 +198,8 @@ docker start CONTAINER_ID
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgd0748da" class="outline-2">
-<h2 id="orgd0748da"><span class="section-number-2">10.</span> Removing Containers</h2>
+<div id="outline-container-org43654d6" class="outline-2">
+<h2 id="org43654d6"><span class="section-number-2">10.</span> Removing Containers</h2>
 <div class="outline-text-2" id="text-10">
 <div class="org-src-container">
 <pre class="src src-shell"># Remove a container
@@ -210,9 +214,8 @@ docker rm -f $(docker ps -aq)
 </div>
 </div>
 </div>
-
-<div id="outline-container-orge3923a6" class="outline-2">
-<h2 id="orge3923a6"><span class="section-number-2">11.</span> Mapping a Local Directory into a Container</h2>
+<div id="outline-container-orgad0f3df" class="outline-2">
+<h2 id="orgad0f3df"><span class="section-number-2">11.</span> Mapping a Local Directory into a Container</h2>
 <div class="outline-text-2" id="text-11">
 <div class="org-src-container">
 <pre class="src src-shell">docker run -v HOST_DIR:CONTAINER_DIR IMAGE
@@ -223,9 +226,8 @@ docker run -d -p 8080:80 --name website2 -v $(pwd):/website nginx
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgfa6f935" class="outline-2">
-<h2 id="orgfa6f935"><span class="section-number-2">12.</span> Removing Images</h2>
+<div id="outline-container-orgf1bbf52" class="outline-2">
+<h2 id="orgf1bbf52"><span class="section-number-2">12.</span> Removing Images</h2>
 <div class="outline-text-2" id="text-12">
 <div class="org-src-container">
 <pre class="src src-shell">docker image rm IMAGE_ID
@@ -233,9 +235,8 @@ docker run -d -p 8080:80 --name website2 -v $(pwd):/website nginx
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgda29436" class="outline-2">
-<h2 id="orgda29436"><span class="section-number-2">13.</span> To Be Added</h2>
+<div id="outline-container-orgc068f5d" class="outline-2">
+<h2 id="orgc068f5d"><span class="section-number-2">13.</span> To Be Added</h2>
 <div class="outline-text-2" id="text-13">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> How to create a Docker image</li>
@@ -250,7 +251,7 @@ docker run -d -p 8080:80 --name website2 -v $(pwd):/website nginx
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2025-02-20 Thu 17:28</p>
+<p class="date">Created: 2025-04-06 Sun 16:23</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

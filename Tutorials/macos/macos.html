@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-02-20 Thu 17:28 -->
+<!-- 2025-04-06 Sun 16:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>macOS Tips and Tricks</title>
@@ -24,22 +24,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4503b2e">1. macOS Tips and Tricks</a>
+<li><a href="#orgb1904b7">1. macOS Tips and Tricks</a>
 <ul>
-<li><a href="#org83394a7">1.1. System Information from the Command-Line</a></li>
-<li><a href="#org889ae86">1.2. Adjusting Keystroke Speeds in macOS</a></li>
+<li><a href="#org1463397">1.1. System Information from the Command-Line</a></li>
+<li><a href="#orgee8b4c6">1.2. Adjusting Keystroke Speeds in macOS</a></li>
+</ul>
+</li>
+<li><a href="#org2519c89">2. Homebrew Package Removal and Dependency Inspection</a>
+<ul>
+<li><a href="#org51e90e9">2.1. 🧹 Deleting Installed Formulae and Casks</a></li>
+<li><a href="#org76b326b">2.2. 🔍 Finding Dependencies</a></li>
+<li><a href="#org90ed833">2.3. 🧼 Cleanup and Autoremove</a></li>
+<li><a href="#orgb01126b">2.4. ⚠️ Checking for Issues</a></li>
+<li><a href="#org2dd89ca">2.5. 🔄 Aliases</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org4503b2e" class="outline-2">
-<h2 id="org4503b2e"><span class="section-number-2">1.</span> macOS Tips and Tricks</h2>
+<div id="outline-container-orgb1904b7" class="outline-2">
+<h2 id="orgb1904b7"><span class="section-number-2">1.</span> macOS Tips and Tricks</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org83394a7" class="outline-3">
-<h3 id="org83394a7"><span class="section-number-3">1.1.</span> System Information from the Command-Line</h3>
+<div id="outline-container-org1463397" class="outline-3">
+<h3 id="org1463397"><span class="section-number-3">1.1.</span> System Information from the Command-Line</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Learn how to retrieve basic system information such as architecture, processor details, and operating system version using the command-line.
@@ -55,9 +63,8 @@ sw_vers
 </div>
 </div>
 </div>
-
-<div id="outline-container-org889ae86" class="outline-3">
-<h3 id="org889ae86"><span class="section-number-3">1.2.</span> Adjusting Keystroke Speeds in macOS</h3>
+<div id="outline-container-orgee8b4c6" class="outline-3">
+<h3 id="orgee8b4c6"><span class="section-number-3">1.2.</span> Adjusting Keystroke Speeds in macOS</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Customize the key repeat speed and initial key repeat delay for a smoother typing experience.
@@ -74,10 +81,130 @@ defaults write -g KeyRepeat -int 1
 </div>
 </div>
 </div>
+<div id="outline-container-org2519c89" class="outline-2">
+<h2 id="org2519c89"><span class="section-number-2">2.</span> Homebrew Package Removal and Dependency Inspection</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org51e90e9" class="outline-3">
+<h3 id="org51e90e9"><span class="section-number-3">2.1.</span> 🧹 Deleting Installed Formulae and Casks</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li><p>
+To uninstall a Homebrew formula:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">brew uninstall &lt;formula&gt;
+</pre>
+</div></li>
+<li><p>
+To uninstall a Homebrew cask (GUI apps):
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">brew uninstall --cask &lt;cask&gt;
+</pre>
+</div></li>
+<li><p>
+If you want to remove even if something else depends on it:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">brew uninstall --ignore-dependencies &lt;formula&gt;
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org76b326b" class="outline-3">
+<h3 id="org76b326b"><span class="section-number-3">2.2.</span> 🔍 Finding Dependencies</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li><p>
+To find which installed packages <b><b>depend on a formula</b></b>:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">brew uses --installed &lt;formula&gt;
+</pre>
+</div>
+<p>
+Example:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">brew uses --installed openssl@1.1
+</pre>
+</div></li>
+
+<li><p>
+To see all formulae that use it (even if not installed):
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">brew uses &lt;formula&gt;
+</pre>
+</div></li>
+
+<li><p>
+To see what a specific formula <b><b>depends on</b></b>:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">brew deps &lt;formula&gt;
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org90ed833" class="outline-3">
+<h3 id="org90ed833"><span class="section-number-3">2.3.</span> 🧼 Cleanup and Autoremove</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li><p>
+After uninstalling, clean up old versions and unused dependencies:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">brew cleanup
+</pre>
+</div></li>
+
+<li>Homebrew may automatically remove unused dependencies (e.g., `make`, `qpdf`) when they are no longer required.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb01126b" class="outline-3">
+<h3 id="orgb01126b"><span class="section-number-3">2.4.</span> ⚠️ Checking for Issues</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li><p>
+To check for missing dependencies:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">brew missing
+</pre>
+</div></li>
+
+<li><p>
+To test if a package has broken linkages:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">brew linkage --test --strict &lt;formula&gt;
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2dd89ca" class="outline-3">
+<h3 id="org2dd89ca"><span class="section-number-3">2.5.</span> 🔄 Aliases</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+You can define an alias for routine maintenance:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">alias brewski='brew update &amp;&amp; brew upgrade &amp;&amp; brew cleanup; brew doctor'
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2025-02-20 Thu 17:28</p>
+<p class="date">Created: 2025-04-06 Sun 16:23</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

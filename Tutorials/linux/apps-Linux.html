@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-02-20 Thu 17:28 -->
+<!-- 2025-04-06 Sun 16:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linux</title>
@@ -24,63 +24,61 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9908e26">1. Difference Between `source script.sh` and `sh script.sh`</a></li>
-<li><a href="#orge4c12ac">2. How to Create a Multiboot USB</a></li>
-<li><a href="#orgec41355">3. How to Learn the Disk Usage in Terms of Gigabyte</a></li>
-<li><a href="#orgf81d5b8">4. How to Use Cron Jobs</a></li>
-<li><a href="#org85c5516">5. How to Redirect Both Output (stdout) and Errors (stderr) to Files</a></li>
-<li><a href="#org8080934">6. How to Share Folder Between Guest and Host in virt-manager (KVM)</a></li>
-<li><a href="#org8fc4924">7. How to Use Yum History to Roll Back an Update in Red Hat Enterprise Linux 6 and Later</a></li>
-<li><a href="#orgd5c0fd3">8. Yum Priorities</a></li>
-<li><a href="#orge56b3e5">9. Yum Repositories</a></li>
-<li><a href="#org3337efb">10. Delete the File Content (Large) Without Opening It</a></li>
-<li><a href="#org8ef278b">11. How to Deal with Stopped Jobs</a></li>
-<li><a href="#orgeaee44c">12. What is Load Average in Linux</a></li>
-<li><a href="#orgf7481a4">13. How to Understand the Reason Why the Server Rebooted</a></li>
-<li><a href="#orga5c1fa9">14. How to Show the Most Recent Login of All Users</a>
+<li><a href="#org3b99750">1. Difference Between `source script.sh` and `sh script.sh`</a></li>
+<li><a href="#orgb14c869">2. How to Create a Multiboot USB</a></li>
+<li><a href="#orge958e8f">3. How to Learn the Disk Usage in Terms of Gigabyte</a></li>
+<li><a href="#org7f363fb">4. How to Use Cron Jobs</a></li>
+<li><a href="#org048f3ba">5. How to Redirect Both Output (stdout) and Errors (stderr) to Files</a></li>
+<li><a href="#org3860e22">6. How to Share Folder Between Guest and Host in virt-manager (KVM)</a></li>
+<li><a href="#orga78b492">7. How to Use Yum History to Roll Back an Update in Red Hat Enterprise Linux 6 and Later</a></li>
+<li><a href="#orgbeb2e57">8. Yum Priorities</a></li>
+<li><a href="#orge6d55ea">9. Yum Repositories</a></li>
+<li><a href="#org121ad4e">10. Delete the File Content (Large) Without Opening It</a></li>
+<li><a href="#orgd7cf511">11. How to Deal with Stopped Jobs</a></li>
+<li><a href="#org9c566ce">12. What is Load Average in Linux</a></li>
+<li><a href="#orgb893c0f">13. How to Understand the Reason Why the Server Rebooted</a></li>
+<li><a href="#org4b39450">14. How to Show the Most Recent Login of All Users</a>
 <ul>
-<li><a href="#org83a9f82">14.1. Troubleshooting: Stale Output from `who` Command</a></li>
+<li><a href="#org5cf3d16">14.1. Troubleshooting: Stale Output from `who` Command</a></li>
 </ul>
 </li>
-<li><a href="#orgac2a734">15. How to See the Kernel Messages</a></li>
-<li><a href="#org9fd8233">16. How to See Inode Usage in a Folder</a></li>
-<li><a href="#org631fc82">17. How to Get the Absolute Path from a Symlink</a></li>
-<li><a href="#org9a7435e">18. How to Configure Directory for Consistent Group Ownership</a></li>
-<li><a href="#orgfa2865b">19. How to Check if Linux is Running on a Physical System or Virtual Machine</a></li>
-<li><a href="#org975d6d1">20. How to Query Systemd Journal</a></li>
-<li><a href="#orgfc49798">21. How to Partition, Mount, and Unmount Disks</a></li>
-<li><a href="#org65ed4bf">22. How to Logout a User from the System</a></li>
-<li><a href="#org5a4962b">23. How to List the Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
-<li><a href="#org4502653">24. How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
-<li><a href="#org250bac6">25. How to Install a Package to a Specific Directory Using `yum`</a></li>
-<li><a href="#org7533275">26. How to Find Configuration Files That Have Been Altered Since Installation</a></li>
-<li><a href="#org12a39e2">27. Error: Nothing to Do When Installing Local RPM&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
-<li><a href="#orgafcf9e1">28. How to Download and Install an RPM Package</a></li>
-<li><a href="#orgf249445">29. CentOS</a>
+<li><a href="#org92157ef">15. How to See the Kernel Messages</a></li>
+<li><a href="#orgd57b81d">16. How to See Inode Usage in a Folder</a></li>
+<li><a href="#orgad414d6">17. How to Get the Absolute Path from a Symlink</a></li>
+<li><a href="#org9929930">18. How to Configure Directory for Consistent Group Ownership</a></li>
+<li><a href="#org9cf9f03">19. How to Check if Linux is Running on a Physical System or Virtual Machine</a></li>
+<li><a href="#org3cb83bd">20. How to Query Systemd Journal</a></li>
+<li><a href="#org4df2b14">21. How to Partition, Mount, and Unmount Disks</a></li>
+<li><a href="#org7722a26">22. How to Logout a User from the System</a></li>
+<li><a href="#org8e714c8">23. How to List the Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
+<li><a href="#orgea89581">24. How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
+<li><a href="#org1b3735e">25. How to Install a Package to a Specific Directory Using `yum`</a></li>
+<li><a href="#org96456dd">26. How to Find Configuration Files That Have Been Altered Since Installation</a></li>
+<li><a href="#orgd8a83cf">27. Error: Nothing to Do When Installing Local RPM&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
+<li><a href="#org6d3da3a">28. How to Download and Install an RPM Package</a></li>
+<li><a href="#org3225cd7">29. CentOS</a>
 <ul>
-<li><a href="#org0d14d21">29.1. How to List Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
-<li><a href="#org9ce69a7">29.2. How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
-<li><a href="#org052fc7c">29.3. How to Install a Package to a Specific Directory Using Yum</a></li>
-<li><a href="#org4493d46">29.4. How to Find Configuration Files That Have Been Altered Since Installation</a></li>
-<li><a href="#orgc1e8854">29.5. Error: "Nothing to Do" When Installing Local RPM</a></li>
-<li><a href="#orgc5a9cf4">29.6. How to Download and Install an RPM Package</a></li>
+<li><a href="#org71f251a">29.1. How to List Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
+<li><a href="#org239e601">29.2. How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></a></li>
+<li><a href="#org99d0242">29.3. How to Install a Package to a Specific Directory Using Yum</a></li>
+<li><a href="#org23e540a">29.4. How to Find Configuration Files That Have Been Altered Since Installation</a></li>
+<li><a href="#orgd617b9c">29.5. Error: "Nothing to Do" When Installing Local RPM</a></li>
+<li><a href="#orgfaa0021">29.6. How to Download and Install an RPM Package</a></li>
 </ul>
 </li>
-<li><a href="#org9a24094">30. Ubuntu</a>
+<li><a href="#orgb4b4433">30. Ubuntu</a>
 <ul>
-<li><a href="#org8ac988a">30.1. How to Use `dpkg` Command</a></li>
-<li><a href="#orgbd3a47f">30.2. Installing Older Versions of Java</a></li>
-<li><a href="#orgc294cd6">30.3. How to Restart Network Services</a></li>
-<li><a href="#org2c9b78f">30.4. How to Connect/Disconnect from VPN via Command Line</a></li>
+<li><a href="#orgef84174">30.1. How to Use `dpkg` Command</a></li>
+<li><a href="#org327926b">30.2. Installing Older Versions of Java</a></li>
+<li><a href="#org7c6c0e3">30.3. How to Restart Network Services</a></li>
+<li><a href="#org43e061c">30.4. How to Connect/Disconnect from VPN via Command Line</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org9908e26" class="outline-2">
-<h2 id="org9908e26"><span class="section-number-2">1.</span> Difference Between `source script.sh` and `sh script.sh`</h2>
+<div id="outline-container-org3b99750" class="outline-2">
+<h2 id="org3b99750"><span class="section-number-2">1.</span> Difference Between `source script.sh` and `sh script.sh`</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><b><b>`source script.sh` or `. script.sh`:</b></b>
@@ -105,10 +103,8 @@
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orge4c12ac" class="outline-2">
-<h2 id="orge4c12ac"><span class="section-number-2">2.</span> How to Create a Multiboot USB</h2>
+<div id="outline-container-orgb14c869" class="outline-2">
+<h2 id="orgb14c869"><span class="section-number-2">2.</span> How to Create a Multiboot USB</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><b><b>What is a Multiboot USB?</b></b>
@@ -144,10 +140,8 @@
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orgec41355" class="outline-2">
-<h2 id="orgec41355"><span class="section-number-2">3.</span> How to Learn the Disk Usage in Terms of Gigabyte</h2>
+<div id="outline-container-orge958e8f" class="outline-2">
+<h2 id="orge958e8f"><span class="section-number-2">3.</span> How to Learn the Disk Usage in Terms of Gigabyte</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li><b><b>Objective:</b></b> Quickly display the disk usage of all mounted file systems in gigabytes.</li>
@@ -167,10 +161,8 @@ Filesystem 1G-blocks Used Available Use% Mounted on /dev/sda1 100G 45G 55G 45% /
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orgf81d5b8" class="outline-2">
-<h2 id="orgf81d5b8"><span class="section-number-2">4.</span> How to Use Cron Jobs</h2>
+<div id="outline-container-org7f363fb" class="outline-2">
+<h2 id="org7f363fb"><span class="section-number-2">4.</span> How to Use Cron Jobs</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><b><b>Objective:</b></b> Automate the execution of tasks or scripts at specific intervals using the cron service.</li>
@@ -227,10 +219,8 @@ PATH=/opt/homebrew/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org85c5516" class="outline-2">
-<h2 id="org85c5516"><span class="section-number-2">5.</span> How to Redirect Both Output (stdout) and Errors (stderr) to Files</h2>
+<div id="outline-container-org048f3ba" class="outline-2">
+<h2 id="org048f3ba"><span class="section-number-2">5.</span> How to Redirect Both Output (stdout) and Errors (stderr) to Files</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li><b><b>Objective:</b></b> Capture both the standard output (stdout) and error output (stderr) of a command.</li>
@@ -275,10 +265,8 @@ Combine both outputs into a single log file:
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org8080934" class="outline-2">
-<h2 id="org8080934"><span class="section-number-2">6.</span> How to Share Folder Between Guest and Host in virt-manager (KVM)</h2>
+<div id="outline-container-org3860e22" class="outline-2">
+<h2 id="org3860e22"><span class="section-number-2">6.</span> How to Share Folder Between Guest and Host in virt-manager (KVM)</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li><b><b>Objective:</b></b> Share a folder between the host and guest operating systems in KVM using virt-manager.</li>
@@ -330,31 +318,8 @@ sudo mount -t virtiofs tag_my_folder /mnt/myfolder
 </ul>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="outline-container-org8fc4924" class="outline-2">
-<h2 id="org8fc4924"><span class="section-number-2">7.</span> How to Use Yum History to Roll Back an Update in Red Hat Enterprise Linux 6 and Later</h2>
+<div id="outline-container-orga78b492" class="outline-2">
+<h2 id="orga78b492"><span class="section-number-2">7.</span> How to Use Yum History to Roll Back an Update in Red Hat Enterprise Linux 6 and Later</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li><b><b>Objective:</b></b> Roll back or downgrade a package update using yum history in CentOS/RHEL.</li>
@@ -406,12 +371,8 @@ yum downgrade httpd-2.2.3-22.el5
 </ul>
 </div>
 </div>
-
-
-
-
-<div id="outline-container-orgd5c0fd3" class="outline-2">
-<h2 id="orgd5c0fd3"><span class="section-number-2">8.</span> Yum Priorities</h2>
+<div id="outline-container-orgbeb2e57" class="outline-2">
+<h2 id="orgbeb2e57"><span class="section-number-2">8.</span> Yum Priorities</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li><b><b>Objective:</b></b> Manage and troubleshoot yum priorities, especially when packages are excluded due to repository priority protections.</li>
@@ -466,10 +427,8 @@ yum list updates --debuglevel 3
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orge56b3e5" class="outline-2">
-<h2 id="orge56b3e5"><span class="section-number-2">9.</span> Yum Repositories</h2>
+<div id="outline-container-orge6d55ea" class="outline-2">
+<h2 id="orge6d55ea"><span class="section-number-2">9.</span> Yum Repositories</h2>
 <div class="outline-text-2" id="text-9">
 <ul class="org-ul">
 <li><b><b>Objective:</b></b> Manage yum repositories for package updates effectively.</li>
@@ -535,12 +494,8 @@ Combine enabling and disabling repositories for fine-grained control:
 </ul>
 </div>
 </div>
-
-
-
-
-<div id="outline-container-org3337efb" class="outline-2">
-<h2 id="org3337efb"><span class="section-number-2">10.</span> Delete the File Content (Large) Without Opening It</h2>
+<div id="outline-container-org121ad4e" class="outline-2">
+<h2 id="org121ad4e"><span class="section-number-2">10.</span> Delete the File Content (Large) Without Opening It</h2>
 <div class="outline-text-2" id="text-10">
 <ul class="org-ul">
 <li><b><b>Objective:</b></b> Clear the content of a file without deleting or recreating the file itself. This is useful for managing large log files like `access.log`.</li>
@@ -605,30 +560,8 @@ A versatile method to achieve the same result:
 </ul>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="outline-container-org8ef278b" class="outline-2">
-<h2 id="org8ef278b"><span class="section-number-2">11.</span> How to Deal with Stopped Jobs</h2>
+<div id="outline-container-orgd7cf511" class="outline-2">
+<h2 id="orgd7cf511"><span class="section-number-2">11.</span> How to Deal with Stopped Jobs</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
 <li><b><b>Overview:</b></b>
@@ -680,13 +613,8 @@ Use the job ID to bring it back to the foreground:
 </ul>
 </div>
 </div>
-
-
-
-
-
-<div id="outline-container-orgeaee44c" class="outline-2">
-<h2 id="orgeaee44c"><span class="section-number-2">12.</span> What is Load Average in Linux</h2>
+<div id="outline-container-org9c566ce" class="outline-2">
+<h2 id="org9c566ce"><span class="section-number-2">12.</span> What is Load Average in Linux</h2>
 <div class="outline-text-2" id="text-12">
 <ul class="org-ul">
 <li><b><b>Overview:</b></b>
@@ -738,7 +666,7 @@ Command:
 <li><p>
 Output:
 </p>
-<pre class="example" id="org5b17cc6">
+<pre class="example" id="org02fc96a">
 17:45:26 up 3 days, 4:12,  2 users,  load average: 0.03, 0.03, 0.01
 </pre>
 <ul class="org-ul">
@@ -767,7 +695,7 @@ Using `top`:
 <li><p>
 Sample `top` Output:
 </p>
-<pre class="example" id="orga2c5dc8">
+<pre class="example" id="org4a967b1">
 top - 17:46:38 up 3 days, 4:13,  2 users,  load average: 0.03, 0.03, 0.01
 Tasks: 110 total,   1 running, 109 sleeping,   0 stopped,   0 zombie
 %Cpu(s):  1.0 us,  0.5 sy,  0.0 ni, 98.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
@@ -810,14 +738,8 @@ KiB Swap:  2097148 total,  2097148 free,        0 used.  4343212 avail Mem
 </ul>
 </div>
 </div>
-
-
-
-
-
-
-<div id="outline-container-orgf7481a4" class="outline-2">
-<h2 id="orgf7481a4"><span class="section-number-2">13.</span> How to Understand the Reason Why the Server Rebooted</h2>
+<div id="outline-container-orgb893c0f" class="outline-2">
+<h2 id="orgb893c0f"><span class="section-number-2">13.</span> How to Understand the Reason Why the Server Rebooted</h2>
 <div class="outline-text-2" id="text-13">
 <ul class="org-ul">
 <li><b><b>Log File Locations:</b></b>
@@ -842,7 +764,7 @@ Use `journalctl` to list the boots recorded by the system:
 <li><p>
 Example output:
 </p>
-<pre class="example" id="org06e01d8">
+<pre class="example" id="orgb55607b">
 -2 4c3b5b2f2a4c401c8506ab65e03b3df7 Mon 2024-11-10 09:15:00 UTC—Mon 2024-11-10 17:35:00 UTC
 -1 1a2f33ef3d3c401dbe36b5647e03fdf7 Mon 2024-11-11 09:20:00 UTC—Mon 2024-11-11 17:40:00 UTC
  0 c2a3b5b2f2a3c4dc6506ab56e03c3de5 Tue 2024-11-12 08:00:00 UTC—Tue 2024-11-12 16:20:00 UTC
@@ -876,7 +798,7 @@ Use the `who` command to find the last reboot time:
 <li><p>
 Example output:
 </p>
-<pre class="example" id="org9f4c4e1">
+<pre class="example" id="org046da68">
 system boot  2024-11-12 08:00
 </pre></li>
 </ul></li>
@@ -892,7 +814,7 @@ Alternatively, use the `last` command to view reboot history:
 <li><p>
 Example output:
 </p>
-<pre class="example" id="org64d091a">
+<pre class="example" id="org633049a">
 reboot   system boot  5.15.0-43-generic Fri Nov 10 09:15 - 17:35  (08:20)
 reboot   system boot  5.15.0-43-generic Mon Nov 12 08:00 - 16:20  (08:20)
 </pre></li>
@@ -919,11 +841,8 @@ journalctl | grep -i "reboot"
 </ul>
 </div>
 </div>
-
-
-
-<div id="outline-container-orga5c1fa9" class="outline-2">
-<h2 id="orga5c1fa9"><span class="section-number-2">14.</span> How to Show the Most Recent Login of All Users</h2>
+<div id="outline-container-org4b39450" class="outline-2">
+<h2 id="org4b39450"><span class="section-number-2">14.</span> How to Show the Most Recent Login of All Users</h2>
 <div class="outline-text-2" id="text-14">
 <ul class="org-ul">
 <li><b><b>`lastlog` Command:</b></b>
@@ -965,9 +884,8 @@ users  # Outputs the usernames of all logged-in users.
 </ul></li>
 </ul>
 </div>
-
-<div id="outline-container-org83a9f82" class="outline-3">
-<h3 id="org83a9f82"><span class="section-number-3">14.1.</span> Troubleshooting: Stale Output from `who` Command</h3>
+<div id="outline-container-org5cf3d16" class="outline-3">
+<h3 id="org5cf3d16"><span class="section-number-3">14.1.</span> Troubleshooting: Stale Output from `who` Command</h3>
 <div class="outline-text-3" id="text-14-1">
 <ul class="org-ul">
 <li><b><b>Problem:</b></b>
@@ -998,9 +916,8 @@ Look for defunct "login" processes and kill them:
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgac2a734" class="outline-2">
-<h2 id="orgac2a734"><span class="section-number-2">15.</span> How to See the Kernel Messages</h2>
+<div id="outline-container-org92157ef" class="outline-2">
+<h2 id="org92157ef"><span class="section-number-2">15.</span> How to See the Kernel Messages</h2>
 <div class="outline-text-2" id="text-15">
 <ul class="org-ul">
 <li><b><b>`dmesg` Command:</b></b>
@@ -1030,9 +947,8 @@ Example command:
 </p>
 </div>
 </div>
-
-<div id="outline-container-org9fd8233" class="outline-2">
-<h2 id="org9fd8233"><span class="section-number-2">16.</span> How to See Inode Usage in a Folder</h2>
+<div id="outline-container-orgd57b81d" class="outline-2">
+<h2 id="orgd57b81d"><span class="section-number-2">16.</span> How to See Inode Usage in a Folder</h2>
 <div class="outline-text-2" id="text-16">
 <ul class="org-ul">
 <li><b><b>Command to Check Inode Usage:</b></b>
@@ -1055,7 +971,7 @@ printf "Total: \t\t$(find $(pwd) | wc -l)\n"
 <li><p>
 This will show the count of inodes for each subdirectory and the total:
 </p>
-<pre class="example" id="org5c413f1">
+<pre class="example" id="orgd5a690d">
 Detailed Inode usage for: /my/directory
 12              - subfolder1
 8               - subfolder2
@@ -1071,17 +987,8 @@ Total:          55
 </ul>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-<div id="outline-container-org631fc82" class="outline-2">
-<h2 id="org631fc82"><span class="section-number-2">17.</span> How to Get the Absolute Path from a Symlink</h2>
+<div id="outline-container-orgad414d6" class="outline-2">
+<h2 id="orgad414d6"><span class="section-number-2">17.</span> How to Get the Absolute Path from a Symlink</h2>
 <div class="outline-text-2" id="text-17">
 <ul class="org-ul">
 <li><b><b>Get the Target of a Symlink:</b></b>
@@ -1123,10 +1030,8 @@ Validates if the symlink is pointing to an existing file:
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-org9a7435e" class="outline-2">
-<h2 id="org9a7435e"><span class="section-number-2">18.</span> How to Configure Directory for Consistent Group Ownership</h2>
+<div id="outline-container-org9929930" class="outline-2">
+<h2 id="org9929930"><span class="section-number-2">18.</span> How to Configure Directory for Consistent Group Ownership</h2>
 <div class="outline-text-2" id="text-18">
 <ul class="org-ul">
 <li><b><b>Use `chmod` to Set the Setgid Bit:</b></b>
@@ -1160,10 +1065,8 @@ drwxrws---  8 root mygroup 4096 Jan 12  2022 foobar
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-orgfa2865b" class="outline-2">
-<h2 id="orgfa2865b"><span class="section-number-2">19.</span> How to Check if Linux is Running on a Physical System or Virtual Machine</h2>
+<div id="outline-container-org9cf9f03" class="outline-2">
+<h2 id="org9cf9f03"><span class="section-number-2">19.</span> How to Check if Linux is Running on a Physical System or Virtual Machine</h2>
 <div class="outline-text-2" id="text-19">
 <ul class="org-ul">
 <li><b><b>Determine System Manufacturer:</b></b>
@@ -1190,11 +1093,8 @@ Use `dmidecode` to identify the hardware type:
 </ul>
 </div>
 </div>
-
-
-
-<div id="outline-container-org975d6d1" class="outline-2">
-<h2 id="org975d6d1"><span class="section-number-2">20.</span> How to Query Systemd Journal</h2>
+<div id="outline-container-org3cb83bd" class="outline-2">
+<h2 id="org3cb83bd"><span class="section-number-2">20.</span> How to Query Systemd Journal</h2>
 <div class="outline-text-2" id="text-20">
 <ul class="org-ul">
 <li><b><b>View Logs from the Current Boot:</b></b>
@@ -1236,9 +1136,8 @@ Replace `{index}` with the desired boot index:
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgfc49798" class="outline-2">
-<h2 id="orgfc49798"><span class="section-number-2">21.</span> How to Partition, Mount, and Unmount Disks</h2>
+<div id="outline-container-org4df2b14" class="outline-2">
+<h2 id="org4df2b14"><span class="section-number-2">21.</span> How to Partition, Mount, and Unmount Disks</h2>
 <div class="outline-text-2" id="text-21">
 <ul class="org-ul">
 <li><b><b>Definitions:</b></b>
@@ -1314,9 +1213,8 @@ lsblk
 </p>
 </div>
 </div>
-
-<div id="outline-container-org65ed4bf" class="outline-2">
-<h2 id="org65ed4bf"><span class="section-number-2">22.</span> How to Logout a User from the System</h2>
+<div id="outline-container-org7722a26" class="outline-2">
+<h2 id="org7722a26"><span class="section-number-2">22.</span> How to Logout a User from the System</h2>
 <div class="outline-text-2" id="text-22">
 <ul class="org-ul">
 <li><b><b>List Logged-In Users:</b></b>
@@ -1355,15 +1253,8 @@ Users can log out from their session using:
 </ul>
 </div>
 </div>
-
-
-
-
-
-
-
-<div id="outline-container-org5a4962b" class="outline-2">
-<h2 id="org5a4962b"><span class="section-number-2">23.</span> How to List the Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h2>
+<div id="outline-container-org8e714c8" class="outline-2">
+<h2 id="org8e714c8"><span class="section-number-2">23.</span> How to List the Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h2>
 <div class="outline-text-2" id="text-23">
 <ul class="org-ul">
 <li><p>
@@ -1380,10 +1271,8 @@ To view all the files installed by a specific package, use the following command
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-org4502653" class="outline-2">
-<h2 id="org4502653"><span class="section-number-2">24.</span> How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h2>
+<div id="outline-container-orgea89581" class="outline-2">
+<h2 id="orgea89581"><span class="section-number-2">24.</span> How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h2>
 <div class="outline-text-2" id="text-24">
 <ul class="org-ul">
 <li>Use the `yum` package manager to list and install specific versions of a package.</li>
@@ -1415,10 +1304,8 @@ To view all the files installed by a specific package, use the following command
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-org250bac6" class="outline-2">
-<h2 id="org250bac6"><span class="section-number-2">25.</span> How to Install a Package to a Specific Directory Using `yum`</h2>
+<div id="outline-container-org1b3735e" class="outline-2">
+<h2 id="org1b3735e"><span class="section-number-2">25.</span> How to Install a Package to a Specific Directory Using `yum`</h2>
 <div class="outline-text-2" id="text-25">
 <ul class="org-ul">
 <li><p>
@@ -1436,14 +1323,8 @@ Use the `&#x2013;installroot` option to specify a custom directory for the packa
 </ul>
 </div>
 </div>
-
-
-
-
-
-
-<div id="outline-container-org7533275" class="outline-2">
-<h2 id="org7533275"><span class="section-number-2">26.</span> How to Find Configuration Files That Have Been Altered Since Installation</h2>
+<div id="outline-container-org96456dd" class="outline-2">
+<h2 id="org96456dd"><span class="section-number-2">26.</span> How to Find Configuration Files That Have Been Altered Since Installation</h2>
 <div class="outline-text-2" id="text-26">
 <ul class="org-ul">
 <li>Use the `rpm` command to verify package files and determine which configuration files have been altered.</li>
@@ -1483,10 +1364,8 @@ Use the `&#x2013;installroot` option to specify a custom directory for the packa
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-org12a39e2" class="outline-2">
-<h2 id="org12a39e2"><span class="section-number-2">27.</span> Error: Nothing to Do When Installing Local RPM&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h2>
+<div id="outline-container-orgd8a83cf" class="outline-2">
+<h2 id="orgd8a83cf"><span class="section-number-2">27.</span> Error: Nothing to Do When Installing Local RPM&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h2>
 <div class="outline-text-2" id="text-27">
 <ul class="org-ul">
 <li>If you encounter this error while installing an RPM package locally:
@@ -1514,10 +1393,8 @@ rpm -v -i /path/to/package.rpm
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-orgafcf9e1" class="outline-2">
-<h2 id="orgafcf9e1"><span class="section-number-2">28.</span> How to Download and Install an RPM Package</h2>
+<div id="outline-container-org6d3da3a" class="outline-2">
+<h2 id="org6d3da3a"><span class="section-number-2">28.</span> How to Download and Install an RPM Package</h2>
 <div class="outline-text-2" id="text-28">
 <ul class="org-ul">
 <li><p>
@@ -1537,15 +1414,12 @@ sudo yum install -y &lt;URL&gt;  # Using yum command
 </ul>
 </div>
 </div>
-
-
-
-<div id="outline-container-orgf249445" class="outline-2">
-<h2 id="orgf249445"><span class="section-number-2">29.</span> CentOS</h2>
+<div id="outline-container-org3225cd7" class="outline-2">
+<h2 id="org3225cd7"><span class="section-number-2">29.</span> CentOS</h2>
 <div class="outline-text-2" id="text-29">
 </div>
-<div id="outline-container-org0d14d21" class="outline-3">
-<h3 id="org0d14d21"><span class="section-number-3">29.1.</span> How to List Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h3>
+<div id="outline-container-org71f251a" class="outline-3">
+<h3 id="org71f251a"><span class="section-number-3">29.1.</span> How to List Files Installed by a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h3>
 <div class="outline-text-3" id="text-29-1">
 <ul class="org-ul">
 <li>Use the `rpm` command to display all files installed by a specific package.</li>
@@ -1564,9 +1438,8 @@ sudo yum install -y &lt;URL&gt;  # Using yum command
 </p>
 </div>
 </div>
-
-<div id="outline-container-org9ce69a7" class="outline-3">
-<h3 id="org9ce69a7"><span class="section-number-3">29.2.</span> How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h3>
+<div id="outline-container-org239e601" class="outline-3">
+<h3 id="org239e601"><span class="section-number-3">29.2.</span> How to List and Install a Specific Version of a Package&#xa0;&#xa0;&#xa0;<span class="tag"><span class="centos">centos</span>&#xa0;<span class="linux">linux</span></span></h3>
 <div class="outline-text-3" id="text-29-2">
 <ul class="org-ul">
 <li>Use the `yum` command with the `&#x2013;showduplicates` option to list all available versions of a package.</li>
@@ -1594,10 +1467,8 @@ sudo yum install -y &lt;URL&gt;  # Using yum command
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org052fc7c" class="outline-3">
-<h3 id="org052fc7c"><span class="section-number-3">29.3.</span> How to Install a Package to a Specific Directory Using Yum</h3>
+<div id="outline-container-org99d0242" class="outline-3">
+<h3 id="org99d0242"><span class="section-number-3">29.3.</span> How to Install a Package to a Specific Directory Using Yum</h3>
 <div class="outline-text-3" id="text-29-3">
 <ul class="org-ul">
 <li>To install a package into a custom directory, use the `&#x2013;installroot` option with `yum`. This is useful for testing or isolated environments.</li>
@@ -1621,9 +1492,8 @@ sudo yum install -y &lt;URL&gt;  # Using yum command
 </p>
 </div>
 </div>
-
-<div id="outline-container-org4493d46" class="outline-3">
-<h3 id="org4493d46"><span class="section-number-3">29.4.</span> How to Find Configuration Files That Have Been Altered Since Installation</h3>
+<div id="outline-container-org23e540a" class="outline-3">
+<h3 id="org23e540a"><span class="section-number-3">29.4.</span> How to Find Configuration Files That Have Been Altered Since Installation</h3>
 <div class="outline-text-3" id="text-29-4">
 <ul class="org-ul">
 <li>Use the `rpm` command to verify and list files that have been modified since package installation.</li>
@@ -1664,9 +1534,8 @@ List only modified configuration files:
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgc1e8854" class="outline-3">
-<h3 id="orgc1e8854"><span class="section-number-3">29.5.</span> Error: "Nothing to Do" When Installing Local RPM</h3>
+<div id="outline-container-orgd617b9c" class="outline-3">
+<h3 id="orgd617b9c"><span class="section-number-3">29.5.</span> Error: "Nothing to Do" When Installing Local RPM</h3>
 <div class="outline-text-3" id="text-29-5">
 <ul class="org-ul">
 <li>If you encounter an error while installing a local RPM with `yum` or `rpm`, here are some troubleshooting tips:
@@ -1693,9 +1562,8 @@ rpm -v -i &lt;package-name&gt;.rpm
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgc5a9cf4" class="outline-3">
-<h3 id="orgc5a9cf4"><span class="section-number-3">29.6.</span> How to Download and Install an RPM Package</h3>
+<div id="outline-container-orgfaa0021" class="outline-3">
+<h3 id="orgfaa0021"><span class="section-number-3">29.6.</span> How to Download and Install an RPM Package</h3>
 <div class="outline-text-3" id="text-29-6">
 <ul class="org-ul">
 <li>To directly install an RPM from a URL or file:</li>
@@ -1726,16 +1594,12 @@ Using `yum`:
 </div>
 </div>
 </div>
-
-
-
-
-<div id="outline-container-org9a24094" class="outline-2">
-<h2 id="org9a24094"><span class="section-number-2">30.</span> Ubuntu</h2>
+<div id="outline-container-orgb4b4433" class="outline-2">
+<h2 id="orgb4b4433"><span class="section-number-2">30.</span> Ubuntu</h2>
 <div class="outline-text-2" id="text-30">
 </div>
-<div id="outline-container-org8ac988a" class="outline-3">
-<h3 id="org8ac988a"><span class="section-number-3">30.1.</span> How to Use `dpkg` Command</h3>
+<div id="outline-container-orgef84174" class="outline-3">
+<h3 id="orgef84174"><span class="section-number-3">30.1.</span> How to Use `dpkg` Command</h3>
 <div class="outline-text-3" id="text-30-1">
 <ul class="org-ul">
 <li>`dpkg` is a package manager for Debian-based systems (e.g., Ubuntu) to handle `.deb` packages.</li>
@@ -1778,9 +1642,8 @@ List file locations of a specific package:
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgbd3a47f" class="outline-3">
-<h3 id="orgbd3a47f"><span class="section-number-3">30.2.</span> Installing Older Versions of Java</h3>
+<div id="outline-container-org327926b" class="outline-3">
+<h3 id="org327926b"><span class="section-number-3">30.2.</span> Installing Older Versions of Java</h3>
 <div class="outline-text-3" id="text-30-2">
 <ul class="org-ul">
 <li>Some older systems require older Java versions for compatibility.
@@ -1800,9 +1663,8 @@ List file locations of a specific package:
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgc294cd6" class="outline-3">
-<h3 id="orgc294cd6"><span class="section-number-3">30.3.</span> How to Restart Network Services</h3>
+<div id="outline-container-org7c6c0e3" class="outline-3">
+<h3 id="org7c6c0e3"><span class="section-number-3">30.3.</span> How to Restart Network Services</h3>
 <div class="outline-text-3" id="text-30-3">
 <ul class="org-ul">
 <li>Use these commands to restart network services depending on your system setup:</li>
@@ -1856,9 +1718,8 @@ sudo ip link set enp0s3 up
 </p>
 </div>
 </div>
-
-<div id="outline-container-org2c9b78f" class="outline-3">
-<h3 id="org2c9b78f"><span class="section-number-3">30.4.</span> How to Connect/Disconnect from VPN via Command Line</h3>
+<div id="outline-container-org43e061c" class="outline-3">
+<h3 id="org43e061c"><span class="section-number-3">30.4.</span> How to Connect/Disconnect from VPN via Command Line</h3>
 <div class="outline-text-3" id="text-30-4">
 <ul class="org-ul">
 <li>Use the `nmcli` command to manage VPN connections on Network Manager-enabled systems.</li>
@@ -1895,22 +1756,25 @@ Edit the VPN configuration file:
 <li><p>
 Under the `[vpn]` section, update the `password-flags` to:
 </p>
-<pre class="example">
-password-flags=0
-</pre></li>
+<div class="org-src-container">
+<pre class="src src-nil">password-flags=0
+</pre>
+</div></li>
 <li><p>
 Add the following block below `[vpn]`:
 </p>
-<pre class="example">
-[vpn-secrets]
+<div class="org-src-container">
+<pre class="src src-nil">[vpn-secrets]
 password=YourPassword
-</pre></li>
+</pre>
+</div></li>
 <li><p>
 If you changed `Xauth password-flags`, also add:
 </p>
-<pre class="example">
-Xauth password=YourPassword
-</pre></li>
+<div class="org-src-container">
+<pre class="src src-nil">Xauth password=YourPassword
+</pre>
+</div></li>
 <li><p>
 Restart the Network Manager service:
 </p>
@@ -1932,7 +1796,7 @@ Restart the Network Manager service:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2025-02-20 Thu 17:28</p>
+<p class="date">Created: 2025-04-06 Sun 16:23</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

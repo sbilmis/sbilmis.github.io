@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-02-20 Thu 17:28 -->
+<!-- 2025-04-06 Sun 16:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Git Guide</title>
@@ -24,28 +24,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org514e035">1. Git Overview</a></li>
-<li><a href="#org380fa5e">2. .gitignore</a>
+<li><a href="#org95a5e35">1. Git Overview</a></li>
+<li><a href="#org53371bd">2. .gitignore</a>
 <ul>
-<li><a href="#org5ff41bc">2.1. Additional Git Commands and Topics</a></li>
+<li><a href="#org45cf557">2.1. Additional Git Commands and Topics</a></li>
 </ul>
 </li>
-<li><a href="#org00be5d2">3. Setting Up a New Repository</a></li>
-<li><a href="#org81480e2">4. Basic Git Workflow</a></li>
-<li><a href="#org9d35362">5. Working with Branches</a></li>
-<li><a href="#orge148a88">6. Remote Repositories</a></li>
-<li><a href="#orga52d2cf">7. Advanced Git Topics (for later sections)</a>
+<li><a href="#org36dfb68">3. Setting Up a New Repository</a></li>
+<li><a href="#org20870bb">4. Basic Git Workflow</a></li>
+<li><a href="#orgce8f2a1">5. Working with Branches</a></li>
+<li><a href="#orgd3fe767">6. Remote Repositories</a></li>
+<li><a href="#org03ac125">7. Advanced Git Topics (for later sections)</a>
 <ul>
-<li><a href="#org7119877">7.1. References</a></li>
+<li><a href="#orgb6f37d7">7.1. References</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org514e035" class="outline-2">
-<h2 id="org514e035"><span class="section-number-2">1.</span> Git Overview</h2>
+<div id="outline-container-org95a5e35" class="outline-2">
+<h2 id="org95a5e35"><span class="section-number-2">1.</span> Git Overview</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Git is a distributed version control system that tracks changes in files and coordinates work among multiple people. It’s widely used for source code management in software development and for tracking changes in any set of files.</li>
@@ -53,9 +51,8 @@
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org380fa5e" class="outline-2">
-<h2 id="org380fa5e"><span class="section-number-2">2.</span> .gitignore</h2>
+<div id="outline-container-org53371bd" class="outline-2">
+<h2 id="org53371bd"><span class="section-number-2">2.</span> .gitignore</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>`.gitignore` files tell Git to ignore certain files and directories in the working directory, so they don’t get tracked in the repository. Place the `.gitignore` file in the root of your working directory (not inside the `.git` directory).</li>
@@ -154,9 +151,8 @@ latex.out/
 </div></li>
 </ul>
 </div>
-
-<div id="outline-container-org5ff41bc" class="outline-3">
-<h3 id="org5ff41bc"><span class="section-number-3">2.1.</span> Additional Git Commands and Topics</h3>
+<div id="outline-container-org45cf557" class="outline-3">
+<h3 id="org45cf557"><span class="section-number-3">2.1.</span> Additional Git Commands and Topics</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>Basic Git commands, handling branches, and managing remotes are essential topics for using Git efficiently. Future sections may include:</li>
@@ -164,18 +160,16 @@ latex.out/
 </div>
 </div>
 </div>
-
-<div id="outline-container-org00be5d2" class="outline-2">
-<h2 id="org00be5d2"><span class="section-number-2">3.</span> Setting Up a New Repository</h2>
+<div id="outline-container-org36dfb68" class="outline-2">
+<h2 id="org36dfb68"><span class="section-number-2">3.</span> Setting Up a New Repository</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>Initialize a new Git repository, configure user details, and set up remotes for collaboration.</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org81480e2" class="outline-2">
-<h2 id="org81480e2"><span class="section-number-2">4.</span> Basic Git Workflow</h2>
+<div id="outline-container-org20870bb" class="outline-2">
+<h2 id="org20870bb"><span class="section-number-2">4.</span> Basic Git Workflow</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><b><b>Add and Commit</b></b>: How to stage changes and commit them to the repository.</li>
@@ -184,9 +178,8 @@ latex.out/
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org9d35362" class="outline-2">
-<h2 id="org9d35362"><span class="section-number-2">5.</span> Working with Branches</h2>
+<div id="outline-container-orgce8f2a1" class="outline-2">
+<h2 id="orgce8f2a1"><span class="section-number-2">5.</span> Working with Branches</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>Branches allow for parallel development and experimentation without affecting the main codebase.</li>
@@ -194,9 +187,8 @@ latex.out/
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orge148a88" class="outline-2">
-<h2 id="orge148a88"><span class="section-number-2">6.</span> Remote Repositories</h2>
+<div id="outline-container-orgd3fe767" class="outline-2">
+<h2 id="orgd3fe767"><span class="section-number-2">6.</span> Remote Repositories</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li><b><b>Remote Setup</b></b>: Configure remote repositories on platforms like GitHub.</li>
@@ -204,9 +196,8 @@ latex.out/
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orga52d2cf" class="outline-2">
-<h2 id="orga52d2cf"><span class="section-number-2">7.</span> Advanced Git Topics (for later sections)</h2>
+<div id="outline-container-org03ac125" class="outline-2">
+<h2 id="org03ac125"><span class="section-number-2">7.</span> Advanced Git Topics (for later sections)</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li><b><b>Rebasing and Merging</b></b>: Understand the difference and usage of `merge` and `rebase`.</li>
@@ -216,9 +207,8 @@ latex.out/
 <li><b><b>Git Bisect</b></b>: Identify bugs by using `git bisect` to check specific commit ranges.</li>
 </ul>
 </div>
-
-<div id="outline-container-org7119877" class="outline-3">
-<h3 id="org7119877"><span class="section-number-3">7.1.</span> References</h3>
+<div id="outline-container-orgb6f37d7" class="outline-3">
+<h3 id="orgb6f37d7"><span class="section-number-3">7.1.</span> References</h3>
 <div class="outline-text-3" id="text-7-1">
 <ul class="org-ul">
 <li><a href="https://git-scm.com/doc">Official Git Documentation</a></li>
@@ -231,7 +221,7 @@ latex.out/
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2025-02-20 Thu 17:28</p>
+<p class="date">Created: 2025-04-06 Sun 16:23</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

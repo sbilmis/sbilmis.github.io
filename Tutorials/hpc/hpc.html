@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-02-20 Thu 17:28 -->
+<!-- 2025-04-06 Sun 16:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linux and HPC Tutorials: A Practical Guide for Beginners</title>
@@ -24,207 +24,206 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd6333db">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
+<li><a href="#org8ef1cd8">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
 <ul>
-<li><a href="#orgde61066">Introduction</a></li>
-<li><a href="#orge2f4bf4">Why Root Privileges Are Restricted</a></li>
-<li><a href="#orgc9d983e">Installing Software Locally</a>
+<li><a href="#org844078f">Introduction</a></li>
+<li><a href="#orgaa066da">Why Root Privileges Are Restricted</a></li>
+<li><a href="#org9e15777">Installing Software Locally</a>
 <ul>
-<li><a href="#org947eedb">Step 1: Prepare a Directory for Local Installations</a>
+<li><a href="#orgc0137ea">Step 1: Prepare a Directory for Local Installations</a>
 <ul>
-<li><a href="#orgdb56ff9">What this command does:</a></li>
-<li><a href="#orgdf4073f">Viewing Hidden Files</a></li>
+<li><a href="#orgb47d54d">What this command does:</a></li>
+<li><a href="#org61a46d9">Viewing Hidden Files</a></li>
 </ul>
 </li>
-<li><a href="#orgf0a0444">Step 2: Modify the PATH Variable</a>
+<li><a href="#org895e619">Step 2: Modify the PATH Variable</a>
 <ul>
-<li><a href="#org574962b">What is the PATH Variable?</a></li>
-<li><a href="#org13bcee8">What is the LD<sub>LIBRARY</sub><sub>PATH</sub> Variable?</a></li>
-<li><a href="#orgd3afdfb">Why is This Important for Local Installations?</a>
+<li><a href="#org8e7ace9">What is the PATH Variable?</a></li>
+<li><a href="#orgb23394d">What is the LD<sub>LIBRARY</sub><sub>PATH</sub> Variable?</a></li>
+<li><a href="#org22838ff">Why is This Important for Local Installations?</a>
 <ul>
-<li><a href="#orge2fc8c6">Example</a></li>
+<li><a href="#orgeff3deb">Example</a></li>
 </ul>
 </li>
-<li><a href="#org80c4346">Steps to Update the PATH Variable</a>
+<li><a href="#orgafbf702">Steps to Update the PATH Variable</a>
 <ul>
-<li><a href="#orgf755184">What this command does:**</a></li>
-<li><a href="#org88c989a">What this command does:**</a></li>
+<li><a href="#orgadaeab5">What this command does:**</a></li>
+<li><a href="#orgda9155c">What this command does:**</a></li>
 </ul>
 </li>
-<li><a href="#org4564c25">Verifying the Changes</a></li>
-<li><a href="#orgc5ff20d">Understanding <code>.bashrc</code> and <code>.bash_profile</code></a></li>
-<li><a href="#orga8d039b">Example Scenario:</a></li>
+<li><a href="#orge6a5101">Verifying the Changes</a></li>
+<li><a href="#org5e20265">Understanding <code>.bashrc</code> and <code>.bash_profile</code></a></li>
+<li><a href="#orge1a14db">Example Scenario:</a></li>
 </ul>
 </li>
-<li><a href="#org90d1db8">Step 3: Understand the Basics of Building Software from Source</a>
+<li><a href="#org9e1d19a">Step 3: Understand the Basics of Building Software from Source</a>
 <ul>
-<li><a href="#orge02721b">Why Build Software from Source?</a></li>
-<li><a href="#org10e11db">The Three Steps in Detail:</a></li>
-<li><a href="#org4e92bbe">Summary of the Process:</a></li>
-<li><a href="#org63b459c">Additional Notes:</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org70dff88">Hands-on Session: Installing Software on HPC User Interface</a>
-<ul>
-<li><a href="#orgdb5b111">Installing <b>inxi</b> (binary)</a>
-<ul>
-<li><a href="#org2706cc5">What is <b>inxi</b> and Why is it Useful?</a></li>
-<li><a href="#org9aafccb">What is a Binary and Why Use It?</a></li>
-<li><a href="#org470afa0">Organizing Files and Folders for Local Installation</a></li>
-<li><a href="#org60b8c36">Steps to Install and Use <b>inxi</b></a></li>
-<li><a href="#org6f49ea2">Troubleshooting Common Issues</a></li>
-<li><a href="#orgfe5ed14">Removing <b>inxi</b></a></li>
-<li><a href="#org8b3d4d8">Recap</a></li>
-</ul>
-</li>
-<li><a href="#orgea4a319">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
-<ul>
-<li><a href="#org1fddf51">What is <b>ncdu</b> and Why is it Useful?</a></li>
-<li><a href="#org256123f">Where Will <b>ncdu</b> Be Installed?</a></li>
-<li><a href="#org164db6d">Steps to Install <b>ncdu</b></a></li>
-<li><a href="#org48df790">Example Usage of <b>ncdu</b></a></li>
-<li><a href="#org817a36c">Troubleshooting Compilation Issues</a></li>
-<li><a href="#orgc9ff0ac">How to remove <b>ncdu</b></a></li>
-</ul>
-</li>
-<li><a href="#org46f0095">Installing <b>Octave</b> in HPC Environment</a>
-<ul>
-<li><a href="#orgcbb6bc7">What is Octave and Why Use It?</a></li>
-<li><a href="#orgf379e79">Steps to Install Octave</a>
-<ul>
-<li><a href="#org7fb64e5">1. Load Necessary Modules</a></li>
-<li><a href="#org1f6edfe">2. Download the Source Code</a></li>
-<li><a href="#org2ebb80a">3. Configure the Build</a></li>
-<li><a href="#org83a92d8">4. Build and Install</a></li>
-<li><a href="#org1ebea3b">5. Verify the Installation</a></li>
+<li><a href="#orge64cd13">Why Build Software from Source?</a></li>
+<li><a href="#org1bd3032">The Three Steps in Detail:</a></li>
+<li><a href="#org9cf2001">Summary of the Process:</a></li>
+<li><a href="#org37ec26d">Additional Notes:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org501c261">Installing <b>MadGraph</b> (with HPC Modules for Dependencies)</a>
+<li><a href="#orgc5301e7">Hands-on Session: Installing Software on HPC User Interface</a>
 <ul>
-<li><a href="#orgfe4df6a">What is <b>MadGraph</b> and Why is it Useful?</a></li>
-<li><a href="#org88198e1">What are HPC Modules?</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org0324e3d">Hands-on Session: Installing Software on HPC User Interface</a>
+<li><a href="#orgddb55ee">Installing <b>inxi</b> (binary)</a>
 <ul>
-<li><a href="#orgc59059b">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
+<li><a href="#org0f1ed62">What is <b>inxi</b> and Why is it Useful?</a></li>
+<li><a href="#org81d8c6e">What is a Binary and Why Use It?</a></li>
+<li><a href="#orgc4cf40a">Organizing Files and Folders for Local Installation</a></li>
+<li><a href="#org12781eb">Steps to Install and Use <b>inxi</b></a></li>
+<li><a href="#org268ea9f">Troubleshooting Common Issues</a></li>
+<li><a href="#org096d3ef">Removing <b>inxi</b></a></li>
+<li><a href="#org1d88ab3">Recap</a></li>
+</ul>
+</li>
+<li><a href="#org4215a14">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
 <ul>
-<li><a href="#orga8b73e9">What is <b>ncdu</b> and Why is it Useful?</a></li>
-<li><a href="#org0c303da">Steps to Install <b>ncdu</b></a></li>
+<li><a href="#org81c2aed">What is <b>ncdu</b> and Why is it Useful?</a></li>
+<li><a href="#org4662b38">Where Will <b>ncdu</b> Be Installed?</a></li>
+<li><a href="#org6dc6cb8">Steps to Install <b>ncdu</b></a></li>
+<li><a href="#org316f9c5">Example Usage of <b>ncdu</b></a></li>
+<li><a href="#orgb1ffa9a">Troubleshooting Compilation Issues</a></li>
+<li><a href="#org33ae169">How to remove <b>ncdu</b></a></li>
 </ul>
 </li>
-<li><a href="#orga234d83">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
+<li><a href="#orgb0e1900">Installing <b>Octave</b> in HPC Environment</a>
 <ul>
-<li><a href="#org824286a">What is <b>ncdu</b> and Why is it Useful?</a></li>
-<li><a href="#org8bf16c0">Example Use Case:</a></li>
+<li><a href="#orgc8d3638">What is Octave and Why Use It?</a></li>
+<li><a href="#orgdaba5b6">Steps to Install Octave</a>
+<ul>
+<li><a href="#orge7b14d5">1. Load Necessary Modules</a></li>
+<li><a href="#org5255946">2. Download the Source Code</a></li>
+<li><a href="#orgac2db54">3. Configure the Build</a></li>
+<li><a href="#org231a7b4">4. Build and Install</a></li>
+<li><a href="#orgd38657b">5. Verify the Installation</a></li>
 </ul>
 </li>
-<li><a href="#orga39070d">Installing `ncdu` (with `configure`, `make`, and `make install`)</a></li>
-<li><a href="#org3b4b809">Example with HPC Modules: Installing Software Dependencies</a></li>
 </ul>
 </li>
-<li><a href="#org2e80f32">Useful Tools: `tldr` and `cheat`</a></li>
-<li><a href="#org8e710eb">Removing Locally Installed Applications</a></li>
-<li><a href="#orge8f3eab">Troubleshooting Tips</a></li>
-<li><a href="#org25f286b">Conclusion</a>
+<li><a href="#orgc82d1e4">Installing <b>MadGraph</b> (with HPC Modules for Dependencies)</a>
+<ul>
+<li><a href="#org136a5c2">What is <b>MadGraph</b> and Why is it Useful?</a></li>
+<li><a href="#orgf645f44">What are HPC Modules?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org1cf5650">Hands-on Session: Installing Software on HPC User Interface</a>
+<ul>
+<li><a href="#org1f3e3af">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
+<ul>
+<li><a href="#org24fe6b5">What is <b>ncdu</b> and Why is it Useful?</a></li>
+<li><a href="#org5b5f51e">Steps to Install <b>ncdu</b></a></li>
+</ul>
+</li>
+<li><a href="#orgfccb37e">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</a>
+<ul>
+<li><a href="#org4c7949c">What is <b>ncdu</b> and Why is it Useful?</a></li>
+<li><a href="#org20fc4e8">Example Use Case:</a></li>
+</ul>
+</li>
+<li><a href="#orgbb3038a">Installing `ncdu` (with `configure`, `make`, and `make install`)</a></li>
+<li><a href="#orgadedcd7">Example with HPC Modules: Installing Software Dependencies</a></li>
+</ul>
+</li>
+<li><a href="#org8a906cb">Useful Tools: `tldr` and `cheat`</a></li>
+<li><a href="#orgad9e795">Removing Locally Installed Applications</a></li>
+<li><a href="#org2df2e8d">Troubleshooting Tips</a></li>
+<li><a href="#org56f358a">Conclusion</a>
 <ul>
 <li>
 <ul>
-<li><a href="#org725ae18">Steps to Install <b>MadGraph</b></a>
+<li><a href="#org7b94b40">Steps to Install <b>MadGraph</b></a>
 <ul>
-<li><a href="#orgd366f1a">Additional Requirements for <b>MadGraph</b>: Handling Dependencies Like `six`</a>
+<li><a href="#org27f1afa">Additional Requirements for <b>MadGraph</b>: Handling Dependencies Like `six`</a>
 <ul>
-<li><a href="#org96d36df">1. Handling the `six` Module Dependency**</a></li>
+<li><a href="#org7b457b5">1. Handling the `six` Module Dependency**</a></li>
 </ul>
 </li>
-<li><a href="#org4eed82f">Updated Steps for Running <b>MadGraph</b></a></li>
-<li><a href="#orgc9d624d">How to Remove <b>MadGraph</b></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="#orgb427936">Updated Steps for Running <b>MadGraph</b></a></li>
+<li><a href="#org40ce669">How to Remove <b>MadGraph</b></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org0c2ef61">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgb7afa08">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
 <ul>
-<li><a href="#org61b880a">Introduction</a></li>
-<li><a href="#org17197bb">Why Root Privileges Are Restricted</a></li>
-<li><a href="#org4625854">Installing Software Locally</a></li>
-<li><a href="#orge1677c8">Example 1: Installing Inxi (Binary Package)</a>
+<li><a href="#orgffa9341">Introduction</a></li>
+<li><a href="#org3eae653">Why Root Privileges Are Restricted</a></li>
+<li><a href="#org1dea3ef">Installing Software Locally</a></li>
+<li><a href="#orgd513427">Example 1: Installing Inxi (Binary Package)</a>
 <ul>
-<li><a href="#org3c4b83c">What is Inxi?</a></li>
-<li><a href="#org2d883b8">Installation Steps</a></li>
+<li><a href="#orgeb26eb3">What is Inxi?</a></li>
+<li><a href="#org62556bc">Installation Steps</a></li>
 </ul>
 </li>
-<li><a href="#org028aac8">Example 2: Installing ncdu (Source Compilation)</a>
+<li><a href="#org3286c6d">Example 2: Installing ncdu (Source Compilation)</a>
 <ul>
-<li><a href="#orgabf05ac">What is ncdu?</a></li>
-<li><a href="#org87e8e76">Installation Steps</a></li>
+<li><a href="#org8d3f944">What is ncdu?</a></li>
+<li><a href="#org4ce717c">Installation Steps</a></li>
 </ul>
 </li>
-<li><a href="#org2fcbfc8">Example 3: Installing mc (Midnight Commander)</a>
+<li><a href="#org248512a">Example 3: Installing mc (Midnight Commander)</a>
 <ul>
-<li><a href="#orgea5fb0e">What is Midnight Commander (mc)?</a></li>
-<li><a href="#org6797cde">Installation Steps</a></li>
+<li><a href="#org4aee4e7">What is Midnight Commander (mc)?</a></li>
+<li><a href="#org62f00aa">Installation Steps</a></li>
 </ul>
 </li>
-<li><a href="#org86b67b5">Using Modules in an HPC Environment</a>
+<li><a href="#orgd19b6e8">Using Modules in an HPC Environment</a>
 <ul>
-<li><a href="#orge00b523">Example: Loading a Module and Installing Software</a></li>
+<li><a href="#orgbb52352">Example: Loading a Module and Installing Software</a></li>
 </ul>
 </li>
-<li><a href="#org1fba9ff">Understanding TLDR and Cheat Commands</a></li>
-<li><a href="#orge8fa099">Unzipping and Untarring Software Archives</a></li>
-<li><a href="#org9d626ef">Removing Locally Installed Applications</a></li>
-<li><a href="#org28698c6">Troubleshooting Tips</a></li>
-<li><a href="#org450fe58">Conclusion</a></li>
+<li><a href="#org8407daa">Understanding TLDR and Cheat Commands</a></li>
+<li><a href="#org10feed5">Unzipping and Untarring Software Archives</a></li>
+<li><a href="#orgcfed2d7">Removing Locally Installed Applications</a></li>
+<li><a href="#org6d22533">Troubleshooting Tips</a></li>
+<li><a href="#org57a8322">Conclusion</a></li>
 </ul>
 </li>
-<li><a href="#orgc8cd366">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
+<li><a href="#org54aa452">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
 <ul>
-<li><a href="#org974517a">Introduction</a></li>
-<li><a href="#orgf94e49c">Why Root Privileges Are Restricted</a></li>
-<li><a href="#orgdcc891a">Installing Software Locally</a></li>
-<li><a href="#org8775d55">Example: Installing Inxi from Source</a></li>
-<li><a href="#orgf035f87">Additional Examples: mc and ncdu</a>
+<li><a href="#orgb358cbf">Introduction</a></li>
+<li><a href="#org46ae613">Why Root Privileges Are Restricted</a></li>
+<li><a href="#orgc586fc4">Installing Software Locally</a></li>
+<li><a href="#orge95774c">Example: Installing Inxi from Source</a></li>
+<li><a href="#orgb7ff38f">Additional Examples: mc and ncdu</a>
 <ul>
-<li><a href="#org5024d76">Midnight Commander (mc)</a></li>
-<li><a href="#org475eb23">ncdu</a></li>
+<li><a href="#org49941d2">Midnight Commander (mc)</a></li>
+<li><a href="#orgf8cd448">ncdu</a></li>
 </ul>
 </li>
-<li><a href="#org3a82f4e">Troubleshooting Tips</a></li>
-<li><a href="#org54cc46f">Conclusion</a></li>
+<li><a href="#org3b80b8f">Troubleshooting Tips</a></li>
+<li><a href="#orgcbc812a">Conclusion</a></li>
 </ul>
 </li>
-<li><a href="#orgc71de55">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
+<li><a href="#org44ccc2e">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</a>
 <ul>
-<li><a href="#orgb31fc3c">Introduction</a></li>
-<li><a href="#org158b80f">Why Root Privileges Are Restricted</a></li>
-<li><a href="#org24cef5e">Installing Software Locally</a></li>
-<li><a href="#org74e3c73">Example: Installing Inxi from Source</a></li>
-<li><a href="#org5d0987b">Troubleshooting Tips</a></li>
-<li><a href="#orgd213fb7">Conclusion</a></li>
+<li><a href="#orgf2599cc">Introduction</a></li>
+<li><a href="#org536af35">Why Root Privileges Are Restricted</a></li>
+<li><a href="#org739987b">Installing Software Locally</a></li>
+<li><a href="#orgcbccee0">Example: Installing Inxi from Source</a></li>
+<li><a href="#orgd3e8973">Troubleshooting Tips</a></li>
+<li><a href="#orga9a19ca">Conclusion</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgd6333db" class="outline-2">
-<h2 id="orgd6333db">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
-<div class="outline-text-2" id="text-orgd6333db">
+<div id="outline-container-org8ef1cd8" class="outline-2">
+<h2 id="org8ef1cd8">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
+<div class="outline-text-2" id="text-org8ef1cd8">
 </div>
-<div id="outline-container-orgde61066" class="outline-3">
-<h3 id="orgde61066">Introduction</h3>
-<div class="outline-text-3" id="text-orgde61066">
+<div id="outline-container-org844078f" class="outline-3">
+<h3 id="org844078f">Introduction</h3>
+<div class="outline-text-3" id="text-org844078f">
 <p>
 In most HPC systems, users do not have <b>root</b> privileges. This tutorial focuses on installing software <b>locally</b> in your <b>home</b> directory <b>without root access</b>.
 </p>
@@ -233,7 +232,7 @@ In most HPC systems, users do not have <b>root</b> privileges. This tutorial foc
 While the examples are based on Rocky Linux, a popular distribution in HPC environments, the steps outlined here will work on most Linux distributions with little or no modification.
 </p>
 
-<div class="note" id="org55cac05">
+<div class="note" id="org57eb8a9">
 <p>
 It's important to note that commands requiring root privileges, such as <code>yum install</code>, <code>dnf install</code>, or <code>sudo apt-get install</code>, are not available to regular users on HPC systems. When consulting software documentation, focus on sections describing how to install from source or methods for user-level installation, as these do not require administrative access.
 </p>
@@ -241,11 +240,9 @@ It's important to note that commands requiring root privileges, such as <code>yu
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-orge2f4bf4" class="outline-3">
-<h3 id="orge2f4bf4">Why Root Privileges Are Restricted</h3>
-<div class="outline-text-3" id="text-orge2f4bf4">
+<div id="outline-container-orgaa066da" class="outline-3">
+<h3 id="orgaa066da">Why Root Privileges Are Restricted</h3>
+<div class="outline-text-3" id="text-orgaa066da">
 <ul class="org-ul">
 <li>HPC systems are <b>shared environments with multiple users</b> running jobs simultaneously.</li>
 <li>Restricting root access ensures <b>stability, security, and integrity</b> of the shared system.</li>
@@ -253,15 +250,13 @@ It's important to note that commands requiring root privileges, such as <code>yu
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orgc9d983e" class="outline-3">
-<h3 id="orgc9d983e">Installing Software Locally</h3>
-<div class="outline-text-3" id="text-orgc9d983e">
+<div id="outline-container-org9e15777" class="outline-3">
+<h3 id="org9e15777">Installing Software Locally</h3>
+<div class="outline-text-3" id="text-org9e15777">
 </div>
-<div id="outline-container-org947eedb" class="outline-4">
-<h4 id="org947eedb">Step 1: Prepare a Directory for Local Installations</h4>
-<div class="outline-text-4" id="text-org947eedb">
+<div id="outline-container-orgc0137ea" class="outline-4">
+<h4 id="orgc0137ea">Step 1: Prepare a Directory for Local Installations</h4>
+<div class="outline-text-4" id="text-orgc0137ea">
 <p>
 To install software locally, you first need a place to store the files. The `~/.local` directory is commonly used because it follows standard Linux conventions and helps keep your files organized.
 </p>
@@ -283,10 +278,9 @@ Here is the command to create these directories:
 </pre>
 </div>
 </div>
-
-<div id="outline-container-orgdb56ff9" class="outline-5">
-<h5 id="orgdb56ff9">What this command does:</h5>
-<div class="outline-text-5" id="text-orgdb56ff9">
+<div id="outline-container-orgb47d54d" class="outline-5">
+<h5 id="orgb47d54d">What this command does:</h5>
+<div class="outline-text-5" id="text-orgb47d54d">
 <ul class="org-ul">
 <li>`mkdir`: Stands for <b><b>make directory</b></b>. It is used to create new directories in your file system.</li>
 <li>`-p`: Ensures that the command creates the entire directory structure, even if some parts (like `~/.local`) don’t exist yet. If the directories already exist, it won’t cause an error.</li>
@@ -294,10 +288,9 @@ Here is the command to create these directories:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgdf4073f" class="outline-5">
-<h5 id="orgdf4073f">Viewing Hidden Files</h5>
-<div class="outline-text-5" id="text-orgdf4073f">
+<div id="outline-container-org61a46d9" class="outline-5">
+<h5 id="org61a46d9">Viewing Hidden Files</h5>
+<div class="outline-text-5" id="text-org61a46d9">
 <p>
 The `~/.local` directory is hidden by default because it starts with a `.` (dot). Hidden files and directories do not appear in the output of the regular `ls` command. To view them, use the `-a` option with `ls`:
 </p>
@@ -313,19 +306,16 @@ This command will list all files and directories, including hidden ones, in the 
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-orgf0a0444" class="outline-4">
-<h4 id="orgf0a0444">Step 2: Modify the PATH Variable</h4>
-<div class="outline-text-4" id="text-orgf0a0444">
+<div id="outline-container-org895e619" class="outline-4">
+<h4 id="org895e619">Step 2: Modify the PATH Variable</h4>
+<div class="outline-text-4" id="text-org895e619">
 <p>
 The system needs to know where to find the software you install locally. This is achieved by updating the <b>`PATH`</b> variable, which tells your shell where to look for executable files.
 </p>
 </div>
-
-<div id="outline-container-org574962b" class="outline-5">
-<h5 id="org574962b">What is the PATH Variable?</h5>
-<div class="outline-text-5" id="text-org574962b">
+<div id="outline-container-org8e7ace9" class="outline-5">
+<h5 id="org8e7ace9">What is the PATH Variable?</h5>
+<div class="outline-text-5" id="text-org8e7ace9">
 <ul class="org-ul">
 <li>The `PATH` variable is an environment variable in Linux that contains a list of directories. These directories are searched, in order, whenever you type a command in the terminal.</li>
 <li>For example, when you type <code>ls</code>, the system looks in the directories listed in `PATH` to find the <code>ls</code> program.</li>
@@ -336,10 +326,9 @@ By adding <code>$HOME/.local/bin</code> to the `PATH`, you allow the shell to fi
 </p>
 </div>
 </div>
-
-<div id="outline-container-org13bcee8" class="outline-5">
-<h5 id="org13bcee8">What is the LD<sub>LIBRARY</sub><sub>PATH</sub> Variable?</h5>
-<div class="outline-text-5" id="text-org13bcee8">
+<div id="outline-container-orgb23394d" class="outline-5">
+<h5 id="orgb23394d">What is the LD<sub>LIBRARY</sub><sub>PATH</sub> Variable?</h5>
+<div class="outline-text-5" id="text-orgb23394d">
 <p>
 Shared libraries are files with the `.so` (shared object) extension that contain code and functions used by multiple programs. Instead of including this code directly in each program, shared libraries allow programs to "share" the same code, which saves memory and simplifies updates.
 </p>
@@ -357,25 +346,24 @@ By adding `~/.local/lib` to <code>LD_LIBRARY_PATH</code>, you ensure that any sh
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgd3afdfb" class="outline-5">
-<h5 id="orgd3afdfb">Why is This Important for Local Installations?</h5>
-<div class="outline-text-5" id="text-orgd3afdfb">
+<div id="outline-container-org22838ff" class="outline-5">
+<h5 id="org22838ff">Why is This Important for Local Installations?</h5>
+<div class="outline-text-5" id="text-org22838ff">
 <p>
 When you install software locally, it may come with its own shared libraries stored in `~/.local/lib`. If these libraries are not in a directory that the system searches by default, the program may fail to run, displaying errors like:
 </p>
-<pre class="example">
-error while loading shared libraries: libexample.so: cannot open shared object file: No such file or directory
+<div class="org-src-container">
+<pre class="src src-nil">error while loading shared libraries: libexample.so: cannot open shared object file: No such file or directory
 </pre>
+</div>
 
 <p>
 Setting <code>LD_LIBRARY_PATH</code> to include `~/.local/lib` resolves this issue by explicitly telling the system to search for shared libraries in your local directory.
 </p>
 </div>
-
-<div id="outline-container-orge2fc8c6" class="outline-6">
-<h6 id="orge2fc8c6">Example</h6>
-<div class="outline-text-6" id="text-orge2fc8c6">
+<div id="outline-container-orgeff3deb" class="outline-6">
+<h6 id="orgeff3deb">Example</h6>
+<div class="outline-text-6" id="text-orgeff3deb">
 <p>
 Suppose you install a program `myprogram` that depends on a shared library `libexample.so` located in `~/.local/lib`. Without setting <code>LD_LIBRARY_PATH</code>, running `myprogram` might result in an error. After adding the following line to your shell configuration file:
 </p>
@@ -387,9 +375,10 @@ Suppose you install a program `myprogram` that depends on a shared library `libe
 <p>
 And reloading it with:
 </p>
-<pre class="example">
-source ~/.bashrc
+<div class="org-src-container">
+<pre class="src src-nil">source ~/.bashrc
 </pre>
+</div>
 
 <p>
 The system will now find libexample.so in ~/.local/lib, allowing myprogram to run successfully.
@@ -397,10 +386,9 @@ The system will now find libexample.so in ~/.local/lib, allowing myprogram to ru
 </div>
 </div>
 </div>
-
-<div id="outline-container-org80c4346" class="outline-5">
-<h5 id="org80c4346">Steps to Update the PATH Variable</h5>
-<div class="outline-text-5" id="text-org80c4346">
+<div id="outline-container-orgafbf702" class="outline-5">
+<h5 id="orgafbf702">Steps to Update the PATH Variable</h5>
+<div class="outline-text-5" id="text-orgafbf702">
 <ol class="org-ol">
 <li><p>
 Open your shell configuration file:
@@ -429,15 +417,15 @@ export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 </div></li>
 </ol>
 </div>
-
-<div id="outline-container-orgf755184" class="outline-6">
-<h6 id="orgf755184">What this command does:**</h6>
-<div class="outline-text-6" id="text-orgf755184">
+<div id="outline-container-orgadaeab5" class="outline-6">
+<h6 id="orgadaeab5">What this command does:**</h6>
+<div class="outline-text-6" id="text-orgadaeab5">
 <ul class="org-ul">
 <li><code>export</code>: Marks a variable to be available to child processes started from the terminal.</li>
 <li><code>PATH=$HOME/.local/bin:$PATH</code>: Prepends <code>.local/bin</code> to the current <code>PATH</code>. This ensures your locally installed executables are prioritized over system-wide ones if they have the same name.</li>
 <li><code>LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH</code>: Prepends <code>.local/lib</code> to the current library search path.</li>
 </ul>
+
 <ol class="org-ol">
 <li><p>
 Reload your shell configuration:
@@ -451,20 +439,18 @@ After saving your changes to <code>.bashrc</code> (or <code>.zshrc</code>), appl
 </ol>
 </div>
 </div>
-
-<div id="outline-container-org88c989a" class="outline-6">
-<h6 id="org88c989a">What this command does:**</h6>
-<div class="outline-text-6" id="text-org88c989a">
+<div id="outline-container-orgda9155c" class="outline-6">
+<h6 id="orgda9155c">What this command does:**</h6>
+<div class="outline-text-6" id="text-orgda9155c">
 <ul class="org-ul">
 <li>The <code>source</code> command reads and executes the contents of the file (<code>.bashrc</code> in this case) in the current shell session. This ensures the changes take effect without needing to log out and back in.</li>
 </ul>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org4564c25" class="outline-5">
-<h5 id="org4564c25">Verifying the Changes</h5>
-<div class="outline-text-5" id="text-org4564c25">
+<div id="outline-container-orge6a5101" class="outline-5">
+<h5 id="orge6a5101">Verifying the Changes</h5>
+<div class="outline-text-5" id="text-orge6a5101">
 <p>
 You can check if the <code>PATH</code> and <code>LD_LIBRARY_PATH</code> variables were updated successfully by running:
 </p>
@@ -480,11 +466,9 @@ These commands will display the values of the respective environment variables. 
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-orgc5ff20d" class="outline-5">
-<h5 id="orgc5ff20d">Understanding <code>.bashrc</code> and <code>.bash_profile</code></h5>
-<div class="outline-text-5" id="text-orgc5ff20d">
+<div id="outline-container-org5e20265" class="outline-5">
+<h5 id="org5e20265">Understanding <code>.bashrc</code> and <code>.bash_profile</code></h5>
+<div class="outline-text-5" id="text-org5e20265">
 <p>
 When configuring your shell environment, it’s important to understand the roles of `~/.bashrc` and `~/.bash<sub>profile</sub>`. These files are executed by Bash under different circumstances.
 </p>
@@ -549,10 +533,9 @@ To source `~/.bashrc` from `~/.bash<sub>profile</sub>`, include the following li
 </ol>
 </div>
 </div>
-
-<div id="outline-container-orga8d039b" class="outline-5">
-<h5 id="orga8d039b">Example Scenario:</h5>
-<div class="outline-text-5" id="text-orga8d039b">
+<div id="outline-container-orge1a14db" class="outline-5">
+<h5 id="orge1a14db">Example Scenario:</h5>
+<div class="outline-text-5" id="text-orge1a14db">
 <ol class="org-ol">
 <li><p>
 You add this line to <b><code>/.bashrc</code></b> to update your <b>PATH</b>:
@@ -575,20 +558,16 @@ fi
 </div>
 </div>
 </div>
-
-
-
-<div id="outline-container-org90d1db8" class="outline-4">
-<h4 id="org90d1db8">Step 3: Understand the Basics of Building Software from Source</h4>
-<div class="outline-text-4" id="text-org90d1db8">
+<div id="outline-container-org9e1d19a" class="outline-4">
+<h4 id="org9e1d19a">Step 3: Understand the Basics of Building Software from Source</h4>
+<div class="outline-text-4" id="text-org9e1d19a">
 <p>
 When installing software from source, the process typically follows three key steps: <b>`configure`</b>, <b>`make`</b>, and <b>`make install`</b>. These steps are designed to prepare, compile, and install the software on your system.
 </p>
 </div>
-
-<div id="outline-container-orge02721b" class="outline-5">
-<h5 id="orge02721b">Why Build Software from Source?</h5>
-<div class="outline-text-5" id="text-orge02721b">
+<div id="outline-container-orge64cd13" class="outline-5">
+<h5 id="orge64cd13">Why Build Software from Source?</h5>
+<div class="outline-text-5" id="text-orge64cd13">
 <ul class="org-ul">
 <li><b><b>Flexibility:</b></b> You can customize the installation to suit your specific needs. For example:
 <ul class="org-ul">
@@ -615,10 +594,9 @@ This command installs the program with GUI support but without database function
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org10e11db" class="outline-5">
-<h5 id="org10e11db">The Three Steps in Detail:</h5>
-<div class="outline-text-5" id="text-org10e11db">
+<div id="outline-container-org1bd3032" class="outline-5">
+<h5 id="org1bd3032">The Three Steps in Detail:</h5>
+<div class="outline-text-5" id="text-org1bd3032">
 <ol class="org-ol">
 <li><b><b>`configure`: Preparing the Build</b></b>
 <ul class="org-ul">
@@ -643,7 +621,7 @@ Example:
 </ul></li>
 </ul></li>
 </ol>
-<div class="note" id="orgfe16ce7">
+<div class="note" id="orgb18af35">
 <p>
 It is important to read the output of the code for missing dependencies and errors.
 </p>
@@ -680,9 +658,10 @@ Example:
 <li><p>
 Example:
 </p>
-<pre class="example">
-make install
-</pre></li>
+<div class="org-src-container">
+<pre class="src src-nil">make install
+</pre>
+</div></li>
 
 <li><b><b>What happens during `make install`:</b></b>
 <ul class="org-ul">
@@ -693,10 +672,9 @@ make install
 </ol>
 </div>
 </div>
-
-<div id="outline-container-org4e92bbe" class="outline-5">
-<h5 id="org4e92bbe">Summary of the Process:</h5>
-<div class="outline-text-5" id="text-org4e92bbe">
+<div id="outline-container-org9cf2001" class="outline-5">
+<h5 id="org9cf2001">Summary of the Process:</h5>
+<div class="outline-text-5" id="text-org9cf2001">
 <ol class="org-ol">
 <li><b><b>`configure`:</b></b> Prepares the source code for your system and customizes the installation.</li>
 <li><b><b>`make`:</b></b> Builds the software by compiling the source code.</li>
@@ -704,10 +682,9 @@ make install
 </ol>
 </div>
 </div>
-
-<div id="outline-container-org63b459c" class="outline-5">
-<h5 id="org63b459c">Additional Notes:</h5>
-<div class="outline-text-5" id="text-org63b459c">
+<div id="outline-container-org37ec26d" class="outline-5">
+<h5 id="org37ec26d">Additional Notes:</h5>
+<div class="outline-text-5" id="text-org37ec26d">
 <ul class="org-ul">
 <li><b><b>Customizing the Installation:</b></b>
 <ul class="org-ul">
@@ -730,9 +707,10 @@ After running <b>`make install`</b>, check that the program is accessible by run
 <li><p>
 To remove compiled files and start fresh, use:
 </p>
-<pre class="example">
-make clean
-</pre></li>
+<div class="org-src-container">
+<pre class="src src-nil">make clean
+</pre>
+</div></li>
 </ul></li>
 </ul>
 
@@ -743,20 +721,17 @@ By understanding these steps, you’ll be able to install a wide variety of soft
 </div>
 </div>
 </div>
-
-
-
-<div id="outline-container-org70dff88" class="outline-3">
-<h3 id="org70dff88">Hands-on Session: Installing Software on HPC User Interface</h3>
-<div class="outline-text-3" id="text-org70dff88">
+<div id="outline-container-orgc5301e7" class="outline-3">
+<h3 id="orgc5301e7">Hands-on Session: Installing Software on HPC User Interface</h3>
+<div class="outline-text-3" id="text-orgc5301e7">
 </div>
-<div id="outline-container-orgdb5b111" class="outline-4">
-<h4 id="orgdb5b111">Installing <b>inxi</b> (binary)</h4>
-<div class="outline-text-4" id="text-orgdb5b111">
+<div id="outline-container-orgddb55ee" class="outline-4">
+<h4 id="orgddb55ee">Installing <b>inxi</b> (binary)</h4>
+<div class="outline-text-4" id="text-orgddb55ee">
 </div>
-<div id="outline-container-org2706cc5" class="outline-5">
-<h5 id="org2706cc5">What is <b>inxi</b> and Why is it Useful?</h5>
-<div class="outline-text-5" id="text-org2706cc5">
+<div id="outline-container-org0f1ed62" class="outline-5">
+<h5 id="org0f1ed62">What is <b>inxi</b> and Why is it Useful?</h5>
+<div class="outline-text-5" id="text-org0f1ed62">
 <p>
 <b>inxi</b> is a versatile and powerful command-line system information tool. It provides detailed hardware, system, and software diagnostics, making it a valuable tool for users and administrators in environments like HPC.
 </p>
@@ -783,10 +758,9 @@ On systems without root privileges (e.g., HPC environments), you need to install
 </p>
 </div>
 </div>
-
-<div id="outline-container-org9aafccb" class="outline-5">
-<h5 id="org9aafccb">What is a Binary and Why Use It?</h5>
-<div class="outline-text-5" id="text-org9aafccb">
+<div id="outline-container-org81d8c6e" class="outline-5">
+<h5 id="org81d8c6e">What is a Binary and Why Use It?</h5>
+<div class="outline-text-5" id="text-org81d8c6e">
 <p>
 A <b><b>binary</b></b> is a pre-compiled executable file that is ready to run without needing compilation. Unlike source code, which requires tools like `gcc` to convert it into an executable, binaries are already prepared for execution.
 </p>
@@ -805,10 +779,9 @@ A <b><b>binary</b></b> is a pre-compiled executable file that is ready to run wi
 </p>
 </div>
 </div>
-
-<div id="outline-container-org470afa0" class="outline-5">
-<h5 id="org470afa0">Organizing Files and Folders for Local Installation</h5>
-<div class="outline-text-5" id="text-org470afa0">
+<div id="outline-container-orgc4cf40a" class="outline-5">
+<h5 id="orgc4cf40a">Organizing Files and Folders for Local Installation</h5>
+<div class="outline-text-5" id="text-orgc4cf40a">
 <p>
 To maintain a clean and organized environment, use the following folder structure for installing and managing locally installed software:
 </p>
@@ -827,11 +800,9 @@ Ensure that `~/.local/bin` is in your `PATH` variable so that the system can loc
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org60b8c36" class="outline-5">
-<h5 id="org60b8c36">Steps to Install and Use <b>inxi</b></h5>
-<div class="outline-text-5" id="text-org60b8c36">
+<div id="outline-container-org12781eb" class="outline-5">
+<h5 id="org12781eb">Steps to Install and Use <b>inxi</b></h5>
+<div class="outline-text-5" id="text-org12781eb">
 <p>
 Follow these steps to install <b>inxi</b> as a binary.
 </p>
@@ -916,12 +887,9 @@ Detailed hardware diagnostics:
 </ol>
 </div>
 </div>
-
-
-
-<div id="outline-container-org6f49ea2" class="outline-5">
-<h5 id="org6f49ea2">Troubleshooting Common Issues</h5>
-<div class="outline-text-5" id="text-org6f49ea2">
+<div id="outline-container-org268ea9f" class="outline-5">
+<h5 id="org268ea9f">Troubleshooting Common Issues</h5>
+<div class="outline-text-5" id="text-org268ea9f">
 <ol class="org-ol">
 <li><b><b>Error: Command `inxi` not found</b></b>
 <ul class="org-ul">
@@ -965,11 +933,9 @@ mv inxi $HOME/.local/bin/
 </ol>
 </div>
 </div>
-
-
-<div id="outline-container-orgfe5ed14" class="outline-5">
-<h5 id="orgfe5ed14">Removing <b>inxi</b></h5>
-<div class="outline-text-5" id="text-orgfe5ed14">
+<div id="outline-container-org096d3ef" class="outline-5">
+<h5 id="org096d3ef">Removing <b>inxi</b></h5>
+<div class="outline-text-5" id="text-org096d3ef">
 <p>
 If you no longer want to use <b>inxi</b>, you can remove it by deleting the script:
 </p>
@@ -989,10 +955,9 @@ Additionally, if you downloaded the source archive, you can clean up the files f
 </div>
 </div>
 </div>
-
-<div id="outline-container-org8b3d4d8" class="outline-5">
-<h5 id="org8b3d4d8">Recap</h5>
-<div class="outline-text-5" id="text-org8b3d4d8">
+<div id="outline-container-org1d88ab3" class="outline-5">
+<h5 id="org1d88ab3">Recap</h5>
+<div class="outline-text-5" id="text-org1d88ab3">
 <ul class="org-ul">
 <li><b>inxi</b> is a powerful tool for system diagnostics, especially in HPC environments.</li>
 <li>Installing <b>inxi</b> as a binary simplifies the process by skipping compilation.</li>
@@ -1001,18 +966,13 @@ Additionally, if you downloaded the source archive, you can clean up the files f
 </div>
 </div>
 </div>
-
-
-
-
-
-<div id="outline-container-orgea4a319" class="outline-4">
-<h4 id="orgea4a319">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
-<div class="outline-text-4" id="text-orgea4a319">
+<div id="outline-container-org4215a14" class="outline-4">
+<h4 id="org4215a14">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
+<div class="outline-text-4" id="text-org4215a14">
 </div>
-<div id="outline-container-org1fddf51" class="outline-5">
-<h5 id="org1fddf51">What is <b>ncdu</b> and Why is it Useful?</h5>
-<div class="outline-text-5" id="text-org1fddf51">
+<div id="outline-container-org81c2aed" class="outline-5">
+<h5 id="org81c2aed">What is <b>ncdu</b> and Why is it Useful?</h5>
+<div class="outline-text-5" id="text-org81c2aed">
 <p>
 <b>ncdu</b> (NCurses Disk Usage) is a disk usage analyzer that runs in the terminal. It is particularly useful for identifying large files or directories, especially in environments with limited storage, like HPC systems. 
 </p>
@@ -1032,10 +992,9 @@ If your HPC system runs out of storage or your job fails due to insufficient spa
 </p>
 </div>
 </div>
-
-<div id="outline-container-org256123f" class="outline-5">
-<h5 id="org256123f">Where Will <b>ncdu</b> Be Installed?</h5>
-<div class="outline-text-5" id="text-org256123f">
+<div id="outline-container-org4662b38" class="outline-5">
+<h5 id="org4662b38">Where Will <b>ncdu</b> Be Installed?</h5>
+<div class="outline-text-5" id="text-org4662b38">
 <p>
 When using `&#x2013;prefix=$HOME/.local`, the compiled binary and related files will be placed in standard subdirectories:
 </p>
@@ -1075,10 +1034,9 @@ Using a dedicated directory like `~/.local/ncdu` can help isolate installations,
 </p>
 </div>
 </div>
-
-<div id="outline-container-org164db6d" class="outline-5">
-<h5 id="org164db6d">Steps to Install <b>ncdu</b></h5>
-<div class="outline-text-5" id="text-org164db6d">
+<div id="outline-container-org6dc6cb8" class="outline-5">
+<h5 id="org6dc6cb8">Steps to Install <b>ncdu</b></h5>
+<div class="outline-text-5" id="text-org6dc6cb8">
 <ol class="org-ol">
 <li><p>
 <b><b>Download the Source</b></b>  
@@ -1167,10 +1125,9 @@ If the installation is successful, this command will output the installed versio
 </ol>
 </div>
 </div>
-
-<div id="outline-container-org48df790" class="outline-5">
-<h5 id="org48df790">Example Usage of <b>ncdu</b></h5>
-<div class="outline-text-5" id="text-org48df790">
+<div id="outline-container-org316f9c5" class="outline-5">
+<h5 id="org316f9c5">Example Usage of <b>ncdu</b></h5>
+<div class="outline-text-5" id="text-org316f9c5">
 <p>
 Once installed, you can use <b>ncdu</b> to analyze disk usage. For example:
 </p>
@@ -1187,10 +1144,9 @@ Scan your home directory:
 </ol>
 </div>
 </div>
-
-<div id="outline-container-org817a36c" class="outline-5">
-<h5 id="org817a36c">Troubleshooting Compilation Issues</h5>
-<div class="outline-text-5" id="text-org817a36c">
+<div id="outline-container-orgb1ffa9a" class="outline-5">
+<h5 id="orgb1ffa9a">Troubleshooting Compilation Issues</h5>
+<div class="outline-text-5" id="text-orgb1ffa9a">
 <ul class="org-ul">
 <li><p>
 <b>Missing Dependencies:</b>  
@@ -1207,13 +1163,9 @@ Ensure you have write access to your <code>.local</code> directory and that the 
 </ul>
 </div>
 </div>
-
-
-
-
-<div id="outline-container-orgc9ff0ac" class="outline-5">
-<h5 id="orgc9ff0ac">How to remove <b>ncdu</b></h5>
-<div class="outline-text-5" id="text-orgc9ff0ac">
+<div id="outline-container-org33ae169" class="outline-5">
+<h5 id="org33ae169">How to remove <b>ncdu</b></h5>
+<div class="outline-text-5" id="text-org33ae169">
 <p>
 If you decide to uninstall <b>ncdu</b>, follow these steps:
 </p>
@@ -1263,21 +1215,13 @@ By following these steps, you’ve learned how to install <b>ncdu</b> from sourc
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-<div id="outline-container-org46f0095" class="outline-4">
-<h4 id="org46f0095">Installing <b>Octave</b> in HPC Environment</h4>
-<div class="outline-text-4" id="text-org46f0095">
+<div id="outline-container-orgb0e1900" class="outline-4">
+<h4 id="orgb0e1900">Installing <b>Octave</b> in HPC Environment</h4>
+<div class="outline-text-4" id="text-orgb0e1900">
 </div>
-<div id="outline-container-orgcbb6bc7" class="outline-5">
-<h5 id="orgcbb6bc7">What is Octave and Why Use It?</h5>
-<div class="outline-text-5" id="text-orgcbb6bc7">
+<div id="outline-container-orgc8d3638" class="outline-5">
+<h5 id="orgc8d3638">What is Octave and Why Use It?</h5>
+<div class="outline-text-5" id="text-orgc8d3638">
 <p>
 GNU Octave is an open-source programming language primarily intended for numerical computations. It provides a high-level language for solving linear and nonlinear problems, performing numerical experiments, and visualizing data. Octave is often used as an alternative to MATLAB due to its compatibility with many MATLAB scripts.
 </p>
@@ -1292,21 +1236,16 @@ GNU Octave is an open-source programming language primarily intended for numeric
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orgf379e79" class="outline-5">
-<h5 id="orgf379e79">Steps to Install Octave</h5>
-<div class="outline-text-5" id="text-orgf379e79">
+<div id="outline-container-orgdaba5b6" class="outline-5">
+<h5 id="orgdaba5b6">Steps to Install Octave</h5>
+<div class="outline-text-5" id="text-orgdaba5b6">
 <p>
 Octave requires compilation from source, which provides an opportunity to explore various `configure` options for customizing the build.
 </p>
 </div>
-
-
-
-<div id="outline-container-org7fb64e5" class="outline-6">
-<h6 id="org7fb64e5">1. Load Necessary Modules</h6>
-<div class="outline-text-6" id="text-org7fb64e5">
+<div id="outline-container-orge7b14d5" class="outline-6">
+<h6 id="orge7b14d5">1. Load Necessary Modules</h6>
+<div class="outline-text-6" id="text-orge7b14d5">
 <p>
 Octave depends on several libraries and tools for successful installation. Start by loading the required modules:
 </p>
@@ -1329,11 +1268,9 @@ module load apps/gnuplot/5.4.10 lib/fftw/3.3.10-impi-oneapi-2024 lib/openblas/0.
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org1f6edfe" class="outline-6">
-<h6 id="org1f6edfe">2. Download the Source Code</h6>
-<div class="outline-text-6" id="text-org1f6edfe">
+<div id="outline-container-org5255946" class="outline-6">
+<h6 id="org5255946">2. Download the Source Code</h6>
+<div class="outline-text-6" id="text-org5255946">
 <p>
 Download the latest Octave source code from its official repository:
 </p>
@@ -1355,10 +1292,9 @@ cd octave-8.3.0
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org2ebb80a" class="outline-6">
-<h6 id="org2ebb80a">3. Configure the Build</h6>
-<div class="outline-text-6" id="text-org2ebb80a">
+<div id="outline-container-orgac2db54" class="outline-6">
+<h6 id="orgac2db54">3. Configure the Build</h6>
+<div class="outline-text-6" id="text-orgac2db54">
 <p>
 Run the `configure` script with the appropriate options to customize the build:
 </p>
@@ -1394,10 +1330,9 @@ export LAPACK_LIBS="-L/usr/lib64 -llapack"
 </p>
 </div>
 </div>
-
-<div id="outline-container-org83a92d8" class="outline-6">
-<h6 id="org83a92d8">4. Build and Install</h6>
-<div class="outline-text-6" id="text-org83a92d8">
+<div id="outline-container-org231a7b4" class="outline-6">
+<h6 id="org231a7b4">4. Build and Install</h6>
+<div class="outline-text-6" id="text-org231a7b4">
 <p>
 Compile and install Octave:
 </p>
@@ -1420,10 +1355,9 @@ make install
 </p>
 </div>
 </div>
-
-<div id="outline-container-org1ebea3b" class="outline-6">
-<h6 id="org1ebea3b">5. Verify the Installation</h6>
-<div class="outline-text-6" id="text-org1ebea3b">
+<div id="outline-container-orgd38657b" class="outline-6">
+<h6 id="orgd38657b">5. Verify the Installation</h6>
+<div class="outline-text-6" id="text-orgd38657b">
 <p>
 Confirm that Octave is installed and accessible:
 </p>
@@ -1439,19 +1373,13 @@ Expected Output:
 </div>
 </div>
 </div>
-
-
-
-
-
-
-<div id="outline-container-org501c261" class="outline-4">
-<h4 id="org501c261">Installing <b>MadGraph</b> (with HPC Modules for Dependencies)</h4>
-<div class="outline-text-4" id="text-org501c261">
+<div id="outline-container-orgc82d1e4" class="outline-4">
+<h4 id="orgc82d1e4">Installing <b>MadGraph</b> (with HPC Modules for Dependencies)</h4>
+<div class="outline-text-4" id="text-orgc82d1e4">
 </div>
-<div id="outline-container-orgfe4df6a" class="outline-5">
-<h5 id="orgfe4df6a">What is <b>MadGraph</b> and Why is it Useful?</h5>
-<div class="outline-text-5" id="text-orgfe4df6a">
+<div id="outline-container-org136a5c2" class="outline-5">
+<h5 id="org136a5c2">What is <b>MadGraph</b> and Why is it Useful?</h5>
+<div class="outline-text-5" id="text-org136a5c2">
 <p>
 <b>MadGraph</b> is a powerful tool for simulating particle physics processes. It allows researchers to generate and analyze events for high-energy physics experiments. MadGraph requires various dependencies, such as compilers (e.g., GCC) and Python, which can be managed using the <b>module</b> system in HPC environments.
 </p>
@@ -1466,10 +1394,9 @@ Expected Output:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org88198e1" class="outline-5">
-<h5 id="org88198e1">What are HPC Modules?</h5>
-<div class="outline-text-5" id="text-org88198e1">
+<div id="outline-container-orgf645f44" class="outline-5">
+<h5 id="orgf645f44">What are HPC Modules?</h5>
+<div class="outline-text-5" id="text-orgf645f44">
 <p>
 HPC systems use a <b>module</b> system to manage software dependencies. Modules allow you to dynamically modify your environment to use specific versions of compilers, libraries, and tools without requiring installation. This is especially useful when building software like <b>MadGraph</b>.
 </p>
@@ -1525,20 +1452,17 @@ Use this approach to search for other keywords, such as <code>python</code> or <
 </div>
 </div>
 </div>
-
-
-
-<div id="outline-container-org0324e3d" class="outline-3">
-<h3 id="org0324e3d">Hands-on Session: Installing Software on HPC User Interface</h3>
-<div class="outline-text-3" id="text-org0324e3d">
+<div id="outline-container-org1cf5650" class="outline-3">
+<h3 id="org1cf5650">Hands-on Session: Installing Software on HPC User Interface</h3>
+<div class="outline-text-3" id="text-org1cf5650">
 </div>
-<div id="outline-container-orgc59059b" class="outline-4">
-<h4 id="orgc59059b">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
-<div class="outline-text-4" id="text-orgc59059b">
+<div id="outline-container-org1f3e3af" class="outline-4">
+<h4 id="org1f3e3af">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
+<div class="outline-text-4" id="text-org1f3e3af">
 </div>
-<div id="outline-container-orga8b73e9" class="outline-5">
-<h5 id="orga8b73e9">What is <b>ncdu</b> and Why is it Useful?</h5>
-<div class="outline-text-5" id="text-orga8b73e9">
+<div id="outline-container-org24fe6b5" class="outline-5">
+<h5 id="org24fe6b5">What is <b>ncdu</b> and Why is it Useful?</h5>
+<div class="outline-text-5" id="text-org24fe6b5">
 <p>
 <b>ncdu</b> (NCurses Disk Usage) is a disk usage analyzer that runs in the terminal. It is particularly useful for identifying large files or directories, especially in environments with limited storage, like HPC systems. 
 </p>
@@ -1558,10 +1482,9 @@ If your HPC system runs out of storage or your job fails due to insufficient spa
 </p>
 </div>
 </div>
-
-<div id="outline-container-org0c303da" class="outline-5">
-<h5 id="org0c303da">Steps to Install <b>ncdu</b></h5>
-<div class="outline-text-5" id="text-org0c303da">
+<div id="outline-container-org5b5f51e" class="outline-5">
+<h5 id="org5b5f51e">Steps to Install <b>ncdu</b></h5>
+<div class="outline-text-5" id="text-org5b5f51e">
 <p>
 Unlike <b>inxi</b>, <b>ncdu</b> is distributed as source code that must be compiled into a binary before it can be used. This demonstrates the typical <b>configure</b>, <b>make</b>, and <b>make install</b> process for building software from source.
 </p>
@@ -1644,15 +1567,13 @@ If the installation is successful, this command will output the installed versio
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-orga234d83" class="outline-4">
-<h4 id="orga234d83">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
-<div class="outline-text-4" id="text-orga234d83">
+<div id="outline-container-orgfccb37e" class="outline-4">
+<h4 id="orgfccb37e">Installing <b>ncdu</b> (with `configure`, `make`, and `make install`)</h4>
+<div class="outline-text-4" id="text-orgfccb37e">
 </div>
-<div id="outline-container-org824286a" class="outline-5">
-<h5 id="org824286a">What is <b>ncdu</b> and Why is it Useful?</h5>
-<div class="outline-text-5" id="text-org824286a">
+<div id="outline-container-org4c7949c" class="outline-5">
+<h5 id="org4c7949c">What is <b>ncdu</b> and Why is it Useful?</h5>
+<div class="outline-text-5" id="text-org4c7949c">
 <p>
 <b>ncdu</b> (NCurses Disk Usage) is a disk usage analyzer that runs in the terminal. It is particularly useful for identifying large files or directories, especially in environments with limited storage, like HPC systems. 
 </p>
@@ -1667,10 +1588,9 @@ Key features:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org8bf16c0" class="outline-5">
-<h5 id="org8bf16c0">Example Use Case:</h5>
-<div class="outline-text-5" id="text-org8bf16c0">
+<div id="outline-container-org20fc4e8" class="outline-5">
+<h5 id="org20fc4e8">Example Use Case:</h5>
+<div class="outline-text-5" id="text-org20fc4e8">
 <p>
 If your HPC system runs out of storage or your job fails due to insufficient space, you can use <b>ncdu</b> to quickly pinpoint and remove unnecessary files from your home or scratch directory.
 </p>
@@ -1803,12 +1723,9 @@ By following these steps, you’ve learned how to install <b>ncdu</b> from sourc
 </div>
 </div>
 </div>
-
-
-
-<div id="outline-container-orga39070d" class="outline-4">
-<h4 id="orga39070d">Installing `ncdu` (with `configure`, `make`, and `make install`)</h4>
-<div class="outline-text-4" id="text-orga39070d">
+<div id="outline-container-orgbb3038a" class="outline-4">
+<h4 id="orgbb3038a">Installing `ncdu` (with `configure`, `make`, and `make install`)</h4>
+<div class="outline-text-4" id="text-orgbb3038a">
 <ol class="org-ol">
 <li><p>
 <b><b>Download the Source</b></b>
@@ -1840,11 +1757,9 @@ make install
 </ol>
 </div>
 </div>
-
-
-<div id="outline-container-org3b4b809" class="outline-4">
-<h4 id="org3b4b809">Example with HPC Modules: Installing Software Dependencies</h4>
-<div class="outline-text-4" id="text-org3b4b809">
+<div id="outline-container-orgadedcd7" class="outline-4">
+<h4 id="orgadedcd7">Example with HPC Modules: Installing Software Dependencies</h4>
+<div class="outline-text-4" id="text-orgadedcd7">
 <p>
 Many HPC systems provide software modules that allow loading dependencies without installation:
 </p>
@@ -1868,11 +1783,9 @@ Load a required module:
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org2e80f32" class="outline-3">
-<h3 id="org2e80f32">Useful Tools: `tldr` and `cheat`</h3>
-<div class="outline-text-3" id="text-org2e80f32">
+<div id="outline-container-org8a906cb" class="outline-3">
+<h3 id="org8a906cb">Useful Tools: `tldr` and `cheat`</h3>
+<div class="outline-text-3" id="text-org8a906cb">
 <ul class="org-ul">
 <li><p>
 <b><b>`tldr`:</b></b> Provides simplified, community-driven examples for commands. Install it locally:
@@ -1893,11 +1806,9 @@ cheat tar
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org8e710eb" class="outline-3">
-<h3 id="org8e710eb">Removing Locally Installed Applications</h3>
-<div class="outline-text-3" id="text-org8e710eb">
+<div id="outline-container-orgad9e795" class="outline-3">
+<h3 id="orgad9e795">Removing Locally Installed Applications</h3>
+<div class="outline-text-3" id="text-orgad9e795">
 <p>
 To remove software:
 </p>
@@ -1919,11 +1830,9 @@ For source-built software:
 </ol>
 </div>
 </div>
-
-
-<div id="outline-container-orge8f3eab" class="outline-3">
-<h3 id="orge8f3eab">Troubleshooting Tips</h3>
-<div class="outline-text-3" id="text-orge8f3eab">
+<div id="outline-container-org2df2e8d" class="outline-3">
+<h3 id="org2df2e8d">Troubleshooting Tips</h3>
+<div class="outline-text-3" id="text-org2df2e8d">
 <ul class="org-ul">
 <li><b><b>Command not found:</b></b> Verify that `~/.local/bin` is in your `PATH`.</li>
 <li><b><b>Missing dependencies:</b></b> Use modules or install dependencies locally.</li>
@@ -1931,62 +1840,16 @@ For source-built software:
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org25f286b" class="outline-3">
-<h3 id="org25f286b">Conclusion</h3>
-<div class="outline-text-3" id="text-org25f286b">
+<div id="outline-container-org56f358a" class="outline-3">
+<h3 id="org56f358a">Conclusion</h3>
+<div class="outline-text-3" id="text-org56f358a">
 <p>
 Installing software locally empowers you to work efficiently in an HPC environment without requiring root privileges. With practice, building software from source and managing your tools will become second nature.
 </p>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="outline-container-org725ae18" class="outline-5">
-<h5 id="org725ae18">Steps to Install <b>MadGraph</b></h5>
-<div class="outline-text-5" id="text-org725ae18">
+<div id="outline-container-org7b94b40" class="outline-5">
+<h5 id="org7b94b40">Steps to Install <b>MadGraph</b></h5>
+<div class="outline-text-5" id="text-org7b94b40">
 <ol class="org-ol">
 <li><b><b>Search for Available Modules</b></b></li>
 </ol>
@@ -2104,19 +1967,16 @@ To confirm that MadGraph is installed and working, check its version:
 If successful, you’ll see output showing the installed version of MadGraph.
 </p>
 </div>
-
-
-<div id="outline-container-orgd366f1a" class="outline-6">
-<h6 id="orgd366f1a">Additional Requirements for <b>MadGraph</b>: Handling Dependencies Like `six`</h6>
-<div class="outline-text-6" id="text-orgd366f1a">
+<div id="outline-container-org27f1afa" class="outline-6">
+<h6 id="org27f1afa">Additional Requirements for <b>MadGraph</b>: Handling Dependencies Like `six`</h6>
+<div class="outline-text-6" id="text-org27f1afa">
 <p>
 During the installation of <b>MadGraph</b>, you might encounter a warning and a dependency requirement for the Python module `six`. Here’s how to address it:
 </p>
 </div>
-
-<div id="outline-container-org96d36df" class="outline-7">
-<h7 id="org96d36df">1. Handling the `six` Module Dependency**</h7>
-<div class="outline-text-7" id="text-org96d36df">
+<div id="outline-container-org7b457b5" class="outline-7">
+<h7 id="org7b457b5">1. Handling the `six` Module Dependency**</h7>
+<div class="outline-text-7" id="text-org7b457b5">
 <p>
    The `six` module is a Python library required by <b>MadGraph</b>. If it is missing, you will encounter the following message:
 madgraph requires the six module. The easiest way to install it is to run "pip3 install six &#x2013;user"
@@ -2127,10 +1987,9 @@ madgraph requires the six module. The easiest way to install it is to run "pip3 
 Here’s how to resolve this issue:
 </p>
 </div>
-
 <ul class="org-ul">
-<li><a id="orgc0ef26f"></a>Using `pip` to Install `six`**<br />
-<div class="outline-text-8" id="text-orgc0ef26f">
+<li><a id="org7ffeff4"></a>Using `pip` to Install `six`**<br />
+<div class="outline-text-8" id="text-org7ffeff4">
 <p>
 If `pip` is available on your system, install the `six` module as follows:
 </p>
@@ -2151,16 +2010,18 @@ If `pip` is available on your system, install the `six` module as follows:
 Specifically, it is installed in the following location (depending on your Python version):
 Note that we loaded python 3.12, for this example
 </p>
-<pre class="example">
-~/.local/lib/python&lt;version&gt;/site-packages/
+<div class="org-src-container">
+<pre class="src src-nil">~/.local/lib/python&lt;version&gt;/site-packages/
 </pre>
+</div>
 
 <ul class="org-ul">
 <li>To verify the installation directory:</li>
 </ul>
-<pre class="example">
-python3 -m site --user-site
+<div class="org-src-container">
+<pre class="src src-nil">python3 -m site --user-site
 </pre>
+</div>
 <p>
 This will output the exact directory where pip installs user-level modules.
 </p>
@@ -2168,31 +2029,35 @@ This will output the exact directory where pip installs user-level modules.
 <p>
 You can also manually check by listing the contents of the directory:
 </p>
-<pre class="example">
-ls ~/.local/lib/python3.8/site-packages/
+<div class="org-src-container">
+<pre class="src src-nil">ls ~/.local/lib/python3.8/site-packages/
 </pre>
+</div>
 
 <ul class="org-ul">
 <li><p>
 Note that you can see the PYTHONPATH variable via running code:
 </p>
-<pre class="example">
-echo $PATH
+<div class="org-src-container">
+<pre class="src src-nil">echo $PATH
 </pre>
+</div>
 
 <p>
 If the directory is not already included in your PYTHONPATH environment variable, you may need to add it:
 Edit your ~/.bashrc
 </p>
-<pre class="example">
-export PYTHONPATH=$HOME/.local/lib/python3.12/site-packages:$PYTHONPATH
+<div class="org-src-container">
+<pre class="src src-nil">export PYTHONPATH=$HOME/.local/lib/python3.12/site-packages:$PYTHONPATH
 </pre>
+</div>
 <p>
 Then reload your shell configuration
 </p>
-<pre class="example">
-source ~/.bashrc
-</pre></li>
+<div class="org-src-container">
+<pre class="src src-nil">source ~/.bashrc
+</pre>
+</div></li>
 </ul>
 
 <p>
@@ -2260,10 +2125,9 @@ If you added `six.py` manually, reload your shell configuration to ensure the ch
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org4eed82f" class="outline-6">
-<h6 id="org4eed82f">Updated Steps for Running <b>MadGraph</b></h6>
-<div class="outline-text-6" id="text-org4eed82f">
+<div id="outline-container-orgb427936" class="outline-6">
+<h6 id="orgb427936">Updated Steps for Running <b>MadGraph</b></h6>
+<div class="outline-text-6" id="text-orgb427936">
 <p>
 Once the warning and dependency are resolved, always use the following command to start <b>MadGraph</b>:
 </p>
@@ -2277,12 +2141,9 @@ This ensures you’re using the supported script and that required dependencies 
 </p>
 </div>
 </div>
-
-
-
-<div id="outline-container-orgc9d624d" class="outline-6">
-<h6 id="orgc9d624d">How to Remove <b>MadGraph</b></h6>
-<div class="outline-text-6" id="text-orgc9d624d">
+<div id="outline-container-org40ce669" class="outline-6">
+<h6 id="org40ce669">How to Remove <b>MadGraph</b></h6>
+<div class="outline-text-6" id="text-org40ce669">
 <p>
 To remove MadGraph from your local directory, follow these steps:
 </p>
@@ -2313,76 +2174,13 @@ To remove MadGraph from your local directory, follow these steps:
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="outline-container-org0c2ef61" class="outline-2">
-<h2 id="org0c2ef61">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
-<div class="outline-text-2" id="text-org0c2ef61">
+<div id="outline-container-orgb7afa08" class="outline-2">
+<h2 id="orgb7afa08">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
+<div class="outline-text-2" id="text-orgb7afa08">
 </div>
-<div id="outline-container-org61b880a" class="outline-3">
-<h3 id="org61b880a">Introduction</h3>
-<div class="outline-text-3" id="text-org61b880a">
+<div id="outline-container-orgffa9341" class="outline-3">
+<h3 id="orgffa9341">Introduction</h3>
+<div class="outline-text-3" id="text-orgffa9341">
 <p>
 High-Performance Computing (HPC) systems are powerful tools that enable users to perform complex computations efficiently. However, these systems are shared resources, and to maintain their stability and security, users typically do not have root privileges. This means that installing software system-wide using package managers like `yum` or `dnf` is not possible for regular users. Instead, users are encouraged to install software locally within their home directories.
 </p>
@@ -2392,11 +2190,9 @@ This tutorial will guide you through the process of installing software locally 
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-org17197bb" class="outline-3">
-<h3 id="org17197bb">Why Root Privileges Are Restricted</h3>
-<div class="outline-text-3" id="text-org17197bb">
+<div id="outline-container-org3eae653" class="outline-3">
+<h3 id="org3eae653">Why Root Privileges Are Restricted</h3>
+<div class="outline-text-3" id="text-org3eae653">
 <ul class="org-ul">
 <li><b><b>Shared Resources:</b></b> HPC systems are utilized by multiple users simultaneously. Allowing root access could lead to conflicts and resource mismanagement.</li>
 <li><b><b>System Integrity:</b></b> Limiting root access prevents accidental or malicious changes that could compromise the system's stability and security.</li>
@@ -2404,11 +2200,9 @@ This tutorial will guide you through the process of installing software locally 
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org4625854" class="outline-3">
-<h3 id="org4625854">Installing Software Locally</h3>
-<div class="outline-text-3" id="text-org4625854">
+<div id="outline-container-org1dea3ef" class="outline-3">
+<h3 id="org1dea3ef">Installing Software Locally</h3>
+<div class="outline-text-3" id="text-org1dea3ef">
 <p>
 To install software without root privileges, follow these general steps:
 </p>
@@ -2476,24 +2270,21 @@ When installing software from source, you'll frequently encounter the following 
 </ol>
 </div>
 </div>
-
-
-<div id="outline-container-orge1677c8" class="outline-3">
-<h3 id="orge1677c8">Example 1: Installing Inxi (Binary Package)</h3>
-<div class="outline-text-3" id="text-orge1677c8">
+<div id="outline-container-orgd513427" class="outline-3">
+<h3 id="orgd513427">Example 1: Installing Inxi (Binary Package)</h3>
+<div class="outline-text-3" id="text-orgd513427">
 </div>
-<div id="outline-container-org3c4b83c" class="outline-4">
-<h4 id="org3c4b83c">What is Inxi?</h4>
-<div class="outline-text-4" id="text-org3c4b83c">
+<div id="outline-container-orgeb26eb3" class="outline-4">
+<h4 id="orgeb26eb3">What is Inxi?</h4>
+<div class="outline-text-4" id="text-orgeb26eb3">
 <p>
 Inxi is a powerful command-line system information tool that provides detailed information about your system's hardware and software configurations.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org2d883b8" class="outline-4">
-<h4 id="org2d883b8">Installation Steps</h4>
-<div class="outline-text-4" id="text-org2d883b8">
+<div id="outline-container-org62556bc" class="outline-4">
+<h4 id="org62556bc">Installation Steps</h4>
+<div class="outline-text-4" id="text-org62556bc">
 <ol class="org-ol">
 <li><p>
 <b><b>Download the Inxi Script</b></b>
@@ -2545,24 +2336,21 @@ inxi &#x2013;version
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org028aac8" class="outline-3">
-<h3 id="org028aac8">Example 2: Installing ncdu (Source Compilation)</h3>
-<div class="outline-text-3" id="text-org028aac8">
+<div id="outline-container-org3286c6d" class="outline-3">
+<h3 id="org3286c6d">Example 2: Installing ncdu (Source Compilation)</h3>
+<div class="outline-text-3" id="text-org3286c6d">
 </div>
-<div id="outline-container-orgabf05ac" class="outline-4">
-<h4 id="orgabf05ac">What is ncdu?</h4>
-<div class="outline-text-4" id="text-orgabf05ac">
+<div id="outline-container-org8d3f944" class="outline-4">
+<h4 id="org8d3f944">What is ncdu?</h4>
+<div class="outline-text-4" id="text-org8d3f944">
 <p>
 `ncdu` (NCurses Disk Usage) is a disk usage analyzer with a text-based interface, ideal for identifying large files or directories on an HPC system.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org87e8e76" class="outline-4">
-<h4 id="org87e8e76">Installation Steps</h4>
-<div class="outline-text-4" id="text-org87e8e76">
+<div id="outline-container-org4ce717c" class="outline-4">
+<h4 id="org4ce717c">Installation Steps</h4>
+<div class="outline-text-4" id="text-org4ce717c">
 <ol class="org-ol">
 <li><p>
 <b><b>Download the Source Code</b></b>
@@ -2654,24 +2442,21 @@ ncdu &#x2013;version
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org2fcbfc8" class="outline-3">
-<h3 id="org2fcbfc8">Example 3: Installing mc (Midnight Commander)</h3>
-<div class="outline-text-3" id="text-org2fcbfc8">
+<div id="outline-container-org248512a" class="outline-3">
+<h3 id="org248512a">Example 3: Installing mc (Midnight Commander)</h3>
+<div class="outline-text-3" id="text-org248512a">
 </div>
-<div id="outline-container-orgea5fb0e" class="outline-4">
-<h4 id="orgea5fb0e">What is Midnight Commander (mc)?</h4>
-<div class="outline-text-4" id="text-orgea5fb0e">
+<div id="outline-container-org4aee4e7" class="outline-4">
+<h4 id="org4aee4e7">What is Midnight Commander (mc)?</h4>
+<div class="outline-text-4" id="text-org4aee4e7">
 <p>
 Midnight Commander is a text-based file manager that provides a user-friendly interface for navigating and managing files directly from the command line. It includes features like directory browsing, file manipulation, and file viewing.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org6797cde" class="outline-4">
-<h4 id="org6797cde">Installation Steps</h4>
-<div class="outline-text-4" id="text-org6797cde">
+<div id="outline-container-org62f00aa" class="outline-4">
+<h4 id="org62f00aa">Installation Steps</h4>
+<div class="outline-text-4" id="text-org62f00aa">
 <ol class="org-ol">
 <li><p>
 <b><b>Download the Source Code</b></b>
@@ -2754,19 +2539,16 @@ mc &#x2013;version
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org86b67b5" class="outline-3">
-<h3 id="org86b67b5">Using Modules in an HPC Environment</h3>
-<div class="outline-text-3" id="text-org86b67b5">
+<div id="outline-container-orgd19b6e8" class="outline-3">
+<h3 id="orgd19b6e8">Using Modules in an HPC Environment</h3>
+<div class="outline-text-3" id="text-orgd19b6e8">
 <p>
 Many HPC systems use environment modules to manage software and their dependencies. Modules allow users to dynamically modify their shell environment to access different software versions without interfering with each other.
 </p>
 </div>
-
-<div id="outline-container-orge00b523" class="outline-4">
-<h4 id="orge00b523">Example: Loading a Module and Installing Software</h4>
-<div class="outline-text-4" id="text-orge00b523">
+<div id="outline-container-orgbb52352" class="outline-4">
+<h4 id="orgbb52352">Example: Loading a Module and Installing Software</h4>
+<div class="outline-text-4" id="text-orgbb52352">
 <ol class="org-ol">
 <li><p>
 <b><b>List Available Modules</b></b>
@@ -2821,11 +2603,9 @@ Follow the standard installation steps (download, extract, configure, make, make
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org1fba9ff" class="outline-3">
-<h3 id="org1fba9ff">Understanding TLDR and Cheat Commands</h3>
-<div class="outline-text-3" id="text-org1fba9ff">
+<div id="outline-container-org8407daa" class="outline-3">
+<h3 id="org8407daa">Understanding TLDR and Cheat Commands</h3>
+<div class="outline-text-3" id="text-org8407daa">
 <p>
 For users who find traditional man pages (`man`) overwhelming or verbose, `tldr` and `cheat` provide simplified and practical command examples.
 </p>
@@ -2899,11 +2679,9 @@ cheat tar
 </ol>
 </div>
 </div>
-
-
-<div id="outline-container-orge8fa099" class="outline-3">
-<h3 id="orge8fa099">Unzipping and Untarring Software Archives</h3>
-<div class="outline-text-3" id="text-orge8fa099">
+<div id="outline-container-org10feed5" class="outline-3">
+<h3 id="org10feed5">Unzipping and Untarring Software Archives</h3>
+<div class="outline-text-3" id="text-org10feed5">
 <p>
 When installing software from compressed archives, understanding how to extract them is crucial.
 </p>
@@ -2959,11 +2737,9 @@ tar -xJvf filename.tar.xz -C destination<sub>directory</sub>
 </ol>
 </div>
 </div>
-
-
-<div id="outline-container-org9d626ef" class="outline-3">
-<h3 id="org9d626ef">Removing Locally Installed Applications</h3>
-<div class="outline-text-3" id="text-org9d626ef">
+<div id="outline-container-orgcfed2d7" class="outline-3">
+<h3 id="orgcfed2d7">Removing Locally Installed Applications</h3>
+<div class="outline-text-3" id="text-orgcfed2d7">
 <p>
 If you need to remove a locally installed application, follow these steps:
 </p>
@@ -3027,11 +2803,9 @@ source ~/.bashrc
 </ol>
 </div>
 </div>
-
-
-<div id="outline-container-org28698c6" class="outline-3">
-<h3 id="org28698c6">Troubleshooting Tips</h3>
-<div class="outline-text-3" id="text-org28698c6">
+<div id="outline-container-org6d22533" class="outline-3">
+<h3 id="org6d22533">Troubleshooting Tips</h3>
+<div class="outline-text-3" id="text-org6d22533">
 <ul class="org-ul">
 <li><b><b>Problem:</b></b> `command not found` after installing the software.
 <ul class="org-ul">
@@ -3060,11 +2834,9 @@ source ~/.bashrc
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org450fe58" class="outline-3">
-<h3 id="org450fe58">Conclusion</h3>
-<div class="outline-text-3" id="text-org450fe58">
+<div id="outline-container-org57a8322" class="outline-3">
+<h3 id="org57a8322">Conclusion</h3>
+<div class="outline-text-3" id="text-org57a8322">
 <p>
 Installing software locally on an HPC system empowers you to customize your computing environment without requiring administrative privileges. By using your home directory and properly configuring environment variables, you can access a wide range of tools tailored to your needs. Understanding the installation process—from downloading and extracting source code to compiling and installing—ensures you can manage software effectively. Additionally, leveraging tools like `tldr` and `cheat` can simplify command usage, enhancing your productivity. Remember to maintain your local installations and remove any unnecessary applications to keep your environment clean and efficient.
 </p>
@@ -3075,15 +2847,13 @@ Happy Computing!
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-orgc8cd366" class="outline-2">
-<h2 id="orgc8cd366">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
-<div class="outline-text-2" id="text-orgc8cd366">
+<div id="outline-container-org54aa452" class="outline-2">
+<h2 id="org54aa452">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
+<div class="outline-text-2" id="text-org54aa452">
 </div>
-<div id="outline-container-org974517a" class="outline-3">
-<h3 id="org974517a">Introduction</h3>
-<div class="outline-text-3" id="text-org974517a">
+<div id="outline-container-orgb358cbf" class="outline-3">
+<h3 id="orgb358cbf">Introduction</h3>
+<div class="outline-text-3" id="text-orgb358cbf">
 <p>
 In most HPC systems, users do not have root privileges, and in this case, the system is running <b><b>Rocky Linux</b></b>. Root privileges, such as running `yum install` or `dnf install` commands, are not possible for regular users. This ensures the stability and security of the shared computing environment. 
 </p>
@@ -3097,11 +2867,9 @@ This tutorial will guide you through the process of installing software locally,
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-orgf94e49c" class="outline-3">
-<h3 id="orgf94e49c">Why Root Privileges Are Restricted</h3>
-<div class="outline-text-3" id="text-orgf94e49c">
+<div id="outline-container-org46ae613" class="outline-3">
+<h3 id="org46ae613">Why Root Privileges Are Restricted</h3>
+<div class="outline-text-3" id="text-org46ae613">
 <ul class="org-ul">
 <li>HPC systems are shared resources where multiple users run jobs simultaneously.</li>
 <li>Limiting root access ensures system integrity and prevents accidental or malicious changes.</li>
@@ -3109,11 +2877,9 @@ This tutorial will guide you through the process of installing software locally,
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orgdcc891a" class="outline-3">
-<h3 id="orgdcc891a">Installing Software Locally</h3>
-<div class="outline-text-3" id="text-orgdcc891a">
+<div id="outline-container-orgc586fc4" class="outline-3">
+<h3 id="orgc586fc4">Installing Software Locally</h3>
+<div class="outline-text-3" id="text-orgc586fc4">
 <ol class="org-ol">
 <li><p>
 <b><b>Prepare a Directory for Local Installations</b></b>
@@ -3150,10 +2916,9 @@ Reload your shell configuration:
 </p>
 </div>
 </div>
-
-<div id="outline-container-org8775d55" class="outline-3">
-<h3 id="org8775d55">Example: Installing Inxi from Source</h3>
-<div class="outline-text-3" id="text-org8775d55">
+<div id="outline-container-orge95774c" class="outline-3">
+<h3 id="orge95774c">Example: Installing Inxi from Source</h3>
+<div class="outline-text-3" id="text-orge95774c">
 <ol class="org-ol">
 <li><p>
 <b><b>Download the Source Code</b></b>
@@ -3196,15 +2961,13 @@ Confirm that inxi is installed and accessible:
 </ol>
 </div>
 </div>
-
-
-<div id="outline-container-orgf035f87" class="outline-3">
-<h3 id="orgf035f87">Additional Examples: mc and ncdu</h3>
-<div class="outline-text-3" id="text-orgf035f87">
+<div id="outline-container-orgb7ff38f" class="outline-3">
+<h3 id="orgb7ff38f">Additional Examples: mc and ncdu</h3>
+<div class="outline-text-3" id="text-orgb7ff38f">
 </div>
-<div id="outline-container-org5024d76" class="outline-4">
-<h4 id="org5024d76">Midnight Commander (mc)</h4>
-<div class="outline-text-4" id="text-org5024d76">
+<div id="outline-container-org49941d2" class="outline-4">
+<h4 id="org49941d2">Midnight Commander (mc)</h4>
+<div class="outline-text-4" id="text-org49941d2">
 <ul class="org-ul">
 <li><b><b>What is it?</b></b>
 Midnight Commander is a text-based file manager that provides a user-friendly interface for navigating and managing files directly from the command line. It includes features like directory browsing, file manipulation, and file viewing.</li>
@@ -3235,10 +2998,9 @@ make install
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org475eb23" class="outline-4">
-<h4 id="org475eb23">ncdu</h4>
-<div class="outline-text-4" id="text-org475eb23">
+<div id="outline-container-orgf8cd448" class="outline-4">
+<h4 id="orgf8cd448">ncdu</h4>
+<div class="outline-text-4" id="text-orgf8cd448">
 <ul class="org-ul">
 <li><b><b>What is it?</b></b>
 ncdu (NCurses Disk Usage) is a disk usage analyzer with a text-based interface, ideal for identifying large files or directories on an HPC system.</li>
@@ -3269,11 +3031,9 @@ make install
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org3a82f4e" class="outline-3">
-<h3 id="org3a82f4e">Troubleshooting Tips</h3>
-<div class="outline-text-3" id="text-org3a82f4e">
+<div id="outline-container-org3b80b8f" class="outline-3">
+<h3 id="org3b80b8f">Troubleshooting Tips</h3>
+<div class="outline-text-3" id="text-org3b80b8f">
 <ul class="org-ul">
 <li><b><b>Problem:</b></b> `command not found` after installing the software.
 <ul class="org-ul">
@@ -3290,27 +3050,22 @@ make install
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org54cc46f" class="outline-3">
-<h3 id="org54cc46f">Conclusion</h3>
-<div class="outline-text-3" id="text-org54cc46f">
+<div id="outline-container-orgcbc812a" class="outline-3">
+<h3 id="orgcbc812a">Conclusion</h3>
+<div class="outline-text-3" id="text-orgcbc812a">
 <p>
 Installing software locally on an HPC system is straightforward when you understand the process. By using your home directory and updating your PATH, you can have the flexibility to use the tools you need without requiring administrative access. For consistency and compatibility, it is recommended to use `~/.local` for local installations. Remember that `~/.local` is hidden, and you can view it with the `ls -a` command.
 </p>
 </div>
 </div>
 </div>
-
-
-
-<div id="outline-container-orgc71de55" class="outline-2">
-<h2 id="orgc71de55">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
-<div class="outline-text-2" id="text-orgc71de55">
+<div id="outline-container-org44ccc2e" class="outline-2">
+<h2 id="org44ccc2e">Beginner-Friendly Tutorial: Installing Software Locally on an HPC System</h2>
+<div class="outline-text-2" id="text-org44ccc2e">
 </div>
-<div id="outline-container-orgb31fc3c" class="outline-3">
-<h3 id="orgb31fc3c">Introduction</h3>
-<div class="outline-text-3" id="text-orgb31fc3c">
+<div id="outline-container-orgf2599cc" class="outline-3">
+<h3 id="orgf2599cc">Introduction</h3>
+<div class="outline-text-3" id="text-orgf2599cc">
 <p>
 In most HPC systems, users do not have root privileges, and in this case, the system is running <b><b>Rocky Linux</b></b>. Root privileges, such as running `yum install` or `dnf install` commands, are not possible for regular users. This ensures the stability and security of the shared computing environment. 
 </p>
@@ -3324,11 +3079,9 @@ This tutorial will guide you through the process of installing software locally,
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-org158b80f" class="outline-3">
-<h3 id="org158b80f">Why Root Privileges Are Restricted</h3>
-<div class="outline-text-3" id="text-org158b80f">
+<div id="outline-container-org536af35" class="outline-3">
+<h3 id="org536af35">Why Root Privileges Are Restricted</h3>
+<div class="outline-text-3" id="text-org536af35">
 <ul class="org-ul">
 <li>HPC systems are shared resources where multiple users run jobs simultaneously.</li>
 <li>Limiting root access ensures system integrity and prevents accidental or malicious changes.</li>
@@ -3336,11 +3089,9 @@ This tutorial will guide you through the process of installing software locally,
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org24cef5e" class="outline-3">
-<h3 id="org24cef5e">Installing Software Locally</h3>
-<div class="outline-text-3" id="text-org24cef5e">
+<div id="outline-container-org739987b" class="outline-3">
+<h3 id="org739987b">Installing Software Locally</h3>
+<div class="outline-text-3" id="text-org739987b">
 <ol class="org-ol">
 <li><p>
 <b><b>Prepare a Directory for Local Installations</b></b>
@@ -3374,11 +3125,9 @@ Reload your shell configuration:
 </ol>
 </div>
 </div>
-
-
-<div id="outline-container-org74e3c73" class="outline-3">
-<h3 id="org74e3c73">Example: Installing Inxi from Source</h3>
-<div class="outline-text-3" id="text-org74e3c73">
+<div id="outline-container-orgcbccee0" class="outline-3">
+<h3 id="orgcbccee0">Example: Installing Inxi from Source</h3>
+<div class="outline-text-3" id="text-orgcbccee0">
 <ol class="org-ol">
 <li><p>
 <b><b>Download the Source Code</b></b>
@@ -3421,11 +3170,9 @@ Confirm that inxi is installed and accessible:
 </ol>
 </div>
 </div>
-
-
-<div id="outline-container-org5d0987b" class="outline-3">
-<h3 id="org5d0987b">Troubleshooting Tips</h3>
-<div class="outline-text-3" id="text-org5d0987b">
+<div id="outline-container-orgd3e8973" class="outline-3">
+<h3 id="orgd3e8973">Troubleshooting Tips</h3>
+<div class="outline-text-3" id="text-orgd3e8973">
 <ul class="org-ul">
 <li><b><b>Problem:</b></b> `command not found` after installing the software.
 <ul class="org-ul">
@@ -3442,11 +3189,9 @@ Confirm that inxi is installed and accessible:
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orgd213fb7" class="outline-3">
-<h3 id="orgd213fb7">Conclusion</h3>
-<div class="outline-text-3" id="text-orgd213fb7">
+<div id="outline-container-orga9a19ca" class="outline-3">
+<h3 id="orga9a19ca">Conclusion</h3>
+<div class="outline-text-3" id="text-orga9a19ca">
 <p>
 Installing software locally on an HPC system is straightforward when you understand the process. By using your home directory and updating your PATH, you can have the flexibility to use the tools you need without requiring administrative access. For consistency and compatibility, it is recommended to use `~/.local` for local installations. Remember that `~/.local` is hidden, and you can view it with the `ls -a` command.
 </p>
@@ -3456,7 +3201,7 @@ Installing software locally on an HPC system is straightforward when you underst
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2025-02-20 Thu 17:28</p>
+<p class="date">Created: 2025-04-06 Sun 16:23</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

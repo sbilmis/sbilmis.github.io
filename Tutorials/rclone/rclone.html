@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-02-20 Thu 17:28 -->
+<!-- 2025-04-06 Sun 16:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>rclone Guide</title>
@@ -24,24 +24,23 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb6bc916">1. rclone</a></li>
-<li><a href="#orgda66332">2. Important Flags</a></li>
-<li><a href="#org815fae8">3. Configuring rclone</a></li>
-<li><a href="#org8779a73">4. Basic Commands</a></li>
-<li><a href="#org40aa345">5. Sync vs. Copy</a></li>
-<li><a href="#org62eb436">6. Advanced Usage</a></li>
-<li><a href="#orgde34770">7. Mounting and Unmounting</a></li>
-<li><a href="#orgbe85ce3">8. Managing Configurations</a></li>
-<li><a href="#org0c17230">9. Deleting Files and Directories</a></li>
-<li><a href="#org139e6bc">10. Creating Directories</a></li>
-<li><a href="#orgc7f5149">11. Use Cases</a></li>
-<li><a href="#org5678eea">12. Backup Script Example</a></li>
+<li><a href="#org43ede94">1. rclone</a></li>
+<li><a href="#org6291da9">2. Important Flags</a></li>
+<li><a href="#orge88dc54">3. Configuring rclone</a></li>
+<li><a href="#org720de7e">4. Basic Commands</a></li>
+<li><a href="#org781a592">5. Sync vs. Copy</a></li>
+<li><a href="#org61b1a7c">6. Advanced Usage</a></li>
+<li><a href="#org489760a">7. Mounting and Unmounting</a></li>
+<li><a href="#org4bf1cf7">8. Managing Configurations</a></li>
+<li><a href="#org6ee2ab9">9. Deleting Files and Directories</a></li>
+<li><a href="#org2793746">10. Creating Directories</a></li>
+<li><a href="#orga9a9012">11. Use Cases</a></li>
+<li><a href="#org9a392aa">12. Backup Script Example</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgb6bc916" class="outline-2">
-<h2 id="orgb6bc916"><span class="section-number-2">1.</span> rclone</h2>
+<div id="outline-container-org43ede94" class="outline-2">
+<h2 id="org43ede94"><span class="section-number-2">1.</span> rclone</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><a href="https://rclone.org/docs/#exit-code">rclone documentation</a>: Refer to this for comprehensive information and tutorials. Especially check the flags for more options.</li>
@@ -52,9 +51,8 @@
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgda66332" class="outline-2">
-<h2 id="orgda66332"><span class="section-number-2">2.</span> Important Flags</h2>
+<div id="outline-container-org6291da9" class="outline-2">
+<h2 id="org6291da9"><span class="section-number-2">2.</span> Important Flags</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><p>
@@ -70,9 +68,8 @@ The following flags are useful for most `rclone` commands. Use them carefully to
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org815fae8" class="outline-2">
-<h2 id="org815fae8"><span class="section-number-2">3.</span> Configuring rclone</h2>
+<div id="outline-container-orge88dc54" class="outline-2">
+<h2 id="orge88dc54"><span class="section-number-2">3.</span> Configuring rclone</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li><p>
@@ -96,9 +93,8 @@ To list configured remotes:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org8779a73" class="outline-2">
-<h2 id="org8779a73"><span class="section-number-2">4.</span> Basic Commands</h2>
+<div id="outline-container-org720de7e" class="outline-2">
+<h2 id="org720de7e"><span class="section-number-2">4.</span> Basic Commands</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><p>
@@ -136,9 +132,8 @@ Copy files from local to cloud with progress tracking:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org40aa345" class="outline-2">
-<h2 id="org40aa345"><span class="section-number-2">5.</span> Sync vs. Copy</h2>
+<div id="outline-container-org781a592" class="outline-2">
+<h2 id="org781a592"><span class="section-number-2">5.</span> Sync vs. Copy</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li><b><b>Copy</b></b>: Transfers files from source to destination without deletion. If files exist on the destination, they won’t be removed.</li>
@@ -155,9 +150,8 @@ Copy files from local to cloud with progress tracking:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org62eb436" class="outline-2">
-<h2 id="org62eb436"><span class="section-number-2">6.</span> Advanced Usage</h2>
+<div id="outline-container-org61b1a7c" class="outline-2">
+<h2 id="org61b1a7c"><span class="section-number-2">6.</span> Advanced Usage</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li><p>
@@ -178,9 +172,8 @@ Copy files that changed in the last 24 hours:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgde34770" class="outline-2">
-<h2 id="orgde34770"><span class="section-number-2">7.</span> Mounting and Unmounting</h2>
+<div id="outline-container-org489760a" class="outline-2">
+<h2 id="org489760a"><span class="section-number-2">7.</span> Mounting and Unmounting</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li><p>
@@ -200,18 +193,16 @@ umount /path/to/local/mount
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgbe85ce3" class="outline-2">
-<h2 id="orgbe85ce3"><span class="section-number-2">8.</span> Managing Configurations</h2>
+<div id="outline-container-org4bf1cf7" class="outline-2">
+<h2 id="org4bf1cf7"><span class="section-number-2">8.</span> Managing Configurations</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li><b><b>Sync configurations across computers</b></b>: It’s often best to reconfigure `rclone` separately on each machine.</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org0c17230" class="outline-2">
-<h2 id="org0c17230"><span class="section-number-2">9.</span> Deleting Files and Directories</h2>
+<div id="outline-container-org6ee2ab9" class="outline-2">
+<h2 id="org6ee2ab9"><span class="section-number-2">9.</span> Deleting Files and Directories</h2>
 <div class="outline-text-2" id="text-9">
 <ul class="org-ul">
 <li><p>
@@ -236,9 +227,8 @@ Delete empty directories:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org139e6bc" class="outline-2">
-<h2 id="org139e6bc"><span class="section-number-2">10.</span> Creating Directories</h2>
+<div id="outline-container-org2793746" class="outline-2">
+<h2 id="org2793746"><span class="section-number-2">10.</span> Creating Directories</h2>
 <div class="outline-text-2" id="text-10">
 <ul class="org-ul">
 <li><p>
@@ -251,9 +241,8 @@ Create a new directory in a cloud storage location:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgc7f5149" class="outline-2">
-<h2 id="orgc7f5149"><span class="section-number-2">11.</span> Use Cases</h2>
+<div id="outline-container-orga9a9012" class="outline-2">
+<h2 id="orga9a9012"><span class="section-number-2">11.</span> Use Cases</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
 <li><p>
@@ -266,9 +255,8 @@ After an initial sync, avoid full re-syncs by copying only recently changed file
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org5678eea" class="outline-2">
-<h2 id="org5678eea"><span class="section-number-2">12.</span> Backup Script Example</h2>
+<div id="outline-container-org9a392aa" class="outline-2">
+<h2 id="org9a392aa"><span class="section-number-2">12.</span> Backup Script Example</h2>
 <div class="outline-text-2" id="text-12">
 <ul class="org-ul">
 <li><p>
@@ -291,7 +279,7 @@ rclone copy -vv --progress --transfers 30 "$SOURCE" "$DESTINATION"
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2025-02-20 Thu 17:28</p>
+<p class="date">Created: 2025-04-06 Sun 16:23</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

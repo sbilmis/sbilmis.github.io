@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-02-20 Thu 17:28 -->
+<!-- 2025-04-06 Sun 16:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tech Notes &amp; How-tos</title>
@@ -24,285 +24,292 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga686273">1. Container</a>
-<ul>
-<li><a href="#org20725c8">1.1. Docker Guide</a></li>
+<li><a href="#orgda983d3">0.1. Python</a></li>
 </ul>
 </li>
-<li><a href="#org7c9ca8b">2. Devonthink</a>
+<li><a href="#org39be35f">1. Container</a>
 <ul>
-<li><a href="#org575122d">2.1. DEVONthink Overview and Notes</a></li>
+<li><a href="#orgbdf9a23">1.1. Docker Guide</a></li>
 </ul>
 </li>
-<li><a href="#org99b13d6">3. Emacs</a>
+<li><a href="#org59d7531">2. Devonthink</a>
 <ul>
-<li><a href="#orgfed7754">3.1. Emacs Guide</a></li>
-<li><a href="#org34544e2">3.2. Org Mode Tips and Tricks</a></li>
+<li><a href="#orga4d69ce">2.1. DEVONthink Overview and Notes</a></li>
 </ul>
 </li>
-<li><a href="#org54e04c3">4. Firefox</a>
+<li><a href="#orgab921b2">3. Emacs</a>
 <ul>
-<li><a href="#org3833d42">4.1. Firefox Tips and Tricks</a></li>
+<li><a href="#org723d2c9">3.1. Emacs Guide</a></li>
+<li><a href="#orgb0b40ea">3.2. Org Mode Tips and Tricks</a></li>
+<li><a href="#org2462096">3.3. Setting Up Emacs as a Python IDE with Eglot, Pyright, Black, and Ruff</a></li>
 </ul>
 </li>
-<li><a href="#org3a08106">5. General</a>
+<li><a href="#org07aa342">4. Firefox</a>
 <ul>
-<li><a href="#orgdcfc312">5.1. Miscellaneous Tips and Tricks</a></li>
-<li><a href="#orgb0335d0">5.2. Recommended Apps and Software</a></li>
-<li><a href="#org2ba0d32">5.3. Recommended Fonts</a></li>
-<li><a href="#org02c05ff">5.4. Unison File Synchronization</a></li>
+<li><a href="#org7697809">4.1. Firefox Tips and Tricks</a></li>
 </ul>
 </li>
-<li><a href="#org06e312c">6. Git</a>
+<li><a href="#org393c56b">5. General</a>
 <ul>
-<li><a href="#orgf2fc684">6.1. Git Guide</a></li>
+<li><a href="#orgbdb6506">5.1. Miscellaneous Tips and Tricks</a></li>
+<li><a href="#orgf70ca33">5.2. Recommended Apps and Software</a></li>
+<li><a href="#org99ee9c7">5.3. Recommended Fonts</a></li>
+<li><a href="#orgdc1c3ce">5.4. Unison File Synchronization</a></li>
 </ul>
 </li>
-<li><a href="#org892fa3c">7. Hpc</a>
+<li><a href="#orga4964c7">6. Git</a>
 <ul>
-<li><a href="#orgdc69e0a">7.1. Linux and HPC Tutorials: A Practical Guide for Beginners</a></li>
-<li><a href="#orgf2eb833">7.2. Opensees<sub>installation</sub></a></li>
+<li><a href="#org8e24ca0">6.1. Git Guide</a></li>
 </ul>
 </li>
-<li><a href="#org528a068">8. Hugo</a>
+<li><a href="#orgb32efc5">7. Hpc</a>
 <ul>
-<li><a href="#org0b9d9c6">8.1. Hugo Tips and Resources</a></li>
+<li><a href="#orgbce498d">7.1. Linux and HPC Tutorials: A Practical Guide for Beginners</a></li>
+<li><a href="#org31c6bff">7.2. Opensees<sub>installation</sub></a></li>
 </ul>
 </li>
-<li><a href="#org6258928">9. Jupyter</a>
+<li><a href="#org97c7005">8. Hugo</a>
 <ul>
-<li><a href="#orgf42f1f1">9.1. Jupyter Guide</a></li>
+<li><a href="#orge01ccec">8.1. Hugo Tips and Resources</a></li>
 </ul>
 </li>
-<li><a href="#orgcb4bad9">10. Latex</a>
+<li><a href="#org0473dba">9. Jupyter</a>
 <ul>
-<li><a href="#org7a3d46b">10.1. LaTeX Guide</a></li>
+<li><a href="#orge609cd6">9.1. Jupyter Guide</a></li>
 </ul>
 </li>
-<li><a href="#orgb48575a">11. Linux</a>
+<li><a href="#org5089a43">10. Latex</a>
 <ul>
-<li><a href="#org2118ca8">11.1. CVE Vulnerabilities                                                :centos:</a></li>
-<li><a href="#org60617eb">11.2. Linux</a></li>
+<li><a href="#orgdfacdf7">10.1. LaTeX Guide</a></li>
 </ul>
 </li>
-<li><a href="#orgdab610d">12. Macos</a>
+<li><a href="#org2398b3a">11. Linux</a>
 <ul>
-<li><a href="#orge106a73">12.1. MacOS Tips and Tricks</a></li>
+<li><a href="#orge399185">11.1. CVE Vulnerabilities                                                :centos:</a></li>
+<li><a href="#org6e0ad14">11.2. Linux</a></li>
 </ul>
 </li>
-<li><a href="#org2371880">13. Mathematica</a>
+<li><a href="#org8deaec7">12. Macos</a>
 <ul>
-<li><a href="#org1f9c2b4">13.1. Mathematica Guide</a></li>
+<li><a href="#org68bb264">12.1. MacOS Tips and Tricks</a></li>
 </ul>
 </li>
-<li><a href="#orgbf94dee">14. Matlab</a>
+<li><a href="#org3a09c3b">13. Mathematica</a>
 <ul>
-<li><a href="#org0c96556">14.1. MATLAB Tips and Resources</a></li>
+<li><a href="#org1319642">13.1. Mathematica Guide</a></li>
 </ul>
 </li>
-<li><a href="#org8f12a78">15. Rclone</a>
+<li><a href="#orgb380864">14. Matlab</a>
 <ul>
-<li><a href="#orga160724">15.1. Rclone Guide</a></li>
+<li><a href="#org283bbb7">14.1. MATLAB Tips and Resources</a></li>
 </ul>
 </li>
-<li><a href="#orgfaad16d">16. Rsync</a>
+<li><a href="#org9e823a7">15. Rclone</a>
 <ul>
-<li><a href="#orgcb7d74b">16.1. Rsync Guide</a></li>
+<li><a href="#org88d99e9">15.1. Rclone Guide</a></li>
 </ul>
 </li>
-<li><a href="#org7b2b6dd">17. Ssh</a>
+<li><a href="#org3246e8c">16. Rsync</a>
 <ul>
-<li><a href="#org75c9e0b">17.1. SSH Tutorial</a></li>
+<li><a href="#org34d6001">16.1. Rsync Guide</a></li>
 </ul>
 </li>
-<li><a href="#org2899dd9">18. Tmux</a>
+<li><a href="#org2537fdf">17. Ssh</a>
 <ul>
-<li><a href="#org9a86aa3">18.1. Tmux Guide</a></li>
+<li><a href="#org212e203">17.1. SSH Tutorial</a></li>
 </ul>
 </li>
-<li><a href="#orgd8840d9">19. Zotero</a>
+<li><a href="#orgd14f5d7">18. Tmux</a>
 <ul>
-<li><a href="#org247fff2">19.1. Zotero Notes</a></li>
+<li><a href="#org22687aa">18.1. Tmux Guide</a></li>
 </ul>
 </li>
+<li><a href="#org8af8d8e">19. Zotero</a>
+<ul>
+<li><a href="#orgcbeb03b">19.1. Zotero Notes</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orga686273" class="outline-2">
-<h2 id="orga686273"><span class="section-number-2">1.</span> Container</h2>
+<div id="outline-container-orgda983d3" class="outline-3">
+<h3 id="orgda983d3"><span class="section-number-3">0.1.</span> <a href="python.html">Python</a></h3>
+</div>
+<div id="outline-container-org39be35f" class="outline-2">
+<h2 id="org39be35f"><span class="section-number-2">1.</span> Container</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org20725c8" class="outline-3">
-<h3 id="org20725c8"><span class="section-number-3">1.1.</span> <a href="container/docker.html">Docker Guide</a></h3>
+<div id="outline-container-orgbdf9a23" class="outline-3">
+<h3 id="orgbdf9a23"><span class="section-number-3">1.1.</span> <a href="container/docker.html">Docker Guide</a></h3>
 </div>
 </div>
-<div id="outline-container-org7c9ca8b" class="outline-2">
-<h2 id="org7c9ca8b"><span class="section-number-2">2.</span> Devonthink</h2>
+<div id="outline-container-org59d7531" class="outline-2">
+<h2 id="org59d7531"><span class="section-number-2">2.</span> Devonthink</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org575122d" class="outline-3">
-<h3 id="org575122d"><span class="section-number-3">2.1.</span> <a href="devonthink/devonthink.html">DEVONthink Overview and Notes</a></h3>
+<div id="outline-container-orga4d69ce" class="outline-3">
+<h3 id="orga4d69ce"><span class="section-number-3">2.1.</span> <a href="devonthink/devonthink.html">DEVONthink Overview and Notes</a></h3>
 </div>
 </div>
-<div id="outline-container-org99b13d6" class="outline-2">
-<h2 id="org99b13d6"><span class="section-number-2">3.</span> Emacs</h2>
+<div id="outline-container-orgab921b2" class="outline-2">
+<h2 id="orgab921b2"><span class="section-number-2">3.</span> Emacs</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgfed7754" class="outline-3">
-<h3 id="orgfed7754"><span class="section-number-3">3.1.</span> <a href="emacs/emacs.html">Emacs Guide</a></h3>
+<div id="outline-container-org723d2c9" class="outline-3">
+<h3 id="org723d2c9"><span class="section-number-3">3.1.</span> <a href="emacs/emacs.html">Emacs Guide</a></h3>
 </div>
-<div id="outline-container-org34544e2" class="outline-3">
-<h3 id="org34544e2"><span class="section-number-3">3.2.</span> <a href="emacs/org_mode.html">Org Mode Tips and Tricks</a></h3>
+<div id="outline-container-orgb0b40ea" class="outline-3">
+<h3 id="orgb0b40ea"><span class="section-number-3">3.2.</span> <a href="emacs/org_mode.html">Org Mode Tips and Tricks</a></h3>
+</div>
+<div id="outline-container-org2462096" class="outline-3">
+<h3 id="org2462096"><span class="section-number-3">3.3.</span> <a href="emacs/emacs-python-guide.html">Setting Up Emacs as a Python IDE with Eglot, Pyright, Black, and Ruff</a></h3>
 </div>
 </div>
-<div id="outline-container-org54e04c3" class="outline-2">
-<h2 id="org54e04c3"><span class="section-number-2">4.</span> Firefox</h2>
+<div id="outline-container-org07aa342" class="outline-2">
+<h2 id="org07aa342"><span class="section-number-2">4.</span> Firefox</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org3833d42" class="outline-3">
-<h3 id="org3833d42"><span class="section-number-3">4.1.</span> <a href="firefox/firefox.html">Firefox Tips and Tricks</a></h3>
+<div id="outline-container-org7697809" class="outline-3">
+<h3 id="org7697809"><span class="section-number-3">4.1.</span> <a href="firefox/firefox.html">Firefox Tips and Tricks</a></h3>
 </div>
 </div>
-<div id="outline-container-org3a08106" class="outline-2">
-<h2 id="org3a08106"><span class="section-number-2">5.</span> General</h2>
+<div id="outline-container-org393c56b" class="outline-2">
+<h2 id="org393c56b"><span class="section-number-2">5.</span> General</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orgdcfc312" class="outline-3">
-<h3 id="orgdcfc312"><span class="section-number-3">5.1.</span> <a href="general/general.html">Miscellaneous Tips and Tricks</a></h3>
+<div id="outline-container-orgbdb6506" class="outline-3">
+<h3 id="orgbdb6506"><span class="section-number-3">5.1.</span> <a href="general/general.html">Miscellaneous Tips and Tricks</a></h3>
 </div>
-<div id="outline-container-orgb0335d0" class="outline-3">
-<h3 id="orgb0335d0"><span class="section-number-3">5.2.</span> <a href="general/apps_to_use.html">Recommended Apps and Software</a></h3>
+<div id="outline-container-orgf70ca33" class="outline-3">
+<h3 id="orgf70ca33"><span class="section-number-3">5.2.</span> <a href="general/apps_to_use.html">Recommended Apps and Software</a></h3>
 </div>
-<div id="outline-container-org2ba0d32" class="outline-3">
-<h3 id="org2ba0d32"><span class="section-number-3">5.3.</span> <a href="general/fonts.html">Recommended Fonts</a></h3>
+<div id="outline-container-org99ee9c7" class="outline-3">
+<h3 id="org99ee9c7"><span class="section-number-3">5.3.</span> <a href="general/fonts.html">Recommended Fonts</a></h3>
 </div>
-<div id="outline-container-org02c05ff" class="outline-3">
-<h3 id="org02c05ff"><span class="section-number-3">5.4.</span> <a href="general/unison.html">Unison File Synchronization</a></h3>
+<div id="outline-container-orgdc1c3ce" class="outline-3">
+<h3 id="orgdc1c3ce"><span class="section-number-3">5.4.</span> <a href="general/unison.html">Unison File Synchronization</a></h3>
 </div>
 </div>
-<div id="outline-container-org06e312c" class="outline-2">
-<h2 id="org06e312c"><span class="section-number-2">6.</span> Git</h2>
+<div id="outline-container-orga4964c7" class="outline-2">
+<h2 id="orga4964c7"><span class="section-number-2">6.</span> Git</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgf2fc684" class="outline-3">
-<h3 id="orgf2fc684"><span class="section-number-3">6.1.</span> <a href="git/git.html">Git Guide</a></h3>
+<div id="outline-container-org8e24ca0" class="outline-3">
+<h3 id="org8e24ca0"><span class="section-number-3">6.1.</span> <a href="git/git.html">Git Guide</a></h3>
 </div>
 </div>
-<div id="outline-container-org892fa3c" class="outline-2">
-<h2 id="org892fa3c"><span class="section-number-2">7.</span> Hpc</h2>
+<div id="outline-container-orgb32efc5" class="outline-2">
+<h2 id="orgb32efc5"><span class="section-number-2">7.</span> Hpc</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-orgdc69e0a" class="outline-3">
-<h3 id="orgdc69e0a"><span class="section-number-3">7.1.</span> <a href="hpc/hpc.html">Linux and HPC Tutorials: A Practical Guide for Beginners</a></h3>
+<div id="outline-container-orgbce498d" class="outline-3">
+<h3 id="orgbce498d"><span class="section-number-3">7.1.</span> <a href="hpc/hpc.html">Linux and HPC Tutorials: A Practical Guide for Beginners</a></h3>
 </div>
-<div id="outline-container-orgf2eb833" class="outline-3">
-<h3 id="orgf2eb833"><span class="section-number-3">7.2.</span> <a href="hpc/opensees_installation.html">Opensees<sub>installation</sub></a></h3>
+<div id="outline-container-org31c6bff" class="outline-3">
+<h3 id="org31c6bff"><span class="section-number-3">7.2.</span> <a href="hpc/opensees_installation.html">Opensees<sub>installation</sub></a></h3>
 </div>
 </div>
-<div id="outline-container-org528a068" class="outline-2">
-<h2 id="org528a068"><span class="section-number-2">8.</span> Hugo</h2>
+<div id="outline-container-org97c7005" class="outline-2">
+<h2 id="org97c7005"><span class="section-number-2">8.</span> Hugo</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org0b9d9c6" class="outline-3">
-<h3 id="org0b9d9c6"><span class="section-number-3">8.1.</span> <a href="hugo/hugo.html">Hugo Tips and Resources</a></h3>
+<div id="outline-container-orge01ccec" class="outline-3">
+<h3 id="orge01ccec"><span class="section-number-3">8.1.</span> <a href="hugo/hugo.html">Hugo Tips and Resources</a></h3>
 </div>
 </div>
-<div id="outline-container-org6258928" class="outline-2">
-<h2 id="org6258928"><span class="section-number-2">9.</span> Jupyter</h2>
+<div id="outline-container-org0473dba" class="outline-2">
+<h2 id="org0473dba"><span class="section-number-2">9.</span> Jupyter</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-orgf42f1f1" class="outline-3">
-<h3 id="orgf42f1f1"><span class="section-number-3">9.1.</span> <a href="jupyter/jupyter.html">Jupyter Guide</a></h3>
+<div id="outline-container-orge609cd6" class="outline-3">
+<h3 id="orge609cd6"><span class="section-number-3">9.1.</span> <a href="jupyter/jupyter.html">Jupyter Guide</a></h3>
 </div>
 </div>
-<div id="outline-container-orgcb4bad9" class="outline-2">
-<h2 id="orgcb4bad9"><span class="section-number-2">10.</span> Latex</h2>
+<div id="outline-container-org5089a43" class="outline-2">
+<h2 id="org5089a43"><span class="section-number-2">10.</span> Latex</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org7a3d46b" class="outline-3">
-<h3 id="org7a3d46b"><span class="section-number-3">10.1.</span> <a href="latex/latex.html">LaTeX Guide</a></h3>
+<div id="outline-container-orgdfacdf7" class="outline-3">
+<h3 id="orgdfacdf7"><span class="section-number-3">10.1.</span> <a href="latex/latex.html">LaTeX Guide</a></h3>
 </div>
 </div>
-<div id="outline-container-orgb48575a" class="outline-2">
-<h2 id="orgb48575a"><span class="section-number-2">11.</span> Linux</h2>
+<div id="outline-container-org2398b3a" class="outline-2">
+<h2 id="org2398b3a"><span class="section-number-2">11.</span> Linux</h2>
 <div class="outline-text-2" id="text-11">
 </div>
-<div id="outline-container-org2118ca8" class="outline-3">
-<h3 id="org2118ca8"><span class="section-number-3">11.1.</span> <a href="linux/cve_vulnerabilities.html">CVE Vulnerabilities                                                :centos:</a></h3>
+<div id="outline-container-orge399185" class="outline-3">
+<h3 id="orge399185"><span class="section-number-3">11.1.</span> <a href="linux/cve_vulnerabilities.html">CVE Vulnerabilities                                                :centos:</a></h3>
 </div>
-<div id="outline-container-org60617eb" class="outline-3">
-<h3 id="org60617eb"><span class="section-number-3">11.2.</span> <a href="linux/apps-Linux.html">Linux</a></h3>
+<div id="outline-container-org6e0ad14" class="outline-3">
+<h3 id="org6e0ad14"><span class="section-number-3">11.2.</span> <a href="linux/apps-Linux.html">Linux</a></h3>
 </div>
 </div>
-<div id="outline-container-orgdab610d" class="outline-2">
-<h2 id="orgdab610d"><span class="section-number-2">12.</span> Macos</h2>
+<div id="outline-container-org8deaec7" class="outline-2">
+<h2 id="org8deaec7"><span class="section-number-2">12.</span> Macos</h2>
 <div class="outline-text-2" id="text-12">
 </div>
-<div id="outline-container-orge106a73" class="outline-3">
-<h3 id="orge106a73"><span class="section-number-3">12.1.</span> <a href="macos/macos.html">MacOS Tips and Tricks</a></h3>
+<div id="outline-container-org68bb264" class="outline-3">
+<h3 id="org68bb264"><span class="section-number-3">12.1.</span> <a href="macos/macos.html">MacOS Tips and Tricks</a></h3>
 </div>
 </div>
-<div id="outline-container-org2371880" class="outline-2">
-<h2 id="org2371880"><span class="section-number-2">13.</span> Mathematica</h2>
+<div id="outline-container-org3a09c3b" class="outline-2">
+<h2 id="org3a09c3b"><span class="section-number-2">13.</span> Mathematica</h2>
 <div class="outline-text-2" id="text-13">
 </div>
-<div id="outline-container-org1f9c2b4" class="outline-3">
-<h3 id="org1f9c2b4"><span class="section-number-3">13.1.</span> <a href="mathematica/mathematica.html">Mathematica Guide</a></h3>
+<div id="outline-container-org1319642" class="outline-3">
+<h3 id="org1319642"><span class="section-number-3">13.1.</span> <a href="mathematica/mathematica.html">Mathematica Guide</a></h3>
 </div>
 </div>
-<div id="outline-container-orgbf94dee" class="outline-2">
-<h2 id="orgbf94dee"><span class="section-number-2">14.</span> Matlab</h2>
+<div id="outline-container-orgb380864" class="outline-2">
+<h2 id="orgb380864"><span class="section-number-2">14.</span> Matlab</h2>
 <div class="outline-text-2" id="text-14">
 </div>
-<div id="outline-container-org0c96556" class="outline-3">
-<h3 id="org0c96556"><span class="section-number-3">14.1.</span> <a href="matlab/matlab.html">MATLAB Tips and Resources</a></h3>
+<div id="outline-container-org283bbb7" class="outline-3">
+<h3 id="org283bbb7"><span class="section-number-3">14.1.</span> <a href="matlab/matlab.html">MATLAB Tips and Resources</a></h3>
 </div>
 </div>
-<div id="outline-container-org8f12a78" class="outline-2">
-<h2 id="org8f12a78"><span class="section-number-2">15.</span> Rclone</h2>
+<div id="outline-container-org9e823a7" class="outline-2">
+<h2 id="org9e823a7"><span class="section-number-2">15.</span> Rclone</h2>
 <div class="outline-text-2" id="text-15">
 </div>
-<div id="outline-container-orga160724" class="outline-3">
-<h3 id="orga160724"><span class="section-number-3">15.1.</span> <a href="rclone/rclone.html">Rclone Guide</a></h3>
+<div id="outline-container-org88d99e9" class="outline-3">
+<h3 id="org88d99e9"><span class="section-number-3">15.1.</span> <a href="rclone/rclone.html">Rclone Guide</a></h3>
 </div>
 </div>
-<div id="outline-container-orgfaad16d" class="outline-2">
-<h2 id="orgfaad16d"><span class="section-number-2">16.</span> Rsync</h2>
+<div id="outline-container-org3246e8c" class="outline-2">
+<h2 id="org3246e8c"><span class="section-number-2">16.</span> Rsync</h2>
 <div class="outline-text-2" id="text-16">
 </div>
-<div id="outline-container-orgcb7d74b" class="outline-3">
-<h3 id="orgcb7d74b"><span class="section-number-3">16.1.</span> <a href="rsync/rsync.html">Rsync Guide</a></h3>
+<div id="outline-container-org34d6001" class="outline-3">
+<h3 id="org34d6001"><span class="section-number-3">16.1.</span> <a href="rsync/rsync.html">Rsync Guide</a></h3>
 </div>
 </div>
-<div id="outline-container-org7b2b6dd" class="outline-2">
-<h2 id="org7b2b6dd"><span class="section-number-2">17.</span> Ssh</h2>
+<div id="outline-container-org2537fdf" class="outline-2">
+<h2 id="org2537fdf"><span class="section-number-2">17.</span> Ssh</h2>
 <div class="outline-text-2" id="text-17">
 </div>
-<div id="outline-container-org75c9e0b" class="outline-3">
-<h3 id="org75c9e0b"><span class="section-number-3">17.1.</span> <a href="ssh/ssh.html">SSH Tutorial</a></h3>
+<div id="outline-container-org212e203" class="outline-3">
+<h3 id="org212e203"><span class="section-number-3">17.1.</span> <a href="ssh/ssh.html">SSH Tutorial</a></h3>
 </div>
 </div>
-<div id="outline-container-org2899dd9" class="outline-2">
-<h2 id="org2899dd9"><span class="section-number-2">18.</span> Tmux</h2>
+<div id="outline-container-orgd14f5d7" class="outline-2">
+<h2 id="orgd14f5d7"><span class="section-number-2">18.</span> Tmux</h2>
 <div class="outline-text-2" id="text-18">
 </div>
-<div id="outline-container-org9a86aa3" class="outline-3">
-<h3 id="org9a86aa3"><span class="section-number-3">18.1.</span> <a href="tmux/tmux.html">Tmux Guide</a></h3>
+<div id="outline-container-org22687aa" class="outline-3">
+<h3 id="org22687aa"><span class="section-number-3">18.1.</span> <a href="tmux/tmux.html">Tmux Guide</a></h3>
 </div>
 </div>
-<div id="outline-container-orgd8840d9" class="outline-2">
-<h2 id="orgd8840d9"><span class="section-number-2">19.</span> Zotero</h2>
+<div id="outline-container-org8af8d8e" class="outline-2">
+<h2 id="org8af8d8e"><span class="section-number-2">19.</span> Zotero</h2>
 <div class="outline-text-2" id="text-19">
 </div>
-<div id="outline-container-org247fff2" class="outline-3">
-<h3 id="org247fff2"><span class="section-number-3">19.1.</span> <a href="zotero/zotero.html">Zotero Notes</a></h3>
+<div id="outline-container-orgcbeb03b" class="outline-3">
+<h3 id="orgcbeb03b"><span class="section-number-3">19.1.</span> <a href="zotero/zotero.html">Zotero Notes</a></h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2025-02-20 Thu 17:28</p>
+<p class="date">Created: 2025-04-06 Sun 16:23</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

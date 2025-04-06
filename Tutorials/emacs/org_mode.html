@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-02-20 Thu 17:28 -->
+<!-- 2025-04-06 Sun 16:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org Mode Tips and Tricks</title>
@@ -24,27 +24,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org141b68d">1. Org Mode Tips and Tricks</a>
+<li><a href="#orgced087f">1. Org Mode Tips and Tricks</a>
 <ul>
-<li><a href="#org1a39bc7">1.1. Checking Org Mode Version</a></li>
-<li><a href="#org8e0660b">1.2. Setting Initial Visibility</a></li>
-<li><a href="#org74d4c30">1.3. Writing Comments in Org Mode</a></li>
-<li><a href="#org8cf4f31">1.4. Org Mode Syntax Highlighting</a></li>
-<li><a href="#org3aba5c5">1.5. Exporting Results in Org-Babel Without Re-evaluating</a></li>
-<li><a href="#orgf914e46">1.6. Converting Org Files to Jupyter Notebooks (IPYNB)</a></li>
-<li><a href="#org7f128c3">1.7. Ignoring Broken Links During HTML Export</a></li>
+<li><a href="#org83bd090">1.1. Checking Org Mode Version</a></li>
+<li><a href="#org10ca156">1.2. Setting Initial Visibility</a></li>
+<li><a href="#org3c0ada6">1.3. Writing Comments in Org Mode</a></li>
+<li><a href="#orgdecd4e1">1.4. Org Mode Syntax Highlighting</a></li>
+<li><a href="#org5b6c348">1.5. Exporting Results in Org-Babel Without Re-evaluating</a></li>
+<li><a href="#org04b7190">1.6. Converting Org Files to Jupyter Notebooks (IPYNB)</a></li>
+<li><a href="#org07a4d50">1.7. Ignoring Broken Links During HTML Export</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org141b68d" class="outline-2">
-<h2 id="org141b68d"><span class="section-number-2">1.</span> Org Mode Tips and Tricks</h2>
+<div id="outline-container-orgced087f" class="outline-2">
+<h2 id="orgced087f"><span class="section-number-2">1.</span> Org Mode Tips and Tricks</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org1a39bc7" class="outline-3">
-<h3 id="org1a39bc7"><span class="section-number-3">1.1.</span> Checking Org Mode Version</h3>
+<div id="outline-container-org83bd090" class="outline-3">
+<h3 id="org83bd090"><span class="section-number-3">1.1.</span> Checking Org Mode Version</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 To learn the version of Org mode you are using, run the following command in Emacs:
@@ -54,76 +53,75 @@ To learn the version of Org mode you are using, run the following command in Ema
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org8e0660b" class="outline-3">
-<h3 id="org8e0660b"><span class="section-number-3">1.2.</span> Setting Initial Visibility</h3>
+<div id="outline-container-org10ca156" class="outline-3">
+<h3 id="org10ca156"><span class="section-number-3">1.2.</span> Setting Initial Visibility</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Control the visibility of folded items when an Org file is opened. By default, all content is visible. Configure this using the variable `org-startup-folded` or set it per-file with one of the following lines:
 </p>
 
-<pre class="example">
-#+STARTUP: overview       # Fold to show top-level headlines only.
+<div class="org-src-container">
+<pre class="src src-nil">#+STARTUP: overview       # Fold to show top-level headlines only.
 #+STARTUP: content        # Fold to show top-level headlines and their direct content.
 #+STARTUP: showall        # Show everything.
 #+STARTUP: show2levels    # Show up to two levels of headlines.
 #+STARTUP: showeverything # Display all content without folding.
 </pre>
+</div>
 
 <ul class="org-ul">
 <li>Reference: <a href="https://orgmode.org/manual/Initial-visibility.html">Initial Visibility</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org74d4c30" class="outline-3">
-<h3 id="org74d4c30"><span class="section-number-3">1.3.</span> Writing Comments in Org Mode</h3>
+<div id="outline-container-org3c0ada6" class="outline-3">
+<h3 id="org3c0ada6"><span class="section-number-3">1.3.</span> Writing Comments in Org Mode</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 To write comment lines that are not exported to HTML, use the following syntax:
 </p>
 
-<pre class="example">
-#+BEGIN_COMMENT
+<div class="org-src-container">
+<pre class="src src-nil">#+BEGIN_COMMENT
 This part will not be exported.
 #+END_COMMENT
 </pre>
+</div>
 
 <ul class="org-ul">
 <li>See more: <a href="https://orgmode.org/manual/Comment-lines.html">Comment Lines Manual</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org8cf4f31" class="outline-3">
-<h3 id="org8cf4f31"><span class="section-number-3">1.4.</span> Org Mode Syntax Highlighting</h3>
+<div id="outline-container-orgdecd4e1" class="outline-3">
+<h3 id="orgdecd4e1"><span class="section-number-3">1.4.</span> Org Mode Syntax Highlighting</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 Org mode provides rich syntax for notes, warnings, and tips. Below are some examples:
 </p>
 
-<div class="NOTE" id="org911b748">
+<div class="NOTE" id="orge9b6232">
 <p>
 This is a useful note.
 </p>
 
 </div>
 
-<div class="WARNING" id="org0d52389">
+<div class="WARNING" id="org206e246">
 <p>
 Be careful! Check that you have completed all steps.
 </p>
 
 </div>
 
-<div class="TIP" id="org6b120b5">
+<div class="TIP" id="orgc4fd3ad">
 <p>
 Try doing it this way for better results.
 </p>
 
 </div>
 
-<div class="IMPORTANT" id="org846ad11">
+<div class="IMPORTANT" id="org16b8755">
 <p>
 Important: Ensure all settings are correctly configured.
 </p>
@@ -135,23 +133,23 @@ Important: Ensure all settings are correctly configured.
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org3aba5c5" class="outline-3">
-<h3 id="org3aba5c5"><span class="section-number-3">1.5.</span> Exporting Results in Org-Babel Without Re-evaluating</h3>
+<div id="outline-container-org5b6c348" class="outline-3">
+<h3 id="org5b6c348"><span class="section-number-3">1.5.</span> Exporting Results in Org-Babel Without Re-evaluating</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 If source code blocks have already been evaluated, you can export their results without re-evaluating:
 </p>
 
-<pre class="example">
-:eval no-export
+<div class="org-src-container">
+<pre class="src src-nil">:eval no-export
 </pre>
+</div>
 
 <p>
 Example:
 </p>
 
-<pre class="example" id="org8022896">
+<pre class="example" id="org7705033">
 #+BEGIN_SRC python :results output :exports both :eval no-export
 #!/usr/bin/env python3
 print("Hello World")
@@ -175,9 +173,8 @@ To suppress confirmation prompts when evaluating all blocks:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgf914e46" class="outline-3">
-<h3 id="orgf914e46"><span class="section-number-3">1.6.</span> Converting Org Files to Jupyter Notebooks (IPYNB)</h3>
+<div id="outline-container-org04b7190" class="outline-3">
+<h3 id="org04b7190"><span class="section-number-3">1.6.</span> Converting Org Files to Jupyter Notebooks (IPYNB)</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
 Convert Org files to Jupyter notebooks using `ox-ipynb`:
@@ -197,24 +194,24 @@ Convert Org files to Jupyter notebooks using `ox-ipynb`:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org7f128c3" class="outline-3">
-<h3 id="org7f128c3"><span class="section-number-3">1.7.</span> Ignoring Broken Links During HTML Export</h3>
+<div id="outline-container-org07a4d50" class="outline-3">
+<h3 id="org07a4d50"><span class="section-number-3">1.7.</span> Ignoring Broken Links During HTML Export</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 To prevent errors from broken links while exporting to HTML, use the following option in your Org file:
 </p>
 
-<pre class="example">
-#+OPTIONS: broken-links:t
+<div class="org-src-container">
+<pre class="src src-nil">#+OPTIONS: broken-links:t
 </pre>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2025-02-20 Thu 17:28</p>
+<p class="date">Created: 2025-04-06 Sun 16:23</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

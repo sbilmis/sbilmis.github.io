@@ -6,7 +6,7 @@
 <!-- 2025-04-06 Sun 16:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Emacs Guide</title>
+<title>Setting Up Emacs as a Python IDE with Eglot, Pyright, Black, and Ruff</title>
 <meta name="author" content="sbilmis" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
@@ -19,136 +19,163 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Emacs Guide</h1>
+<h1 class="title">Setting Up Emacs as a Python IDE with Eglot, Pyright, Black, and Ruff</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0559da3">1. Setting Up Emacs as a Python IDE with Eglot, Pyright, Black, and Ruff</a>
+<li><a href="#org7d7944f">1. Introduction</a></li>
+<li><a href="#orge30b20a">2. Prerequisites</a></li>
+<li><a href="#org8b9b661">3. Setting Up Emacs as a Python IDE with Eglot, Pyright, Black, and Ruff</a>
 <ul>
-<li><a href="#orgf184fe8">1.1. References</a></li>
+<li><a href="#org2da6727">3.1. References</a></li>
 </ul>
 </li>
-<li><a href="#orgfd64997">2. Creating a Python Virtual Environment with pyenv</a>
+<li><a href="#orgb09765a">4. Creating a Python Virtual Environment with pyenv</a>
 <ul>
-<li><a href="#orgc2cd570">2.1. Why use pyenv?</a></li>
-<li><a href="#org7100362">2.2. Step 1: Install `pyenv` and `pyenv-virtualenv`</a></li>
-<li><a href="#org2d1ea83">2.3. Step 2: Install Python and Create a Virtual Environment</a></li>
-<li><a href="#org94364e4">2.4. Step 3: Link the Virtual Environment to Your Project</a></li>
-<li><a href="#orgd466ae6">2.5. Step 4: Install Python Development Tools</a></li>
-<li><a href="#org6d802cd">2.6. Step 5: Confirm the Installation Locations</a></li>
-<li><a href="#org1566deb">2.7. Next Step: Configure Emacs for Python Development</a></li>
+<li><a href="#orgb5868d2">4.1. Why use pyenv?</a></li>
+<li><a href="#orgb6bff88">4.2. Step 1: Install `pyenv` and `pyenv-virtualenv`</a></li>
+<li><a href="#orga787445">4.3. Step 2: Install Python and Create a Virtual Environment</a></li>
+<li><a href="#org7d49132">4.4. Step 3: Link the Virtual Environment to Your Project</a></li>
+<li><a href="#org0cc9209">4.5. Step 4: Install Python Development Tools</a></li>
+<li><a href="#orgb73f711">4.6. Installing Packages from a `requirements.txt`</a></li>
+<li><a href="#org2e6a25c">4.7. Step 5: Confirm the Installation Locations</a></li>
+<li><a href="#org881bace">4.8. Next Step: Configure Emacs for Python Development</a></li>
 </ul>
 </li>
-<li><a href="#org34c595a">3. Emacs Configuration for Python with Eglot, Black, and Ruff</a>
+<li><a href="#orgeade3fc">5. Emacs Configuration for Python with Eglot, Black, and Ruff</a>
 <ul>
-<li><a href="#org5c31eab">3.1. Step 1: Make pyenv available to Emacs</a></li>
-<li><a href="#org2e990ec">3.2. Step 2: Auto-activate pyenv virtualenvs per project</a></li>
-<li><a href="#orgabd892e">3.3. Step 3: Install and configure Emacs packages</a></li>
-<li><a href="#orgd6cf88d">3.4. Step 4: How to test that everything works</a>
+<li><a href="#orgdba94a0">5.1. Step 1: Make pyenv available to Emacs</a></li>
+<li><a href="#orgd5f8d79">5.2. Step 2: Auto-activate pyenv virtualenvs per project</a></li>
+<li><a href="#org3b1e941">5.3. Step 3: Install and configure Emacs packages</a></li>
+<li><a href="#org215218c">5.4. Step 4: How to test that everything works</a>
 <ul>
-<li><a href="#org3c59387">3.4.1. ✅ Pyvenv</a></li>
-<li><a href="#org753978f">3.4.2. ✅ Eglot + Pyright</a></li>
-<li><a href="#org7184a56">3.4.3. ✅ Black Formatter</a></li>
-<li><a href="#org8e8fc8c">3.4.4. ✅ Ruff Linter via Flycheck</a></li>
-<li><a href="#org8b58ad9">3.4.5. ✅ Flycheck Setup</a></li>
+<li><a href="#org6cbd74b">5.4.1. ✅ Pyvenv</a></li>
+<li><a href="#orgb244625">5.4.2. ✅ Eglot + Pyright</a></li>
+<li><a href="#org6ff7158">5.4.3. ✅ Black Formatter</a></li>
+<li><a href="#org9f38238">5.4.4. ✅ Ruff Linter via Flycheck</a></li>
+<li><a href="#org0aac8b2">5.4.5. ✅ Flycheck Setup</a></li>
 </ul>
 </li>
-<li><a href="#org1d85748">3.5. Optional: Manual Environment Activation</a></li>
+<li><a href="#org0aaea9f">5.5. Optional: Manual Environment Activation</a></li>
 </ul>
 </li>
-<li><a href="#org9a5a8bf">4. Commonly Used Eglot Features for Python Environment</a>
+<li><a href="#org069d3af">6. Commonly Used Eglot Features for Python Environment</a>
 <ul>
-<li><a href="#org1524602">4.1. Navigation and Editing</a></li>
-<li><a href="#org7f7ac0a">4.2. Documentation and Feedback</a></li>
-<li><a href="#orgd22bfa8">4.3. Optional: Completion with Corfu</a></li>
-<li><a href="#orgc3cca31">4.4. Coming Next: Code Formatting and Linting with Black and Ruff</a></li>
+<li><a href="#org6447e1e">6.1. Navigation and Editing</a></li>
+<li><a href="#org3375758">6.2. Documentation and Feedback</a></li>
+<li><a href="#org7bb68ea">6.3. Optional: Completion with Corfu</a></li>
+<li><a href="#org44b22e8">6.4. Coming Next: Code Formatting and Linting with Black and Ruff</a></li>
 </ul>
 </li>
-<li><a href="#org6d96916">5. Black and Ruff: Code Formatting and Linting</a>
+<li><a href="#orge90335c">7. Black and Ruff: Code Formatting and Linting</a>
 <ul>
-<li><a href="#org97487e0">5.1. Black: Automatic Code Formatter</a>
+<li><a href="#org20101ee">7.1. Black: Automatic Code Formatter</a>
 <ul>
-<li><a href="#orgbb186b6">5.1.1. Why use Black?</a></li>
-<li><a href="#org37d10a2">5.1.2. Example</a></li>
+<li><a href="#org4723e63">7.1.1. Why use Black?</a></li>
+<li><a href="#org8fa4561">7.1.2. Example</a></li>
 </ul>
 </li>
-<li><a href="#org8342f0d">5.2. Ruff: Python Linter and Code Fixer</a>
+<li><a href="#orgeb96e07">7.2. Ruff: Python Linter and Code Fixer</a>
 <ul>
-<li><a href="#org15ca6c3">5.2.1. Why use Ruff?</a></li>
-<li><a href="#orga92802b">5.2.2. Example</a></li>
-<li><a href="#orgbea2e44">5.2.3. Emacs Integration via Flycheck</a></li>
+<li><a href="#org61d25d3">7.2.1. Why use Ruff?</a></li>
+<li><a href="#orgef9b9d5">7.2.2. Example</a></li>
+<li><a href="#org3e1a9e7">7.2.3. Additional Ruff Commands</a></li>
+<li><a href="#org573ff2b">7.2.4. Emacs Integration via Flycheck</a></li>
 </ul>
 </li>
-<li><a href="#org72c7325">5.3. Summary</a></li>
-<li><a href="#org3fe3877">5.4. ✅ Is Eglot Connected to Pyright?</a></li>
-<li><a href="#orgbfe63a7">5.5. ✅ Is Black Working?</a></li>
-<li><a href="#org995a494">5.6. ✅ Is Ruff Working (Linting)?</a></li>
-<li><a href="#org49cf67f">5.7. 🔍 Minimal Debug File to Test Everything</a></li>
-<li><a href="#org05b6d3d">5.8. 🔧 Still Not Working?</a></li>
+<li><a href="#org688868b">7.3. Summary</a></li>
+<li><a href="#org901a430">7.4. ✅ Is Eglot Connected to Pyright?</a></li>
+<li><a href="#orgc5ba205">7.5. ✅ Is Black Working?</a></li>
+<li><a href="#orgaea7163">7.6. ✅ Is Ruff Working (Linting)?</a></li>
+<li><a href="#org2a2b6db">7.7. 🔍 Minimal Debug File to Test Everything</a></li>
+<li><a href="#org1af27e2">7.8. 🔧 Still Not Working?</a></li>
 </ul>
 </li>
-<li><a href="#orgbddb0e5">6. Final Thoughts and Tips</a>
+<li><a href="#org2ebfc92">8. Final Thoughts and Tips</a>
 <ul>
-<li><a href="#orge14cf31">6.1. Tips for Daily Use</a></li>
-<li><a href="#orgdb29f65">6.2. Resources</a></li>
-<li><a href="#org15afb01">6.3. Acknowledgements</a></li>
+<li><a href="#org7dfea4b">8.1. Tips for Daily Use</a></li>
+<li><a href="#orgc20d9bf">8.2. Resources</a></li>
+<li><a href="#org19c2d76">8.3. Acknowledgements</a></li>
 </ul>
 </li>
-<li><a href="#orged33f1c">7. Emacs Overview</a></li>
-<li><a href="#org246334f">8. Performing Replace Operations Across Multiple Files</a></li>
-<li><a href="#orgdbef6b4">9. Emacs TODOs</a></li>
-<li><a href="#org0c29cf5">10. Emacs Keyboard Shortcuts</a></li>
-<li><a href="#org47dfeb4">11. Modes and Extensions</a>
+<li><a href="#org1df14b8">9. Cheatsheet: Common Python IDE Commands in Emacs</a></li>
+<li><a href="#orgcd99747">10. Practice Session: Test Your Emacs Python IDE</a>
 <ul>
-<li><a href="#org8a2cc16">11.1. Helm Mode</a></li>
-<li><a href="#orgae19f27">11.2. Org Mode</a></li>
-<li><a href="#org2f75921">11.3. AUCTeX</a></li>
-<li><a href="#orgd52b501">11.4. Magit Mode</a></li>
+<li><a href="#orgae74458">10.1. Goal</a></li>
+<li><a href="#orge33b382">10.2. Step 1: Create a Virtualenv</a></li>
+<li><a href="#orgb6122ee">10.3. Step 2: Open the Project in Emacs</a></li>
+<li><a href="#org716c266">10.4. Step 3: Write a Test Script</a></li>
+<li><a href="#orgf9ac51e">10.5. Step 4: Test Eglot (LSP Features)</a></li>
+<li><a href="#org7e455d3">10.6. Step 5: Test Black (Formatting)</a></li>
+<li><a href="#org65a5597">10.7. Step 6: Test Ruff (Linting)</a></li>
+<li><a href="#org9b49e95">10.8. Step 7: Fix the Issues</a></li>
+<li><a href="#org712110e">10.9. Bonus: Test Completions</a></li>
+<li><a href="#org567de9b">10.10. Expected Workflow Summary</a></li>
+<li><a href="#org8fd9619">10.11. Troubleshooting</a></li>
 </ul>
 </li>
-<li><a href="#org62b8a04">12. Emacs Jupyter Mode</a></li>
-<li><a href="#orgb851edc">13. Additional Tips and Commands</a>
-<ul>
-<li><a href="#org9161657">13.1. Disabling Subscript in Org Mode HTML Export</a></li>
-<li><a href="#org003a26c">13.2. Installing and Deleting Packages</a></li>
-<li><a href="#org238904a">13.3. Code Blocks in Org Mode</a></li>
-</ul>
-</li>
-<li><a href="#org6e686e6">14. Starting Emacs with a Specific Init File</a>
-<ul>
-<li><a href="#org7c6ddf9">14.1. Using the `-q` option</a></li>
-<li><a href="#org91741a6">14.2. Using the `&#x2013;no-init-file` option</a></li>
-<li><a href="#org8fc09c2">14.3. Loading a Specific Init File</a></li>
-<li><a href="#org25cf363">14.4. Running Emacs with a Temporary Init File</a></li>
-<li><a href="#org5fc9dc5">14.5. Debugging Initialization Issues</a></li>
-<li><a href="#orgeb48b11">14.6. Example Usage</a></li>
-</ul>
-</li>
-<li><a href="#orgb353d2b">15. Useful Links</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0559da3" class="outline-2">
-<h2 id="org0559da3"><span class="section-number-2">1.</span> Setting Up Emacs as a Python IDE with Eglot, Pyright, Black, and Ruff</h2>
+<div id="outline-container-org7d7944f" class="outline-2">
+<h2 id="org7d7944f"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-The <b>Language Server Protocol (LSP)</b> is a standardized way for text editors and IDEs to communicate with external language servers that provide code intelligence features. Instead of each editor implementing its own language support, LSP allows the editor to delegate these features to an external server that fully understands the language.
-</p>
-
-<p>
-When an editor like Emacs (with Eglot) connects to a language server, it enables features such as:
+This tutorial will walk you through turning Emacs into a powerful, modern Python development environment — complete with code intelligence, linting, and formatting — using:
 </p>
 
 <ul class="org-ul">
-<li><b>Auto-completion</b> (e.g. <code>M-x completion-at-point</code>): Suggests functions, variables, and method names.</li>
-<li><b>Go to definition</b> (<code>M-.</code>): Jumps to where a function or variable is defined.</li>
-<li><b>Find references</b> (<code>M-x xref-find-references</code>): Lists all occurrences of a symbol.</li>
-<li><b>Hover documentation</b> (<code>M-x eldoc</code>): Shows documentation in the echo area when hovering over a symbol.</li>
-<li><b>Error checking</b> (<code>M-x flymake-show-buffer-diagnostics</code>): Displays syntax and type errors in real-time.</li>
-<li><b>Code actions</b> (<code>M-x eglot-code-actions</code>): Applies suggestions such as import fixes or refactorings.</li>
-<li><b>Code formatting</b> (<code>M-x eglot-format</code>): Automatically reformats code.</li>
+<li>`eglot` (built-in LSP client)</li>
+<li>`pyright` (fast Python language server)</li>
+<li>`black` (automatic code formatter)</li>
+<li>`ruff` (fast Python linter)</li>
+<li>`pyenv` and `pyvenv` (for managing isolated Python environments)</li>
 </ul>
+
+<p>
+By the end of this tutorial, you'll have a lightweight yet capable Emacs IDE suitable for daily Python and PyTorch development.
+</p>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+<div id="outline-container-orge30b20a" class="outline-2">
+<h2 id="orge30b20a"><span class="section-number-2">2.</span> Prerequisites</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Before you begin, make sure you have:
+</p>
+
+<ul class="org-ul">
+<li>✅ Emacs 29 or higher (Eglot is built-in)</li>
+<li>✅ The MELPA package archive enabled</li>
+<li>✅ Basic familiarity with Emacs keybindings:
+<ul class="org-ul">
+<li><code>M-x</code> (run command)</li>
+<li><code>C-x C-f</code> (open file)</li>
+<li><code>M-:</code> (evaluate Elisp)</li>
+</ul></li>
+</ul>
+
+<p>
+If you’re completely new to Emacs, consider reviewing a short Emacs basics guide first.
+</p>
+</div>
+</div>
+<div id="outline-container-org8b9b661" class="outline-2">
+<h2 id="org8b9b661"><span class="section-number-2">3.</span> Setting Up Emacs as a Python IDE with Eglot, Pyright, Black, and Ruff</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The <b>Language Server Protocol (LSP)</b> is a way for editors like Emacs to communicate with language servers that understand a programming language in detail.
+</p>
+
+<p>
+In this guide, we’ll use <b><b>Eglot</b></b> (Emacs’s built-in LSP client) to connect to <b><b>Pyright</b></b>, a fast Python language server. This enables IDE-like features such as auto-completion, go-to-definition, and documentation lookup — all from within Emacs.
+</p>
+
 
 <p>
 <b><b>Emacs supports multiple LSP clients</b></b>, including:
@@ -256,9 +283,9 @@ Our goal is to set up an Emacs environment that makes Python and PyTorch develop
 </tbody>
 </table>
 </div>
-<div id="outline-container-orgf184fe8" class="outline-3">
-<h3 id="orgf184fe8"><span class="section-number-3">1.1.</span> References</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org2da6727" class="outline-3">
+<h3 id="org2da6727"><span class="section-number-3">3.1.</span> References</h3>
+<div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li><a href="https://microsoft.github.io/language-server-protocol/">Language Server Protocol (LSP)</a></li>
 <li><a href="https://github.com/microsoft/pyright">Pyright</a></li>
@@ -273,9 +300,9 @@ Each of these tools will enhance your Emacs environment for Python and PyTorch d
 </div>
 </div>
 </div>
-<div id="outline-container-orgfd64997" class="outline-2">
-<h2 id="orgfd64997"><span class="section-number-2">2.</span> Creating a Python Virtual Environment with pyenv</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgb09765a" class="outline-2">
+<h2 id="orgb09765a"><span class="section-number-2">4.</span> Creating a Python Virtual Environment with pyenv</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 Python virtual environments allow you to create isolated environments for different projects. This means:
 </p>
@@ -289,10 +316,38 @@ Python virtual environments allow you to create isolated environments for differ
 <p>
 Using virtual environments is considered a best practice for Python development — especially in long-term projects, collaborative environments, or when using IDEs like Emacs, VSCode, or PyCharm.
 </p>
+
+<div class="note" id="org4fc2129">
+<p>
+💡 <b>Alternative: Using Conda instead of pyenv</b>
+</p>
+
+<p>
+If you're already using Anaconda or Miniconda, you can manage environments with:
+</p>
+
+<ul class="org-ul">
+<li>`conda create -n myenv python=3.11`</li>
+<li>`conda activate myenv`</li>
+</ul>
+
+<p>
+Then, inside Emacs, activate the environment with:
+</p>
+
+<p>
+M-x pyvenv-activate RET /path/to/conda/envs/myenv
+</p>
+
+<p>
+You do <b>not</b> need `.python-version` in this case.
+</p>
+
 </div>
-<div id="outline-container-orgc2cd570" class="outline-3">
-<h3 id="orgc2cd570"><span class="section-number-3">2.1.</span> Why use pyenv?</h3>
-<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-orgb5868d2" class="outline-3">
+<h3 id="orgb5868d2"><span class="section-number-3">4.1.</span> Why use pyenv?</h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
 `pyenv` is a tool that helps manage multiple versions of Python. It also works well with `pyenv-virtualenv`, an extension that manages per-project virtual environments.
 </p>
@@ -312,9 +367,9 @@ Advantages:
 </p>
 </div>
 </div>
-<div id="outline-container-org7100362" class="outline-3">
-<h3 id="org7100362"><span class="section-number-3">2.2.</span> Step 1: Install `pyenv` and `pyenv-virtualenv`</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-orgb6bff88" class="outline-3">
+<h3 id="orgb6bff88"><span class="section-number-3">4.2.</span> Step 1: Install `pyenv` and `pyenv-virtualenv`</h3>
+<div class="outline-text-3" id="text-4-2">
 <p>
 On macOS, use Homebrew to install:
 </p>
@@ -360,9 +415,9 @@ Then reload your shell:
 </p>
 </div>
 </div>
-<div id="outline-container-org2d1ea83" class="outline-3">
-<h3 id="org2d1ea83"><span class="section-number-3">2.3.</span> Step 2: Install Python and Create a Virtual Environment</h3>
-<div class="outline-text-3" id="text-2-3">
+<div id="outline-container-orga787445" class="outline-3">
+<h3 id="orga787445"><span class="section-number-3">4.3.</span> Step 2: Install Python and Create a Virtual Environment</h3>
+<div class="outline-text-3" id="text-4-3">
 <p>
 Once pyenv is set up, you can install a specific version of Python:
 </p>
@@ -388,7 +443,7 @@ This will create a new virtual environment located at:
 </p>
 
 <p>
-~/Users/&lt;username&gt;/.pyenv/versions/myenv_name/
+~/Users/&lt;username&gt;/.pyenv/versions/myenv<sub>name</sub>/
 </p>
 
 <p>
@@ -396,9 +451,9 @@ This will create a new virtual environment located at:
 </p>
 </div>
 </div>
-<div id="outline-container-org94364e4" class="outline-3">
-<h3 id="org94364e4"><span class="section-number-3">2.4.</span> Step 3: Link the Virtual Environment to Your Project</h3>
-<div class="outline-text-3" id="text-2-4">
+<div id="outline-container-org7d49132" class="outline-3">
+<h3 id="org7d49132"><span class="section-number-3">4.4.</span> Step 3: Link the Virtual Environment to Your Project</h3>
+<div class="outline-text-3" id="text-4-4">
 <p>
 Navigate to your project folder and associate it with the virtualenv:
 </p>
@@ -413,13 +468,13 @@ pyenv local myenv_name
 This creates a `.python-version` file in your project directory. Tools like Emacs and shell terminals will detect this file and automatically activate the right Python environment for you.
 </p>
 
-<div class="note" id="orgd526583">
+<div class="note" id="orge26c4b0">
 <p>
 💡 `pyenv local` enables <b>persistent</b> activation for the folder, making it ideal for development tools like Emacs or VSCode.
 </p>
 
 <p>
-💡 `pyenv activate myenv_name` only activates it for your current shell session. It is useful for quick tests or temporary use.
+💡 `pyenv activate myenv<sub>name</sub>` only activates it for your current shell session. It is useful for quick tests or temporary use.
 </p>
 
 </div>
@@ -461,9 +516,9 @@ This creates a `.python-version` file in your project directory. Tools like Emac
 </p>
 </div>
 </div>
-<div id="outline-container-orgd466ae6" class="outline-3">
-<h3 id="orgd466ae6"><span class="section-number-3">2.5.</span> Step 4: Install Python Development Tools</h3>
-<div class="outline-text-3" id="text-2-5">
+<div id="outline-container-org0cc9209" class="outline-3">
+<h3 id="org0cc9209"><span class="section-number-3">4.5.</span> Step 4: Install Python Development Tools</h3>
+<div class="outline-text-3" id="text-4-5">
 <p>
 While inside the virtualenv, install the following Python tools:
 </p>
@@ -478,16 +533,86 @@ While inside the virtualenv, install the following Python tools:
 <li>`ruff`: Lints code for common errors and enforces best practices (fast and powerful).</li>
 <li>`pyright`: Language server that provides type checking, completion, and diagnostics.</li>
 </ul>
+</div>
+</div>
+<div id="outline-container-orgb73f711" class="outline-3">
+<h3 id="orgb73f711"><span class="section-number-3">4.6.</span> Installing Packages from a `requirements.txt`</h3>
+<div class="outline-text-3" id="text-4-6">
+<p>
+Instead of manually installing packages, you can also manage dependencies with a `requirements.txt` file.
+</p>
+
+<p>
+To install:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">pip install -r requirements.txt
+</pre>
+</div>
+
+<p>
+To generate it from your current environment:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">pip freeze &gt; requirements.txt
+</pre>
+</div>
+
+<p>
+This is especially helpful for sharing your environment with collaborators or re-creating it later.
+</p>
+
+<div class="note" id="org43dd635">
+<p>
+💡 <b>Advanced: Dependency Management with pip-tools or Poetry</b>
+</p>
+
+<p>
+If you're working on a larger or collaborative project, consider using:
+</p>
+
+<ul class="org-ul">
+<li><p>
+<a href="https://github.com/jazzband/pip-tools">pip-tools</a>: Keeps your `requirements.txt` clean and pinned.  
+Write your top-level dependencies in `requirements.in` and run:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">pip-compile requirements.in
+</pre>
+</div>
+
+<p>
+It will generate a full `requirements.txt` with exact versions.
+</p></li>
+
+<li><a href="https://python-poetry.org">Poetry</a>: A full-featured project/dependency manager using `pyproject.toml`.  
+It also handles virtual environments and packaging.</li>
+</ul>
+
+<p>
+Both tools work with Emacs and `pyvenv`. If you use Poetry, activate its virtualenv manually with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">M-x pyvenv-activate RET /Users/you/Library/Caches/pypoetry/virtualenvs/myenv
+</pre>
+</div>
+
+</div>
+
 
 <p>
 &#x2014;
 </p>
 </div>
 </div>
-<div id="outline-container-org6d802cd" class="outline-3">
-<h3 id="org6d802cd"><span class="section-number-3">2.6.</span> Step 5: Confirm the Installation Locations</h3>
-<div class="outline-text-3" id="text-2-6">
-<div class="note" id="orge00e706">
+<div id="outline-container-org2e6a25c" class="outline-3">
+<h3 id="org2e6a25c"><span class="section-number-3">4.7.</span> Step 5: Confirm the Installation Locations</h3>
+<div class="outline-text-3" id="text-4-7">
+<div class="note" id="org27fa6f3">
 <p>
 Your virtualenv and tools are stored in:
 </p>
@@ -508,9 +633,9 @@ This structure keeps your global system clean while giving you a per-project set
 </p>
 </div>
 </div>
-<div id="outline-container-org1566deb" class="outline-3">
-<h3 id="org1566deb"><span class="section-number-3">2.7.</span> Next Step: Configure Emacs for Python Development</h3>
-<div class="outline-text-3" id="text-2-7">
+<div id="outline-container-org881bace" class="outline-3">
+<h3 id="org881bace"><span class="section-number-3">4.8.</span> Next Step: Configure Emacs for Python Development</h3>
+<div class="outline-text-3" id="text-4-8">
 <p>
 With your Python environment ready, it's time to connect Emacs to this setup.
 </p>
@@ -528,9 +653,9 @@ We’ll configure:
 </div>
 </div>
 </div>
-<div id="outline-container-org34c595a" class="outline-2">
-<h2 id="org34c595a"><span class="section-number-2">3.</span> Emacs Configuration for Python with Eglot, Black, and Ruff</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgeade3fc" class="outline-2">
+<h2 id="orgeade3fc"><span class="section-number-2">5.</span> Emacs Configuration for Python with Eglot, Black, and Ruff</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 Now that your virtual environment is ready, let’s configure Emacs to:
 </p>
@@ -592,9 +717,9 @@ We will use the following Emacs packages:
 &#x2014;
 </p>
 </div>
-<div id="outline-container-org5c31eab" class="outline-3">
-<h3 id="org5c31eab"><span class="section-number-3">3.1.</span> Step 1: Make pyenv available to Emacs</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-orgdba94a0" class="outline-3">
+<h3 id="orgdba94a0"><span class="section-number-3">5.1.</span> Step 1: Make pyenv available to Emacs</h3>
+<div class="outline-text-3" id="text-5-1">
 <p>
 If you installed pyenv using Homebrew on macOS, you must ensure that Emacs sees `/opt/homebrew/bin`.
 </p>
@@ -611,9 +736,9 @@ If you installed pyenv using Homebrew on macOS, you must ensure that Emacs sees 
 </p>
 </div>
 </div>
-<div id="outline-container-org2e990ec" class="outline-3">
-<h3 id="org2e990ec"><span class="section-number-3">3.2.</span> Step 2: Auto-activate pyenv virtualenvs per project</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-orgd5f8d79" class="outline-3">
+<h3 id="orgd5f8d79"><span class="section-number-3">5.2.</span> Step 2: Auto-activate pyenv virtualenvs per project</h3>
+<div class="outline-text-3" id="text-5-2">
 <p>
 This function looks for a `.python-version` file and automatically activates the correct pyenv environment when you open a Python file.
 </p>
@@ -645,9 +770,9 @@ This will auto-activate your environment as long as your project contains a `.py
 </p>
 </div>
 </div>
-<div id="outline-container-orgabd892e" class="outline-3">
-<h3 id="orgabd892e"><span class="section-number-3">3.3.</span> Step 3: Install and configure Emacs packages</h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-org3b1e941" class="outline-3">
+<h3 id="org3b1e941"><span class="section-number-3">5.3.</span> Step 3: Install and configure Emacs packages</h3>
+<div class="outline-text-3" id="text-5-3">
 <p>
 Make sure you have the following packages installed via `M-x package-install` or using `use-package`.
 </p>
@@ -691,16 +816,16 @@ Make sure you have the following packages installed via `M-x package-install` or
 </p>
 </div>
 </div>
-<div id="outline-container-orgd6cf88d" class="outline-3">
-<h3 id="orgd6cf88d"><span class="section-number-3">3.4.</span> Step 4: How to test that everything works</h3>
-<div class="outline-text-3" id="text-3-4">
+<div id="outline-container-org215218c" class="outline-3">
+<h3 id="org215218c"><span class="section-number-3">5.4.</span> Step 4: How to test that everything works</h3>
+<div class="outline-text-3" id="text-5-4">
 <p>
 Open a `.py` file inside your project folder (which has a `.python-version` file), and check the following:
 </p>
 </div>
-<div id="outline-container-org3c59387" class="outline-4">
-<h4 id="org3c59387"><span class="section-number-4">3.4.1.</span> ✅ Pyvenv</h4>
-<div class="outline-text-4" id="text-3-4-1">
+<div id="outline-container-org6cbd74b" class="outline-4">
+<h4 id="org6cbd74b"><span class="section-number-4">5.4.1.</span> ✅ Pyvenv</h4>
+<div class="outline-text-4" id="text-5-4-1">
 <ul class="org-ul">
 <li>Emacs should automatically activate the virtualenv.</li>
 <li><p>
@@ -714,9 +839,9 @@ Confirm with:
 </ul>
 </div>
 </div>
-<div id="outline-container-org753978f" class="outline-4">
-<h4 id="org753978f"><span class="section-number-4">3.4.2.</span> ✅ Eglot + Pyright</h4>
-<div class="outline-text-4" id="text-3-4-2">
+<div id="outline-container-orgb244625" class="outline-4">
+<h4 id="orgb244625"><span class="section-number-4">5.4.2.</span> ✅ Eglot + Pyright</h4>
+<div class="outline-text-4" id="text-5-4-2">
 <ul class="org-ul">
 <li>You should see: <b>"Connected to pyright!"</b> in the minibuffer.</li>
 <li>Try:
@@ -727,9 +852,9 @@ Confirm with:
 </ul>
 </div>
 </div>
-<div id="outline-container-org7184a56" class="outline-4">
-<h4 id="org7184a56"><span class="section-number-4">3.4.3.</span> ✅ Black Formatter</h4>
-<div class="outline-text-4" id="text-3-4-3">
+<div id="outline-container-org6ff7158" class="outline-4">
+<h4 id="org6ff7158"><span class="section-number-4">5.4.3.</span> ✅ Black Formatter</h4>
+<div class="outline-text-4" id="text-5-4-3">
 <ul class="org-ul">
 <li>Add some poorly formatted Python code.</li>
 <li>Save the buffer.</li>
@@ -737,9 +862,9 @@ Confirm with:
 </ul>
 </div>
 </div>
-<div id="outline-container-org8e8fc8c" class="outline-4">
-<h4 id="org8e8fc8c"><span class="section-number-4">3.4.4.</span> ✅ Ruff Linter via Flycheck</h4>
-<div class="outline-text-4" id="text-3-4-4">
+<div id="outline-container-org9f38238" class="outline-4">
+<h4 id="org9f38238"><span class="section-number-4">5.4.4.</span> ✅ Ruff Linter via Flycheck</h4>
+<div class="outline-text-4" id="text-5-4-4">
 <ul class="org-ul">
 <li>Add a line like <code>import os</code> without using it.</li>
 <li><p>
@@ -753,9 +878,9 @@ Run:
 </ul>
 </div>
 </div>
-<div id="outline-container-org8b58ad9" class="outline-4">
-<h4 id="org8b58ad9"><span class="section-number-4">3.4.5.</span> ✅ Flycheck Setup</h4>
-<div class="outline-text-4" id="text-3-4-5">
+<div id="outline-container-org0aac8b2" class="outline-4">
+<h4 id="org0aac8b2"><span class="section-number-4">5.4.5.</span> ✅ Flycheck Setup</h4>
+<div class="outline-text-4" id="text-5-4-5">
 <ul class="org-ul">
 <li><p>
 Run:
@@ -773,9 +898,9 @@ Run:
 </div>
 </div>
 </div>
-<div id="outline-container-org1d85748" class="outline-3">
-<h3 id="org1d85748"><span class="section-number-3">3.5.</span> Optional: Manual Environment Activation</h3>
-<div class="outline-text-3" id="text-3-5">
+<div id="outline-container-org0aaea9f" class="outline-3">
+<h3 id="org0aaea9f"><span class="section-number-3">5.5.</span> Optional: Manual Environment Activation</h3>
+<div class="outline-text-3" id="text-5-5">
 <p>
 If you want to manually activate a pyenv virtualenv in Emacs:
 </p>
@@ -796,9 +921,9 @@ The next section will cover:
 </div>
 </div>
 </div>
-<div id="outline-container-org9a5a8bf" class="outline-2">
-<h2 id="org9a5a8bf"><span class="section-number-2">4.</span> Commonly Used Eglot Features for Python Environment</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org069d3af" class="outline-2">
+<h2 id="org069d3af"><span class="section-number-2">6.</span> Commonly Used Eglot Features for Python Environment</h2>
+<div class="outline-text-2" id="text-6">
 <p>
 Once Eglot is enabled in a Python buffer, you'll see this in the minibuffer:
 </p>
@@ -819,9 +944,9 @@ Eglot integrates seamlessly with other Emacs tools like `eldoc`, `flymake`, and 
 &#x2014;
 </p>
 </div>
-<div id="outline-container-org1524602" class="outline-3">
-<h3 id="org1524602"><span class="section-number-3">4.1.</span> Navigation and Editing</h3>
-<div class="outline-text-3" id="text-4-1">
+<div id="outline-container-org6447e1e" class="outline-3">
+<h3 id="org6447e1e"><span class="section-number-3">6.1.</span> Navigation and Editing</h3>
+<div class="outline-text-3" id="text-6-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -875,9 +1000,9 @@ Eglot integrates seamlessly with other Emacs tools like `eldoc`, `flymake`, and 
 </p>
 </div>
 </div>
-<div id="outline-container-org7f7ac0a" class="outline-3">
-<h3 id="org7f7ac0a"><span class="section-number-3">4.2.</span> Documentation and Feedback</h3>
-<div class="outline-text-3" id="text-4-2">
+<div id="outline-container-org3375758" class="outline-3">
+<h3 id="org3375758"><span class="section-number-3">6.2.</span> Documentation and Feedback</h3>
+<div class="outline-text-3" id="text-6-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -926,9 +1051,9 @@ Eglot integrates seamlessly with other Emacs tools like `eldoc`, `flymake`, and 
 </p>
 </div>
 </div>
-<div id="outline-container-orgd22bfa8" class="outline-3">
-<h3 id="orgd22bfa8"><span class="section-number-3">4.3.</span> Optional: Completion with Corfu</h3>
-<div class="outline-text-3" id="text-4-3">
+<div id="outline-container-org7bb68ea" class="outline-3">
+<h3 id="org7bb68ea"><span class="section-number-3">6.3.</span> Optional: Completion with Corfu</h3>
+<div class="outline-text-3" id="text-6-3">
 <p>
 While Emacs has built-in completion, the <b><b>Corfu</b></b> package offers a better UI for completions triggered by Eglot.
 </p>
@@ -973,9 +1098,9 @@ Corfu will now handle completions across your project smoothly, enhancing the ex
 </p>
 </div>
 </div>
-<div id="outline-container-orgc3cca31" class="outline-3">
-<h3 id="orgc3cca31"><span class="section-number-3">4.4.</span> Coming Next: Code Formatting and Linting with Black and Ruff</h3>
-<div class="outline-text-3" id="text-4-4">
+<div id="outline-container-org44b22e8" class="outline-3">
+<h3 id="org44b22e8"><span class="section-number-3">6.4.</span> Coming Next: Code Formatting and Linting with Black and Ruff</h3>
+<div class="outline-text-3" id="text-6-4">
 <p>
 You now have a fully functional LSP setup for Python in Emacs. In the next section, we’ll focus on formatting and linting your code automatically using:
 </p>
@@ -987,9 +1112,9 @@ You now have a fully functional LSP setup for Python in Emacs. In the next secti
 </div>
 </div>
 </div>
-<div id="outline-container-org6d96916" class="outline-2">
-<h2 id="org6d96916"><span class="section-number-2">5.</span> Black and Ruff: Code Formatting and Linting</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orge90335c" class="outline-2">
+<h2 id="orge90335c"><span class="section-number-2">7.</span> Black and Ruff: Code Formatting and Linting</h2>
+<div class="outline-text-2" id="text-7">
 <p>
 A great Python development setup doesn’t just work — it also helps keep your code clean and consistent.
 </p>
@@ -1002,16 +1127,16 @@ This is where <b><b>Black</b></b> (a code formatter) and <b><b>Ruff</b></b> (a l
 &#x2014;
 </p>
 </div>
-<div id="outline-container-org97487e0" class="outline-3">
-<h3 id="org97487e0"><span class="section-number-3">5.1.</span> Black: Automatic Code Formatter</h3>
-<div class="outline-text-3" id="text-5-1">
+<div id="outline-container-org20101ee" class="outline-3">
+<h3 id="org20101ee"><span class="section-number-3">7.1.</span> Black: Automatic Code Formatter</h3>
+<div class="outline-text-3" id="text-7-1">
 <p>
 Black is a <b><b>highly opinionated code formatter</b></b> for Python. It reformats your code automatically to follow consistent style rules.
 </p>
 </div>
-<div id="outline-container-orgbb186b6" class="outline-4">
-<h4 id="orgbb186b6"><span class="section-number-4">5.1.1.</span> Why use Black?</h4>
-<div class="outline-text-4" id="text-5-1-1">
+<div id="outline-container-org4723e63" class="outline-4">
+<h4 id="org4723e63"><span class="section-number-4">7.1.1.</span> Why use Black?</h4>
+<div class="outline-text-4" id="text-7-1-1">
 <ul class="org-ul">
 <li>🧼 Automatically enforces a uniform code style.</li>
 <li>🧠 Removes debates about formatting choices.</li>
@@ -1020,9 +1145,9 @@ Black is a <b><b>highly opinionated code formatter</b></b> for Python. It reform
 </ul>
 </div>
 </div>
-<div id="outline-container-org37d10a2" class="outline-4">
-<h4 id="org37d10a2"><span class="section-number-4">5.1.2.</span> Example</h4>
-<div class="outline-text-4" id="text-5-1-2">
+<div id="outline-container-org8fa4561" class="outline-4">
+<h4 id="org8fa4561"><span class="section-number-4">7.1.2.</span> Example</h4>
+<div class="outline-text-4" id="text-7-1-2">
 <ul class="org-ul">
 <li><p>
 Before formatting:
@@ -1052,16 +1177,16 @@ Black integrates with Emacs via the <code>python-black-on-save-mode</code>, so n
 </div>
 </div>
 </div>
-<div id="outline-container-org8342f0d" class="outline-3">
-<h3 id="org8342f0d"><span class="section-number-3">5.2.</span> Ruff: Python Linter and Code Fixer</h3>
-<div class="outline-text-3" id="text-5-2">
+<div id="outline-container-orgeb96e07" class="outline-3">
+<h3 id="orgeb96e07"><span class="section-number-3">7.2.</span> Ruff: Python Linter and Code Fixer</h3>
+<div class="outline-text-3" id="text-7-2">
 <p>
 Ruff is a <b><b>blazing-fast linter and code fixer</b></b> written in Rust. Unlike traditional linters, it's fast enough to run on every keystroke — but even once per save is plenty.
 </p>
 </div>
-<div id="outline-container-org15ca6c3" class="outline-4">
-<h4 id="org15ca6c3"><span class="section-number-4">5.2.1.</span> Why use Ruff?</h4>
-<div class="outline-text-4" id="text-5-2-1">
+<div id="outline-container-org61d25d3" class="outline-4">
+<h4 id="org61d25d3"><span class="section-number-4">7.2.1.</span> Why use Ruff?</h4>
+<div class="outline-text-4" id="text-7-2-1">
 <ul class="org-ul">
 <li>🐍 Catches <b><b>syntax errors</b></b>, <b><b>unused variables</b></b>, and <b><b>style issues</b></b>.</li>
 <li>🚀 <b><b>Much faster</b></b> than `flake8`, `pylint`, or `pycodestyle`.</li>
@@ -1069,9 +1194,9 @@ Ruff is a <b><b>blazing-fast linter and code fixer</b></b> written in Rust. Unli
 </ul>
 </div>
 </div>
-<div id="outline-container-orga92802b" class="outline-4">
-<h4 id="orga92802b"><span class="section-number-4">5.2.2.</span> Example</h4>
-<div class="outline-text-4" id="text-5-2-2">
+<div id="outline-container-orgef9b9d5" class="outline-4">
+<h4 id="orgef9b9d5"><span class="section-number-4">7.2.2.</span> Example</h4>
+<div class="outline-text-4" id="text-7-2-2">
 <ul class="org-ul">
 <li><p>
 Problematic code:
@@ -1096,9 +1221,23 @@ test.py:1:1: F401 'numpy as np' imported but unused test.py:3:1: F841 local vari
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbea2e44" class="outline-4">
-<h4 id="orgbea2e44"><span class="section-number-4">5.2.3.</span> Emacs Integration via Flycheck</h4>
-<div class="outline-text-4" id="text-5-2-3">
+<div id="outline-container-org3e1a9e7" class="outline-4">
+<h4 id="org3e1a9e7"><span class="section-number-4">7.2.3.</span> Additional Ruff Commands</h4>
+<div class="outline-text-4" id="text-7-2-3">
+<p>
+You can also run Ruff manually on the command line to lint or fix a file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ruff check my_script.py        # Show issues
+ruff check --fix my_script.py  # Auto-fix issues
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org573ff2b" class="outline-4">
+<h4 id="org573ff2b"><span class="section-number-4">7.2.4.</span> Emacs Integration via Flycheck</h4>
+<div class="outline-text-4" id="text-7-2-4">
 <p>
 If you’ve installed `flycheck` and `ruff`, Emacs will show linting issues inline as you type or save.
 </p>
@@ -1123,9 +1262,9 @@ You can also customize the behavior of Flycheck or integrate Ruff directly as a 
 </div>
 </div>
 </div>
-<div id="outline-container-org72c7325" class="outline-3">
-<h3 id="org72c7325"><span class="section-number-3">5.3.</span> Summary</h3>
-<div class="outline-text-3" id="text-5-3">
+<div id="outline-container-org688868b" class="outline-3">
+<h3 id="org688868b"><span class="section-number-3">7.3.</span> Summary</h3>
+<div class="outline-text-3" id="text-7-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1184,9 +1323,9 @@ If it points to `/usr/bin/python`, your virtualenv is not active.
 </p>
 </div>
 </div>
-<div id="outline-container-org3fe3877" class="outline-3">
-<h3 id="org3fe3877"><span class="section-number-3">5.4.</span> ✅ Is Eglot Connected to Pyright?</h3>
-<div class="outline-text-3" id="text-5-4">
+<div id="outline-container-org901a430" class="outline-3">
+<h3 id="org901a430"><span class="section-number-3">7.4.</span> ✅ Is Eglot Connected to Pyright?</h3>
+<div class="outline-text-3" id="text-7-4">
 <p>
 When you open a `.py` file, Eglot should automatically connect. Look for:
 </p>
@@ -1219,9 +1358,9 @@ If Eglot fails to connect:
 </p>
 </div>
 </div>
-<div id="outline-container-orgbfe63a7" class="outline-3">
-<h3 id="orgbfe63a7"><span class="section-number-3">5.5.</span> ✅ Is Black Working?</h3>
-<div class="outline-text-3" id="text-5-5">
+<div id="outline-container-orgc5ba205" class="outline-3">
+<h3 id="orgc5ba205"><span class="section-number-3">7.5.</span> ✅ Is Black Working?</h3>
+<div class="outline-text-3" id="text-7-5">
 <p>
 To test that Black is formatting on save:
 </p>
@@ -1269,9 +1408,9 @@ Make sure `python-black-on-save-mode` is active:
 </p>
 </div>
 </div>
-<div id="outline-container-org995a494" class="outline-3">
-<h3 id="org995a494"><span class="section-number-3">5.6.</span> ✅ Is Ruff Working (Linting)?</h3>
-<div class="outline-text-3" id="text-5-6">
+<div id="outline-container-orgaea7163" class="outline-3">
+<h3 id="orgaea7163"><span class="section-number-3">7.6.</span> ✅ Is Ruff Working (Linting)?</h3>
+<div class="outline-text-3" id="text-7-6">
 <ol class="org-ol">
 <li><p>
 Add some code with obvious issues:
@@ -1319,9 +1458,9 @@ Also verify your active checkers with:
 </p>
 </div>
 </div>
-<div id="outline-container-org49cf67f" class="outline-3">
-<h3 id="org49cf67f"><span class="section-number-3">5.7.</span> 🔍 Minimal Debug File to Test Everything</h3>
-<div class="outline-text-3" id="text-5-7">
+<div id="outline-container-org2a2b6db" class="outline-3">
+<h3 id="org2a2b6db"><span class="section-number-3">7.7.</span> 🔍 Minimal Debug File to Test Everything</h3>
+<div class="outline-text-3" id="text-7-7">
 <p>
 Here is a small Python file you can paste into Emacs to test your setup:
 </p>
@@ -1351,9 +1490,9 @@ Save the file and verify that:
 </p>
 </div>
 </div>
-<div id="outline-container-org05b6d3d" class="outline-3">
-<h3 id="org05b6d3d"><span class="section-number-3">5.8.</span> 🔧 Still Not Working?</h3>
-<div class="outline-text-3" id="text-5-8">
+<div id="outline-container-org1af27e2" class="outline-3">
+<h3 id="org1af27e2"><span class="section-number-3">7.8.</span> 🔧 Still Not Working?</h3>
+<div class="outline-text-3" id="text-7-8">
 <ul class="org-ul">
 <li>Try restarting Emacs and reopening the file.</li>
 <li>Open `*Messages*` buffer (<code>C-h e</code>) to see any warnings.</li>
@@ -1372,9 +1511,9 @@ This section helps you systematically verify each component of your Emacs Python
 </div>
 </div>
 </div>
-<div id="outline-container-orgbddb0e5" class="outline-2">
-<h2 id="orgbddb0e5"><span class="section-number-2">6.</span> Final Thoughts and Tips</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org2ebfc92" class="outline-2">
+<h2 id="org2ebfc92"><span class="section-number-2">8.</span> Final Thoughts and Tips</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 You've now set up Emacs as a full-featured Python IDE using:
 </p>
@@ -1397,9 +1536,9 @@ This setup strikes a balance between being <b>lightweight</b>, <b>modern</b>, an
 &#x2014;
 </p>
 </div>
-<div id="outline-container-orge14cf31" class="outline-3">
-<h3 id="orge14cf31"><span class="section-number-3">6.1.</span> Tips for Daily Use</h3>
-<div class="outline-text-3" id="text-6-1">
+<div id="outline-container-org7dfea4b" class="outline-3">
+<h3 id="org7dfea4b"><span class="section-number-3">8.1.</span> Tips for Daily Use</h3>
+<div class="outline-text-3" id="text-8-1">
 <ul class="org-ul">
 <li>Always create a `.python-version` in each project to auto-activate the environment.</li>
 <li>Run <code>M-x flycheck-verify-setup</code> occasionally to ensure the right checkers are active.</li>
@@ -1413,9 +1552,9 @@ This setup strikes a balance between being <b>lightweight</b>, <b>modern</b>, an
 </p>
 </div>
 </div>
-<div id="outline-container-orgdb29f65" class="outline-3">
-<h3 id="orgdb29f65"><span class="section-number-3">6.2.</span> Resources</h3>
-<div class="outline-text-3" id="text-6-2">
+<div id="outline-container-orgc20d9bf" class="outline-3">
+<h3 id="orgc20d9bf"><span class="section-number-3">8.2.</span> Resources</h3>
+<div class="outline-text-3" id="text-8-2">
 <ul class="org-ul">
 <li><a href="https://github.com/joaotavora/eglot">Eglot on GitHub</a></li>
 <li><a href="https://github.com/microsoft/pyright">Pyright Language Server</a></li>
@@ -1429,197 +1568,25 @@ This setup strikes a balance between being <b>lightweight</b>, <b>modern</b>, an
 </p>
 </div>
 </div>
-<div id="outline-container-org15afb01" class="outline-3">
-<h3 id="org15afb01"><span class="section-number-3">6.3.</span> Acknowledgements</h3>
-<div class="outline-text-3" id="text-6-3">
+<div id="outline-container-org19c2d76" class="outline-3">
+<h3 id="org19c2d76"><span class="section-number-3">8.3.</span> Acknowledgements</h3>
+<div class="outline-text-3" id="text-8-3">
 <p>
 This tutorial was created to provide a lightweight and efficient Python development environment inside Emacs, ideal for research, teaching, or professional software development.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orged33f1c" class="outline-2">
-<h2 id="orged33f1c"><span class="section-number-2">7.</span> Emacs Overview</h2>
-<div class="outline-text-2" id="text-7">
-<ul class="org-ul">
-<li>Emacs is a powerful, extensible, and customizable text editor known for its versatility and extensive package support. Emacs can be configured to support a wide range of programming and text-editing needs, from code editing to project management, publishing, and more.</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org246334f" class="outline-2">
-<h2 id="org246334f"><span class="section-number-2">8.</span> Performing Replace Operations Across Multiple Files</h2>
-<div class="outline-text-2" id="text-8">
-<ul class="org-ul">
-<li>Emacs offers ways to perform search and replace operations across multiple files.</li>
-<li><a href="https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-text-across-multiple-files.html">GNU Emacs Manual: Replacing Text Across Multiple Files</a></li>
-<li><a href="https://stackoverflow.com/questions/270930/using-emacs-to-recursively-find-and-replace-in-text-files-not-already-open">Stack Overflow: Find and Replace in Multiple Files</a></li>
-</ul>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">;; Using Dired mode (directory mode):
-;; 1. Open Dired mode with `M-x dired` or `C-x d`.
-;; 2. Mark files to operate on with `t`.
-;; 3. Press `Q` to start a `query-replace-regexp` on the marked files.
-;; 4. Press `!` to accept all replacements.
-
-;; Alternatively, use `tags-query-replace` with a TAGS file.
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgdbef6b4" class="outline-2">
-<h2 id="orgdbef6b4"><span class="section-number-2">9.</span> Emacs TODOs</h2>
+<div id="outline-container-org1df14b8" class="outline-2">
+<h2 id="org1df14b8"><span class="section-number-2">9.</span> Cheatsheet: Common Python IDE Commands in Emacs</h2>
 <div class="outline-text-2" id="text-9">
-<ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> Learn how to bookmark a line and return to it later.</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org0c29cf5" class="outline-2">
-<h2 id="org0c29cf5"><span class="section-number-2">10.</span> Emacs Keyboard Shortcuts</h2>
-<div class="outline-text-2" id="text-10">
-<ul class="org-ul">
-<li><a href="https://www.reddit.com/r/emacs/comments/x43eie/heres_a_list_of_emacs_keyboard_shortcuts_that_i/?utm_source=share&amp;utm_medium=ios_app&amp;utm_name=iossmf">Reddit List of Emacs Shortcuts</a></li>
-<li><a href="https://github.com/VernonGrant/emacs-keyboard-shortcuts">GitHub Repository of Emacs Shortcuts</a></li>
-</ul>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left"><b>Keyboard Shortcut</b></th>
-<th scope="col" class="org-left"><b>Function</b></th>
-<th scope="col" class="org-left"><b>Description</b></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">C-h i</td>
-<td class="org-left">Info mode</td>
-<td class="org-left">Access manuals and info about modes</td>
-</tr>
-
-<tr>
-<td class="org-left">C-h k</td>
-<td class="org-left">Describe key</td>
-<td class="org-left">Get information about a specific key</td>
-</tr>
-
-<tr>
-<td class="org-left">C-h m</td>
-<td class="org-left">Describe mode</td>
-<td class="org-left">Displays documentation for the current mode</td>
-</tr>
-
-<tr>
-<td class="org-left">C-x C-q</td>
-<td class="org-left">Toggle read-only mode</td>
-<td class="org-left">Enable or disable read-only mode</td>
-</tr>
-
-<tr>
-<td class="org-left">C-x n s</td>
-<td class="org-left">Narrow to subtree</td>
-<td class="org-left">Narrow the buffer to the current subtree</td>
-</tr>
-
-<tr>
-<td class="org-left">C-c ""</td>
-<td class="org-left">Insert Zotero item</td>
-<td class="org-left">Insert a reference link from Zotero</td>
-</tr>
-
-<tr>
-<td class="org-left">F10</td>
-<td class="org-left">Open menu</td>
-<td class="org-left">Access menu items via keyboard</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="outline-container-org47dfeb4" class="outline-2">
-<h2 id="org47dfeb4"><span class="section-number-2">11.</span> Modes and Extensions</h2>
-<div class="outline-text-2" id="text-11">
-</div>
-<div id="outline-container-org8a2cc16" class="outline-3">
-<h3 id="org8a2cc16"><span class="section-number-3">11.1.</span> Helm Mode</h3>
-<div class="outline-text-3" id="text-11-1">
-<ul class="org-ul">
-<li>Helm provides a powerful completion and narrowing framework for Emacs.</li>
-<li><a href="https://wikemacs.org/wiki/Helm">Quick Helm Guide</a></li>
-</ul>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Command</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">C-t</td>
-<td class="org-left">Toggle horizontal/vertical view</td>
-</tr>
-
-<tr>
-<td class="org-left">C-c ?</td>
-<td class="org-left">Show Helm help</td>
-</tr>
-
-<tr>
-<td class="org-left">TAB</td>
-<td class="org-left">Access actions menu</td>
-</tr>
-
-<tr>
-<td class="org-left">C-SPC</td>
-<td class="org-left">Mark multiple candidates for actions</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="outline-container-orgae19f27" class="outline-3">
-<h3 id="orgae19f27"><span class="section-number-3">11.2.</span> Org Mode</h3>
-<div class="outline-text-3" id="text-11-2">
-<ul class="org-ul">
-<li>Org mode enables text organization, task management, and code execution within Emacs.</li>
-</ul>
-
+<div class="tip" id="org9d4c7b9">
 <p>
-<b>*</b> Previewing LaTeX in Org Mode
+📌 Tip: You can print this cheatsheet or keep it in a split buffer (<code>C-x 3</code>) while working on your Python project. That way, you can quickly refer to keybindings without leaving Emacs.
 </p>
-<ul class="org-ul">
-<li>Add `#+STARTUP: latexpreview` to enable LaTeX previewing.</li>
-<li>Use `C-c C-x C-l` to preview LaTeX at point.</li>
-<li><a href="https://orgmode.org/manual/Previewing-LaTeX-fragments.html">LaTeX Fragment Preview Documentation</a></li>
-</ul>
+
 </div>
-</div>
-<div id="outline-container-org2f75921" class="outline-3">
-<h3 id="org2f75921"><span class="section-number-3">11.3.</span> AUCTeX</h3>
-<div class="outline-text-3" id="text-11-3">
-<ul class="org-ul">
-<li>AUCTeX enhances Emacs for LaTeX editing, with commands for compiling, inserting citations, and navigating structured documents.</li>
-<li><a href="https://weikaichen.gitee.io/en/post/emacs-academic-tools/">Useful AUCTeX Tricks</a></li>
-</ul>
+
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1631,278 +1598,267 @@ This tutorial was created to provide a lightweight and efficient Python developm
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Shortcut</th>
-<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Action</th>
+<th scope="col" class="org-left">Emacs Keybinding / Command</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left">C-c =</td>
-<td class="org-left">Show table of contents</td>
+<td class="org-left">Jump to definition</td>
+<td class="org-left">M-.</td>
 </tr>
 
 <tr>
-<td class="org-left">C-c [</td>
-<td class="org-left">Insert citation</td>
+<td class="org-left">Find references</td>
+<td class="org-left">M-?</td>
 </tr>
 
 <tr>
-<td class="org-left">C-c )</td>
-<td class="org-left">Insert cross-reference</td>
+<td class="org-left">Rename symbol</td>
+<td class="org-left">M-x eglot-rename</td>
 </tr>
 
 <tr>
-<td class="org-left">C-c ~</td>
-<td class="org-left">Enable LaTeX math mode</td>
+<td class="org-left">Code actions / fixes</td>
+<td class="org-left">M-x eglot-code-actions</td>
+</tr>
+
+<tr>
+<td class="org-left">Format buffer (Black)</td>
+<td class="org-left">M-x eglot-format-buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">Show diagnostics (Ruff)</td>
+<td class="org-left">M-x flycheck-list-errors</td>
+</tr>
+
+<tr>
+<td class="org-left">Recheck checkers</td>
+<td class="org-left">M-x flycheck-verify-setup</td>
+</tr>
+
+<tr>
+<td class="org-left">Open terminal</td>
+<td class="org-left">M-x shell or M-x vterm</td>
+</tr>
+
+<tr>
+<td class="org-left">View active virtualenv</td>
+<td class="org-left">M-: pyvenv-virtual-env</td>
+</tr>
+
+<tr>
+<td class="org-left">Activate virtualenv manually</td>
+<td class="org-left">M-x pyvenv-activate</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div id="outline-container-orgd52b501" class="outline-3">
-<h3 id="orgd52b501"><span class="section-number-3">11.4.</span> Magit Mode</h3>
-<div class="outline-text-3" id="text-11-4">
-<ul class="org-ul">
-<li>Magit provides a Git interface within Emacs for version control.</li>
-</ul>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Shortcut</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">C-x g</td>
-<td class="org-left">Open Magit status</td>
-</tr>
-
-<tr>
-<td class="org-left">s</td>
-<td class="org-left">Stage changes</td>
-</tr>
-
-<tr>
-<td class="org-left">c c</td>
-<td class="org-left">Commit</td>
-</tr>
-
-<tr>
-<td class="org-left">P u</td>
-<td class="org-left">Push to upstream</td>
-</tr>
-</tbody>
-</table>
+<div id="outline-container-orgcd99747" class="outline-2">
+<h2 id="orgcd99747"><span class="section-number-2">10.</span> Practice Session: Test Your Emacs Python IDE</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-orgae74458" class="outline-3">
+<h3 id="orgae74458"><span class="section-number-3">10.1.</span> Goal</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+Verify that your setup works by:  
+</p>
+<ol class="org-ol">
+<li>Creating a virtualenv.</li>
+<li>Writing a "buggy" Python script.</li>
+<li>Testing LSP (Eglot), formatting (Black), and linting (Ruff).</li>
+</ol>
 </div>
 </div>
-</div>
-<div id="outline-container-org62b8a04" class="outline-2">
-<h2 id="org62b8a04"><span class="section-number-2">12.</span> Emacs Jupyter Mode</h2>
-<div class="outline-text-2" id="text-12">
-<ul class="org-ul">
-<li>`emacs-jupyter` enables Jupyter notebook support within Emacs, providing interactive data analysis and exploration.</li>
-<li><a href="https://github.com/emacs-jupyter/jupyter">Emacs Jupyter GitHub Page</a></li>
-</ul>
-
+<div id="outline-container-orge33b382" class="outline-3">
+<h3 id="orge33b382"><span class="section-number-3">10.2.</span> Step 1: Create a Virtualenv</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+Run in terminal:  
+</p>
 <div class="org-src-container">
-<pre class="src src-jupyter">import pandas as pd
-data = [[1, 2], [3, 4]]
-pd.DataFrame(data, columns=["Foo", "Bar"])
+<pre class="src src-shell">cd ~/Desktop  # Or your preferred directory
+mkdir emacs_python_test &amp;&amp; cd emacs_python_test
+pyenv virtualenv 3.11.6 emacs_test_env  # Replace 3.11.6 with your Python version
+pyenv local emacs_test_env
+pip install pyright black ruff numpy    # Install tools + a demo package (e.g., numpy)
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb851edc" class="outline-2">
-<h2 id="orgb851edc"><span class="section-number-2">13.</span> Additional Tips and Commands</h2>
-<div class="outline-text-2" id="text-13">
-</div>
-<div id="outline-container-org9161657" class="outline-3">
-<h3 id="org9161657"><span class="section-number-3">13.1.</span> Disabling Subscript in Org Mode HTML Export</h3>
-<div class="outline-text-3" id="text-13-1">
+<div id="outline-container-orgb6122ee" class="outline-3">
+<h3 id="orgb6122ee"><span class="section-number-3">10.3.</span> Step 2: Open the Project in Emacs</h3>
+<div class="outline-text-3" id="text-10-3">
 <ul class="org-ul">
 <li><p>
-To prevent underscores from creating subscripts, add the following option:
-</p></li>
+Run:  
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">M-x find-file RET ~/Desktop/emacs_python_test RET
+</pre>
+</div></li>
+<li><p>
+Confirm the virtualenv is active:  
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">M-: (message (pyvenv-virtual-env))  ; Should show the path to emacs_test_env
+</pre>
+</div></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org003a26c" class="outline-3">
-<h3 id="org003a26c"><span class="section-number-3">13.2.</span> Installing and Deleting Packages</h3>
-<div class="outline-text-3" id="text-13-2">
+<div id="outline-container-org716c266" class="outline-3">
+<h3 id="org716c266"><span class="section-number-3">10.4.</span> Step 3: Write a Test Script</h3>
+<div class="outline-text-3" id="text-10-4">
+<p>
+Create a file named <code>test.py</code> with the following <b>intentionally problematic</b> code:  
+</p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">;; To install a package
-M-x package-install
+<pre class="src src-python">import os  # Unused import
+import numpy as np  # Used later
 
-;; To delete a package
-M-x package-delete
+def add(x,y): return x+y  # Bad formatting, no type hints
+
+print(add(3, "5"))  # Type error (str + int)
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org238904a" class="outline-3">
-<h3 id="org238904a"><span class="section-number-3">13.3.</span> Code Blocks in Org Mode</h3>
-<div class="outline-text-3" id="text-13-3">
+<div id="outline-container-orgf9ac51e" class="outline-3">
+<h3 id="orgf9ac51e"><span class="section-number-3">10.5.</span> Step 4: Test Eglot (LSP Features)</h3>
+<div class="outline-text-3" id="text-10-5">
+<ol class="org-ol">
+<li>Open <code>test.py</code> and wait for <code>Connected to pyright!</code> in the minibuffer.</li>
+<li>Try these commands:  
 <ul class="org-ul">
-<li>Use `C-c C-c` to execute code blocks in Org mode.</li>
-</ul>
+<li><code>M-.</code> on <code>np</code> → Should jump to numpy’s source.</li>
+<li><code>M-?</code> on <code>add</code> → Should show no references (only one use).</li>
+<li><code>M-x eglot-code-actions</code> → Fix the type error (e.g., wrap `"5"` in `int()`).</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org7e455d3" class="outline-3">
+<h3 id="org7e455d3"><span class="section-number-3">10.6.</span> Step 5: Test Black (Formatting)</h3>
+<div class="outline-text-3" id="text-10-6">
+<ol class="org-ol">
+<li>Save the file (<code>C-x C-s</code>).</li>
+<li>Verify Black reformats the code to:</li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-python">import os  # Unused import
+import numpy as np  # Used later
 
-<div class="org-src-container">
-<pre class="src src-python">friends = ['pisu', 'ada', 'makmus']
-for i in friends:
-    print("Hello " + i)
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-org6e686e6" class="outline-2">
-<h2 id="org6e686e6"><span class="section-number-2">14.</span> Starting Emacs with a Specific Init File</h2>
-<div class="outline-text-2" id="text-14">
-<p>
-To start Emacs with a specific initialization file, you can use the `-q`, `&#x2013;no-init-file`, or `-l FILENAME` options when launching Emacs.
-</p>
-</div>
-<div id="outline-container-org7c6ddf9" class="outline-3">
-<h3 id="org7c6ddf9"><span class="section-number-3">14.1.</span> Using the `-q` option</h3>
-<div class="outline-text-3" id="text-14-1">
-<p>
-If you want to start Emacs without loading any user init file (`~/.emacs`, `~/.emacs.d/init.el`, or `~/.config/emacs/init.el`), use:
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">emacs -q
-</pre>
-</div>
-<p>
-This ensures that no user configuration is loaded.
-</p>
-</div>
-</div>
-<div id="outline-container-org91741a6" class="outline-3">
-<h3 id="org91741a6"><span class="section-number-3">14.2.</span> Using the `&#x2013;no-init-file` option</h3>
-<div class="outline-text-3" id="text-14-2">
-<p>
-This is equivalent to `-q`:
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">emacs --no-init-file
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org8fc09c2" class="outline-3">
-<h3 id="org8fc09c2"><span class="section-number-3">14.3.</span> Loading a Specific Init File</h3>
-<div class="outline-text-3" id="text-14-3">
-<p>
-To start Emacs with a custom initialization file, use the `-l` or `&#x2013;load` option followed by the filename:
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">emacs -l ~/.emacs.d/custom-init.el
-</pre>
-</div>
-<p>
-or
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">emacs --load ~/.config/emacs/my-init.el
-</pre>
-</div>
-<p>
-This loads the specified file as the initialization file.
-</p>
-</div>
-</div>
-<div id="outline-container-org25cf363" class="outline-3">
-<h3 id="org25cf363"><span class="section-number-3">14.4.</span> Running Emacs with a Temporary Init File</h3>
-<div class="outline-text-3" id="text-14-4">
-<p>
-If you want to run Emacs with a completely different configuration, you can specify a different home directory using the `&#x2013;init-directory` (Emacs 29+) or set `HOME`:
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">HOME=~/my-emacs-config emacs
-</pre>
-</div>
-<p>
-This makes Emacs look for an init file in `~/my-emacs-config/.emacs.d/init.el` instead of the default location.
-</p>
 
-<p>
-Alternatively, you can start Emacs with `&#x2013;init-directory` (Emacs 29+):
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">emacs --init-directory ~/my-emacs-config
-</pre>
-</div>
-<p>
-This allows you to use a custom Emacs directory without changing `HOME`.
-</p>
-</div>
-</div>
-<div id="outline-container-org5fc9dc5" class="outline-3">
-<h3 id="org5fc9dc5"><span class="section-number-3">14.5.</span> Debugging Initialization Issues</h3>
-<div class="outline-text-3" id="text-14-5">
-<p>
-If you suspect issues in your init file, you can start Emacs in debug mode:
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">emacs --debug-init
-</pre>
-</div>
-<p>
-This prints errors that occur during initialization.
-</p>
+def add(x, y):
+    return x + y  # Now properly formatted
 
-<p>
-If you want to temporarily bypass init file errors and start with a clean session, use:
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">emacs -Q
-</pre>
-</div>
-<p>
-This is similar to `-q` but also skips loading site-wide configurations.
-</p>
-</div>
-</div>
-<div id="outline-container-orgeb48b11" class="outline-3">
-<h3 id="orgeb48b11"><span class="section-number-3">14.6.</span> Example Usage</h3>
-<div class="outline-text-3" id="text-14-6">
-<p>
-To load a custom init file and run in debug mode:
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">emacs --debug-init -l ~/.config/emacs/alternative-init.el
-</pre>
-</div>
 
-<p>
-For a minimal Emacs session without user configuration:
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">emacs -Q
+print(add(3, "5"))  # Type error remains
 </pre>
 </div>
 </div>
 </div>
-</div>
-<div id="outline-container-orgb353d2b" class="outline-2">
-<h2 id="orgb353d2b"><span class="section-number-2">15.</span> Useful Links</h2>
-<div class="outline-text-2" id="text-15">
+<div id="outline-container-org65a5597" class="outline-3">
+<h3 id="org65a5597"><span class="section-number-3">10.7.</span> Step 6: Test Ruff (Linting)</h3>
+<div class="outline-text-3" id="text-10-7">
+<ol class="org-ol">
+<li><p>
+Run:  
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">M-x flycheck-list-errors
+</pre>
+</div></li>
+<li>You should see:  
 <ul class="org-ul">
-<li><a href="https://systemcrafters.net/publishing-websites-with-org-mode/automated-site-publishing/">Automated Org Mode Website Publishing</a></li>
-<li><a href="https://plantuml.com/emacs">Using PlantUML in Emacs</a></li>
-<li><a href="https://orgmode.org/guide/Capture.html">Org Mode Capture Templates</a></li>
-<li><a href="https://emacsdocs.org/docs/org/Capture-templates">Org Capture Documentation</a></li>
-<li><a href="https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-en.org">Mastering Emacs in One Year Guide</a></li>
+<li><code>F401</code>: <code>os</code> is unused.</li>
+<li><code>E712</code> (or similar): Type error in <code>add(3, "5")</code>.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org9b49e95" class="outline-3">
+<h3 id="org9b49e95"><span class="section-number-3">10.8.</span> Step 7: Fix the Issues</h3>
+<div class="outline-text-3" id="text-10-8">
+<ol class="org-ol">
+<li>Delete the unused <code>import os</code>.</li>
+<li>Fix the type error (e.g., <code>print(add(3, int("5")))</code>).</li>
+<li>Save again. Ruff and Black should now report no errors!</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org712110e" class="outline-3">
+<h3 id="org712110e"><span class="section-number-3">10.9.</span> Bonus: Test Completions</h3>
+<div class="outline-text-3" id="text-10-9">
+<ol class="org-ol">
+<li>Type <code>np.a</code> and wait for Corfu (or default Emacs completions) to suggest <code>np.array</code>.</li>
+<li>Accept a suggestion with <code>TAB</code> or <code>RET</code>.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org567de9b" class="outline-3">
+<h3 id="org567de9b"><span class="section-number-3">10.10.</span> Expected Workflow Summary</h3>
+<div class="outline-text-3" id="text-10-10">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Action</th>
+<th scope="col" class="org-left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Open file</td>
+<td class="org-left">Auto-activates virtualenv, Eglot connects</td>
+</tr>
+
+<tr>
+<td class="org-left">Save file</td>
+<td class="org-left">Black formats, Ruff lints</td>
+</tr>
+
+<tr>
+<td class="org-left">Navigate (<code>M-.</code>)</td>
+<td class="org-left">Jumps to definitions (e.g., numpy)</td>
+</tr>
+
+<tr>
+<td class="org-left">Fix errors (<code>M-x eglot-code-actions</code>)</td>
+<td class="org-left">Pyright suggests fixes</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org8fd9619" class="outline-3">
+<h3 id="org8fd9619"><span class="section-number-3">10.11.</span> Troubleshooting</h3>
+<div class="outline-text-3" id="text-10-11">
+<ul class="org-ul">
+<li>If something fails:  
+<ol class="org-ol">
+<li>Check <code>*Messages*</code> buffer (<code>C-h e</code>).</li>
+<li>Run <code>M-x flycheck-verify-setup</code>.</li>
+<li><p>
+Confirm packages are in the virtualenv:  
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pip list | grep -E "pyright|black|ruff"
+</pre>
+</div></li>
+</ol></li>
 </ul>
+</div>
 </div>
 </div>
 </div>
