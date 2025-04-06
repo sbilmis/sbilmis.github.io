@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-04-06 Sun 17:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Python Version and Environment Management with Pyenv on macOS</title>
+<meta name="author" content="Your Name" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/search.css" />
+                   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/search.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Python Version and Environment Management with Pyenv on macOS</h1>
+<div id="outline-container-org0f0e2f9" class="outline-2">
+<h2 id="org0f0e2f9">🧠 What is pyenv?</h2>
+<div class="outline-text-2" id="text-org0f0e2f9">
+<p>
+`pyenv` is a tool that lets you easily switch between multiple versions of Python on your system. It's especially helpful when:
+</p>
+
+<ul class="org-ul">
+<li>You want to test with different Python versions</li>
+<li>A project requires a specific Python version</li>
+<li>You don’t want to touch the system Python</li>
+</ul>
+
+<p>
+On macOS, it integrates nicely with `Homebrew` and your shell.
+</p>
+
+<p>
+You can also use <code>pyenv-virtualenv</code> to manage virtual environments tied to specific Python versions.
+</p>
+
+<p>
+Official site: <a href="https://github.com/pyenv/pyenv">https://github.com/pyenv/pyenv</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgc791983" class="outline-2">
+<h2 id="orgc791983">🍏 Installing pyenv on macOS</h2>
+<div class="outline-text-2" id="text-orgc791983">
+<p>
+You can install `pyenv` and its plugins using Homebrew.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">brew update
+brew install pyenv pyenv-virtualenv
+</pre>
+</div>
+
+<p>
+Add this to your `~/.zshrc` or `~/.bash<sub>profile</sub>`:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+</pre>
+</div>
+
+<p>
+Then restart your shell or run:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">source ~/.zshrc
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgffbb86c" class="outline-2">
+<h2 id="orgffbb86c">🔧 Using pyenv: Python Version Management</h2>
+<div class="outline-text-2" id="text-orgffbb86c">
+<p>
+<b><b>List all available versions:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pyenv install --list
+</pre>
+</div>
+
+<p>
+<b><b>Install a specific version:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pyenv install 3.11.5
+</pre>
+</div>
+
+<p>
+<b><b>Set the default version globally:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pyenv global 3.11.5
+</pre>
+</div>
+
+<p>
+<b><b>Set the version for a specific folder/project:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pyenv local 3.10.13
+</pre>
+</div>
+
+<p>
+This writes a `.python-version` file in the directory.
+</p>
+
+<p>
+<b><b>Check current version in use:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pyenv version
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge900e43" class="outline-2">
+<h2 id="orge900e43">🧪 Managing Environments with pyenv-virtualenv</h2>
+<div class="outline-text-2" id="text-orge900e43">
+<p>
+Create a virtual environment tied to a specific Python version:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">pyenv virtualenv 3.11.5 myenv
+</pre>
+</div>
+
+<p>
+Use it in a project:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">cd ~/myproject
+pyenv local myenv
+</pre>
+</div>
+
+<p>
+Now `python`, `pip`, etc. will come from `myenv`.
+</p>
+
+<p>
+To activate manually (without pyenv local):
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pyenv activate myenv
+</pre>
+</div>
+
+<p>
+Deactivate:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pyenv deactivate
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org416d0b0" class="outline-2">
+<h2 id="org416d0b0">🧠 Emacs Integration with pyenv</h2>
+<div class="outline-text-2" id="text-org416d0b0">
+<p>
+If you use Emacs locally on macOS, it needs to pick up the correct Python version and environment.
+</p>
+
+<p>
+<b><b>1. Use `exec-path-from-shell` to load shell paths in Emacs:</b></b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize))
+</pre>
+</div>
+
+<p>
+<b><b>2. You can then run `M-x run-python` or use `eglot`/`lsp-mode`, and it will use the Python from pyenv.</b></b>
+</p>
+
+<p>
+<b><b>Optional:</b></b> Add this to `.dir-locals.el` to set `python-shell-interpreter`:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">((python-mode . ((python-shell-interpreter . "~/.pyenv/versions/myenv/bin/python"))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgeadf8f7" class="outline-2">
+<h2 id="orgeadf8f7">🔄 Bonus: direnv + pyenv (Auto Activation)</h2>
+<div class="outline-text-2" id="text-orgeadf8f7">
+<p>
+`direnv` can work with `pyenv` to auto-activate your Python environment when you enter a project directory — both in terminal and Emacs.
+</p>
+
+<p>
+<b><b>Install direnv:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">brew install direnv
+</pre>
+</div>
+
+<p>
+<b><b>Add to your shell config (e.g., ~/.zshrc or ~/.bashrc):</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">eval "$(direnv hook zsh)"  # or bash
+</pre>
+</div>
+
+<p>
+<b><b>In your project folder:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pyenv local myenv
+echo 'layout python' &gt; .envrc
+direnv allow
+</pre>
+</div>
+
+<p>
+Now, whenever you `cd` into the project folder, the virtual environment will activate automatically.
+</p>
+
+<p>
+If you are using Emacs, add support for direnv:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package direnv
+  :config
+  (direnv-mode))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf0276c8" class="outline-2">
+<h2 id="orgf0276c8">✅ pyenv Cheat Sheet (macOS)</h2>
+<div class="outline-text-2" id="text-orgf0276c8">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Install pyenv + plugin</td>
+<td class="org-left">brew install pyenv pyenv-virtualenv</td>
+</tr>
+
+<tr>
+<td class="org-left">Install Python version</td>
+<td class="org-left">pyenv install 3.11.5</td>
+</tr>
+
+<tr>
+<td class="org-left">Set version globally</td>
+<td class="org-left">pyenv global 3.11.5</td>
+</tr>
+
+<tr>
+<td class="org-left">Set version per project</td>
+<td class="org-left">pyenv local 3.10.13</td>
+</tr>
+
+<tr>
+<td class="org-left">Create virtualenv</td>
+<td class="org-left">pyenv virtualenv 3.11.5 myenv</td>
+</tr>
+
+<tr>
+<td class="org-left">Use env in folder</td>
+<td class="org-left">pyenv local myenv</td>
+</tr>
+
+<tr>
+<td class="org-left">Activate manually</td>
+<td class="org-left">pyenv activate myenv</td>
+</tr>
+
+<tr>
+<td class="org-left">Emacs support</td>
+<td class="org-left">exec-path-from-shell, optional direnv-mode</td>
+</tr>
+
+<tr>
+<td class="org-left">Auto-activate envs</td>
+<td class="org-left">direnv + .envrc + pyenv</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgd5e86f9" class="outline-2">
+<h2 id="orgd5e86f9">📚 References</h2>
+<div class="outline-text-2" id="text-orgd5e86f9">
+<ul class="org-ul">
+<li><a href="https://github.com/pyenv/pyenv">pyenv</a></li>
+<li><a href="https://github.com/pyenv/pyenv-virtualenv">pyenv-virtualenv</a></li>
+<li><a href="https://github.com/wbolster/emacs-direnv">emacs-direnv</a></li>
+<li><a href="https://direnv.net">direnv</a></li>
+<li><a href="https://github.com/purcell/exec-path-from-shell">exec-path-from-shell</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Your Name</p>
+<p class="date">Created: 2025-04-06 Sun 17:49</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-04-06 Sun 17:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Managing Python Environments with Miniconda (HPC-friendly)</title>
+<meta name="author" content="Your Name" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/search.css" />
+                   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/search.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Managing Python Environments with Miniconda (HPC-friendly)</h1>
+<div id="outline-container-org218a506" class="outline-2">
+<h2 id="org218a506">🐍 What is Miniconda?</h2>
+<div class="outline-text-2" id="text-org218a506">
+<p>
+Miniconda is a minimal Python distribution. It lets you install and manage Python environments and packages without requiring root access. This makes it a popular choice for working on <b>shared systems</b> like HPC clusters.
+</p>
+
+<p>
+Instead of using the system Python, you get your own isolated Python versions and packages — just for your projects.
+</p>
+
+<p>
+💡 Miniconda uses the <code>conda</code> command-line tool to manage environments and install packages.
+</p>
+
+<p>
+Official site: <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda Documentation</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org6a60a9f" class="outline-2">
+<h2 id="org6a60a9f">📦 Why Use It in HPC?</h2>
+<div class="outline-text-2" id="text-org6a60a9f">
+<p>
+On HPC systems:
+</p>
+<ul class="org-ul">
+<li>You often can't install system-wide packages (`sudo` is not allowed)</li>
+<li>Different projects require different Python versions or packages</li>
+<li>You want reproducible environments</li>
+</ul>
+
+<p>
+Miniconda helps by:
+</p>
+<ul class="org-ul">
+<li>Installing Python in your home directory</li>
+<li>Creating fully isolated environments</li>
+<li>Allowing easy activation/deactivation per project</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org31a5e49" class="outline-2">
+<h2 id="org31a5e49">🚀 Installing Miniconda (No sudo required)</h2>
+<div class="outline-text-2" id="text-org31a5e49">
+<p>
+You can install Miniconda in your home directory.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda
+export PATH="$HOME/miniconda/bin:$PATH"
+</pre>
+</div>
+
+<p>
+To make it permanent:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">echo 'export PATH="$HOME/miniconda/bin:$PATH"' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</pre>
+</div>
+
+<p>
+Now you can run:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">conda --version
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2f2d9de" class="outline-2">
+<h2 id="org2f2d9de">🧠 What is Mamba?</h2>
+<div class="outline-text-2" id="text-org2f2d9de">
+<p>
+<code>Mamba</code> is a faster version of <code>conda</code>. It does the same things but much faster — especially when installing or updating packages.
+</p>
+
+<p>
+You can install it in your base environment:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">conda install mamba -n base -c conda-forge
+</pre>
+</div>
+
+<p>
+From now on, you can use <code>mamba</code> instead of <code>conda</code> for most tasks.
+</p>
+
+<p>
+<b><b>Examples:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mamba create -n myenv python=3.11 numpy matplotlib
+mamba install -n myenv scipy pandas
+</pre>
+</div>
+
+<p>
+<b><b>But:</b></b> You should <b>still</b> use `conda` for:
+</p>
+<ul class="org-ul">
+<li>`conda activate` / `conda deactivate`</li>
+<li>`conda list`, `conda env export`</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdef34ae" class="outline-2">
+<h2 id="orgdef34ae">💡 When to Use Mamba vs Conda</h2>
+<div class="outline-text-2" id="text-orgdef34ae">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task</th>
+<th scope="col" class="org-left">Recommended Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Create environment</td>
+<td class="org-left">✅ mamba</td>
+</tr>
+
+<tr>
+<td class="org-left">Install/remove packages</td>
+<td class="org-left">✅ mamba</td>
+</tr>
+
+<tr>
+<td class="org-left">Activate/deactivate</td>
+<td class="org-left">❌ conda</td>
+</tr>
+
+<tr>
+<td class="org-left">Export requirements</td>
+<td class="org-left">❌ conda</td>
+</tr>
+
+<tr>
+<td class="org-left">List installed packages</td>
+<td class="org-left">❌ conda</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org5396ee7" class="outline-2">
+<h2 id="org5396ee7">📁 Creating and Using Environments</h2>
+<div class="outline-text-2" id="text-org5396ee7">
+<p>
+<b><b>Create a new environment:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mamba create -n myenv python=3.11
+</pre>
+</div>
+
+<p>
+<b><b>Activate it:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">conda activate myenv
+</pre>
+</div>
+
+<p>
+<b><b>Install some packages:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mamba install numpy matplotlib
+</pre>
+</div>
+
+<p>
+<b><b>Deactivate when you're done:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">conda deactivate
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org28122bd" class="outline-2">
+<h2 id="org28122bd">📄 Exporting and Importing Requirements</h2>
+<div class="outline-text-2" id="text-org28122bd">
+<p>
+You may want to share your environment or recreate it later.
+</p>
+
+<p>
+<b><b>Export in Conda format:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">conda list --export &gt; conda-requirements.txt
+</pre>
+</div>
+
+<p>
+<b><b>Export in YAML (preferred for Conda):</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">conda env export &gt; environment.yml
+</pre>
+</div>
+
+<p>
+<b><b>Recreate an environment from YAML:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">conda env create -f environment.yml
+</pre>
+</div>
+
+<p>
+<b><b>Export in pip format (if you use pip inside):</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pip freeze &gt; requirements.txt
+</pre>
+</div>
+
+<p>
+<b><b>Reinstall from pip freeze file:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pip install -r requirements.txt
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6ba45ae" class="outline-2">
+<h2 id="org6ba45ae">🔄 Auto-Activation with direnv</h2>
+<div class="outline-text-2" id="text-org6ba45ae">
+<p>
+`direnv` automatically activates your Conda environment when you `cd` into a folder — both in the terminal and in Emacs.
+</p>
+
+<p>
+<b><b>Install direnv (once):</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">brew install direnv        # macOS
+sudo apt install direnv    # Debian/Ubuntu
+</pre>
+</div>
+
+<p>
+<b><b>Enable in your shell:</b></b>
+Add to `~/.bashrc` or `~/.zshrc`:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">eval "$(direnv hook bash)"
+</pre>
+</div>
+
+<p>
+<b><b>In your project folder:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">echo 'conda activate myenv' &gt; .envrc
+direnv allow
+</pre>
+</div>
+
+<p>
+💡 Now every time you `cd` into this folder, your Conda env will be activated automatically.
+</p>
+
+<p>
+<b><b>Emacs support:</b></b> Add this package:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package direnv
+  :config
+  (direnv-mode))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1e52587" class="outline-2">
+<h2 id="org1e52587">🔧 Installing direnv Without sudo (HPC / Rocky Linux)</h2>
+<div class="outline-text-2" id="text-org1e52587">
+<p>
+Most HPC systems like Rocky Linux do not have `direnv` pre-installed, and you may not have sudo rights. Here's how to install it locally in your home directory:
+</p>
+
+<p>
+<b><b>Download and set up:</b></b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">mkdir -p $HOME/.local/bin
+cd $HOME/.local/bin
+curl -LO https://github.com/direnv/direnv/releases/latest/download/direnv.linux-amd64
+mv direnv.linux-amd64 direnv
+chmod +x direnv
+</pre>
+</div>
+
+<p>
+<b><b>Update your shell config:</b></b>
+</p>
+
+<p>
+Add the following lines to your `~/.bashrc` (or `~/.bash<sub>profile</sub>`, depending on your shell):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">export PATH="$HOME/.local/bin:$PATH"
+eval "$(direnv hook bash)"
+</pre>
+</div>
+
+<p>
+Then reload:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">source ~/.bashrc
+</pre>
+</div>
+
+<p>
+<b><b>✅ Check It Works:</b></b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">direnv version
+</pre>
+</div>
+
+<p>
+You should see the version printed. You're good to go!
+</p>
+</div>
+</div>
+<div id="outline-container-org18678df" class="outline-2">
+<h2 id="org18678df">🧪 Quick Test of direnv Functionality</h2>
+<div class="outline-text-2" id="text-org18678df">
+<ol class="org-ol">
+<li><p>
+Create a test directory:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mkdir ~/direnv-test &amp;&amp; cd ~/direnv-test
+</pre>
+</div></li>
+
+<li><p>
+Add a `.envrc` file:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">echo 'echo "Hello from direnv!"' &gt; .envrc
+</pre>
+</div></li>
+
+<li><p>
+Allow the directory:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">direnv allow
+</pre>
+</div></li>
+
+<li><p>
+Leave and return to the directory:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">cd .. &amp;&amp; cd ~/direnv-test
+</pre>
+</div></li>
+</ol>
+
+<p>
+You should see:
+</p>
+<pre class="example" id="org97b2f0c">
+Hello from direnv!
+</pre>
+
+<p>
+That means it's working!
+</p>
+
+<p>
+Now you can put `conda activate myenv` or other environment-specific commands inside `.envrc` files in each project folder to automate environment activation.
+</p>
+</div>
+</div>
+<div id="outline-container-org3bd8374" class="outline-2">
+<h2 id="org3bd8374">⚖️ Comparison: direnv vs pyenv local</h2>
+<div class="outline-text-2" id="text-org3bd8374">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Feature</th>
+<th scope="col" class="org-left">`pyenv local`</th>
+<th scope="col" class="org-left">`direnv`</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Sets Python version</td>
+<td class="org-left">✅ Yes</td>
+<td class="org-left">❌ No</td>
+</tr>
+
+<tr>
+<td class="org-left">Activates Conda env</td>
+<td class="org-left">❌ No</td>
+<td class="org-left">✅ Yes</td>
+</tr>
+
+<tr>
+<td class="org-left">Auto-activation</td>
+<td class="org-left">❌ Manual only</td>
+<td class="org-left">✅ Auto</td>
+</tr>
+
+<tr>
+<td class="org-left">Emacs integration</td>
+<td class="org-left">❌ Not built-in</td>
+<td class="org-left">✅ Native with <code>emacs-direnv</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Custom shell variables</td>
+<td class="org-left">❌ No</td>
+<td class="org-left">✅ Yes</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b><b>Conclusion:</b></b>  
+Use `direnv` + `conda` for best results in HPC environments.
+</p>
+</div>
+</div>
+<div id="outline-container-org30b258f" class="outline-2">
+<h2 id="org30b258f">✅ Summary</h2>
+<div class="outline-text-2" id="text-org30b258f">
+<ul class="org-ul">
+<li><b><b>Miniconda</b></b> gives you full control over your Python environments.</li>
+<li><b><b>Mamba</b></b> is a faster, drop-in replacement for installing packages.</li>
+<li><b><b>Use `conda` for activate/deactivate, and exporting envs.</b></b></li>
+<li><b><b>Use `direnv`</b></b> for automatic activation in both shell and Emacs.</li>
+<li>Use YAML files for Conda reproducibility, or pip freeze for Python-only environments.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgee3fa64" class="outline-2">
+<h2 id="orgee3fa64">🔗 References</h2>
+<div class="outline-text-2" id="text-orgee3fa64">
+<ul class="org-ul">
+<li><a href="https://docs.conda.io/en/latest/">Conda Documentation</a></li>
+<li><a href="https://github.com/mamba-org/mamba">Mamba GitHub</a></li>
+<li><a href="https://github.com/necaris/conda.el">conda.el for Emacs</a></li>
+<li><a href="https://github.com/wbolster/emacs-direnv">emacs-direnv</a></li>
+<li><a href="https://direnv.net">direnv.net</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2305c09" class="outline-2">
+<h2 id="org2305c09">📌 Conda Cheat Sheet</h2>
+<div class="outline-text-2" id="text-org2305c09">
+<p>
+**🔧 Setup
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Install Miniconda (no sudo)</td>
+<td class="org-left">wget &#x2026; &amp;&amp; bash &#x2026; -p $HOME/miniconda</td>
+</tr>
+
+<tr>
+<td class="org-left">Add to PATH</td>
+<td class="org-left">export PATH="$HOME/miniconda/bin:$PATH"</td>
+</tr>
+
+<tr>
+<td class="org-left">Install Mamba</td>
+<td class="org-left">conda install mamba -n base -c conda-forge</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+**📦 Environment Management
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Create env</td>
+<td class="org-left">mamba create -n myenv python=3.11</td>
+</tr>
+
+<tr>
+<td class="org-left">Activate env</td>
+<td class="org-left">conda activate myenv</td>
+</tr>
+
+<tr>
+<td class="org-left">Deactivate</td>
+<td class="org-left">conda deactivate</td>
+</tr>
+
+<tr>
+<td class="org-left">Remove env</td>
+<td class="org-left">conda env remove -n myenv</td>
+</tr>
+
+<tr>
+<td class="org-left">List all envs</td>
+<td class="org-left">conda env list</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+**📄 Package Management
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Install packages</td>
+<td class="org-left">mamba install numpy matplotlib</td>
+</tr>
+
+<tr>
+<td class="org-left">Install from pip (inside env)</td>
+<td class="org-left">pip install somepkg</td>
+</tr>
+
+<tr>
+<td class="org-left">Update package</td>
+<td class="org-left">mamba update numpy</td>
+</tr>
+
+<tr>
+<td class="org-left">Remove package</td>
+<td class="org-left">mamba remove numpy</td>
+</tr>
+
+<tr>
+<td class="org-left">List installed packages</td>
+<td class="org-left">conda list</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+**📁 Export / Recreate Environments
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Export YAML</td>
+<td class="org-left">conda env export &gt; environment.yml</td>
+</tr>
+
+<tr>
+<td class="org-left">Create from YAML</td>
+<td class="org-left">conda env create -f environment.yml</td>
+</tr>
+
+<tr>
+<td class="org-left">Export pip-style</td>
+<td class="org-left">pip freeze &gt; requirements.txt</td>
+</tr>
+
+<tr>
+<td class="org-left">Install from pip reqs</td>
+<td class="org-left">pip install -r requirements.txt</td>
+</tr>
+
+<tr>
+<td class="org-left">Export Conda format</td>
+<td class="org-left">conda list &#x2013;export &gt; conda-requirements.txt</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+**🔄 Direnv Integration (Optional)
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Init direnv (bash)</td>
+<td class="org-left">eval "$(direnv hook bash)"</td>
+</tr>
+
+<tr>
+<td class="org-left">Set env for folder</td>
+<td class="org-left">echo 'conda activate myenv' &gt; .envrc</td>
+</tr>
+
+<tr>
+<td class="org-left">Allow it</td>
+<td class="org-left">direnv allow</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Your Name</p>
+<p class="date">Created: 2025-04-06 Sun 17:49</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

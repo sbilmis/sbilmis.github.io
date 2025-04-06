@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-06 Sun 16:23 -->
+<!-- 2025-04-06 Sun 17:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tech Notes &amp; How-tos</title>
@@ -65,7 +65,9 @@
 <li><a href="#orgb32efc5">7. Hpc</a>
 <ul>
 <li><a href="#orgbce498d">7.1. Linux and HPC Tutorials: A Practical Guide for Beginners</a></li>
-<li><a href="#org31c6bff">7.2. Opensees<sub>installation</sub></a></li>
+<li><a href="#orgf7dca4f">7.2. Managing Python Environments with Miniconda (HPC-friendly)</a></li>
+<li><a href="#org65d8564">7.3. Python Version and Virtualenv Management with Pyenv (HPC, No sudo)</a></li>
+<li><a href="#org31c6bff">7.4. Opensees<sub>installation</sub></a></li>
 </ul>
 </li>
 <li><a href="#org97c7005">8. Hugo</a>
@@ -104,29 +106,35 @@
 <li><a href="#org283bbb7">14.1. MATLAB Tips and Resources</a></li>
 </ul>
 </li>
-<li><a href="#org9e823a7">15. Rclone</a>
+<li><a href="#org32ba1a7">15. Python</a>
 <ul>
-<li><a href="#org88d99e9">15.1. Rclone Guide</a></li>
+<li><a href="#org275402c">15.1. Python Environment Management with Miniconda on macOS</a></li>
+<li><a href="#org400fe0d">15.2. Python Version and Environment Management with Pyenv on macOS</a></li>
 </ul>
 </li>
-<li><a href="#org3246e8c">16. Rsync</a>
+<li><a href="#org9e823a7">16. Rclone</a>
 <ul>
-<li><a href="#org34d6001">16.1. Rsync Guide</a></li>
+<li><a href="#org88d99e9">16.1. Rclone Guide</a></li>
 </ul>
 </li>
-<li><a href="#org2537fdf">17. Ssh</a>
+<li><a href="#org3246e8c">17. Rsync</a>
 <ul>
-<li><a href="#org212e203">17.1. SSH Tutorial</a></li>
+<li><a href="#org34d6001">17.1. Rsync Guide</a></li>
 </ul>
 </li>
-<li><a href="#orgd14f5d7">18. Tmux</a>
+<li><a href="#org2537fdf">18. Ssh</a>
 <ul>
-<li><a href="#org22687aa">18.1. Tmux Guide</a></li>
+<li><a href="#org212e203">18.1. SSH Tutorial</a></li>
 </ul>
 </li>
-<li><a href="#org8af8d8e">19. Zotero</a>
+<li><a href="#orgd14f5d7">19. Tmux</a>
 <ul>
-<li><a href="#orgcbeb03b">19.1. Zotero Notes</a></li>
+<li><a href="#org22687aa">19.1. Tmux Guide</a></li>
+</ul>
+</li>
+<li><a href="#org8af8d8e">20. Zotero</a>
+<ul>
+<li><a href="#orgcbeb03b">20.1. Zotero Notes</a></li>
 </ul>
 </div>
 </div>
@@ -203,8 +211,14 @@
 <div id="outline-container-orgbce498d" class="outline-3">
 <h3 id="orgbce498d"><span class="section-number-3">7.1.</span> <a href="hpc/hpc.html">Linux and HPC Tutorials: A Practical Guide for Beginners</a></h3>
 </div>
+<div id="outline-container-orgf7dca4f" class="outline-3">
+<h3 id="orgf7dca4f"><span class="section-number-3">7.2.</span> <a href="hpc/python_environments_with_miniconda.html">Managing Python Environments with Miniconda (HPC-friendly)</a></h3>
+</div>
+<div id="outline-container-org65d8564" class="outline-3">
+<h3 id="org65d8564"><span class="section-number-3">7.3.</span> <a href="hpc/python_environments_with_pyenv.html">Python Version and Virtualenv Management with Pyenv (HPC, No sudo)</a></h3>
+</div>
 <div id="outline-container-org31c6bff" class="outline-3">
-<h3 id="org31c6bff"><span class="section-number-3">7.2.</span> <a href="hpc/opensees_installation.html">Opensees<sub>installation</sub></a></h3>
+<h3 id="org31c6bff"><span class="section-number-3">7.4.</span> <a href="hpc/opensees_installation.html">Opensees<sub>installation</sub></a></h3>
 </div>
 </div>
 <div id="outline-container-org97c7005" class="outline-2">
@@ -266,50 +280,61 @@
 <h3 id="org283bbb7"><span class="section-number-3">14.1.</span> <a href="matlab/matlab.html">MATLAB Tips and Resources</a></h3>
 </div>
 </div>
-<div id="outline-container-org9e823a7" class="outline-2">
-<h2 id="org9e823a7"><span class="section-number-2">15.</span> Rclone</h2>
+<div id="outline-container-org32ba1a7" class="outline-2">
+<h2 id="org32ba1a7"><span class="section-number-2">15.</span> Python</h2>
 <div class="outline-text-2" id="text-15">
 </div>
+<div id="outline-container-org275402c" class="outline-3">
+<h3 id="org275402c"><span class="section-number-3">15.1.</span> <a href="python/python_env_with_miniconda.html">Python Environment Management with Miniconda on macOS</a></h3>
+</div>
+<div id="outline-container-org400fe0d" class="outline-3">
+<h3 id="org400fe0d"><span class="section-number-3">15.2.</span> <a href="python/python_env_with_pyenv.html">Python Version and Environment Management with Pyenv on macOS</a></h3>
+</div>
+</div>
+<div id="outline-container-org9e823a7" class="outline-2">
+<h2 id="org9e823a7"><span class="section-number-2">16.</span> Rclone</h2>
+<div class="outline-text-2" id="text-16">
+</div>
 <div id="outline-container-org88d99e9" class="outline-3">
-<h3 id="org88d99e9"><span class="section-number-3">15.1.</span> <a href="rclone/rclone.html">Rclone Guide</a></h3>
+<h3 id="org88d99e9"><span class="section-number-3">16.1.</span> <a href="rclone/rclone.html">Rclone Guide</a></h3>
 </div>
 </div>
 <div id="outline-container-org3246e8c" class="outline-2">
-<h2 id="org3246e8c"><span class="section-number-2">16.</span> Rsync</h2>
-<div class="outline-text-2" id="text-16">
+<h2 id="org3246e8c"><span class="section-number-2">17.</span> Rsync</h2>
+<div class="outline-text-2" id="text-17">
 </div>
 <div id="outline-container-org34d6001" class="outline-3">
-<h3 id="org34d6001"><span class="section-number-3">16.1.</span> <a href="rsync/rsync.html">Rsync Guide</a></h3>
+<h3 id="org34d6001"><span class="section-number-3">17.1.</span> <a href="rsync/rsync.html">Rsync Guide</a></h3>
 </div>
 </div>
 <div id="outline-container-org2537fdf" class="outline-2">
-<h2 id="org2537fdf"><span class="section-number-2">17.</span> Ssh</h2>
-<div class="outline-text-2" id="text-17">
+<h2 id="org2537fdf"><span class="section-number-2">18.</span> Ssh</h2>
+<div class="outline-text-2" id="text-18">
 </div>
 <div id="outline-container-org212e203" class="outline-3">
-<h3 id="org212e203"><span class="section-number-3">17.1.</span> <a href="ssh/ssh.html">SSH Tutorial</a></h3>
+<h3 id="org212e203"><span class="section-number-3">18.1.</span> <a href="ssh/ssh.html">SSH Tutorial</a></h3>
 </div>
 </div>
 <div id="outline-container-orgd14f5d7" class="outline-2">
-<h2 id="orgd14f5d7"><span class="section-number-2">18.</span> Tmux</h2>
-<div class="outline-text-2" id="text-18">
+<h2 id="orgd14f5d7"><span class="section-number-2">19.</span> Tmux</h2>
+<div class="outline-text-2" id="text-19">
 </div>
 <div id="outline-container-org22687aa" class="outline-3">
-<h3 id="org22687aa"><span class="section-number-3">18.1.</span> <a href="tmux/tmux.html">Tmux Guide</a></h3>
+<h3 id="org22687aa"><span class="section-number-3">19.1.</span> <a href="tmux/tmux.html">Tmux Guide</a></h3>
 </div>
 </div>
 <div id="outline-container-org8af8d8e" class="outline-2">
-<h2 id="org8af8d8e"><span class="section-number-2">19.</span> Zotero</h2>
-<div class="outline-text-2" id="text-19">
+<h2 id="org8af8d8e"><span class="section-number-2">20.</span> Zotero</h2>
+<div class="outline-text-2" id="text-20">
 </div>
 <div id="outline-container-orgcbeb03b" class="outline-3">
-<h3 id="orgcbeb03b"><span class="section-number-3">19.1.</span> <a href="zotero/zotero.html">Zotero Notes</a></h3>
+<h3 id="orgcbeb03b"><span class="section-number-3">20.1.</span> <a href="zotero/zotero.html">Zotero Notes</a></h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2025-04-06 Sun 16:23</p>
+<p class="date">Created: 2025-04-06 Sun 17:49</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

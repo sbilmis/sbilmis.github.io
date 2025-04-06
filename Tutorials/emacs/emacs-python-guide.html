@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-06 Sun 16:23 -->
+<!-- 2025-04-06 Sun 17:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Setting Up Emacs as a Python IDE with Eglot, Pyright, Black, and Ruff</title>
@@ -73,13 +73,13 @@
 <li><a href="#org20101ee">7.1. Black: Automatic Code Formatter</a>
 <ul>
 <li><a href="#org4723e63">7.1.1. Why use Black?</a></li>
-<li><a href="#org8fa4561">7.1.2. Example</a></li>
+<li><a href="#org2e33403">7.1.2. Example</a></li>
 </ul>
 </li>
 <li><a href="#orgeb96e07">7.2. Ruff: Python Linter and Code Fixer</a>
 <ul>
 <li><a href="#org61d25d3">7.2.1. Why use Ruff?</a></li>
-<li><a href="#orgef9b9d5">7.2.2. Example</a></li>
+<li><a href="#org2243568">7.2.2. Example</a></li>
 <li><a href="#org3e1a9e7">7.2.3. Additional Ruff Commands</a></li>
 <li><a href="#org573ff2b">7.2.4. Emacs Integration via Flycheck</a></li>
 </ul>
@@ -317,7 +317,7 @@ Python virtual environments allow you to create isolated environments for differ
 Using virtual environments is considered a best practice for Python development — especially in long-term projects, collaborative environments, or when using IDEs like Emacs, VSCode, or PyCharm.
 </p>
 
-<div class="note" id="org4fc2129">
+<div class="note" id="org6e12218">
 <p>
 💡 <b>Alternative: Using Conda instead of pyenv</b>
 </p>
@@ -468,7 +468,7 @@ pyenv local myenv_name
 This creates a `.python-version` file in your project directory. Tools like Emacs and shell terminals will detect this file and automatically activate the right Python environment for you.
 </p>
 
-<div class="note" id="orge26c4b0">
+<div class="note" id="org5ee5e09">
 <p>
 💡 `pyenv local` enables <b>persistent</b> activation for the folder, making it ideal for development tools like Emacs or VSCode.
 </p>
@@ -564,7 +564,7 @@ To generate it from your current environment:
 This is especially helpful for sharing your environment with collaborators or re-creating it later.
 </p>
 
-<div class="note" id="org43dd635">
+<div class="note" id="orgc904b38">
 <p>
 💡 <b>Advanced: Dependency Management with pip-tools or Poetry</b>
 </p>
@@ -612,7 +612,7 @@ Both tools work with Emacs and `pyvenv`. If you use Poetry, activate its virtual
 <div id="outline-container-org2e6a25c" class="outline-3">
 <h3 id="org2e6a25c"><span class="section-number-3">4.7.</span> Step 5: Confirm the Installation Locations</h3>
 <div class="outline-text-3" id="text-4-7">
-<div class="note" id="org27fa6f3">
+<div class="note" id="orgc79731a">
 <p>
 Your virtualenv and tools are stored in:
 </p>
@@ -1145,8 +1145,8 @@ Black is a <b><b>highly opinionated code formatter</b></b> for Python. It reform
 </ul>
 </div>
 </div>
-<div id="outline-container-org8fa4561" class="outline-4">
-<h4 id="org8fa4561"><span class="section-number-4">7.1.2.</span> Example</h4>
+<div id="outline-container-org2e33403" class="outline-4">
+<h4 id="org2e33403"><span class="section-number-4">7.1.2.</span> Example</h4>
 <div class="outline-text-4" id="text-7-1-2">
 <ul class="org-ul">
 <li><p>
@@ -1194,8 +1194,8 @@ Ruff is a <b><b>blazing-fast linter and code fixer</b></b> written in Rust. Unli
 </ul>
 </div>
 </div>
-<div id="outline-container-orgef9b9d5" class="outline-4">
-<h4 id="orgef9b9d5"><span class="section-number-4">7.2.2.</span> Example</h4>
+<div id="outline-container-org2243568" class="outline-4">
+<h4 id="org2243568"><span class="section-number-4">7.2.2.</span> Example</h4>
 <div class="outline-text-4" id="text-7-2-2">
 <ul class="org-ul">
 <li><p>
@@ -1580,7 +1580,7 @@ This tutorial was created to provide a lightweight and efficient Python developm
 <div id="outline-container-org1df14b8" class="outline-2">
 <h2 id="org1df14b8"><span class="section-number-2">9.</span> Cheatsheet: Common Python IDE Commands in Emacs</h2>
 <div class="outline-text-2" id="text-9">
-<div class="tip" id="org9d4c7b9">
+<div class="tip" id="org0c8a71b">
 <p>
 📌 Tip: You can print this cheatsheet or keep it in a split buffer (<code>C-x 3</code>) while working on your Python project. That way, you can quickly refer to keybindings without leaving Emacs.
 </p>
@@ -1864,7 +1864,7 @@ Confirm packages are in the virtualenv:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sbilmis</p>
-<p class="date">Created: 2025-04-06 Sun 16:23</p>
+<p class="date">Created: 2025-04-06 Sun 17:49</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

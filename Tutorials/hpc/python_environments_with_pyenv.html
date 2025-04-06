@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-04-06 Sun 17:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Python Version and Virtualenv Management with Pyenv (HPC, No sudo)</title>
+<meta name="author" content="Your Name" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/search.css" />
+                   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/search.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Python Version and Virtualenv Management with Pyenv (HPC, No sudo)</h1>
+<div id="outline-container-orgaaca572" class="outline-2">
+<h2 id="orgaaca572">🧠 What is pyenv?</h2>
+<div class="outline-text-2" id="text-orgaaca572">
+<p>
+`pyenv` is a tool for managing multiple Python versions side by side in your user account.
+</p>
+
+<p>
+It’s useful when:
+</p>
+<ul class="org-ul">
+<li>The system Python version is outdated or restricted</li>
+<li>You want to isolate environments per project</li>
+<li>You can’t use `conda` or prefer standard Python tooling</li>
+</ul>
+
+<p>
+We'll install it <b>without sudo</b>, using only your home directory.
+</p>
+</div>
+</div>
+<div id="outline-container-org9e78843" class="outline-2">
+<h2 id="org9e78843">📥 Installing pyenv (No sudo, HPC-friendly)</h2>
+<div class="outline-text-2" id="text-org9e78843">
+<p>
+<b><b>1. Clone the repository:</b></b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+</pre>
+</div>
+
+<p>
+<b><b>2. Add pyenv to your shell config (e.g., ~/.bashrc or ~/.zshrc):</b></b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+</pre>
+</div>
+
+<p>
+<b><b>3. Reload your shell:</b></b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">source ~/.bashrc   # or source ~/.zshrc
+</pre>
+</div>
+
+<p>
+<b><b>✅ Test it:</b></b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">pyenv --version
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc95a218" class="outline-2">
+<h2 id="orgc95a218">⚙️ Optional: Install pyenv-virtualenv (also no sudo)</h2>
+<div class="outline-text-2" id="text-orgc95a218">
+<p>
+To create and manage virtual environments per Python version:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+</pre>
+</div>
+
+<p>
+Then add this to your `~/.bashrc` or `~/.zshrc`:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">eval "$(pyenv virtualenv-init -)"
+</pre>
+</div>
+
+<p>
+Then reload:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">source ~/.bashrc
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org29b69f6" class="outline-2">
+<h2 id="org29b69f6">🛠️ Installing Python Versions</h2>
+<div class="outline-text-2" id="text-org29b69f6">
+<p>
+First, ensure build tools like `gcc`, `make`, `zlib`, `openssl`, etc., are available.
+</p>
+
+<p>
+Then list installable versions:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">pyenv install --list
+</pre>
+</div>
+
+<p>
+Install a version:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">pyenv install 3.11.5
+</pre>
+</div>
+
+<p>
+If build fails due to missing system libraries (e.g., OpenSSL), consider switching to Miniconda instead.
+</p>
+</div>
+</div>
+<div id="outline-container-orga1f75dd" class="outline-2">
+<h2 id="orga1f75dd">🔧 Managing Python Versions</h2>
+<div class="outline-text-2" id="text-orga1f75dd">
+<p>
+<b><b>Set a global default (for your user):</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pyenv global 3.11.5
+</pre>
+</div>
+
+<p>
+<b><b>Set version locally per project (writes .python-version):</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">cd ~/myproject
+pyenv local 3.11.5
+</pre>
+</div>
+
+<p>
+Check which Python is in use:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pyenv which python
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc1e4257" class="outline-2">
+<h2 id="orgc1e4257">📦 Virtual Environments with pyenv-virtualenv</h2>
+<div class="outline-text-2" id="text-orgc1e4257">
+<p>
+<b><b>Create a virtualenv:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pyenv virtualenv 3.11.5 myenv
+</pre>
+</div>
+
+<p>
+<b><b>Use the environment in a folder:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">cd ~/myproject
+pyenv local myenv
+</pre>
+</div>
+
+<p>
+Now `python` and `pip` point to your virtualenv version.
+</p>
+
+<p>
+<b><b>Manual activation:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pyenv activate myenv
+</pre>
+</div>
+
+<p>
+<b><b>Deactivate:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pyenv deactivate
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9a0e6c9" class="outline-2">
+<h2 id="org9a0e6c9">📁 Exporting and Reusing Requirements</h2>
+<div class="outline-text-2" id="text-org9a0e6c9">
+<p>
+Inside your virtualenv:
+</p>
+
+<p>
+<b><b>Freeze current packages:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pip freeze &gt; requirements.txt
+</pre>
+</div>
+
+<p>
+<b><b>Reinstall in a new env:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pip install -r requirements.txt
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd0b533f" class="outline-2">
+<h2 id="orgd0b533f">✅ pyenv Cheat Sheet (HPC Version)</h2>
+<div class="outline-text-2" id="text-orgd0b533f">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Clone pyenv</td>
+<td class="org-left">git clone <a href="https://github.com/pyenv/pyenv.git">https://github.com/pyenv/pyenv.git</a> ~/.pyenv</td>
+</tr>
+
+<tr>
+<td class="org-left">Add to PATH/init</td>
+<td class="org-left">export PYENV<sub>ROOT</sub>=&#x2026; + eval "$(pyenv init)"</td>
+</tr>
+
+<tr>
+<td class="org-left">Install Python version</td>
+<td class="org-left">pyenv install 3.11.5</td>
+</tr>
+
+<tr>
+<td class="org-left">Set version globally</td>
+<td class="org-left">pyenv global 3.11.5</td>
+</tr>
+
+<tr>
+<td class="org-left">Set version for project</td>
+<td class="org-left">pyenv local 3.11.5</td>
+</tr>
+
+<tr>
+<td class="org-left">Create virtualenv</td>
+<td class="org-left">pyenv virtualenv 3.11.5 myenv</td>
+</tr>
+
+<tr>
+<td class="org-left">Activate env manually</td>
+<td class="org-left">pyenv activate myenv</td>
+</tr>
+
+<tr>
+<td class="org-left">Use env in folder</td>
+<td class="org-left">pyenv local myenv</td>
+</tr>
+
+<tr>
+<td class="org-left">Freeze packages</td>
+<td class="org-left">pip freeze &gt; requirements.txt</td>
+</tr>
+
+<tr>
+<td class="org-left">Reinstall packages</td>
+<td class="org-left">pip install -r requirements.txt</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgaf0472e" class="outline-2">
+<h2 id="orgaf0472e">📚 References</h2>
+<div class="outline-text-2" id="text-orgaf0472e">
+<ul class="org-ul">
+<li><a href="https://github.com/pyenv/pyenv">pyenv</a></li>
+<li><a href="https://github.com/pyenv/pyenv-virtualenv">pyenv-virtualenv</a></li>
+<li><a href="https://github.com/pyenv/pyenv/wiki/Common-build-problems">pyenv build issues FAQ</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Your Name</p>
+<p class="date">Created: 2025-04-06 Sun 17:49</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

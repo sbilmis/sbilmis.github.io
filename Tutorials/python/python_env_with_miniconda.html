@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-04-06 Sun 17:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Python Environment Management with Miniconda on macOS</title>
+<meta name="author" content="Your Name" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/rtd-full.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/readtheorg.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/htmlize.css" />
+                   <link rel="stylesheet" type="text/css" href="../org-html-themes/src/readtheorg_theme/css/search.css" />
+                   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+                   <script type="text/javascript" src="../org-html-themes/src/readtheorg_theme/js/search.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Python Environment Management with Miniconda on macOS</h1>
+<div id="outline-container-orgd9d2e6e" class="outline-2">
+<h2 id="orgd9d2e6e">🍏 What is Miniconda?</h2>
+<div class="outline-text-2" id="text-orgd9d2e6e">
+<p>
+Miniconda is a minimal Python distribution that lets you create isolated environments for your Python projects. You don't need to touch the system Python and can install everything locally in your user space.
+</p>
+
+<p>
+Why it's useful:
+</p>
+<ul class="org-ul">
+<li>🧪 Separate dependencies per project</li>
+<li>✅ Avoid conflicts between tools</li>
+<li>🧼 Keep system Python untouched</li>
+</ul>
+
+<p>
+Miniconda includes the <code>conda</code> tool, and optionally you can install <code>mamba</code> for speed.
+</p>
+
+<p>
+Official site: <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda Docs</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org9eb0dec" class="outline-2">
+<h2 id="org9eb0dec">📦 Installing Miniconda on macOS</h2>
+<div class="outline-text-2" id="text-org9eb0dec">
+<ol class="org-ol">
+<li><p>
+Download the installer:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+bash Miniconda3-latest-MacOSX-x86_64.sh -b -p $HOME/miniconda
+</pre>
+</div></li>
+
+<li><p>
+Add to your shell config (if using bash or zsh):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">echo 'export PATH="$HOME/miniconda/bin:$PATH"' &gt;&gt; ~/.zshrc
+echo 'eval "$(direnv hook zsh)"' &gt;&gt; ~/.zshrc
+source ~/.zshrc
+</pre>
+</div></li>
+</ol>
+
+<p>
+Now <code>conda</code> should be available:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">conda --version
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf70520a" class="outline-2">
+<h2 id="orgf70520a">⚡ Installing Mamba (Optional, but Recommended)</h2>
+<div class="outline-text-2" id="text-orgf70520a">
+<p>
+Mamba is a faster alternative to <code>conda</code> for installing packages and creating environments.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">conda install mamba -n base -c conda-forge
+</pre>
+</div>
+
+<p>
+Then use it just like conda:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">mamba create -n myenv python=3.11 numpy matplotlib
+conda activate myenv
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1fd8986" class="outline-2">
+<h2 id="org1fd8986">🛠️ Basic Workflow</h2>
+<div class="outline-text-2" id="text-org1fd8986">
+<p>
+<b><b>Create environment:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mamba create -n myenv python=3.11
+</pre>
+</div>
+
+<p>
+<b><b>Activate environment:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">conda activate myenv
+</pre>
+</div>
+
+<p>
+<b><b>Install packages:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mamba install pandas scipy
+</pre>
+</div>
+
+<p>
+<b><b>Deactivate:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">conda deactivate
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2952a3d" class="outline-2">
+<h2 id="org2952a3d">📄 Exporting and Recreating Environments</h2>
+<div class="outline-text-2" id="text-org2952a3d">
+<p>
+<b><b>Export YAML format:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">conda env export &gt; environment.yml
+</pre>
+</div>
+
+<p>
+<b><b>Recreate env from YAML:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">conda env create -f environment.yml
+</pre>
+</div>
+
+<p>
+<b><b>Export pip-style (inside the env):</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pip freeze &gt; requirements.txt
+</pre>
+</div>
+
+<p>
+<b><b>Install from pip requirements:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pip install -r requirements.txt
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org57a4242" class="outline-2">
+<h2 id="org57a4242">🧠 Emacs Integration with Conda</h2>
+<div class="outline-text-2" id="text-org57a4242">
+<p>
+To automatically activate conda environments inside Emacs terminals, eshell, and Python buffers:
+</p>
+
+<ol class="org-ol">
+<li>Install <a href="https://github.com/necaris/conda.el">conda.el</a> using `use-package`:</li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package conda
+  :init
+  (setq conda-anaconda-home (expand-file-name "~/miniconda"))
+  (setq conda-env-home-directory conda-anaconda-home)
+  :config
+  (conda-env-initialize-interactive-shells)
+  (conda-env-initialize-eshell)
+  ;; optional: auto-activate in Python mode
+  ;; (add-hook 'python-mode-hook #'conda-env-autoactivate-mode)
+  )
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>Restart Emacs or evaluate the config.</li>
+
+<li>Run:
+<ul class="org-ul">
+<li>`M-x conda-env-activate`</li>
+<li>Or use `.dir-locals.el` to auto-activate for projects (see below)</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org79f3df3" class="outline-2">
+<h2 id="org79f3df3">🔄 Auto-Activation with direnv (Recommended)</h2>
+<div class="outline-text-2" id="text-org79f3df3">
+<p>
+<code>direnv</code> works great with both shell and Emacs, letting you activate your environment per project directory.
+</p>
+
+<p>
+<b><b>Install with Homebrew:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">brew install direnv
+</pre>
+</div>
+
+<p>
+<b><b>Configure your shell (~/.zshrc or ~/.bashrc):</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">eval "$(direnv hook zsh)"
+</pre>
+</div>
+
+<p>
+<b><b>Emacs integration:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package direnv
+  :config
+  (direnv-mode))
+</pre>
+</div>
+
+<p>
+<b><b>Create `.envrc` in your project folder:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">echo "conda activate myenv" &gt; .envrc
+direnv allow
+</pre>
+</div>
+
+<p>
+Now, whenever you `cd` into that folder (in terminal or Emacs), `myenv` will be automatically activated.
+</p>
+</div>
+</div>
+<div id="outline-container-orgda89fbb" class="outline-2">
+<h2 id="orgda89fbb">✅ Conda + Mamba Cheat Sheet (macOS)</h2>
+<div class="outline-text-2" id="text-orgda89fbb">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Install Miniconda</td>
+<td class="org-left">Download &amp; run bash installer</td>
+</tr>
+
+<tr>
+<td class="org-left">Add to PATH</td>
+<td class="org-left">export PATH="$HOME/miniconda/bin:$PATH"</td>
+</tr>
+
+<tr>
+<td class="org-left">Install Mamba</td>
+<td class="org-left">conda install mamba -n base -c conda-forge</td>
+</tr>
+
+<tr>
+<td class="org-left">Create environment</td>
+<td class="org-left">mamba create -n myenv python=3.11</td>
+</tr>
+
+<tr>
+<td class="org-left">Activate / Deactivate</td>
+<td class="org-left">conda activate myenv / conda deactivate</td>
+</tr>
+
+<tr>
+<td class="org-left">Install package</td>
+<td class="org-left">mamba install numpy pandas</td>
+</tr>
+
+<tr>
+<td class="org-left">Export YAML</td>
+<td class="org-left">conda env export &gt; environment.yml</td>
+</tr>
+
+<tr>
+<td class="org-left">Create from YAML</td>
+<td class="org-left">conda env create -f environment.yml</td>
+</tr>
+
+<tr>
+<td class="org-left">Export pip format</td>
+<td class="org-left">pip freeze &gt; requirements.txt</td>
+</tr>
+
+<tr>
+<td class="org-left">Emacs activate env</td>
+<td class="org-left">M-x conda-env-activate</td>
+</tr>
+
+<tr>
+<td class="org-left">Auto activate per folder</td>
+<td class="org-left">direnv + .envrc + emacs-direnv</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org9260631" class="outline-2">
+<h2 id="org9260631">📚 References</h2>
+<div class="outline-text-2" id="text-org9260631">
+<ul class="org-ul">
+<li><a href="https://docs.conda.io/en/latest/">https://docs.conda.io/en/latest/</a></li>
+<li><a href="https://github.com/mamba-org/mamba">https://github.com/mamba-org/mamba</a></li>
+<li><a href="https://github.com/necaris/conda.el">https://github.com/necaris/conda.el</a></li>
+<li><a href="https://github.com/wbolster/emacs-direnv">https://github.com/wbolster/emacs-direnv</a></li>
+<li><a href="https://direnv.net">https://direnv.net</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Your Name</p>
+<p class="date">Created: 2025-04-06 Sun 17:49</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
