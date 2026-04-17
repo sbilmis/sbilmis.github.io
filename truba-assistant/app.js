@@ -26,6 +26,7 @@ const resetButton = document.querySelector("#reset-button");
 const statusDot = document.querySelector("#status-dot");
 const statusText = document.querySelector("#status-text");
 const promptButtons = document.querySelectorAll(".prompt-chip");
+const templateCopyButtons = document.querySelectorAll(".template-copy");
 
 let conversationId = localStorage.getItem(STORAGE_KEYS.conversationId) || "";
 let userId = localStorage.getItem(STORAGE_KEYS.userId);
@@ -86,6 +87,38 @@ function setBusy(isBusy) {
 function autosizeTextarea() {
   input.style.height = "auto";
   input.style.height = `${Math.min(input.scrollHeight, 190)}px`;
+}
+
+function setInputValue(value) {
+  input.value = value.trim();
+  autosizeTextarea();
+  input.focus();
+  input.setSelectionRange(input.value.length, input.value.length);
+}
+
+function flashCopyButton(button, label) {
+  const originalLabel = button.textContent;
+  button.textContent = label;
+  window.setTimeout(() => {
+    button.textContent = originalLabel;
+  }, 1600);
+}
+
+async function copyTemplateToClipboard(button) {
+  const template = button
+    .closest(".template-card")
+    ?.querySelector(".template-text")
+    ?.textContent.trim();
+
+  if (!template) return;
+
+  try {
+    await navigator.clipboard.writeText(template);
+    flashCopyButton(button, "Copied");
+  } catch {
+    setInputValue(template);
+    flashCopyButton(button, "Copied below");
+  }
 }
 
 async function sendMessage(message) {
@@ -168,10 +201,13 @@ resetButton.addEventListener("click", () => {
 
 promptButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    input.value = button.textContent.trim();
-    autosizeTextarea();
-    input.focus();
-    input.setSelectionRange(input.value.length, input.value.length);
+    setInputValue(button.textContent);
+  });
+});
+
+templateCopyButtons.forEach((button) => {
+  button.addEventListener("click", async () => {
+    await copyTemplateToClipboard(button);
   });
 });
 

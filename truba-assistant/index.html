@@ -60,6 +60,48 @@
         </div>
       </section>
 
+      <section class="template-panel" aria-labelledby="template-title">
+        <div class="template-heading">
+          <div>
+            <h2 id="template-title">Prompt templates</h2>
+            <p>
+              Copy one, replace the bracketed parts, and paste it into ChatGPT
+              or another AI tool.
+            </p>
+          </div>
+          <p class="template-note">
+            These examples include useful TRUBA/HPC context: Rocky Linux 9.4,
+            SLURM, Lustre, and no sudo/root privileges.
+          </p>
+        </div>
+
+        <div class="template-grid">
+          <article class="template-card">
+            <h3>Install software without sudo</h3>
+            <pre class="template-text">I am using a shared HPC cluster running Rocky Linux 9.4. I do not have sudo/root privileges. SLURM is used as the job scheduler and Lustre is the filesystem. I want to install [software name and version] in my own directory, preferably under $HOME or a project/work directory. Please give me a safe user-space installation plan. Do not suggest sudo, yum, dnf, apt, or system-wide changes. Include commands and explain how to test the installation.</pre>
+            <button type="button" class="template-copy">Copy prompt</button>
+          </article>
+
+          <article class="template-card">
+            <h3>Write a SLURM job script</h3>
+            <pre class="template-text">I am using a Rocky Linux 9.4 HPC cluster with SLURM and Lustre. I want to run [program or command] using [number of CPU cores], [memory amount], and [time limit]. I do not have root privileges. Please write a minimal sbatch script, explain each #SBATCH line, and show how to submit the job and check its output.</pre>
+            <button type="button" class="template-copy">Copy prompt</button>
+          </article>
+
+          <article class="template-card">
+            <h3>Create a Python environment</h3>
+            <pre class="template-text">I am using a Rocky Linux 9.4 HPC cluster with SLURM and Lustre. I do not have sudo/root privileges. I need a Python environment for [packages or project]. Please suggest a user-space setup using conda/mamba, venv, or pip without sudo. Include commands, how to activate the environment inside an sbatch script, and how to avoid filling my home quota.</pre>
+            <button type="button" class="template-copy">Copy prompt</button>
+          </article>
+
+          <article class="template-card">
+            <h3>Debug a failed job</h3>
+            <pre class="template-text">I am using a Rocky Linux 9.4 HPC cluster with SLURM and Lustre, and I do not have sudo/root privileges. My job failed with this error: [paste error message]. Here is my sbatch script: [paste script]. Please help diagnose likely causes, explain what to check first, and avoid suggestions that require admin privileges or system-wide changes.</pre>
+            <button type="button" class="template-copy">Copy prompt</button>
+          </article>
+        </div>
+      </section>
+
       <section class="chat-card" aria-label="TRUBA Assistant chat">
         <div class="messages" id="messages" aria-live="polite">
           <article class="message assistant">
