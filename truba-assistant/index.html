@@ -8,19 +8,55 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <nav class="site-nav" aria-label="Site navigation">
+      <a href="/">Home</a>
+      <a href="/publications.html">Publications</a>
+      <a href="https://sbilmis.org/my_tutorials/">Tutorials</a>
+      <a href="/blogs/index.html">Blog</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+
     <main class="shell" aria-labelledby="page-title">
       <section class="hero">
         <div>
-          <p class="eyebrow">TUBITAK ULAKBIM</p>
           <h1 id="page-title">TRUBA Assistant</h1>
           <p class="intro">
-            Ask questions about TRUBA usage, SLURM jobs, modules, storage, and
-            common HPC workflows.
+            A personal HPC helper for questions about TRUBA usage, SLURM jobs,
+            modules, storage, and common cluster workflows.
           </p>
         </div>
         <div class="status-card" aria-live="polite">
           <span class="status-dot" id="status-dot"></span>
           <span id="status-text">Ready</span>
+        </div>
+      </section>
+
+      <section class="prompt-panel" aria-labelledby="prompt-title">
+        <div>
+          <h2 id="prompt-title">Try asking</h2>
+          <p>
+            Start with a common question, or write your own below.
+          </p>
+        </div>
+        <div class="prompt-grid">
+          <button type="button" class="prompt-chip">
+            How do I apply for a TRUBA account?
+          </button>
+          <button type="button" class="prompt-chip">
+            How can I check my disk quota?
+          </button>
+          <button type="button" class="prompt-chip">
+            What is my home and scratch disk quota?
+          </button>
+          <button type="button" class="prompt-chip">
+            How do I submit a simple SLURM job?
+          </button>
+          <button type="button" class="prompt-chip">
+            How can I list available modules?
+          </button>
+          <button type="button" class="prompt-chip">
+            Why is my job waiting in the queue?
+          </button>
         </div>
       </section>
 
@@ -31,7 +67,7 @@
             <div class="bubble">
               <p>
                 Hello. I can help with TRUBA documentation, batch jobs, modules,
-                storage, and common cluster usage questions.
+                storage, quotas, and common cluster usage questions.
               </p>
             </div>
           </article>
@@ -55,7 +91,10 @@
           <button type="button" class="link-button" id="reset-button">
             Start new conversation
           </button>
-          <p>Answers may need verification for account-specific issues.</p>
+          <p>
+            Unofficial personal project by Selcuk Bilmis; not official TRUBA
+            documentation.
+          </p>
         </div>
       </section>
     </main>

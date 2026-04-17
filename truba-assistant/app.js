@@ -25,6 +25,7 @@ const sendButton = document.querySelector("#send-button");
 const resetButton = document.querySelector("#reset-button");
 const statusDot = document.querySelector("#status-dot");
 const statusText = document.querySelector("#status-text");
+const promptButtons = document.querySelectorAll(".prompt-chip");
 
 let conversationId = localStorage.getItem(STORAGE_KEYS.conversationId) || "";
 let userId = localStorage.getItem(STORAGE_KEYS.userId);
@@ -114,10 +115,8 @@ async function sendMessage(message) {
   return data.answer || "I could not produce an answer for that request.";
 }
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  const message = input.value.trim();
+async function submitMessage(rawMessage) {
+  const message = rawMessage.trim();
   if (!message) return;
 
   addMessage("user", message);
@@ -139,6 +138,11 @@ form.addEventListener("submit", async (event) => {
     setBusy(false);
     input.focus();
   }
+}
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  await submitMessage(input.value.trim());
 });
 
 input.addEventListener("input", autosizeTextarea);
@@ -160,6 +164,13 @@ resetButton.addEventListener("click", () => {
   );
   setStatus("Ready");
   input.focus();
+});
+
+promptButtons.forEach((button) => {
+  button.addEventListener("click", async () => {
+    if (sendButton.disabled) return;
+    await submitMessage(button.textContent.trim());
+  });
 });
 
 autosizeTextarea();
