@@ -167,9 +167,11 @@ resetButton.addEventListener("click", () => {
 });
 
 promptButtons.forEach((button) => {
-  button.addEventListener("click", async () => {
-    if (sendButton.disabled) return;
-    await submitMessage(button.textContent.trim());
+  button.addEventListener("click", () => {
+    input.value = button.textContent.trim();
+    autosizeTextarea();
+    input.focus();
+    input.setSelectionRange(input.value.length, input.value.length);
   });
 });
 
