@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scientometrics dashboards — Selçuk Bilmiş</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+ :root { --bg:#f5f7fa; --card:#fff; --ink:#17212b; --ink2:#52606d;
+   --mut:#7b8794; --border:#dce3e9; --navy:#17324d; --navy2:#24557a;
+   --teal:#2f948b; --amber:#b97918; --r:12px; }
+ * { box-sizing:border-box; }
+ body { font-family:'IBM Plex Sans',-apple-system,'Segoe UI',sans-serif;
+   margin:0; color:var(--ink); background:var(--bg); font-size:15px;
+   line-height:1.5; }
+ .wrap { max-width:900px; margin:0 auto; padding:56px 24px 60px; }
+ .eyebrow { color:var(--teal); font-size:12px; font-weight:600;
+   letter-spacing:.12em; text-transform:uppercase; }
+ h1 { font-size:30px; margin:4px 0 8px; font-weight:700; }
+ .lead { color:var(--ink2); font-size:17px; max-width:680px;
+   margin:0 0 34px; }
+ .cards { display:grid; gap:18px; grid-template-columns:repeat(auto-fit,
+   minmax(320px,1fr)); }
+ .card { display:block; background:var(--card); border:1px solid var(--border);
+   border-left:4px solid var(--teal); border-radius:var(--r);
+   padding:22px 24px; text-decoration:none; color:inherit;
+   transition:transform .12s, box-shadow .12s; }
+ .card:hover { transform:translateY(-2px);
+   box-shadow:0 6px 20px rgba(23,50,77,.10); }
+ .card.tubitak { border-left-color:var(--navy2); }
+ .card h2 { font-size:18px; margin:0 0 6px; color:var(--navy); }
+ .card p { margin:0; color:var(--ink2); font-size:14px; }
+ .card .go { display:inline-block; margin-top:14px; font-size:13px;
+   font-weight:600; color:var(--navy2); }
+ footer { color:var(--mut); font-size:12px; margin-top:40px; }
+ .disc { background:#fff1d6; border:1px solid #efd9a7; color:var(--amber);
+   padding:2px 10px; border-radius:6px; display:inline-block; }
+</style></head><body><div class="wrap">
+<div class="eyebrow">Scientometrics</div>
+<h1>Research-output dashboards</h1>
+<p class="lead">Interactive bibliometric dashboards of Turkish research
+ output, built from Scopus and open scholarly data. Personal research
+ project.</p>
+<div class="cards">
+ <a class="card" href="truba/index.html">
+  <h2>TRUBA — national HPC impact</h2>
+  <p>Publications that acknowledge TRUBA, TÜBİTAK ULAKBİM's national
+   high-performance computing infrastructure: output, quality, open access,
+   top researchers, and a Scopus-vs-OpenAIRE comparison.</p>
+  <span class="go">Open dashboard →</span></a>
+ <a class="card tubitak" href="tubitak/index.html">
+  <h2>TÜBİTAK research institutes</h2>
+  <p>Journal output of TÜBİTAK's research institutes, 2000–2025: publications
+   per year, SJR journal-quartile profile by institute, and the trajectory of
+   quality, openness and international collaboration.</p>
+  <span class="go">Open dashboard →</span></a>
+</div>
+<footer><span class="disc">Personal research project — <b>not</b> an official
+ TÜBİTAK or ULAKBİM website.</span> · data: Scopus · OpenAIRE · SCImago SJR
+ · Selçuk Bilmiş</footer>
+</div></body></html>
