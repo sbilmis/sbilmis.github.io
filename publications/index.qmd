@@ -1,0 +1,22 @@
+---
+title: "Publications"
+description: "Publication records for Selçuk Bilmiş on INSPIRE-HEP."
+toc: false
+aliases:
+  - "/publications.html"
+format:
+  html:
+    include-in-header:
+      text: |
+        <meta http-equiv="refresh" content="0; url=https://inspirehep.net/literature?sort=mostrecent&amp;size=50&amp;page=1&amp;q=f%20a%20s%20bilmis%20and%20authorcount%20%3C%2045">
+---
+
+The publication list is maintained by INSPIRE-HEP and filtered to papers with fewer than 45 authors.
+
+[Open the filtered INSPIRE list](https://inspirehep.net/literature?sort=mostrecent&size=50&page=1&q=f%20a%20s%20bilmis%20and%20authorcount%20%3C%2045)
+
+```{=html}
+<script>
+window.location.replace("https://inspirehep.net/literature?sort=mostrecent&size=50&page=1&q=f%20a%20s%20bilmis%20and%20authorcount%20%3C%2045");
+</script>
+```

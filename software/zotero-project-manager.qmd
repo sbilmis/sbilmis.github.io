@@ -1,0 +1,19 @@
+---
+title: "Zotero Project Manager"
+description: "Export Zotero collections into clean, incremental research workspaces."
+categories: [Zotero, research workflow, Python]
+date: 2026-07-20
+toc: true
+---
+
+Zotero Project Manager turns a Zotero collection into an ordinary research folder while keeping Zotero as the source of truth. It copies attachments outward without modifying the Zotero library, database, or original files.
+
+## Two interfaces
+
+- A self-contained **Zotero 9 plugin** for interactive collection exports.
+- A **Python CLI** for batch operations, verification, safe pruning, and automation.
+
+Both interfaces create the same managed workspace format and can include metadata, annotations, notes, and cached annotation images.
+
+[View the repository](https://github.com/sbilmis/zotero-project-manager){.btn .btn-primary}
+[Download the latest release](https://github.com/sbilmis/zotero-project-manager/releases/latest){.btn .btn-outline-primary}

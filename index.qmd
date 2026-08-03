@@ -1,0 +1,43 @@
+---
+title: ""
+pagetitle: "Selçuk Bilmiş — physicist... notes to myself..."
+description: "A physicist's public notebook: physics, computing, research workflows, and things worth remembering."
+page-layout: full
+toc: false
+listing:
+  - id: recent
+    contents:
+      - "tutorials/**/*.qmd"
+      - "writing/posts/*.qmd"
+      - "software/*.qmd"
+      - "!**/index.qmd"
+      - "!**/_*.qmd"
+    sort: "date desc"
+    max-items: 6
+    type: table
+    fields: [date, title]
+    date-format: "YYYY-MM-DD"
+    sort-ui: false
+    filter-ui: false
+---
+
+::: {.plain-home}
+<p class="plain-home-kicker">physicist...</p>
+
+# notes to myself...
+
+<p class="plain-home-focus">physics · computing · research workflows</p>
+:::
+
+## Browse
+
+- [**Tutorials**](tutorials/index.qmd) — step-by-step notes and reusable references
+- [**Notes**](writing/index.qmd) — reference collections and longer observations
+- [**Software**](software/index.qmd) — small tools for research and computing work
+
+::: {.quiet-heading}
+## Latest
+:::
+
+::: {#recent}
+:::

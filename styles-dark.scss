@@ -1,0 +1,31 @@
+/*-- scss:defaults --*/
+
+$font-family-sans-serif: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
+$font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+$body-bg: #23262c;
+$body-color: #e8e3d7;
+$primary: #e1ad45;
+$link-color: #e1ad45;
+$link-hover-color: #f0ca78;
+$headings-color: #f3ede1;
+$navbar-bg: #23262c;
+$navbar-fg: #ece6da;
+$border-color: #454a53;
+$code-bg: #2e3239;
+$code-color: #e5a184;
+$border-radius: 0.65rem;
+
+/*-- scss:rules --*/
+
+:root {
+  --note-paper: #23262c;
+  --note-panel: #2a2e35;
+  --note-text: #ece6da;
+  --note-muted: #aaa59c;
+  --note-line: #454a53;
+  --note-accent: #e1ad45;
+  --note-accent-soft: #40382a;
+  --note-warm: #d47b59;
+  --note-card-border-hover: #76664b;
+  --note-card-shadow: rgba(0, 0, 0, 0.2);
+}

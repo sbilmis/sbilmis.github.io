@@ -1,0 +1,870 @@
+---
+title: "Managing Dotfiles Across Multiple Computers with chezmoi"
+description: "Understand chezmoi's three layers and synchronize configuration safely across macOS and Linux."
+categories: ["System administration", "Dotfiles", "chezmoi"]
+level: "Beginner / Intermediate"
+estimated-time: "20 minutes"
+date: 2026-07-28
+aliases:
+  - "/my_tutorials/system/chezmoi-dotfiles/"
+---
+::: {.tutorial-meta}
+**Level:** Beginner / Intermediate · **Working time:** 20 minutes
+:::
+
+::: {.callout-note title="Overview"}
+* **Goal:** Keep configuration files synchronized across macOS and Linux computers without fragile symlinks.
+* **Audience:** People who are new to dotfile managers or ChezMoi.
+* **Outcome:** Understand why ChezMoi exists, how configuration moves between its three layers, and how to use it safely day to day.
+* **Time required:** About 20 minutes for the first setup; a few minutes for normal updates.
+* **Skill level:** Beginner / Intermediate.
+* **Prerequisites:** A terminal, Git, a private Git repository, and ChezMoi.
+* **Example:** Correct a typo in `~/.tmux.conf`, publish it, and safely apply it on a second Mac.
+:::
+Configuration files such as `.bashrc`, `.tmux.conf`, and application settings
+are often called **dotfiles**. Copying them manually between computers works
+for a while, but the copies eventually drift apart. Symlinking every live file
+directly into a Git repository is better, but can become awkward when two
+machines need slightly different settings.
+
+[ChezMoi](https://www.chezmoi.io/) keeps a desired version of each managed
+file in a source directory. It then previews and applies that desired state to
+the normal file locations in your home directory.
+
+---
+
+## 1. The Problem: “Where Did I Put My Configuration?”
+
+Imagine that you buy a new MacBook.
+
+You install Ghostty. You install tmux, Emacs, and Git. Then you remember:
+
+- Where is my `.tmux.conf`?
+- What were my Git aliases?
+- Which SSH hosts did I configure?
+- Which font and colors did I use in Ghostty?
+- Which parts should be the same as my Mac Mini?
+
+You copy one file from Dropbox, another from GitHub, and a third from an old
+laptop. Everything works—but each computer is now slightly different. Six
+months later, you no longer know which copy is correct.
+
+This is the problem ChezMoi solves:
+
+> Keep one reviewed description of your configuration, then safely reproduce
+> it on each computer.
+
+ChezMoi is not primarily a backup program or a Git replacement. It is the
+layer that understands how a stored configuration becomes a real file in your
+home directory.
+
+---
+
+## 2. The Three Worlds
+
+The easiest way to understand ChezMoi is to separate your configuration into
+three layers:
+
+```{mermaid}
+flowchart LR
+    R["Remote Git repository<br>GitHub"]
+    S["Source state<br>ChezMoi's desired configuration"]
+    T["Target state<br>Live files in your home directory"]
+
+    R -- "git pull" --> S
+    S -- "git commit + push" --> R
+    S -- "chezmoi apply" --> T
+    T -- "chezmoi add / re-add" --> S
+```
+
+The arrows are intentional:
+
+- `chezmoi apply` moves the desired configuration from the source state to
+  the live target.
+- `chezmoi add` begins managing a new live file by copying it into the source
+  state.
+- `chezmoi re-add` imports later edits from an already managed live file.
+- Git synchronizes the source state between computers.
+
+::: {.callout-tip title="Golden Rules"}
+- Applications read configuration from your **home directory**, not from
+  the ChezMoi source.
+- Git synchronizes the **ChezMoi source**, not the live files.
+- `chezmoi apply` updates live files from the source.
+- `chezmoi re-add` imports edits from an already managed live file.
+- Preview with `chezmoi diff` before moving changes in either direction.
+:::
+Four commands explain most daily state changes:
+
+| Command | Purpose |
+| --- | --- |
+| `chezmoi status` | Summarize which live targets differ from the source |
+| `chezmoi diff` | Preview what applying the source would change |
+| `chezmoi apply` | Update live files from the source |
+| `chezmoi re-add` | Import edits from an already managed live file |
+
+You will also use `chezmoi add` once when introducing a new file and
+`chezmoi edit` when editing the source directly.
+
+### Target state: the files your programs use
+
+The **target state** consists of the normal files in your home directory:
+
+```text
+~/.tmux.conf
+~/.bashrc
+~/.config/ghostty/config
+~/.emacs.d/init.el
+```
+
+tmux reads `~/.tmux.conf`; Emacs reads files under `~/.emacs.d`; neither
+program needs to know that ChezMoi exists.
+
+### Source state: your tested save state
+
+The **source state** is the desired version managed by ChezMoi. Think of it as
+a tested save state or blueprint:
+
+1. Experiment in the live environment.
+2. Confirm that the configuration works.
+3. Import the stable result with `chezmoi add` or `chezmoi re-add`.
+4. Review it and commit it to Git.
+
+Alternatively, edit the source first and apply it to the live environment for
+testing. Both directions are explained later in this tutorial.
+
+By default, ChezMoi stores its source under:
+
+```text
+~/.local/share/chezmoi/
+```
+
+This tutorial uses a custom source directory:
+
+```text
+~/developer/projects/my_config/home/
+```
+
+For the tmux example, the three layers are:
+
+| Layer | Example path |
+| --- | --- |
+| Target/live file | `~/.tmux.conf` |
+| ChezMoi source | `~/developer/projects/my_config/home/dot_tmux.conf` |
+| Remote Git repository | A private repository on GitHub |
+
+### Why these are copies rather than symlinks
+
+Tools such as GNU Stow commonly make the live file a symlink pointing into a
+Git repository. ChezMoi normally computes the desired contents and writes a
+regular file at the target location instead.
+
+This separation provides a useful safety boundary:
+
+- breaking the live file does not immediately change the tracked source;
+- a source edit does not affect the live program until you apply it;
+- `chezmoi diff` lets you review the difference in either case; and
+- backups and Git history provide additional recovery points.
+
+The separation is not magic protection. `chezmoi apply` deliberately updates
+the live file, and `chezmoi re-add` deliberately imports the live file into
+the source. Preview the difference before running either command.
+
+::: {.callout-note title="The repository is still necessary"}
+Your live configuration continues to work temporarily without the
+repository, but the repository is the source of truth used to synchronize,
+review, reinstall, and recover the configuration.
+:::
+### Source files can contain machine-specific logic
+
+The source state does not have to be an identical static copy for every
+computer. ChezMoi templates can select values using properties such as the
+operating system, hostname, or architecture.
+
+For example, the same Emacs configuration can share its main initialization
+while selecting a different local path on macOS and Ubuntu. Small local-only
+files—such as `~/.emacs.d/local.el` or `~/.ssh/config.local`—can also remain
+outside Git.
+
+Templates are an advanced feature; the important idea for now is that one
+source repository can safely produce slightly different target files on
+different machines.
+
+ChezMoi uses special source names. A few examples are:
+
+| Source name | Target |
+| --- | --- |
+| `dot_tmux.conf` | `~/.tmux.conf` |
+| `dot_bashrc` | `~/.bashrc` |
+| `private_dot_ssh/private_config` | `~/.ssh/config` with private permissions |
+| `private_dot_config/ghostty/config` | `~/.config/ghostty/config` |
+
+---
+
+## 3. Learn One Direction at a Time
+
+Instead of memorizing every command, follow one configuration through three
+days.
+
+### Day 1: Start managing a file
+
+Assume `~/.gitconfig` already exists and you have checked that it contains no
+password or token:
+
+```bash
+chezmoi add ~/.gitconfig
+```
+
+Direction:
+
+```text
+HOME                              CHEZMOI SOURCE
+~/.gitconfig  ───── add ─────▶    dot_gitconfig
+```
+
+What actually changed?
+
+```text
+Before:
+  HOME:    ~/.gitconfig
+  SOURCE:  no managed Git configuration
+
+After:
+  HOME:    ~/.gitconfig            (unchanged)
+  SOURCE:  dot_gitconfig           (new desired copy)
+```
+
+`add` does not move or delete the live file. It begins managing it by creating
+the source representation.
+
+### Day 2: Change the desired configuration
+
+Edit the source:
+
+```bash
+chezmoi edit ~/.gitconfig
+```
+
+The live file has not changed yet. Preview and apply:
+
+```bash
+chezmoi diff ~/.gitconfig
+chezmoi apply ~/.gitconfig
+```
+
+Direction:
+
+```text
+CHEZMOI SOURCE                    HOME
+dot_gitconfig  ──── apply ────▶   ~/.gitconfig
+```
+
+What actually changed?
+
+```text
+Before apply:
+  SOURCE:  contains your new setting
+  HOME:    still contains the old setting
+
+After apply:
+  SOURCE:  contains your new setting
+  HOME:    now contains the new setting
+```
+
+### Day 3: Synchronize another computer
+
+Commit and push the source repository:
+
+```text
+CHEZMOI SOURCE  ─── git push ───▶  GITHUB
+```
+
+On the other computer, pull and preview:
+
+```text
+GITHUB  ─── git pull ───▶  CHEZMOI SOURCE
+```
+
+Then apply:
+
+```text
+CHEZMOI SOURCE  ─── chezmoi apply ───▶  HOME
+```
+
+The key idea is repeated because it matters:
+
+> Git synchronizes the ChezMoi source. ChezMoi installs that source into your
+> home directory.
+
+---
+
+## 4. Why Not Use Git Alone?
+
+A plain Git repository is excellent at storing history and moving files
+between computers. It does not know where each file belongs in your home
+directory or how that file should differ by machine.
+
+| Git | ChezMoi |
+| --- | --- |
+| Versions and transfers files | Manages how source becomes live configuration |
+| Sees repository paths | Maps source names to paths under `$HOME` |
+| Preserves ordinary Git metadata | Can manage target permissions and file types |
+| Stores the same committed text | Can render templates using OS, hostname, or architecture |
+| Plain secrets are unsafe | Can integrate encryption or password managers |
+| Does not install dotfiles | Previews and applies dotfiles |
+
+::: {.callout-warning title="ChezMoi does not automatically make secrets safe"}
+Encryption and password-manager integration must be configured
+deliberately. A plain token added to the source is still a plain token in
+Git.
+:::
+GitHub is the remote copy used for synchronization. The **local ChezMoi source
+repository** is the working source of truth you review, edit, and commit.
+
+---
+
+## 5. What Should and Should Not Be Stored
+
+| Usually manage | Manage selectively | Keep out of ChezMoi/Git |
+| --- | --- | --- |
+| `.gitconfig` after review | Shared parts of SSH `config` | SSH private keys |
+| `.tmux.conf` | Portable Karabiner rules | Tokens and passwords |
+| Bash/Zsh configuration | VS Code settings without credentials | Histories and caches |
+| Ghostty configuration | OS-specific application preferences | Browser/application databases |
+| Authored Emacs configuration | Machine-local path fragments | Downloads and personal documents |
+| Personal scripts without secrets | Public SSH keys if genuinely useful | Photos, movies, and backups |
+
+ChezMoi is for authored configuration, not for backing up your entire home
+directory.
+
+Start with one or two files, verify the workflow, and expand gradually:
+
+```bash
+chezmoi add ~/.tmux.conf
+chezmoi add ~/.config/ghostty/config
+chezmoi add ~/.emacs.d/init.el
+```
+
+SSH configuration requires extra review:
+
+```bash
+chezmoi add ~/.ssh/config
+```
+
+Manage the configuration only—not private keys, `known_hosts`, agent sockets,
+or control sockets.
+
+::: {.callout-important title="Git history remembers secrets"}
+Deleting a secret in a later commit does not remove it from earlier Git
+history. If a credential is committed, rotate it immediately and clean the
+repository history.
+:::
+For a small machine-specific difference, use a local file that is not managed
+by ChezMoi. For example, a shared `~/.ssh/config` can contain:
+
+```sshconfig
+Include ~/.ssh/config.local
+```
+
+Each computer can then keep its private or machine-only host blocks in
+`~/.ssh/config.local`.
+
+---
+
+## 6. A Small Command Map
+
+```text
+New unmanaged live file:
+HOME  ─── chezmoi add ───▶  SOURCE
+
+Edited managed live file:
+HOME  ─── chezmoi re-add ───▶  SOURCE
+
+Edited source file:
+SOURCE  ─── chezmoi apply ───▶  HOME
+
+Synchronize source:
+SOURCE  ◀── git pull/push ──▶  GITHUB
+```
+
+You only need a few inspection commands:
+
+```bash
+chezmoi status
+chezmoi diff
+chezmoi verify
+chezmoi source-path ~/.tmux.conf
+```
+
+`status` summarizes pending target changes. `diff` previews them. `verify`
+checks that live files match the desired state. `source-path` answers “where
+is the source for this live file?”
+
+---
+
+## 7. Two Valid Editing Workflows
+
+The important question is: **did you edit the source file or the live file?**
+
+### Workflow A: Edit the ChezMoi source
+
+This is the recommended workflow:
+
+```bash
+chezmoi edit ~/.tmux.conf
+```
+
+Saving the editor changes the source, but not the live file. Applying can
+happen immediately or later:
+
+```bash
+chezmoi diff ~/.tmux.conf
+chezmoi apply ~/.tmux.conf
+chezmoi verify ~/.tmux.conf
+```
+
+To edit and apply in one operation:
+
+```bash
+chezmoi edit --apply ~/.tmux.conf
+```
+
+`--apply` is only a convenience. Editing and applying do not have to happen at
+the same time.
+
+### Workflow B: Edit the live file
+
+Sometimes you naturally open and save the normal file:
+
+```bash
+${EDITOR:-vi} ~/.tmux.conf
+```
+
+The live file has changed, but the ChezMoi source is still old. Import the live
+version back into the source:
+
+```bash
+chezmoi diff ~/.tmux.conf
+chezmoi re-add ~/.tmux.conf
+chezmoi verify ~/.tmux.conf
+```
+
+You do not need `chezmoi apply` in this workflow because the live file already
+contains the change.
+
+::: {.callout-warning title="Templates are different"}
+`chezmoi re-add` is not suitable for templated files. For templates, edit
+the source template or use `chezmoi merge`.
+:::
+The two directions are:
+
+```text
+Edit source file → chezmoi apply
+Edit live file   → chezmoi re-add
+```
+
+---
+
+## 8. Real Example: Fix `~/.tmux.conf` and Synchronize It
+
+Assume the first Mac uses this ChezMoi source repository:
+
+```text
+~/developer/projects/my_config
+```
+
+Suppose you directly edited `~/.tmux.conf`, corrected a typo, and saved it.
+
+### Step 1: Preview the live/source difference
+
+```bash
+chezmoi diff ~/.tmux.conf
+```
+
+In the real example, the intended correction was:
+
+```diff
+-set -ag terminal-overrides ",xterm-256color:Cc=\E]12;%p1%s\7"
++set -ag terminal-overrides ",xterm-256color:Cc=\e]12;%p1%s\a"
+```
+
+Review the complete output. Stop if unrelated settings also changed.
+
+### Step 2: Import the saved live file
+
+```bash
+chezmoi re-add ~/.tmux.conf
+```
+
+This copies the current live file into ChezMoi's source representation.
+
+### Step 3: Verify and test
+
+```bash
+chezmoi verify ~/.tmux.conf
+
+tmux -L chezmoi-check -f ~/.tmux.conf \
+  start-server \; show -gv default-terminal \; kill-server
+```
+
+The test starts an isolated tmux server, reads the file, prints the configured
+terminal type, and stops the test server.
+
+### Step 4: Review the Git change
+
+```bash
+git -C ~/developer/projects/my_config diff -- \
+  home/dot_tmux.conf
+```
+
+Confirm that the diff contains only the intended correction.
+
+### Step 5: Commit and push
+
+```bash
+git -C ~/developer/projects/my_config add -- \
+  home/dot_tmux.conf
+
+git -C ~/developer/projects/my_config commit \
+  -m "Fix typo in tmux config"
+
+git -C ~/developer/projects/my_config push
+```
+
+The correction is now stored on GitHub. The second computer has not changed
+yet.
+
+---
+
+## 9. Apply the Change on the Second Computer
+
+### Step 1: Pull without creating a merge commit
+
+```bash
+git -C ~/developer/projects/my_config pull --ff-only
+```
+
+If this cannot fast-forward, stop and inspect the second computer's repository
+instead of forcing the pull.
+
+### Step 2: Preview before applying
+
+```bash
+chezmoi diff ~/.tmux.conf
+```
+
+This should show the same one-line correction. The live file is still
+unchanged.
+
+### Step 3: Make a timestamped backup
+
+```bash
+dotfiles_stamp="$(date '+%Y%m%dT%H%M%S%z')"
+dotfiles_backup="$HOME/dotfiles-backups/${dotfiles_stamp}/tmux"
+
+mkdir -p "$dotfiles_backup"
+chmod 700 "$dotfiles_backup"
+cp -Pp "$HOME/.tmux.conf" "$dotfiles_backup/.tmux.conf"
+```
+
+Keep this backup until the new configuration has been tested.
+
+### Step 4: Apply only tmux
+
+```bash
+chezmoi apply ~/.tmux.conf
+```
+
+This does not apply Bash, SSH, Ghostty, or Emacs changes.
+
+### Step 5: Verify
+
+```bash
+chezmoi verify ~/.tmux.conf
+chezmoi status ~/.tmux.conf
+```
+
+No output means the source and live file match.
+
+If tmux is installed, validate and reload it:
+
+```bash
+tmux -L chezmoi-check -f ~/.tmux.conf \
+  start-server \; show -gv default-terminal \; kill-server
+
+tmux source-file ~/.tmux.conf
+```
+
+The first command validates in an isolated server. The second reloads the file
+in an existing tmux server.
+
+The completed path was:
+
+```text
+live file on Mac 1
+  → chezmoi re-add
+  → Git commit and push
+  → Git pull on Mac 2
+  → chezmoi diff
+  → backup
+  → chezmoi apply
+  → verify
+```
+
+---
+
+## 10. Setting Up a New Computer
+
+For a conventional ChezMoi repository:
+
+```bash
+chezmoi init git@github.com:YOUR_USER/YOUR_DOTFILES_REPOSITORY.git
+chezmoi diff
+chezmoi apply
+chezmoi verify
+```
+
+Do not use `init --apply` on a computer that already has valuable
+configuration files. Inspect and back them up first.
+
+If you deliberately keep the source in a custom directory such as
+`~/developer/projects/my_config`, clone it there and configure ChezMoi's
+`sourceDir`:
+
+```bash
+git clone git@github.com:YOUR_USER/YOUR_DOTFILES_REPOSITORY.git \
+  "$HOME/developer/projects/my_config"
+
+mkdir -p "$HOME/.config/chezmoi"
+chmod 700 "$HOME/.config/chezmoi"
+```
+
+Create `~/.config/chezmoi/chezmoi.toml`:
+
+```toml
+sourceDir = "/Users/YOUR_USER/developer/projects/my_config"
+```
+
+On Linux the absolute path will normally be `/home/YOUR_USER/...`.
+
+Then inspect and apply files individually:
+
+```bash
+chezmoi source-path
+chezmoi status
+chezmoi diff
+chezmoi apply ~/.tmux.conf
+chezmoi verify ~/.tmux.conf
+```
+
+Restore SSH keys, tokens, and machine-local files separately through a secure
+channel. They should not come from the Git repository.
+
+---
+
+## 11. Common Beginner Mistakes
+
+### “I edited a live file, but Git shows nothing”
+
+If the file is already managed, ChezMoi's source still contains the old
+version:
+
+```bash
+chezmoi diff ~/.bashrc
+chezmoi re-add ~/.bashrc
+git -C ~/developer/projects/my_config diff
+```
+
+Use `chezmoi add` instead when the live file has never been managed.
+
+### “I edited the source, but the program still uses the old setting”
+
+The source changed; the target did not:
+
+```bash
+chezmoi diff ~/.bashrc
+chezmoi apply ~/.bashrc
+```
+
+### “My other laptop cannot see the change”
+
+Check whether you committed and pushed:
+
+```bash
+git -C ~/developer/projects/my_config status
+git -C ~/developer/projects/my_config log -1 --oneline
+git -C ~/developer/projects/my_config push
+```
+
+Then pull on the receiving computer.
+
+### “I pulled the commit, but the application did not change”
+
+Git updated the source repository, not the live file:
+
+```bash
+chezmoi diff
+chezmoi apply ~/.tmux.conf
+```
+
+Some applications must also reload their configuration. For example:
+
+```bash
+tmux source-file ~/.tmux.conf
+```
+
+### “GitHub is my live configuration”
+
+It is not. GitHub stores the remote Git copy. The local ChezMoi repository is
+the source you edit and review; `chezmoi apply` produces the live
+configuration.
+
+### “I ran `chezmoi apply` without reviewing”
+
+Preview first, especially on an existing computer:
+
+```bash
+chezmoi status
+chezmoi diff
+chezmoi apply --dry-run --verbose
+```
+
+Back up valuable existing files and apply one target at a time.
+
+### “I committed a private key or token”
+
+Removing it in the next commit is not enough. Stop publishing, rotate or
+revoke the credential, and clean the Git history. ChezMoi does not turn a
+plain secret into an encrypted secret automatically.
+
+---
+
+## 12. Emacs and “Waiting for Emacs…”
+
+ChezMoi uses `$VISUAL` or `$EDITOR`. If it is configured as `emacsclient`, an
+Emacs server must be running.
+
+Inside Emacs:
+
+```text
+M-x server-start RET
+```
+
+From the terminal:
+
+```bash
+emacsclient --eval '(emacs-pid)'
+EDITOR="emacsclient -c" chezmoi edit ~/.tmux.conf
+```
+
+After editing:
+
+1. Save with `C-x C-s`.
+2. Finish the client edit with `C-x #`.
+
+`C-x #` is important: it tells the waiting `emacsclient` process that editing
+is complete.
+
+If editor integration is inconvenient, open the source file directly:
+
+```bash
+emacsclient -c \
+  ~/developer/projects/my_config/home/dot_tmux.conf
+```
+
+After saving it, run:
+
+```bash
+chezmoi diff ~/.tmux.conf
+chezmoi apply ~/.tmux.conf
+```
+
+---
+
+## 13. The Typical Daily Workflow
+
+```{mermaid}
+flowchart TD
+    E["Edit one configuration"]
+    D["chezmoi diff"]
+    A["chezmoi apply<br>or chezmoi re-add"]
+    V["Test and verify"]
+    C["git commit"]
+    P["git push"]
+
+    E --> D --> A --> V --> C --> P
+```
+
+Which ChezMoi command you use depends on where you edited:
+
+```text
+Edited SOURCE?  Preview → apply → test → commit → push
+Edited HOME?    Preview → re-add → test → commit → push
+```
+
+On the computer where you make the change:
+
+```bash
+chezmoi status
+chezmoi diff
+chezmoi verify
+git -C ~/developer/projects/my_config status
+git -C ~/developer/projects/my_config diff
+```
+
+Commit and push only reviewed source files.
+
+On the receiving computer:
+
+```bash
+git -C ~/developer/projects/my_config pull --ff-only
+chezmoi status
+chezmoi diff
+chezmoi apply ~/.tmux.conf
+chezmoi verify ~/.tmux.conf
+```
+
+For a faster trusted workflow, `chezmoi update` can pull and apply in one
+command. On important machines, the explicit `pull → diff → backup → apply`
+sequence is easier to audit and recover.
+
+---
+
+## 14. The 30-Second Mental Model
+
+```{mermaid}
+flowchart LR
+    HA["Machine A<br>HOME"]
+    SA["Machine A<br>ChezMoi source"]
+    G["GitHub"]
+    SB["Machine B<br>ChezMoi source"]
+    HB["Machine B<br>HOME"]
+
+    HA -- "add / re-add" --> SA
+    SA -- "git push" --> G
+    G -- "git pull" --> SB
+    SB -- "apply" --> HB
+```
+
+Remember four directions:
+
+```text
+HOME     ── add/re-add ──▶  CHEZMOI
+CHEZMOI  ───── apply ────▶  HOME
+CHEZMOI  ─── git push ───▶  GITHUB
+GITHUB   ─── git pull ───▶  CHEZMOI
+```
+
+Everything else in ChezMoi—templates, encryption, OS detection, external
+password managers—is a variation built on this model.
+
+> Git moves the source between machines. ChezMoi moves the source into HOME.
+
+---
+
+## References
+
+- [ChezMoi quick start](https://www.chezmoi.io/quick-start/)
+- [ChezMoi daily operations](https://www.chezmoi.io/user-guide/daily-operations/)
+- [Ways to edit managed dotfiles](https://www.chezmoi.io/user-guide/frequently-asked-questions/usage/)
+- [`chezmoi apply` reference](https://www.chezmoi.io/reference/commands/apply/)

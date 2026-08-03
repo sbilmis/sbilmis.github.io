@@ -1,0 +1,36 @@
+---
+title: "Conferences and Workshops"
+description: "Selected event archives, schools, and recurring resources in physics and scientific computing."
+date: 2024-12-17
+date-modified: 2026-08-03
+categories: [Reference, Physics, Events]
+aliases:
+  - /blogs/conferences.html
+toc: true
+---
+
+*Migrated from an earlier Org-mode note. Several links point to past events and are kept as useful archives.*
+
+## Physics conferences and schools
+
+## General Physics
+
+- [CERN Indico](https://indico.cern.ch/): A comprehensive platform for tracking recent and upcoming conferences in physics and related fields.
+- [INFN School of Statistics](https://agenda.infn.it/event/36980/): A school focused on statistical methods in physics.
+
+## High-Energy Physics Generators
+
+- [GEN Tutorials-2024](https://indico.cern.ch/event/1360658/): Tutorials on HEP generators like MadGraph and Pythia.
+  - [CMS MG5 Tutorial](https://cms-mg5-tutorial-2024-temp.docs.cern.ch/)
+  - [Pythia Tutorials](https://gitlab.com/Pythia8/tutorials)
+
+## Neutrino Physics
+
+- [NuSTEC](https://indico.cern.ch/event/1331901/overview): A school focused on neutrino–nucleus interactions, including theoretical modeling, cross-section measurements, and Monte Carlo simulations.
+  - Organized by NuSTEC, the Neutrino Scattering Theory Experiment Collaboration, to improve understanding of neutrino dynamics for large-scale experiments like DUNE and HyperKamiokande.
+- [NuINT 24](https://indico.fnal.gov/event/59963/): Archive of the 14th workshop on neutrino–nucleus interactions, bringing theorists and experimentalists together.
+
+## High-Energy Physics Computing and WLCG
+
+- [HEPiX](https://www.hepix.org/): A forum for IT staff from HEP and nuclear physics labs to share knowledge about scientific computing and data challenges.
+  - Includes semi-annual meetings with participation from major labs like CERN, FNAL, DESY, and others.

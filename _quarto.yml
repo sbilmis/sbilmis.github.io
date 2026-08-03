@@ -1,0 +1,70 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "publications/**/*.qmd"
+    - "software/**/*.qmd"
+    - "tutorials/**/*.qmd"
+    - "writing/**/*.qmd"
+  post-render:
+    - python3 scripts/preserve-legacy.py
+  resources:
+    - .nojekyll
+    - listing-view.js
+
+website:
+  title: "Selçuk Bilmiş"
+  site-url: "https://sbilmis.org"
+  description: "A physicist's public notebook: physics, computing, research workflows, and things worth remembering."
+  favicon: assets/selcuk-bilmis.jpg
+  search:
+    location: navbar
+    type: overlay
+  page-navigation: true
+  back-to-top-navigation: true
+  open-graph:
+    image: assets/selcuk-bilmis.jpg
+  twitter-card:
+    image: assets/selcuk-bilmis.jpg
+    card-style: summary
+  navbar:
+    title: false
+    left:
+      - href: index.qmd
+        text: Home
+      - href: tutorials/index.qmd
+        text: Tutorials
+      - href: writing/index.qmd
+        text: Notes
+      - href: software/index.qmd
+        text: Software
+      - href: about.qmd
+        text: About
+    right:
+      - icon: envelope
+        href: mailto:sbilmis@metu.edu.tr
+        aria-label: Email
+      - icon: github
+        href: https://github.com/sbilmis
+        aria-label: GitHub
+      - icon: linkedin
+        href: https://www.linkedin.com/in/selcuk-bilmis-06781288/
+        aria-label: LinkedIn
+  page-footer:
+    left: "physicist... notes to myself..."
+
+format:
+  html:
+    theme:
+      light: [cosmo, styles.scss, _rules.scss]
+      dark: [darkly, styles-dark.scss, _rules.scss]
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+    anchor-sections: true
+    smooth-scroll: true
+
+execute:
+  freeze: auto

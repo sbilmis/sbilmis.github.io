@@ -1,0 +1,28 @@
+---
+title: "Notes"
+description: "Reference collections and longer observations."
+page-layout: full
+listing:
+  contents:
+    - posts
+    - reference
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: true
+  feed:
+    type: partial
+    title: "Selçuk Bilmiş — notes"
+    description: "Reference collections and longer notes on physics, computing, and research work."
+---
+
+Reference collections and longer pieces live here. Some writing may begin as a LinkedIn post; the durable version belongs in this notebook.
+
+<div class="listing-view-toggle" data-listing-view-toggle role="group" aria-label="Choose notes view">
+  <span>View</span>
+  <button type="button" data-listing-view="list" aria-pressed="true">List</button>
+  <button type="button" data-listing-view="cards" aria-pressed="false">Cards</button>
+</div>
+
+<script src="../listing-view.js"></script>

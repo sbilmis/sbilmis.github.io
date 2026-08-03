@@ -1,0 +1,12 @@
+---
+title: "Containers"
+description: "Notes on Docker, Compose, and maintaining small services."
+aliases:
+  - "/my_tutorials/containers/"
+listing:
+  contents: "*.qmd"
+  sort: "title"
+  type: default
+---
+
+Practical notes for maintaining containerized applications without losing track of data, configuration, or rollback options.

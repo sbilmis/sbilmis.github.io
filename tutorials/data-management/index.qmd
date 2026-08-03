@@ -1,0 +1,12 @@
+---
+title: "Data management"
+description: "Notes on downloading, checking, and working with research data."
+aliases:
+  - "/my_tutorials/data_management/"
+listing:
+  contents: "*.qmd"
+  sort: "title"
+  type: default
+---
+
+Procedures and command-line patterns for large datasets, archives, integrity checks, and reproducible data handling.

@@ -1,0 +1,331 @@
+/*-- scss:rules --*/
+
+body {
+  letter-spacing: 0.005em;
+}
+
+.navbar {
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--note-line);
+}
+
+.navbar-brand {
+  font-family: $font-family-monospace;
+  font-size: 0.96rem;
+  letter-spacing: -0.02em;
+}
+
+.navbar-nav .nav-link {
+  font-size: 0.92rem;
+}
+
+#quarto-content {
+  min-height: calc(100vh - 132px);
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.028em;
+}
+
+h1 {
+  font-weight: 650;
+}
+
+p,
+li {
+  line-height: 1.72;
+}
+
+.plain-home {
+  border-bottom: 1px solid var(--note-line);
+  margin-bottom: 2.25rem;
+  padding: clamp(4rem, 11vw, 8.5rem) 0 clamp(3rem, 8vw, 6rem);
+}
+
+.plain-home-kicker {
+  color: var(--note-warm);
+  font-family: $font-family-monospace;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin: 0 0 0.45rem;
+}
+
+.plain-home h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1.04;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.plain-home-focus {
+  color: var(--note-muted);
+  font-family: $font-family-monospace;
+  font-size: clamp(0.82rem, 1.5vw, 0.96rem);
+  margin: 1.25rem 0 0;
+}
+
+#browse h2 {
+  font-size: 1.05rem;
+  margin-top: 0;
+}
+
+#browse ul {
+  list-style: none;
+  margin: 0 0 3.5rem;
+  padding: 0;
+}
+
+#browse li {
+  border-bottom: 1px solid var(--note-line);
+  color: var(--note-muted);
+  padding: 0.8rem 0;
+}
+
+#browse a {
+  color: var(--note-text);
+  text-decoration: none;
+}
+
+.quiet-heading {
+  align-items: baseline;
+  border-bottom: 1px solid var(--note-line);
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem 0 1rem;
+  padding-bottom: 0.65rem;
+}
+
+.quiet-heading h2 {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.quiet-heading span {
+  color: var(--note-muted);
+  font-family: $font-family-monospace;
+  font-size: 0.75rem;
+}
+
+#listing-recent {
+  margin-bottom: 4rem;
+}
+
+#listing-recent .listing-actions-group,
+#listing-recent thead {
+  display: none;
+}
+
+#listing-recent .quarto-listing-table {
+  border-collapse: collapse;
+  border-color: var(--note-line);
+  margin: 0;
+}
+
+#listing-recent .quarto-listing-table tbody,
+#listing-recent .quarto-listing-table tr,
+#listing-recent .quarto-listing-table td {
+  background: transparent;
+}
+
+#listing-recent .quarto-listing-table td {
+  border-bottom: 1px solid var(--note-line);
+  padding: 0.8rem 0;
+}
+
+#listing-recent .quarto-listing-table td:first-child {
+  color: var(--note-muted);
+  font-family: $font-family-monospace;
+  font-size: 0.76rem;
+  padding-right: 1.5rem;
+  width: 8rem;
+}
+
+#listing-recent .listing-title {
+  color: var(--note-text);
+  text-decoration: none;
+}
+
+.listing-view-toggle {
+  align-items: center;
+  display: flex;
+  gap: 0.35rem;
+  justify-content: flex-end;
+  margin: 1.5rem 0 0.75rem;
+}
+
+.listing-view-toggle span {
+  color: var(--note-muted);
+  font-family: $font-family-monospace;
+  font-size: 0.75rem;
+  margin-right: 0.25rem;
+}
+
+.listing-view-toggle button {
+  background: transparent;
+  border: 1px solid var(--note-line);
+  border-radius: 0.3rem;
+  color: var(--note-muted);
+  cursor: pointer;
+  font-family: $font-family-monospace;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.55rem;
+}
+
+.listing-view-toggle button:hover,
+.listing-view-toggle button[aria-pressed="true"] {
+  border-color: var(--note-accent);
+  color: var(--note-accent);
+}
+
+.listing-view-enabled .thumbnail {
+  display: none;
+}
+
+.listing-view-enabled[data-view="list"] .quarto-post {
+  background: transparent;
+  border-bottom: 1px solid var(--note-line);
+  padding: 1rem 0;
+}
+
+.listing-view-enabled[data-view="cards"] .quarto-listing-default {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.listing-view-enabled[data-view="cards"] .quarto-post {
+  background: var(--note-panel);
+  border: 1px solid var(--note-line);
+  border-radius: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 1.1rem;
+}
+
+.listing-view-enabled[data-view="cards"] .quarto-post .body {
+  flex: 1;
+}
+
+.listing-view-enabled[data-view="cards"] .quarto-post .metadata {
+  margin: auto 0 0;
+  width: auto;
+}
+
+.about-intro {
+  align-items: center;
+  border-bottom: 1px solid var(--note-line);
+  display: grid;
+  gap: clamp(2rem, 7vw, 5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(140px, 210px);
+  margin-bottom: 2.5rem;
+  padding: 0.5rem 0 2.5rem;
+}
+
+.about-intro-copy p:last-child {
+  color: var(--note-muted);
+  margin-bottom: 0;
+}
+
+.about-photo {
+  justify-self: end;
+}
+
+.about-photo img {
+  aspect-ratio: 1;
+  border: 1px solid var(--note-line);
+  border-radius: 50%;
+  display: block;
+  max-width: 190px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.tutorial-meta {
+  border-bottom: 1px solid var(--note-line);
+  color: var(--note-muted);
+  font-family: $font-family-monospace;
+  font-size: 0.78rem;
+  margin: -0.25rem 0 1.5rem;
+  padding-bottom: 0.75rem;
+}
+
+.tutorial-meta p {
+  margin: 0;
+}
+
+.quarto-listing-default .listing-item,
+.quarto-grid-item.card {
+  background: var(--note-panel);
+  border-color: var(--note-line);
+  border-radius: 0.85rem;
+  overflow: hidden;
+}
+
+.listing-title,
+.card-title {
+  font-weight: 620;
+  letter-spacing: -0.018em;
+}
+
+.listing-description,
+.card-text {
+  color: var(--note-muted);
+}
+
+.category {
+  background: var(--note-accent-soft);
+  border: 0 !important;
+  color: var(--note-accent);
+}
+
+blockquote {
+  border-left-color: var(--note-warm);
+  color: var(--note-muted);
+}
+
+.callout {
+  background: var(--note-panel);
+  border-radius: 0.65rem;
+}
+
+.page-footer {
+  border-top: 1px solid var(--note-line);
+  color: var(--note-muted);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 760px) {
+  .plain-home h1 {
+    font-size: clamp(2rem, 11vw, 3.25rem);
+  }
+
+  #listing-recent .quarto-listing-table td:first-child {
+    display: none;
+  }
+
+  .quiet-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .listing-view-enabled[data-view="cards"] .quarto-listing-default {
+    grid-template-columns: 1fr;
+  }
+
+  .about-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .about-photo {
+    justify-self: start;
+    order: -1;
+  }
+
+  .about-photo img {
+    max-width: 145px;
+  }
+}

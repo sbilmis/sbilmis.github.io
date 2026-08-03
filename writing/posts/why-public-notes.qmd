@@ -1,0 +1,15 @@
+---
+title: "Why keep notes in public?"
+description: "A short statement of purpose for this notebook."
+date: 2026-08-02
+categories: [notebook, workflow]
+author: "Selçuk Bilmiş"
+draft: false
+---
+
+Most notes begin for a simple reason: I do not want to solve the same small problem twice.
+
+A private notebook is useful, but a public one adds a little helpful pressure. Explanations need enough context to survive beyond the moment in which they were written. Commands should include their assumptions. Links should not be the entire argument.
+
+This is not intended to be a regular publication schedule. A page is added when something seems worth keeping.
+

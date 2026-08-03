@@ -1,0 +1,14 @@
+---
+title: "Physics"
+description: "Short notes and small tools for physics."
+aliases:
+  - "/my_tutorials/physics/"
+listing:
+  contents: "*.qmd"
+  sort: "title"
+  type: default
+---
+
+This section collects short notes and small tools related to spectroscopy, quantum mechanics, and hadron structure.
+
+The aim is practical: keep useful formulas and interactive checks in one place so they are easy to revisit later.

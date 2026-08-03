@@ -1,0 +1,22 @@
+---
+title: "Academic Research Tips"
+description: "A small collection of practical search notes for academic research."
+date: 2024-12-13
+date-modified: 2026-08-03
+categories: [Reference, Research workflow, Literature search]
+aliases:
+  - /blogs/academic_research_tips.html
+toc: true
+---
+
+*Migrated from an earlier Org-mode note.*
+
+## Searching Papers in Specific Journals Using Google Scholar
+
+In [Google Scholar](https://scholar.google.com), you can use Boolean operators to limit your search to specific journals. For example:
+
+    proton decay source:"physics world"
+
+    # or
+
+    proton decay source:"physical review letters"

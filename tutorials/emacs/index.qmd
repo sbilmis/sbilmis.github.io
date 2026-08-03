@@ -1,0 +1,12 @@
+---
+title: "Emacs"
+description: "Org-mode notes and editor workflows."
+aliases:
+  - "/my_tutorials/emacs/"
+listing:
+  contents: "*.qmd"
+  sort: "title"
+  type: default
+---
+
+This section will collect practical Org-mode notes and the small Emacs workflows worth keeping for later. The existing placeholder has been preserved as a draft until it has useful content.

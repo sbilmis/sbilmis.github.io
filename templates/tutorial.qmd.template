@@ -1,0 +1,81 @@
+---
+title: "Tutorial title"
+description: "One sentence describing what the reader will be able to do."
+categories: [topic]
+level: "Beginner"
+estimated-time: "10 minutes"
+last-reviewed: "YYYY-MM-DD"
+# date: YYYY-MM-DD
+# aliases: ["/old/path/"]
+draft: true
+---
+
+::: {.tutorial-meta}
+**Level:** Beginner · **Working time:** 10 minutes
+:::
+
+::: {.callout-note title="Overview"}
+**Goal:** State the concrete outcome.
+
+**Audience:** Say who this is for.
+
+**Time required:** Give a realistic estimate.
+
+**Prerequisites:** List required tools, access, knowledge, disk space, or permissions.
+:::
+
+## Why this matters
+
+Explain the problem and when this tutorial is useful. Keep this short unless the mental model is important.
+
+## Mental model
+
+Describe the key idea that makes the procedure understandable. Use a diagram, table, or small example only when it helps.
+
+## Before you start
+
+- Confirm the required software or access.
+- Back up data when the procedure can change or remove it.
+- State important assumptions explicitly.
+
+## Procedure
+
+### 1. First meaningful step
+
+Explain the action, then show the command or interface instruction.
+
+```bash
+command --example
+```
+
+### 2. Next meaningful step
+
+Continue in small, verifiable steps.
+
+## Verify the result
+
+Show how the reader can distinguish success from a partial or failed result.
+
+```bash
+verification-command
+```
+
+Expected result:
+
+```text
+brief expected output
+```
+
+## Troubleshooting
+
+### Symptom or error message
+
+Explain the likely cause, the safest diagnostic, and the fix.
+
+## Quick reference
+
+Summarize only the commands or decisions worth returning to later.
+
+## References
+
+- [Primary documentation](https://example.com/)

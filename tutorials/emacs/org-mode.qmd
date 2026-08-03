@@ -1,0 +1,16 @@
+---
+title: "Org mode notes"
+description: "A placeholder for practical Org-mode notes."
+categories: ["Emacs", "Org mode"]
+level: "Beginner"
+estimated-time: "Coming soon"
+date: 2025-12-24
+aliases:
+  - "/my_tutorials/emacs/e1/"
+draft: true
+---
+::: {.tutorial-meta}
+**Level:** Beginner · **Working time:** Coming soon
+:::
+
+- Coming soon.

@@ -1,0 +1,20 @@
+---
+title: "Copy for LLM"
+description: "Create clean project context for an LLM directly from macOS Finder."
+categories: [macOS, Finder, LLM, Swift]
+date: 2026-07-31
+toc: true
+---
+
+Copy for LLM adds Finder Quick Actions that turn selected files or folders into structured context: a directory tree followed by filtered file contents.
+
+The optional preview window provides filters and a live token estimate. PDFs, Office documents, and screenshots can be converted into text locally on the Mac, without uploading them to an external service.
+
+## What it is for
+
+- Copy a project without including build output, virtual environments, or secrets.
+- Preview and reduce large selections before pasting.
+- Copy only a directory tree or a set of paths when full contents are unnecessary.
+
+[View the repository](https://github.com/sbilmis/copy-for-llm){.btn .btn-primary}
+[Download the latest release](https://github.com/sbilmis/copy-for-llm/releases/latest){.btn .btn-outline-primary}

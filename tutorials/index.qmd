@@ -1,0 +1,38 @@
+---
+title: "Tutorials"
+description: "Reusable notes and step-by-step explanations."
+aliases:
+  - "/my_tutorials/"
+page-layout: full
+listing:
+  contents:
+    - "**/*.qmd"
+    - "!index.qmd"
+    - "!**/index.qmd"
+    - "!**/_*.qmd"
+  sort: "title"
+  type: default
+  categories: true
+  sort-ui: true
+  filter-ui: true
+---
+
+Tutorials are grouped by subject but remain ordinary text files. Adding one means creating a new `.qmd` or `.md` file with a title and description; this page updates automatically.
+
+New tutorials follow a common structure so that purpose, assumptions, procedure, verification, and troubleshooting are easy to locate. The structure is guidance rather than a rigid form: short references can stay short, while detailed guides can grow naturally.
+
+## Subjects
+
+- [Containers](containers/index.qmd) — Docker and service maintenance
+- [Data management](data-management/index.qmd) — downloads, archives, and research datasets
+- [Emacs](emacs/index.qmd) — Org mode and editor workflows
+- [Physics](physics/index.qmd) — spectroscopy and small interactive references
+- [Systems](system/index.qmd) — configuration and reproducible environments
+
+<div class="listing-view-toggle" data-listing-view-toggle role="group" aria-label="Choose tutorial view">
+  <span>View</span>
+  <button type="button" data-listing-view="list" aria-pressed="true">List</button>
+  <button type="button" data-listing-view="cards" aria-pressed="false">Cards</button>
+</div>
+
+<script src="../listing-view.js"></script>
