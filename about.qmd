@@ -17,7 +17,7 @@ This site is where I keep reusable notes on physics, computing, and research wor
 
 ## Links
 
-- [INSPIRE-HEP — papers with fewer than 45 authors](https://inspirehep.net/literature?sort=mostrecent&size=50&page=1&q=f%20a%20s%20bilmis%20and%20authorcount%20%3C%2045)
+- [INSPIRE-HEP](https://inspirehep.net/literature?sort=mostrecent&size=50&page=1&q=f%20a%20s%20bilmis%20and%20authorcount%20%3C%2045)
 - [ORCID](https://orcid.org/0000-0002-0830-8873)
 - [Google Scholar](https://scholar.google.com/citations?user=QWQsoeIAAAAJ)
 - [GitHub](https://github.com/sbilmis)
