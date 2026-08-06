@@ -39,6 +39,12 @@ website:
         text: Notes
       - href: software/index.qmd
         text: Software
+      # Static dashboards under archive/legacy-site/scientometrics/, copied
+      # into _site/ by scripts/preserve-legacy.py. Not a .qmd, so it is linked
+      # by path — without this entry the work is reachable only by someone who
+      # already has the URL.
+      - href: /scientometrics/
+        text: Scientometrics
       - href: about.qmd
         text: About
     right:
