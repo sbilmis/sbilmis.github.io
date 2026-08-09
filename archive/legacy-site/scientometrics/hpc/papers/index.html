@@ -104,6 +104,15 @@ a{color:var(--navy2);}
 .pattern-note summary{cursor:pointer;color:var(--navy,#17324d);font-weight:600}
 .pattern-note summary::marker{color:var(--teal,#2f948b)}
 .pattern-note div{padding-top:7px;line-height:1.55}
+.corpus-action{display:inline-block;margin:-10px 0 18px;padding:3px 0;
+ border:0;background:none;color:var(--navy2,#24557a);font:inherit;
+ font-size:12.5px;font-weight:600;cursor:pointer;text-align:left}
+.corpus-action:hover{text-decoration:underline}
+.seg{display:inline-flex;gap:4px;margin-bottom:10px;
+ border:1px solid var(--border,#dce3e9);border-radius:18px;padding:3px}
+.segbtn{font:inherit;font-size:12.5px;border:0;background:none;
+ color:var(--ink2,#52606d);padding:4px 14px;border-radius:14px;cursor:pointer}
+.segbtn.active{background:var(--navy2,#24557a);color:#fff}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
  outline:2px solid var(--navy2,#24557a);outline-offset:2px;border-radius:4px}
 @media(max-width:760px){.secnav{margin-left:-14px;margin-right:-14px;
@@ -361,7 +370,7 @@ cQ.setOption({
    data:P.years.map((y,i)=>QN[i]?+(100*QY[q][i]/QN[i]).toFixed(1):0),
    label:qi===3?{show:true,position:'top',formatter:o=>QN[o.dataIndex],
      fontSize:9,color:'#7b8794'}:{show:false},
-   itemStyle:{color:{"Q1": "#17324d", "Q2": "#3478a4", "Q3": "#78a9c7", "Q4": "#c8dce8"}[q]}}))});
+   itemStyle:{color:{"Q1": "#173f5f", "Q2": "#3478a4", "Q3": "#78a9c7", "Q4": "#c8dce8"}[q]}}))});
 cQ.on('click',p=>{const k='yq'+P.years[p.dataIndex]+p.seriesName; if(DRILL[k]) showList(k);});
 const cC=echarts.init(document.getElementById('cC'));
 cC.setOption({
