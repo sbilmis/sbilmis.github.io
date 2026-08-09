@@ -54,7 +54,11 @@ The import script overwrites the five mapped converted pages. New edits should n
 
 ## Legacy archive
 
-The previous static site is preserved in `archive/legacy-site/`. The old capitalized `Tutorials/` tree is archive-only; the Quarto tutorials are now canonical. The post-render script republishes the scientometrics dashboards and TRUBA assistant at their original URLs. Converted blog pages use Quarto redirects from their old addresses.
+The previous static site is preserved in `archive/legacy-site/`. The old capitalized `Tutorials/` tree is archive-only; the Quarto tutorials are now canonical. The post-render script republishes the archived scientometrics dashboards at their original URLs. Converted blog pages use Quarto redirects from their old addresses.
+
+## Static tools
+
+Standalone tools that should remain live outside the Quarto page graph live at the repository root. The TRUBA assistant is maintained in `truba-assistant/` and copied to `_site/truba-assistant/` after render, while remaining hidden from the homepage and navbar.
 
 ## Publishing
 

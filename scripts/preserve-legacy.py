@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Copy preserved static pages into the generated Quarto site."""
+"""Copy static pages into the generated Quarto site."""
 
 from __future__ import annotations
 
@@ -12,17 +12,20 @@ LEGACY = ROOT / "archive" / "legacy-site"
 OUTPUT = ROOT / "_site"
 
 
-def copy_directory(name: str) -> None:
-    source = LEGACY / name
-    destination = OUTPUT / name
+def copy_directory(source: Path, name: str | None = None) -> None:
+    destination = OUTPUT / (name or source.name)
     if destination.exists():
         shutil.rmtree(destination)
     shutil.copytree(source, destination, ignore=shutil.ignore_patterns(".DS_Store"))
 
 
+def copy_legacy_directory(name: str) -> None:
+    copy_directory(LEGACY / name, name)
+
+
 def main() -> None:
-    for directory in ("scientometrics", "truba-assistant"):
-        copy_directory(directory)
+    copy_legacy_directory("scientometrics")
+    copy_directory(ROOT / "truba-assistant")
 
     blogs_output = OUTPUT / "blogs"
     blogs_output.mkdir(parents=True, exist_ok=True)
