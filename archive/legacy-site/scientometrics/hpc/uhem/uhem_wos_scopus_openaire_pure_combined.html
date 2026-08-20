@@ -84,6 +84,17 @@ a{color:var(--navy2);}
 .qtag{display:inline-block;min-width:24px;text-align:center;border-radius:4px;
  font-size:11px;padding:1px 6px;color:#fff;font-weight:600;}
 
+.latest-update{float:right;min-width:218px;margin:0 0 14px 22px;padding:10px 13px;
+ background:rgba(255,255,255,.86);border:1px solid var(--border,#dce3e9);
+ border-left:3px solid var(--teal,#2f948b);border-radius:9px;color:var(--ink2,#52606d);
+ box-shadow:0 1px 2px rgba(23,50,77,.04)}
+.latest-update-title{display:block;margin-bottom:5px;color:var(--teal,#2f948b);
+ font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase}
+.latest-update-row{display:flex;justify-content:space-between;gap:16px;font-size:12px;
+ line-height:1.55;white-space:nowrap}
+.latest-update-row b{color:var(--navy,#17324d);font-weight:600}
+.latest-update-row time{font-variant-numeric:tabular-nums}
+.hero::after{content:"";display:block;clear:both}
 .dashmeta{display:flex;gap:28px;flex-wrap:wrap;font-size:12.5px;
  color:var(--mut,#7b8794);margin:8px 0 12px}
 .dashmeta span{display:block;text-transform:uppercase;font-size:10.5px;
@@ -115,12 +126,15 @@ a{color:var(--navy2);}
 .segbtn.active{background:var(--navy2,#24557a);color:#fff}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
  outline:2px solid var(--navy2,#24557a);outline-offset:2px;border-radius:4px}
-@media(max-width:760px){.secnav{margin-left:-14px;margin-right:-14px;
- padding-left:14px;padding-right:14px}.dashmeta{gap:18px}}
+@media(max-width:760px){.latest-update{float:none;min-width:0;margin:0 0 14px}
+ .secnav{margin-left:-14px;margin-right:-14px;padding-left:14px;
+ padding-right:14px}.dashmeta{gap:18px}}
 </style></head><body><div class="wrap">
+<aside class="latest-update" aria-label="Latest source updates"><span class="latest-update-title">Latest update</span><div class="latest-update-row"><b>Scopus</b><time datetime="2026-07-31">31 Jul 2026</time></div><div class="latest-update-row"><b>Web of Science</b><time datetime="2026-07-28">28 Jul 2026</time></div><div class="latest-update-row"><b>OpenAIRE</b><time datetime="2026-08-19">19 Aug 2026</time></div></aside>
 <div id="overview" class="eyebrow">Scientometrics · UHeM · Scopus + Web of Science + OpenAIRE (best-effort)</div>
 <h1>UHeM — combined corpus, including OpenAIRE candidates</h1>
 <div class="dashmeta"><div><span>View</span><b>exploratory union + unverified candidates</b></div><div><span>Sources</span><b>Scopus + WoS + OpenAIRE</b></div><div><span>Coverage</span><b>2008–2026</b></div><div><span>Merge</span><b>DOI; normalised-title fallback</b></div><div><span>Citation rule</span><b>higher source count; never summed</b></div></div>
+<div style="clear:both"></div>
 
 <style>
 .dashboard-context{display:flex;gap:10px;align-items:center;flex-wrap:wrap;
@@ -180,10 +194,10 @@ a.dm-link:hover{border-color:#92b6ce;background:#f8fbfd}
 <details class="pattern-note"><summary>Why this Union page differs</summary><div>This exploratory view changes the denominator by adding unverified OpenAIRE keyword candidates. Performance leaderboards and trend interpretations are intentionally not extended to those candidates. Researcher summaries are omitted because identifiers are not available across the full union.</div></details>
 
 <div class="key" id="provenance"><b>Why combine them.</b> Neither available
- source arm alone is complete, and within the supplied datasets the gaps are
+ source arm alone is complete, and within the available project snapshots the gaps are
  mostly <i>metadata</i>: papers are usually present in the other available
- source but arrive without a usable acknowledgment. The WoS arm is a supplied
- ULAKBİM record subset, not a complete mirror of the current public Core
+ source but arrive without a usable acknowledgment. The WoS arm is a dated
+ project snapshot, not a complete mirror of the current public Core
  Collection, so "WoS-absent" here means absent from that local subset.
  Scopus keeps a single funder per paper, so a centre can be dropped from a
  record it otherwise holds; WoS carries acknowledgment text for only about a
@@ -282,6 +296,9 @@ a.dm-link:hover{border-color:#92b6ce;background:#f8fbfd}
  9 papers. Citations are the higher of the two counts, never
  the sum. A paper counts as open access if either database says so. Quartiles
  are SCImago SJR throughout, matched to each paper's publication year.<br><br>
+ <b>Reading the early years.</b> Web of Science began indexing funding-acknowledgment text in <b>August 2008</b>. Earlier papers carry none at all, so no acknowledgment search can reach them whatever the wording — in this snapshot 0.8% of 2007 records hold any funding text, against 9.9% in 2008 and 28–38% from 2009 onward. Pre-2008 work appears here only where the record was loaded years after publication. Sparse early years are a property of the index, not evidence that little was acknowledged. The two arms therefore
+ do not both cover the whole span: before 2008 this union rests on the Scopus
+ arm alone, apart from a few WoS records that were loaded retrospectively.<br><br>
  Researcher summaries are deliberately absent: only one source arm carries
  dependable author identifiers here, so a union-wide ranking would describe a
  subset while appearing complete. Institution counts are retained because both

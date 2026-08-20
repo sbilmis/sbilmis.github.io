@@ -82,6 +82,17 @@
    padding:11px 15px; border-radius:var(--r); font-size:13px; margin:0; }
  footer { color:var(--mut); font-size:12px; margin-top:28px; }
 
+.latest-update{float:right;min-width:218px;margin:0 0 14px 22px;padding:10px 13px;
+ background:rgba(255,255,255,.86);border:1px solid var(--border,#dce3e9);
+ border-left:3px solid var(--teal,#2f948b);border-radius:9px;color:var(--ink2,#52606d);
+ box-shadow:0 1px 2px rgba(23,50,77,.04)}
+.latest-update-title{display:block;margin-bottom:5px;color:var(--teal,#2f948b);
+ font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase}
+.latest-update-row{display:flex;justify-content:space-between;gap:16px;font-size:12px;
+ line-height:1.55;white-space:nowrap}
+.latest-update-row b{color:var(--navy,#17324d);font-weight:600}
+.latest-update-row time{font-variant-numeric:tabular-nums}
+.hero::after{content:"";display:block;clear:both}
 .dashmeta{display:flex;gap:28px;flex-wrap:wrap;font-size:12.5px;
  color:var(--mut,#7b8794);margin:8px 0 12px}
 .dashmeta span{display:block;text-transform:uppercase;font-size:10.5px;
@@ -113,16 +124,18 @@
 .segbtn.active{background:var(--navy2,#24557a);color:#fff}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
  outline:2px solid var(--navy2,#24557a);outline-offset:2px;border-radius:4px}
-@media(max-width:760px){.secnav{margin-left:-14px;margin-right:-14px;
- padding-left:14px;padding-right:14px}.dashmeta{gap:18px}}
+@media(max-width:760px){.latest-update{float:none;min-width:0;margin:0 0 14px}
+ .secnav{margin-left:-14px;margin-right:-14px;padding-left:14px;
+ padding-right:14px}.dashmeta{gap:18px}}
 
 </style></head><body><div class="wrap">
-<div id="overview">
+<div id="overview" class="hero">
+<aside class="latest-update" aria-label="Latest source updates"><span class="latest-update-title">Latest update</span><div class="latest-update-row"><b>Scopus</b><time datetime="2026-07-31">31 Jul 2026</time></div><div class="latest-update-row"><b>OpenAIRE</b><time datetime="2026-08-19">19 Aug 2026</time></div></aside>
 <div class="eyebrow">TRUBA · OpenAIRE enrichment and search view</div>
 <h1>TRUBA in OpenAIRE</h1>
 <div class="sub">
  the 2,387 TRUBA-acknowledging article DOIs, seen through Scopus and
- through the OpenAIRE Graph · snapshot 2026-08-09</div>
+ through the OpenAIRE Graph · snapshot 2026-08-19</div>
 
 <p class="story">The papers are fixed: the TRUBA-acknowledging DOIs
  <b>identified by Scopus</b>. We look each one up in OpenAIRE to add what
@@ -142,7 +155,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
   0.95×</div>
  <div class="hl">OpenAIRE / Scopus citation ratio</div></div>
 </div>
-<div class="dashmeta"><div><span>Data role</span><b>OpenAIRE Graph enrichment + keyword-search check</b></div><div><span>Corpus basis</span><b>Scopus acknowledgment-search DOIs</b></div><div><span>Coverage</span><b>2008–2026</b></div><div><span>Page build</span><b>2026-08-09</b></div><div><span>Refresh</span><b>with the next Scopus/OpenAIRE extraction</b></div></div>
+<div class="dashmeta"><div><span>Data role</span><b>OpenAIRE Graph enrichment + keyword-search check</b></div><div><span>Corpus basis</span><b>Scopus acknowledgment-search DOIs</b></div><div><span>Coverage</span><b>2008–2026</b></div><div><span>OpenAIRE source</span><b>2026-08-19</b></div></div>
 </div>
 
 <style>
