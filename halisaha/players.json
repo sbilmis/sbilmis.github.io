@@ -1,0 +1,15 @@
+[
+  {"id":"p01","name":"Selcuk","age":32,"primary":"GK","ratings":{"defense":2,"midfield":2,"attack":1,"goalkeeping":5,"pace":2,"stamina":3,"passing":3,"technical":2},"playing":true},
+  {"id":"p02","name":"Burhan","age":29,"primary":"DEF","ratings":{"defense":4,"midfield":3,"attack":2,"goalkeeping":2,"pace":3,"stamina":3,"passing":3,"technical":3},"playing":true},
+  {"id":"p03","name":"Munir","age":33,"primary":"DEF","ratings":{"defense":4,"midfield":3,"attack":2,"goalkeeping":2,"pace":3,"stamina":3,"passing":3,"technical":3},"playing":true},
+  {"id":"p04","name":"Alper","age":35,"primary":"DEF","ratings":{"defense":5,"midfield":3,"attack":2,"goalkeeping":3,"pace":2,"stamina":3,"passing":2,"technical":2},"playing":true},
+  {"id":"p05","name":"Rasim","age":30,"primary":"DEF","secondary":"GK","ratings":{"defense":4,"midfield":3,"attack":2,"goalkeeping":4,"pace":3,"stamina":3,"passing":3,"technical":3},"playing":true},
+  {"id":"p06","name":"Sezer","age":25,"primary":"MID","ratings":{"defense":3,"midfield":4,"attack":3,"goalkeeping":2,"pace":4,"stamina":4,"passing":4,"technical":3},"playing":true},
+  {"id":"p07","name":"Mehmet","age":28,"primary":"MID","ratings":{"defense":3,"midfield":4,"attack":3,"goalkeeping":2,"pace":3,"stamina":4,"passing":4,"technical":4},"playing":true},
+  {"id":"p08","name":"Kemal","age":27,"primary":"MID","ratings":{"defense":3,"midfield":5,"attack":3,"goalkeeping":2,"pace":3,"stamina":4,"passing":5,"technical":4},"playing":true},
+  {"id":"p09","name":"Tolga","age":31,"primary":"MID","ratings":{"defense":4,"midfield":3,"attack":3,"goalkeeping":2,"pace":3,"stamina":3,"passing":3,"technical":3},"playing":true},
+  {"id":"p10","name":"Kerem","age":26,"primary":"DEF","ratings":{"defense":4,"midfield":3,"attack":2,"goalkeeping":3,"pace":3,"stamina":3,"passing":3,"technical":3},"playing":true},
+  {"id":"p11","name":"Burak","age":24,"primary":"FWD","ratings":{"defense":2,"midfield":3,"attack":5,"goalkeeping":1,"pace":5,"stamina":4,"passing":2,"technical":4},"playing":true},
+  {"id":"p12","name":"Mirac","age":22,"primary":"FWD","ratings":{"defense":2,"midfield":3,"attack":4,"goalkeeping":1,"pace":5,"stamina":5,"passing":3,"technical":4},"playing":true},
+  {"id":"p13","name":"Veysi","age":28,"primary":"FWD","ratings":{"defense":2,"midfield":3,"attack":4,"goalkeeping":1,"pace":4,"stamina":3,"passing":3,"technical":4},"playing":true}
+]

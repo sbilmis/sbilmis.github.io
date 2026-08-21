@@ -26,6 +26,7 @@ def copy_legacy_directory(name: str) -> None:
 def main() -> None:
     copy_legacy_directory("scientometrics")
     copy_directory(ROOT / "truba-assistant")
+    copy_directory(ROOT / "halisaha")
 
     blogs_output = OUTPUT / "blogs"
     blogs_output.mkdir(parents=True, exist_ok=True)
