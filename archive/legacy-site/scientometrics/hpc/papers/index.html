@@ -163,6 +163,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
 .compact-table table{font-size:12.5px;}
 .compact-table th,.compact-table td{padding:6px 7px;}
 .date-future{color:#b97918;font-weight:700;}
+.row-new{background:var(--amber-soft);}
+.row-new td:first-child::after{content:'NEW';margin-left:6px;font-size:9.5px;
+  font-weight:700;letter-spacing:.06em;color:#fff;background:var(--teal);
+  border-radius:3px;padding:1px 4px;vertical-align:middle;}
+.delta-tile{font-size:12.5px;color:var(--ink2);background:var(--amber-soft);
+  border:1px solid #efd9a7;border-radius:9px;padding:10px 12px;margin:14px 0;}
+.delta-tile b{color:var(--amber);}
+.delta-tile button{font:inherit;color:var(--navy2);background:none;border:0;
+  padding:0;text-decoration:underline;cursor:pointer;}
 .legend-key{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;
   margin:10px 0 2px;}
 .legend-key div{border:1px solid #dce3e9;border-radius:9px;padding:9px 11px;
@@ -259,6 +268,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
 </div>
 
 <div class="card" id="recent"><h2>Latest 20 national papers</h2>
+ <div class='delta-tile'>Baseline snapshot recorded — “added since the last refresh” appears from the next refresh onwards.</div>
  <div class="sub">Sorted by the latest database/publisher issue date carried
   by the merged record, not by ingestion time. Dates after the newest Scopus
   snapshot (2026-09-01) are marked with *: these are publisher-assigned
