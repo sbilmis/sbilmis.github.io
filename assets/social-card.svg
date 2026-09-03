@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1659" height="948" viewBox="0 0 1659 948">
+  <rect width="1659" height="948" fill="#f5f1e6"/>
+  <line x1="88" y1="0" x2="88" y2="700" stroke="#1f4738" stroke-width="3"/>
+  <path d="M 88 700 A 140 140 0 0 1 228 840" fill="none" stroke="#1f4738" stroke-width="3"/>
+  <line x1="0" y1="768" x2="88" y2="768" stroke="#1f4738" stroke-width="3"/>
+
+  <text x="170" y="400" font-family="Georgia, 'Times New Roman', serif" font-size="150" font-weight="700" fill="#1a1a1a">sbilmis</text>
+  <line x1="170" y1="450" x2="640" y2="450" stroke="#1f4738" stroke-width="3"/>
+
+  <text x="170" y="535" font-family="Georgia, 'Times New Roman', serif" font-size="46" fill="#1f6b4d">Physicist and researcher</text>
+
+  <text x="170" y="625" font-family="Verdana, Arial, sans-serif" font-size="32" fill="#c1622f">Particle physics &#183; scientific computing &#183; research analytics</text>
+</svg>
