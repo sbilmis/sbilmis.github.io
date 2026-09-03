@@ -120,6 +120,14 @@ outbound internet access.
 | Copy | `⌘C` | Automatic, if `copy-on-select = clipboard` is set |
 | Jump between prompts | `⌘⇧↑` / `⌘⇧↓` | `jump_to_prompt` action (not bound by default) |
 
+**iTerm2:**
+
+{{< video select-remote-command-output/iterm2-select.mp4 >}}
+
+**Ghostty:**
+
+{{< video select-remote-command-output/ghostty-select.mp4 >}}
+
 To get prompt-jumping in Ghostty, add to `~/.config/ghostty/config`:
 
 ```
