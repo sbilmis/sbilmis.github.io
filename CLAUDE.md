@@ -135,6 +135,13 @@ When genuinely unsure, prefer the lighter-weight section — moving a page
 later is one `git mv` plus an `aliases:` entry for the old URL, so getting
 it exactly right up front matters less than not stalling on the decision.
 
+`writing/index.qmd` renders each of the four lanes above as its own
+labeled section (separate `listing:` block + `::: {#id} :::` anchor) so
+the difference between an essay, a tool tip, an interactive piece, and a
+reference list is visible on the page itself — not just inferable from
+folder names. Adding a *file* to an existing lane needs no edit here;
+adding a whole new lane does (a new listing block, heading, and anchor).
+
 ## Listing pages auto-populate
 
 Each section's `index.qmd` uses Quarto's `listing:` directive

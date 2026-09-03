@@ -1,19 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
   const toolbar = document.querySelector("[data-listing-view-toggle]");
-  const listing = document.querySelector(".quarto-listing-container-default");
+  const listings = Array.from(
+    document.querySelectorAll(".quarto-listing-container-default"),
+  );
 
-  if (!toolbar || !listing) {
+  if (!toolbar || listings.length === 0) {
     return;
   }
 
-  listing.classList.add("listing-view-enabled");
+  listings.forEach((listing) => listing.classList.add("listing-view-enabled"));
 
   const buttons = Array.from(toolbar.querySelectorAll("[data-listing-view]"));
   const storageKey = "sbilmis-listing-view";
 
   const setView = (view, remember = true) => {
     const selected = view === "cards" ? "cards" : "list";
-    listing.dataset.view = selected;
+    listings.forEach((listing) => {
+      listing.dataset.view = selected;
+    });
 
     buttons.forEach((button) => {
       button.setAttribute(

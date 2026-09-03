@@ -1,30 +1,80 @@
 ---
 title: "Notes"
-description: "Reference collections and longer observations."
+description: "Essays, tools, interactive pieces, and reference collections."
 page-layout: full
 listing:
-  contents:
-    - posts
-    - reference
-    - tools
-    - interactive
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: true
-  feed:
-    type: partial
-    title: "Selçuk Bilmiş — notes"
-    description: "Reference collections and longer notes on physics, computing, and research work."
+  - id: essays
+    contents: posts
+    sort: "date desc"
+    type: default
+    categories: true
+    sort-ui: false
+    filter-ui: true
+    feed:
+      type: partial
+      title: "Selçuk Bilmiş — notes"
+      description: "Reference collections and longer notes on physics, computing, and research work."
+  - id: tools-tips
+    contents: tools
+    sort: "date desc"
+    type: default
+    categories: true
+    sort-ui: false
+    filter-ui: true
+  - id: interactive
+    contents: interactive
+    sort: "date desc"
+    type: default
+    categories: true
+    sort-ui: false
+    filter-ui: true
+  - id: reference
+    contents: reference
+    sort: "date desc"
+    type: default
+    categories: true
+    sort-ui: false
+    filter-ui: true
 ---
 
-Reference collections and longer pieces live here. Some writing may begin as a LinkedIn post; the durable version belongs in this notebook.
+Four different kinds of writing live here, kept in one place rather than
+scattered across four. Some of it may begin as a LinkedIn post; the durable
+version belongs in this notebook.
 
 <div class="listing-view-toggle" data-listing-view-toggle role="group" aria-label="Choose notes view">
   <span>View</span>
   <button type="button" data-listing-view="list" aria-pressed="true">List</button>
   <button type="button" data-listing-view="cards" aria-pressed="false">Cards</button>
 </div>
+
+## Essays & reflections
+
+Longer personal pieces — a reaction to a paper or result, a historical
+note, the durable version of what began as a LinkedIn post.
+
+::: {#essays}
+:::
+
+## Tools & tips
+
+A workflow friction and the fix — found, or quickly built — that removed
+it.
+
+::: {#tools-tips}
+:::
+
+## Interactive
+
+Small calculators, explorables, and simulations that live only as a page.
+
+::: {#interactive}
+:::
+
+## Reference collections
+
+Curated lists of external links and resources, lightly annotated.
+
+::: {#reference}
+:::
 
 <script src="../listing-view.js"></script>
