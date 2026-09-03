@@ -17,17 +17,17 @@ website:
   title: "Selçuk Bilmiş"
   site-url: "https://sbilmis.org"
   description: "A physicist's public notebook: physics, computing, research workflows, and things worth remembering."
-  favicon: assets/selcuk-bilmis.jpg
+  favicon: assets/favicon-sb.svg
   search:
     location: navbar
     type: overlay
   page-navigation: true
   back-to-top-navigation: true
   open-graph:
-    image: assets/selcuk-bilmis.jpg
+    image: assets/social-card.png
   twitter-card:
-    image: assets/selcuk-bilmis.jpg
-    card-style: summary
+    image: assets/social-card.png
+    card-style: summary_large_image
   navbar:
     title: false
     left:
