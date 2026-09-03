@@ -19,5 +19,5 @@ listing:
   feed:
     type: partial
     title: "Selçuk Bilmiş — blog"
-    description: "Essays, reactions, and curated notes on physics, computing, and research work."
+    description: "Essays, explanations, reflections, and curated resources on physics, computing, and research."
 ---
