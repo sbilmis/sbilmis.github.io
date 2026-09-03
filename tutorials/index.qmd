@@ -1,6 +1,6 @@
 ---
 title: "Tutorials"
-description: "Reusable notes and step-by-step explanations."
+description: "Step-by-step guides and reusable technical references."
 aliases:
   - "/my_tutorials/"
   - "/my_tutorials/containers/"
@@ -30,15 +30,5 @@ listing:
   filter-ui: false
 ---
 
-Tutorials teach how to do something — a short procedure or a large
-multi-part course. Adding one means creating a new `.qmd` file with a
-title and description; this page updates automatically. Subject (Docker,
-Emacs, HPC, ...) is a `categories:` tag, not a folder.
-
-<div class="listing-view-toggle" data-listing-view-toggle role="group" aria-label="Choose tutorial view">
-  <span>View</span>
-  <button type="button" data-listing-view="list" aria-pressed="true">List</button>
-  <button type="button" data-listing-view="cards" aria-pressed="false">Cards</button>
-</div>
-
-<script src="../listing-view.js"></script>
+Step-by-step guides and reusable technical references, from short
+procedures to larger multi-part courses.

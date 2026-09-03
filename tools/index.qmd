@@ -1,6 +1,6 @@
 ---
 title: "Tools"
-description: "Things built to be used, not just read."
+description: "Utilities, interactive calculators, and software for research and computing."
 page-layout: full
 aliases:
   - "/software/"
@@ -16,16 +16,6 @@ listing:
   filter-ui: false
 ---
 
-Small utilities, interactive calculators, and full software projects — a
-reader uses these rather than reads them. Whether something has its own
-GitHub repository, or lives only as a page here, doesn't decide the
-section; the source, releases, and full documentation for a standalone
-project remain in its own repository.
-
-<div class="listing-view-toggle" data-listing-view-toggle role="group" aria-label="Choose tools view">
-  <span>View</span>
-  <button type="button" data-listing-view="list" aria-pressed="true">List</button>
-  <button type="button" data-listing-view="cards" aria-pressed="false">Cards</button>
-</div>
-
-<script src="../listing-view.js"></script>
+Utilities, interactive calculators, and software for research and
+computing. Source code, releases, and full documentation for a
+standalone project remain in its own repository.

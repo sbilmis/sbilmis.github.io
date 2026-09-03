@@ -31,7 +31,7 @@ listing:
 
 ## Browse
 
-- [**Tutorials**](tutorials/index.qmd) — step-by-step notes and reusable references
+- [**Tutorials**](tutorials/index.qmd) — step-by-step guides and reusable references
 - [**Blog**](blog/index.qmd) — essays, reactions, and curated resource lists
 - [**Tools**](tools/index.qmd) — small utilities, calculators, and software projects
 - [**Scientometrics**](/scientometrics/) — interactive dashboards of Türkiye's research infrastructure and public research organisations

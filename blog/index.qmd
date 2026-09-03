@@ -1,6 +1,6 @@
 ---
 title: "Blog"
-description: "Essays, reactions, reflections, and curated resource lists."
+description: "Essays, explanations, reflections, and curated resources on physics, computing, and research."
 page-layout: full
 aliases:
   - "/notes/"
@@ -22,14 +22,5 @@ listing:
     description: "Essays, reactions, and curated notes on physics, computing, and research work."
 ---
 
-Writing whose point is to explain, discuss, reflect, or collect —
-not to be used like a tool or followed like a procedure. Some of it may
-begin as a LinkedIn post; the durable version belongs here.
-
-<div class="listing-view-toggle" data-listing-view-toggle role="group" aria-label="Choose blog view">
-  <span>View</span>
-  <button type="button" data-listing-view="list" aria-pressed="true">List</button>
-  <button type="button" data-listing-view="cards" aria-pressed="false">Cards</button>
-</div>
-
-<script src="../listing-view.js"></script>
+Essays, explanations, reflections, and curated resources on physics,
+computing, and research.

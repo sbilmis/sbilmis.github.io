@@ -146,74 +146,6 @@ li {
   text-decoration: none;
 }
 
-.listing-view-toggle {
-  align-items: center;
-  display: flex;
-  gap: 0.35rem;
-  justify-content: flex-end;
-  margin: 1.5rem 0 0.75rem;
-}
-
-.listing-view-toggle span {
-  color: var(--note-muted);
-  font-family: $font-family-monospace;
-  font-size: 0.75rem;
-  margin-right: 0.25rem;
-}
-
-.listing-view-toggle button {
-  background: transparent;
-  border: 1px solid var(--note-line);
-  border-radius: 0.3rem;
-  color: var(--note-muted);
-  cursor: pointer;
-  font-family: $font-family-monospace;
-  font-size: 0.75rem;
-  padding: 0.3rem 0.55rem;
-}
-
-.listing-view-toggle button:hover,
-.listing-view-toggle button[aria-pressed="true"] {
-  border-color: var(--note-accent);
-  color: var(--note-accent);
-}
-
-.listing-view-enabled .thumbnail {
-  display: none;
-}
-
-.listing-view-enabled[data-view="list"] .quarto-post {
-  background: transparent;
-  border-bottom: 1px solid var(--note-line);
-  padding: 1rem 0;
-}
-
-.listing-view-enabled[data-view="cards"] .quarto-listing-default {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.listing-view-enabled[data-view="cards"] .quarto-post {
-  background: var(--note-panel);
-  border: 1px solid var(--note-line);
-  border-radius: 0.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin: 0;
-  padding: 1.1rem;
-}
-
-.listing-view-enabled[data-view="cards"] .quarto-post .body {
-  flex: 1;
-}
-
-.listing-view-enabled[data-view="cards"] .quarto-post .metadata {
-  margin: auto 0 0;
-  width: auto;
-}
-
 .about-intro {
   align-items: center;
   border-bottom: 1px solid var(--note-line);
@@ -310,10 +242,6 @@ blockquote {
     align-items: flex-start;
     flex-direction: column;
     gap: 0.25rem;
-  }
-
-  .listing-view-enabled[data-view="cards"] .quarto-listing-default {
-    grid-template-columns: 1fr;
   }
 
   .about-intro {
