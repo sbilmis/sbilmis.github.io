@@ -26,7 +26,6 @@ New tutorials follow a common structure so that purpose, assumptions, procedure,
 - [Containers](containers/index.qmd) — Docker and service maintenance
 - [Data management](data-management/index.qmd) — downloads, archives, and research datasets
 - [Emacs](emacs/index.qmd) — Org mode and editor workflows
-- [Physics](physics/index.qmd) — spectroscopy and small interactive references
 - [Systems](system/index.qmd) — configuration and reproducible environments
 
 <div class="listing-view-toggle" data-listing-view-toggle role="group" aria-label="Choose tutorial view">

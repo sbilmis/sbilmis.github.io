@@ -2,21 +2,16 @@
 title: "Spectroscopic Notation Explorer"
 description: "A compact reference and interactive calculator for atomic, meson, and baryon spectroscopic notation."
 categories: ["Physics", "Spectroscopy", "Interactive"]
-level: "Intermediate"
-estimated-time: "10 minutes"
 date: 2026-04-12
 aliases:
   - "/my_tutorials/physics/spectroscopy/"
+  - "/tutorials/physics/spectroscopy.html"
 resources:
   - spectroscopy.js
 format:
   html:
     css: spectroscopy.css
 ---
-::: {.tutorial-meta}
-**Level:** Intermediate · **Working time:** 10 minutes
-:::
-
 ::: {.callout-note title="Overview"}
 - **Goal:** Explore spectroscopic notation in a compact interactive form.
 - **Families covered:** Atomic, meson, and baryon.

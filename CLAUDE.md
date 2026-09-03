@@ -52,7 +52,7 @@ Use tables for command/purpose maps, `.callout-tip` / `.callout-warning` /
 diagrams, and close with `## References` linking primary sources. See
 `Tutorials/system/chezmoi-dotfiles.qmd` as the canonical example.
 
-### `writing/posts/*.qmd` — shorter notes, no mandated structure
+### `writing/posts/*.qmd` — the blog: essays, reflections, reactions
 
 Frontmatter:
 ```yaml
@@ -64,7 +64,41 @@ author: "Selçuk Bilmiş"
 draft: false
 ```
 Then plain prose. No tutorial-meta bar, no Overview callout. See
-`writing/posts/why-public-notes.qmd`.
+`writing/posts/why-public-notes.qmd`. This is the home for personal essays,
+historical/outreach reflections, and reactions to something read or studied
+(a paper, someone else's blog post, a recent result) — the durable version
+of what might otherwise only be a LinkedIn post.
+
+### `writing/reference/*.qmd` — curated link collections
+
+Frontmatter: `title`, `description`, `date`, `date-modified` (bump on
+updates), `categories`, `toc: true`. Body is a curated list of external
+links/resources with light commentary, not original prose. See
+`writing/reference/starter-pack-for-particle-physicists.qmd`. Several
+existing files are annotated `*Migrated from an earlier Org-mode note.*` —
+keep that note if further migrating an old list, drop it for anything new.
+
+### `writing/tools/*.qmd` — friction you hit, fix you found or built
+
+For the "someone already solved this, I just needed to notice" pattern —
+short write-ups of a workflow friction and the tool (someone else's, or a
+quick one of your own not worth a full `software/` release) that removed
+it. Frontmatter is the same shape as `writing/posts/*.qmd`. Mirror the
+structure that already works on LinkedIn: the friction in plain terms, the
+tool + link, the before/after workflow, why it matters. Not yet populated —
+first candidate is a write-up of `clipssh`.
+
+### `writing/interactive/*.qmd` — self-built widgets, calculators, sims
+
+For an original interactive piece that lives only as a page — a
+calculator, an explorable diagram, a small simulation — as opposed to
+`software/`, which is for a standalone project with its own repo and
+releases. Frontmatter: `title`, `description`, `categories`, `date`, plus
+whatever `resources:`/`format: html: css:` the page's JS/CSS needs. No
+tutorial-meta bar or `level`/`estimated-time` — those are Tutorials-only.
+See `writing/interactive/spectroscopy.qmd` (moved here from
+`Tutorials/physics/` — it was never a procedure, just a reference tool).
+A future example: a double-pendulum animation.
 
 ### `software/*.qmd` — a project/tool page
 
@@ -81,6 +115,25 @@ See `software/copy-for-llm.qmd`.
 
 Not yet documented here — check existing files in that folder before adding
 one, same as above.
+
+## Deciding where new content goes
+
+Route new content by what it *is*, not by subject matter — physics and
+computing both show up in several sections below:
+
+| New content is... | Goes to |
+| --- | --- |
+| Reproducible steps someone else follows | `Tutorials/<topic>/` |
+| A big multi-part course (e.g. Linux/HPC from zero to hero) | Still `Tutorials/<topic>/`, as several ordered pages under one topic folder — no new section needed. Number filenames (`00-`, `01-`, ...) or order them explicitly in that topic's `index.qmd` |
+| A personal essay, reflection, or reaction to something read/studied | `writing/posts/` |
+| A curated list of external links/resources | `writing/reference/` |
+| A friction you hit + a fix you found or quickly built | `writing/tools/` |
+| A self-built interactive widget/calculator/sim living only as a page | `writing/interactive/` |
+| A full standalone project with its own repo and releases | `software/` |
+
+When genuinely unsure, prefer the lighter-weight section — moving a page
+later is one `git mv` plus an `aliases:` entry for the old URL, so getting
+it exactly right up front matters less than not stalling on the decision.
 
 ## Listing pages auto-populate
 
