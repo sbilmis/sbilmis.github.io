@@ -16,6 +16,5 @@ listing:
   filter-ui: false
 ---
 
-Utilities, interactive calculators, and software for research and
-computing. Source code, releases, and full documentation for a
-standalone project remain in its own repository.
+Source code, releases, and full documentation for a standalone project
+remain in its own repository.

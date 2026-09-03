@@ -21,6 +21,3 @@ listing:
     title: "Selçuk Bilmiş — blog"
     description: "Essays, reactions, and curated notes on physics, computing, and research work."
 ---
-
-Essays, explanations, reflections, and curated resources on physics,
-computing, and research.

@@ -65,10 +65,33 @@ diagrams, and close with `## References` linking primary sources. See
 `tutorials/chezmoi-dotfiles.qmd` as the canonical example.
 
 A genuine multi-part course (e.g. Linux/HPC from zero to hero) is the one
-exception to "flat": give it its own `tutorials/<course>/` subfolder with
-several ordered pages (`00-`, `01-`, ... prefixes, or an explicit order in
-that folder's own `index.qmd`). This isn't subject-based foldering — it's
-one course with real sequential parts, not a category.
+exception to "flat": give it its own `tutorials/<course>/` subfolder. This
+isn't subject-based foldering — it's one course with real sequential
+parts, not a category. To keep the course's chapters from flooding the
+main Tutorials listing and the homepage's Latest feed:
+
+- Number the chapter files (`00-basic-linux.qmd`, `01-modules.qmd`, ...)
+  and give them ordinary Tutorials frontmatter.
+- `tutorials/<course>/index.qmd` is the course landing page. Give it its
+  *own* `listing:` scoped to just that folder
+  (`contents: ["*.qmd", "!index.qmd"]`) so chapters are only browsable
+  from inside the course.
+- Do **not** add a recursive `**/*.qmd` pattern anywhere. The top-level
+  `tutorials/index.qmd` and the homepage's Latest listing both use this
+  two-tier pattern instead, so a course contributes exactly **one** entry
+  (its `index.qmd`) to each, never its individual chapters:
+  ```yaml
+  contents:
+    - "tutorials/*.qmd"        # ordinary single-page tutorials
+    - "!tutorials/index.qmd"
+    - "tutorials/*/index.qmd"  # one entry per course, not its chapters
+  ```
+  (the homepage version prefixes each pattern with the section name, as
+  above; `tutorials/index.qmd`'s own version omits the `tutorials/`
+  prefix since it's already rooted there). Publishing or editing a course
+  chapter therefore never bumps that course's Latest entry unless
+  `index.qmd` itself changes — expected, since the course's `date:` is
+  what represents it there.
 
 ### `blog/*.qmd` — explain, discuss, reflect, or collect
 

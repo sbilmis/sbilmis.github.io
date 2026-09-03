@@ -19,16 +19,12 @@ page-layout: full
 listing:
   contents:
     - "*.qmd"
-    - "**/*.qmd"
     - "!index.qmd"
-    - "!**/index.qmd"
-    - "!**/_*.qmd"
+    - "!_*.qmd"
+    - "*/index.qmd"
   sort: "title"
   type: default
   categories: false
   sort-ui: false
   filter-ui: false
 ---
-
-Step-by-step guides and reusable technical references, from short
-procedures to larger multi-part courses.
