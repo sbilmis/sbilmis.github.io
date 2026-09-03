@@ -3,30 +3,37 @@ title: "Tutorials"
 description: "Reusable notes and step-by-step explanations."
 aliases:
   - "/my_tutorials/"
+  - "/my_tutorials/containers/"
+  - "/my_tutorials/data_management/"
+  - "/my_tutorials/emacs/"
+  - "/my_tutorials/system/"
+  - "/tutorials/containers/"
+  - "/tutorials/containers/index.html"
+  - "/tutorials/data-management/"
+  - "/tutorials/data-management/index.html"
+  - "/tutorials/emacs/"
+  - "/tutorials/emacs/index.html"
+  - "/tutorials/system/"
+  - "/tutorials/system/index.html"
 page-layout: full
 listing:
   contents:
+    - "*.qmd"
     - "**/*.qmd"
     - "!index.qmd"
     - "!**/index.qmd"
     - "!**/_*.qmd"
   sort: "title"
   type: default
-  categories: true
-  sort-ui: true
-  filter-ui: true
+  categories: false
+  sort-ui: false
+  filter-ui: false
 ---
 
-Tutorials are grouped by subject but remain ordinary text files. Adding one means creating a new `.qmd` or `.md` file with a title and description; this page updates automatically.
-
-New tutorials follow a common structure so that purpose, assumptions, procedure, verification, and troubleshooting are easy to locate. The structure is guidance rather than a rigid form: short references can stay short, while detailed guides can grow naturally.
-
-## Subjects
-
-- [Containers](containers/index.qmd) — Docker and service maintenance
-- [Data management](data-management/index.qmd) — downloads, archives, and research datasets
-- [Emacs](emacs/index.qmd) — Org mode and editor workflows
-- [Systems](system/index.qmd) — configuration and reproducible environments
+Tutorials teach how to do something — a short procedure or a large
+multi-part course. Adding one means creating a new `.qmd` file with a
+title and description; this page updates automatically. Subject (Docker,
+Emacs, HPC, ...) is a `categories:` tag, not a folder.
 
 <div class="listing-view-toggle" data-listing-view-toggle role="group" aria-label="Choose tutorial view">
   <span>View</span>

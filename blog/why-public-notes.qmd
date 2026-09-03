@@ -5,6 +5,9 @@ date: 2026-08-02
 categories: [notebook, workflow]
 author: "Selçuk Bilmiş"
 draft: false
+aliases:
+  - "/writing/posts/why-public-notes.html"
+  - "/notes/posts/why-public-notes.html"
 ---
 
 Most notes begin for a simple reason: I do not want to solve the same small problem twice.

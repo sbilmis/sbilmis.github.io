@@ -8,8 +8,8 @@ listing:
   - id: recent
     contents:
       - "tutorials/**/*.qmd"
-      - "notes/posts/*.qmd"
-      - "software/*.qmd"
+      - "blog/*.qmd"
+      - "tools/*.qmd"
       - "!**/index.qmd"
       - "!**/_*.qmd"
     sort: "date desc"
@@ -32,8 +32,8 @@ listing:
 ## Browse
 
 - [**Tutorials**](tutorials/index.qmd) — step-by-step notes and reusable references
-- [**Notes**](notes/index.qmd) — reference collections and longer observations
-- [**Software**](software/index.qmd) — small tools for research and computing work
+- [**Blog**](blog/index.qmd) — essays, reactions, and curated resource lists
+- [**Tools**](tools/index.qmd) — small utilities, calculators, and software projects
 - [**Scientometrics**](/scientometrics/) — interactive dashboards of Türkiye's research infrastructure and public research organisations
 
 ::: {.quiet-heading}

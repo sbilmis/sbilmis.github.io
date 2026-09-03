@@ -6,6 +6,7 @@ date: 2026-04-12
 aliases:
   - "/my_tutorials/physics/spectroscopy/"
   - "/tutorials/physics/spectroscopy.html"
+  - "/notes/interactive/spectroscopy.html"
 resources:
   - spectroscopy.js
 format:

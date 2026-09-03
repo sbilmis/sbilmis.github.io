@@ -6,6 +6,7 @@ date-modified: 2026-08-03
 categories: [Reference, Particle physics, Research workflow]
 aliases:
   - /blogs/starter_pack_for_particle_physics.html
+  - /notes/reference/starter-pack-for-particle-physicists.html
 toc: true
 ---
 

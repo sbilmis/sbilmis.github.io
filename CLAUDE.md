@@ -6,10 +6,22 @@ deployed via GitHub Pages (see `.github/`).
 
 ## Section map
 
-Four content sections, each with a different frontmatter shape. Pick the
-one that matches what you're writing — don't invent a fifth.
+Four content sections, organized by what the content *is*, not by subject
+matter. Physics, HPC, Linux, Emacs, QCD, AI, research workflow, etc. are
+`categories:` tags, never folders.
 
-### `Tutorials/<topic>/*.qmd` — step-by-step guides
+> Learn it → Tutorials · Read it → Blog · Use it → Tools · Explore research
+> data → Scientometrics
+
+All four are flat on disk — no subject subfolders like `tutorials/emacs/`,
+`blog/reference/`, or `tools/interactive/`. The one narrow exception is a
+genuine multi-part course (see below). This is a deliberate simplification:
+the priority is a structure that's still easy to remember five years from
+now, not a precise taxonomy today.
+
+### `tutorials/*.qmd` — teach how to do something
+
+Reproducible steps, from a short procedure to a large multi-part course.
 
 Frontmatter:
 ```yaml
@@ -50,104 +62,107 @@ Body opens with two fixed blocks, then numbered sections:
 Use tables for command/purpose maps, `.callout-tip` / `.callout-warning` /
 `.callout-important` for asides, ` ```{mermaid} flowchart ``` ` for process
 diagrams, and close with `## References` linking primary sources. See
-`Tutorials/system/chezmoi-dotfiles.qmd` as the canonical example.
+`tutorials/chezmoi-dotfiles.qmd` as the canonical example.
 
-### `notes/posts/*.qmd` — the blog: essays, reflections, reactions
+A genuine multi-part course (e.g. Linux/HPC from zero to hero) is the one
+exception to "flat": give it its own `tutorials/<course>/` subfolder with
+several ordered pages (`00-`, `01-`, ... prefixes, or an explicit order in
+that folder's own `index.qmd`). This isn't subject-based foldering — it's
+one course with real sequential parts, not a category.
 
-Frontmatter:
+### `blog/*.qmd` — explain, discuss, reflect, or collect
+
+The broad publishing/writing area: physics explainers (a W-boson mass
+article), reactions to papers or scientific developments, HPC/computing
+commentary, personal or research reflections, curated resource lists,
+conference notes, longer technical articles. If its primary purpose is to
+be *read* rather than followed as a procedure or used as a tool, it's
+here — regardless of length or how reference-like it is. There is no
+separate "Notes"/"Reference"/"Writing" section; this is that section.
+
+Frontmatter is loose; pick what fits:
 ```yaml
 title: "..."
 description: "..."
 date: YYYY-MM-DD
 categories: [tag, tag]
-author: "Selçuk Bilmiş"
-draft: false
+author: "Selçuk Bilmiş"    # optional
+toc: true                  # optional, useful for long curated lists
+date-modified: YYYY-MM-DD  # optional, bump when a curated list changes
 ```
-Then plain prose. No tutorial-meta bar, no Overview callout. See
-`notes/posts/why-public-notes.qmd`. This is the home for personal essays,
-historical/outreach reflections, and reactions to something read or studied
-(a paper, someone else's blog post, a recent result) — the durable version
-of what might otherwise only be a LinkedIn post.
+No tutorial-meta bar, no Overview callout, no mandated structure — plain
+prose, or a curated list with light commentary. See
+`blog/why-public-notes.qmd` (essay) and
+`blog/starter-pack-for-particle-physicists.qmd` (curated list) as the two
+ends of what belongs here. A few files carry
+`*Migrated from an earlier Org-mode note.*` — keep that note only when
+further migrating an old list, drop it for anything new.
 
-### `notes/reference/*.qmd` — curated link collections
+### `tools/*.qmd` — built to be used, not read
 
-Frontmatter: `title`, `description`, `date`, `date-modified` (bump on
-updates), `categories`, `toc: true`. Body is a curated list of external
-links/resources with light commentary, not original prose. See
-`notes/reference/starter-pack-for-particle-physicists.qmd`. Several
-existing files are annotated `*Migrated from an earlier Org-mode note.*` —
-keep that note if further migrating an old list, drop it for anything new.
+Anything built that a reader *uses* rather than reads: small utilities,
+interactive calculators, browser-only widgets, Emacs helpers, Python
+packages, full software projects — with or without a separate GitHub
+repository. Project size and "does it have its own repo" do not decide
+this section; use is what decides it (`Spectroscopic Notation Explorer`,
+a page-only calculator, lives here next to `Zotero Project Manager`, a
+full Python/plugin project).
 
-### `notes/tools/*.qmd` — friction you hit, fix you found or built
-
-For the "someone already solved this, I just needed to notice" pattern —
-short write-ups of a workflow friction and the tool (someone else's, or a
-quick one of your own not worth a full `software/` release) that removed
-it. Frontmatter is the same shape as `notes/posts/*.qmd`. Mirror the
-structure that already works on LinkedIn: the friction in plain terms, the
-tool + link, the before/after workflow, why it matters. Not yet populated —
-first candidate is a write-up of `clipssh`.
-
-### `notes/interactive/*.qmd` — self-built widgets, calculators, sims
-
-For an original interactive piece that lives only as a page — a
-calculator, an explorable diagram, a small simulation — as opposed to
-`software/`, which is for a standalone project with its own repo and
-releases. Frontmatter: `title`, `description`, `categories`, `date`, plus
-whatever `resources:`/`format: html: css:` the page's JS/CSS needs. No
-tutorial-meta bar or `level`/`estimated-time` — those are Tutorials-only.
-See `notes/interactive/spectroscopy.qmd` (moved here from
-`Tutorials/physics/` — it was never a procedure, just a reference tool).
-A future example: a double-pendulum animation.
-
-### `software/*.qmd` — a project/tool page
-
-Frontmatter: `title`, `description`, `categories`, `date`, `toc: true`.
-Body: one or two intro paragraphs, a `## What it is for` bullet list, then
-trailing link buttons:
+Frontmatter: `title`, `description`, `categories`, `date`, `toc: true`
+for a project page; a calculator/widget instead adds whatever
+`resources:`/`format: html: css:` its JS/CSS needs (see
+`tools/spectroscopy.qmd`). Body for a standalone project: one or two
+intro paragraphs, a `## What it is for` bullet list, then trailing link
+buttons:
 ```markdown
 [View the repository](https://github.com/...){.btn .btn-primary}
 [Download the latest release](https://github.com/.../releases/latest){.btn .btn-outline-primary}
 ```
-See `software/copy-for-llm.qmd`.
+See `tools/copy-for-llm.qmd`.
 
-### `publications/*.qmd`
+### `publications/*.qmd` — not one of the four types
 
-Not yet documented here — check existing files in that folder before adding
-one, same as above.
+`publications/index.qmd` is a pure redirect stub to an INSPIRE-HEP search,
+kept only so `/publications.html` (an old CV-site URL) still resolves.
+Not in the navbar; linked from `about.qmd`. Leave it alone unless
+explicitly asked to change how publications are presented.
+
+### Scientometrics — not a Quarto section
+
+`archive/legacy-site/scientometrics/` is static HTML/JS (echarts
+dashboards), copied into the built site by `scripts/preserve-legacy.py`
+and linked directly in the navbar as `/scientometrics/`. Research-data
+dashboards (publication counts, TRUBA/HPC acknowledgment stats,
+institute-level bibliometrics) go here, in that existing structure — not
+as `.qmd` files, and outside this section map entirely.
 
 ## Deciding where new content goes
 
-Route new content by what it *is*, not by subject matter — physics and
-computing both show up in several sections below:
-
 | New content is... | Goes to |
 | --- | --- |
-| Reproducible steps someone else follows | `Tutorials/<topic>/` |
-| A big multi-part course (e.g. Linux/HPC from zero to hero) | Still `Tutorials/<topic>/`, as several ordered pages under one topic folder — no new section needed. Number filenames (`00-`, `01-`, ...) or order them explicitly in that topic's `index.qmd` |
-| A personal essay, reflection, or reaction to something read/studied | `notes/posts/` |
-| A curated list of external links/resources | `notes/reference/` |
-| A friction you hit + a fix you found or quickly built | `notes/tools/` |
-| A self-built interactive widget/calculator/sim living only as a page | `notes/interactive/` |
-| A full standalone project with its own repo and releases | `software/` |
+| Reproducible steps someone else follows, short or a full course | `tutorials/` |
+| A personal essay, reflection, reaction, or curated resource list | `blog/` |
+| Something built that a reader uses (widget, calculator, script, full project) | `tools/` |
+| Research-infrastructure/publication-count dashboards | `archive/legacy-site/scientometrics/` |
 
-When genuinely unsure, prefer the lighter-weight section — moving a page
-later is one `git mv` plus an `aliases:` entry for the old URL, so getting
-it exactly right up front matters less than not stalling on the decision.
-
-`notes/index.qmd` renders each of the four lanes above as its own
-labeled section (separate `listing:` block + `::: {#id} :::` anchor) so
-the difference between an essay, a tool tip, an interactive piece, and a
-reference list is visible on the page itself — not just inferable from
-folder names. Adding a *file* to an existing lane needs no edit here;
-adding a whole new lane does (a new listing block, heading, and anchor).
+Subject matter never decides the folder — only `categories:` tags do.
+When genuinely unsure between two of the four, prefer whichever is
+lighter-weight to be wrong about: moving a page later is one `git mv`
+plus an `aliases:` entry for the old URL.
 
 ## Listing pages auto-populate
 
 Each section's `index.qmd` uses Quarto's `listing:` directive
-(`contents: "*.qmd"` or a subfolder list). A new file just needs to exist
-in the right folder — **do not** hand-edit an `index.qmd` to add a link to
-a new post.
+(`contents: "*.qmd"`). A new file just needs to exist in the right
+folder — **do not** hand-edit an `index.qmd` to add a link to a new post.
+
+Filter UI and category sidebars are deliberately turned off across
+`tutorials/`, `blog/`, and `tools/` while each holds only a handful of
+pages — a search box over one item is clutter, not a feature. Turn them
+back on, or add generated category-listing pages, once a section actually
+has enough content to justify it; that's a frontmatter change on the
+section's `index.qmd`, not a URL change, since categories already live in
+each page's frontmatter today.
 
 ## Categories already in use
 
@@ -169,18 +184,10 @@ them:
 1. Read each draft and its suggested target section.
 2. Look at 1–2 existing files in that section for exact current style
    (things drift; this file is a summary, the files are ground truth).
-3. Adapt the draft to match — correct frontmatter shape, correct
-   structural blocks, reuse existing categories.
-4. Place the finished `.qmd` in the right folder.
+3. Adapt the draft to match — correct frontmatter shape, reuse existing
+   categories.
+4. Place the finished `.qmd` directly in `tutorials/`, `blog/`, or
+   `tools/` — flat, no subfolder.
 5. Delete the consumed file from `_drafts/`.
 6. Stop and show what changed. Do not `git commit` or `git push` unless
    explicitly asked to.
-
-## Known issue, unfixed
-
-`_quarto.yml`'s render list has `"tutorials/**/*.qmd"` (lowercase) but the
-actual folder is `Tutorials/` (capital T). This works on case-insensitive
-local filesystems (macOS) but may silently fail to render on a
-case-sensitive Linux CI runner. Worth checking whether the deployed site
-actually includes the Tutorials section — not fixed here since it's outside
-whatever task brought you to this file.

@@ -1,0 +1,31 @@
+---
+title: "Tools"
+description: "Things built to be used, not just read."
+page-layout: full
+aliases:
+  - "/software/"
+  - "/software/index.html"
+listing:
+  contents:
+    - "*.qmd"
+    - "!index.qmd"
+  sort: "title"
+  type: default
+  categories: false
+  sort-ui: false
+  filter-ui: false
+---
+
+Small utilities, interactive calculators, and full software projects — a
+reader uses these rather than reads them. Whether something has its own
+GitHub repository, or lives only as a page here, doesn't decide the
+section; the source, releases, and full documentation for a standalone
+project remain in its own repository.
+
+<div class="listing-view-toggle" data-listing-view-toggle role="group" aria-label="Choose tools view">
+  <span>View</span>
+  <button type="button" data-listing-view="list" aria-pressed="true">List</button>
+  <button type="button" data-listing-view="cards" aria-pressed="false">Cards</button>
+</div>
+
+<script src="../listing-view.js"></script>

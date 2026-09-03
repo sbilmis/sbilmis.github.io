@@ -4,6 +4,8 @@ description: "Create clean project context for an LLM directly from macOS Finder
 categories: [macOS, Finder, LLM, Swift]
 date: 2026-07-31
 toc: true
+aliases:
+  - "/software/copy-for-llm.html"
 ---
 
 Copy for LLM adds Finder Quick Actions that turn selected files or folders into structured context: a directory tree followed by filtered file contents.

@@ -7,6 +7,7 @@ estimated-time: "10 minutes"
 date: 2025-12-29
 aliases:
   - "/my_tutorials/containers/updating-docker-apps/"
+  - "/tutorials/containers/updating-docker-apps.html"
 ---
 ::: {.tutorial-meta}
 **Level:** Beginner · **Working time:** 10 minutes

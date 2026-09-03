@@ -4,9 +4,9 @@ project:
   render:
     - "*.qmd"
     - "publications/**/*.qmd"
-    - "software/**/*.qmd"
+    - "tools/*.qmd"
     - "tutorials/**/*.qmd"
-    - "notes/**/*.qmd"
+    - "blog/*.qmd"
   post-render:
     - python3 scripts/preserve-legacy.py
   resources:
@@ -35,10 +35,10 @@ website:
         text: Home
       - href: tutorials/index.qmd
         text: Tutorials
-      - href: notes/index.qmd
-        text: Notes
-      - href: software/index.qmd
-        text: Software
+      - href: blog/index.qmd
+        text: Blog
+      - href: tools/index.qmd
+        text: Tools
       # Static dashboards under archive/legacy-site/scientometrics/, copied
       # into _site/ by scripts/preserve-legacy.py. Not a .qmd, so it is linked
       # by path — without this entry the work is reachable only by someone who

@@ -1,0 +1,35 @@
+---
+title: "Blog"
+description: "Essays, reactions, reflections, and curated resource lists."
+page-layout: full
+aliases:
+  - "/notes/"
+  - "/notes/index.html"
+  - "/writing/"
+  - "/writing/index.html"
+listing:
+  contents:
+    - "*.qmd"
+    - "!index.qmd"
+  sort: "date desc"
+  type: default
+  categories: false
+  sort-ui: false
+  filter-ui: false
+  feed:
+    type: partial
+    title: "Selçuk Bilmiş — blog"
+    description: "Essays, reactions, and curated notes on physics, computing, and research work."
+---
+
+Writing whose point is to explain, discuss, reflect, or collect —
+not to be used like a tool or followed like a procedure. Some of it may
+begin as a LinkedIn post; the durable version belongs here.
+
+<div class="listing-view-toggle" data-listing-view-toggle role="group" aria-label="Choose blog view">
+  <span>View</span>
+  <button type="button" data-listing-view="list" aria-pressed="true">List</button>
+  <button type="button" data-listing-view="cards" aria-pressed="false">Cards</button>
+</div>
+
+<script src="../listing-view.js"></script>

@@ -3,6 +3,8 @@ title: "From an Org note to a Quarto page"
 description: "A small, repeatable workflow for publishing existing Org-mode notes."
 categories: [Emacs, Org mode, publishing]
 date: 2026-08-02
+aliases:
+  - "/tutorials/workflow/org-to-quarto.html"
 ---
 
 An Org file can remain the original working document. The publishing copy can be generated as Markdown or Quarto Markdown (`.qmd`).
@@ -41,13 +43,14 @@ Quarto accepts ordinary Markdown files. There is no requirement to rewrite every
 
 ```text
 tutorials/
-  emacs/
-    package-management.qmd
-  physics/
-    spectroscopy.qmd
-  data-management/
-    large-datasets.md
+  updating-docker-apps.qmd
+  downloading-large-datasets.qmd
+  large-datasets.md
 ```
 
-The Tutorials listing discovers nested pages automatically, so a new subject folder does not require redesigning the site.
+`tutorials/` is flat — subject is a `categories:` tag, not a folder. The
+one exception is a genuine multi-part course (several ordered pages that
+belong together), which gets its own subfolder, e.g. `tutorials/hpc/`.
+Either way, the Tutorials listing discovers new pages automatically, so
+adding one does not require redesigning the site.
 

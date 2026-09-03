@@ -5,6 +5,8 @@ categories: ["System administration", "Terminal", "SSH", "iTerm2", "Ghostty"]
 level: "Beginner"
 estimated-time: "10 minutes"
 date: 2026-09-02
+aliases:
+  - "/tutorials/system/select-remote-command-output.html"
 ---
 ::: {.tutorial-meta}
 **Level:** Beginner · **Working time:** 10 minutes
