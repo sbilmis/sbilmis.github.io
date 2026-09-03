@@ -1,0 +1,175 @@
+---
+title: "Copying Remote Command Output Without Touching the Mouse"
+description: "Set up shell integration once per server so iTerm2 and Ghostty can both select a command's output directly, over SSH."
+categories: ["System administration", "Terminal", "SSH", "iTerm2", "Ghostty"]
+level: "Beginner"
+estimated-time: "10 minutes"
+date: 2026-09-02
+target: tutorials/system
+---
+::: {.tutorial-meta}
+**Level:** Beginner · **Working time:** 10 minutes
+:::
+
+::: {.callout-note title="Overview"}
+* **Goal:** Select a remote command's entire output from an SSH session and copy it, without dragging the mouse through scrollback.
+* **Audience:** Anyone who debugs over SSH — especially through a jump host — and regularly pastes command output into an LLM or a bug report.
+* **Outcome:** A one-time, per-server setup that works from both iTerm2 and Ghostty, and doesn't care how long the output is.
+* **Time required:** About 10 minutes per server, once.
+* **Skill level:** Beginner — mostly copy-pasting a few commands.
+* **Prerequisites:** SSH access to the server, and either iTerm2 or Ghostty locally.
+* **Example:** Run `tail -n 2000 app.log` on a remote box, select all of it with one keystroke, paste into an LLM chat.
+:::
+
+Debugging usually means SSH into a box — sometimes through an office jump
+host, so two hops deep — running something, and then needing to hand the
+output to an LLM to make sense of it. If that output is a few hundred lines
+of log, dragging a mouse through the scrollback to select it is exactly the
+kind of friction that makes you stop debugging and start fighting your
+terminal instead.
+
+The fix isn't a custom script to maintain. It's a feature both iTerm2 and
+Ghostty already ship, called **shell integration**. It only needs turning on
+once, per server.
+
+---
+
+## 1. How It Works
+
+As the remote shell prints each prompt, it can also emit a few invisible
+escape codes marking where a command starts, where its output starts, and
+where it ends. The local terminal — the program actually rendering the SSH
+session — reads those codes out of the byte stream as they arrive and uses
+them to track command boundaries precisely, no matter how many screens the
+output spans.
+
+Two flavors of this exist:
+
+| Code | Used by | Notes |
+| --- | --- | --- |
+| `OSC 1337` | iTerm2 | iTerm2's own, richer format |
+| `OSC 133` | Ghostty (and others) | The general "semantic prompt" standard |
+
+The install below emits **both** from the same script, so one install per
+server covers whichever terminal you happen to SSH in from that day — no
+separate setup for iTerm2 versus Ghostty.
+
+::: {.callout-note title="Nesting note"}
+The marks live on the machine whose shell has the script sourced — SSH
+doesn't propagate it through jump hosts automatically. Install it on
+whichever specific box you actually want to grab output from, not on every
+hop in between.
+:::
+
+---
+
+## 2. One-Time Setup, Per Server
+
+```bash
+# 1. SSH into the server
+ssh your-server
+
+# 2. Download the integration script
+curl -L https://iterm2.com/shell_integration/bash -o ~/.iterm2_shell_integration.bash
+```
+
+::: {.callout-warning title="Watch the URL"}
+The URL has **no `.sh`** at the end — `.../bash`, not `.../bash.sh`. The old
+link 404s and silently saves an HTML error page instead of the script,
+which then fails with a cryptic `bash: syntax error near unexpected token
+'newline'` the next time a shell starts.
+:::
+
+```bash
+# 3. Confirm the download is a real script, not an error page
+head -3 ~/.iterm2_shell_integration.bash
+# expect: #!/bin/bash ...  — if you see <html>, retry step 2
+
+# 4. Source it from ~/.bashrc, only once
+grep -q iterm2_shell_integration ~/.bashrc || cat >> ~/.bashrc <<'EOF'
+if [ -r "$HOME/.iterm2_shell_integration.bash" ]; then
+    . "$HOME/.iterm2_shell_integration.bash"
+fi
+EOF
+
+# 5. Check the edit didn't break the file
+bash -n ~/.bashrc && echo "syntax OK"
+```
+
+Reconnect and confirm it loaded:
+
+```bash
+exit
+ssh your-server
+echo $ITERM_SHELL_INTEGRATION_INSTALLED   # → Yes
+```
+
+::: {.callout-tip title="Prefer clicking over typing?"}
+With the SSH session already open in iTerm2, use the menu bar:
+**iTerm2 → Install Shell Integration… → Continue.** It runs the same steps
+for you, over the connection you already have — useful if the server has no
+outbound internet access.
+:::
+
+---
+
+## 3. Using It
+
+| | iTerm2 | Ghostty |
+| --- | --- | --- |
+| Select a command's output | `⌘⇧A` (Select Output of Last Command) | `⌘` + triple-click on a line of the output |
+| Copy | `⌘C` | Automatic, if `copy-on-select = clipboard` is set |
+| Jump between prompts | `⌘⇧↑` / `⌘⇧↓` | `jump_to_prompt` action (not bound by default) |
+
+To get prompt-jumping in Ghostty, add to `~/.config/ghostty/config`:
+
+```
+keybind = super+shift+up=jump_to_prompt:-1
+keybind = super+shift+down=jump_to_prompt:1
+```
+
+It treats a command and its output as one unit to skip over — like moving
+between cells in a notebook instead of scrolling past everything printed in
+each one. It's worth it once you need output from a command buried a few
+screens back; for the most recent command, the mouse gesture above is
+enough on its own.
+
+---
+
+## 4. Common Mistakes
+
+**Blind deduplication of a shared config file.** A quick
+`awk '!seen[$0]++'` to remove one accidental duplicate line scans the
+*entire* file — and a stock `.bashrc` legitimately repeats lines like `fi`
+and `esac` across unrelated blocks. A global dedupe deletes the wrong copy
+and silently breaks the file's structure. Always run `bash -n` on an edited
+rc file before trusting it for the next login — and if you do break it,
+Ubuntu and most distros ship a pristine copy at `/etc/skel/.bashrc` that's
+useful as a reference to reconstruct from.
+
+**Assuming one terminal app's setup covers a different server.** The
+install is per-server, not per-terminal-app — but it's also not automatic
+across servers. Repeat the steps above for each machine you want this on.
+
+---
+
+## 5. Open Question
+
+As of writing, Ghostty doesn't expose a keyboard-bindable "select this
+command's output" action — its documented selection actions are
+`select_all`, `adjust_selection`, and `search_selection`, and
+`jump_to_prompt` only moves the viewport, it doesn't select. The `⌘` +
+triple-click gesture is the only way today.
+
+If Ghostty ever ships an equivalent action, it should be a one-line config
+change to bind it to `⌘⇧A` to match iTerm2 — the marks it would need are
+already being emitted by the setup above.
+
+---
+
+## References
+
+- [iTerm2 Shell Integration](https://iterm2.com/documentation-shell-integration.html)
+- [Ghostty Shell Integration](https://ghostty.org/docs/features/shell-integration)
+- [Ghostty Keybindings Reference](https://ghostty.org/docs/config/keybind)
+- [Ghostty issue: `jump_to_prompt` doesn't handle multiline prompts](https://github.com/ghostty-org/ghostty/issues/11330)
