@@ -6,7 +6,7 @@ project:
     - "publications/**/*.qmd"
     - "software/**/*.qmd"
     - "tutorials/**/*.qmd"
-    - "writing/**/*.qmd"
+    - "notes/**/*.qmd"
   post-render:
     - python3 scripts/preserve-legacy.py
   resources:
@@ -35,7 +35,7 @@ website:
         text: Home
       - href: tutorials/index.qmd
         text: Tutorials
-      - href: writing/index.qmd
+      - href: notes/index.qmd
         text: Notes
       - href: software/index.qmd
         text: Software

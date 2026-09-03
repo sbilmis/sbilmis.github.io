@@ -2,14 +2,17 @@
 title: "Notes"
 description: "Essays, tools, interactive pieces, and reference collections."
 page-layout: full
+aliases:
+  - "/writing/"
+  - "/writing/index.html"
 listing:
   - id: essays
     contents: posts
     sort: "date desc"
     type: default
-    categories: true
+    categories: false
     sort-ui: false
-    filter-ui: true
+    filter-ui: false
     feed:
       type: partial
       title: "Selçuk Bilmiş — notes"
@@ -18,23 +21,23 @@ listing:
     contents: tools
     sort: "date desc"
     type: default
-    categories: true
+    categories: false
     sort-ui: false
-    filter-ui: true
+    filter-ui: false
   - id: interactive
     contents: interactive
     sort: "date desc"
     type: default
-    categories: true
+    categories: false
     sort-ui: false
-    filter-ui: true
+    filter-ui: false
   - id: reference
     contents: reference
     sort: "date desc"
     type: default
-    categories: true
+    categories: false
     sort-ui: false
-    filter-ui: true
+    filter-ui: false
 ---
 
 Four different kinds of writing live here, kept in one place rather than
